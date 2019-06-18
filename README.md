@@ -2,15 +2,11 @@
 
 [![Build Status](https://travis-ci.com/cisagov/development-guide.svg?branch=develop)](https://travis-ci.com/cisagov/development-guide)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) GitHub project started.
-This skeleton project contains [licensing information](LICENSE.md), as
-well as [pre-commit hooks](https://pre-commit.com) and a [Travis
-CI](https://travis-ci.com) configuration appropriate for the major
-languages that we use.
+A set of guidelines and best practices for an awesome engineering team.
+Heavily "inspired" by the
+[18-F Development Guide](https://github.com/18f/development-guide).
 
-In many cases you will instead want to use one of the more specific
-skeleton projects derived from this one.
+* [Project Setup](/project_setup)
 
 ## Contributing ##
 
