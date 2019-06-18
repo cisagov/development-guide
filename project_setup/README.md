@@ -2,8 +2,8 @@
 
 It is recommended that you start your project from one of the
 [skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
-that exist in this organization.  The [`skeleton`](/scripts/skeleton)
-helper tool included in the [`scripts`](/scripts) directory can quickly setup
+that exist in this organization.  The [`skeleton`](scripts/skeleton)
+helper tool included in the [`scripts`](scripts) directory can quickly setup
 a new local repository.  Once you've cloned and configured the repository
 to your local machine, it can be published to a repository created on GitHub.
 
