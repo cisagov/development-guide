@@ -1,2 +1,4 @@
 -r requirements-test.txt
+docopt
 ipython
+PyGithub

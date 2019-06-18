@@ -1,0 +1,104 @@
+#!/usr/bin/env python
+
+"""Helper tool to start a new github project from a skeleton github repository.
+
+Usage:
+  skeleton (-h | --help)
+  skeleton list [--org=<name>]
+  skeleton clone [options] <parent-repo-name> <new-repo-name>
+
+Options:
+  -c --change-dir=<dir>  Create clone in this directory.
+  -h --help              Show this message.
+  -o --org=<name>        Organization to search [default: cisagov].
+"""
+
+import os
+import subprocess  # nosec
+import sys
+
+import docopt
+from github import Github
+
+VERSION = "0.0.1"
+
+
+def run(cmd, comment):
+    """Run a command and display its output and return code."""
+    print("―" * 80)
+    if comment:
+        print(f"💬 {comment}")
+    print(f"➤  {cmd}")
+    proc = subprocess.run(cmd, shell=True)  # nosec
+    if proc.returncode == 0:
+        print("✅ success")
+    else:
+        print(f"❌ ERROR! return code: {proc.returncode}")
+        sys.exit(proc.returncode)
+
+
+def print_available_skeletons(org):
+    """Print a list of skeleton repos available for cloning."""
+    g = Github()
+    skel_repos = g.search_repositories(query=f"org:{org} topic:skeleton")
+    print(f"Available skeletons in {org}:\n")
+    for repo in skel_repos:
+        print(f"{repo.name}\n\t{repo.description}\n")
+
+
+def clone_repo(parent_repo, new_repo, org, dir=None):
+    """Clone a repository to a new name and prepare it for publication."""
+    if dir:
+        os.chdir(dir)
+    run(
+        f"git clone --origin {parent_repo} git@github.com:{org}/{parent_repo}.git {new_repo}",
+        "Clone an existing remote repository to the new name locally.",
+    )
+    os.chdir(new_repo)
+    run(
+        f"git remote set-url --push {parent_repo} no_push",
+        "Disable pushing to the upstream (parent) repository.",
+    )
+    run(
+        f"git remote add origin git@github.com:{org}/{new_repo}.git",
+        "Add a new remote origin for the this repository.",
+    )
+    run(
+        fr"""find . \( ! -regex '.*/\.git/.*' \) -type f -print0 | """
+        fr'''xargs -0 sed -i "" "s/{parent_repo}/{new_repo}/g"''',
+        "Search and replace repository name in source files.",
+    )
+    run("git add --verbose .", "Stage modified files.")
+    run(
+        'git commit --message "Rename repository references after clone."',
+        "Commit staged files to the new repository.",
+    )
+    print("―" * 80)
+    print(
+        f"""
+The repository "{parent_repo}" has been cloned and renamed to "{new_repo}".
+Use the following commands to push the new repository to github:
+    cd {os.path.join(dir, new_repo)}
+    git push --set-upstream origin develop
+    """
+    )
+
+
+def main():
+    """Parse arguments and perform requested actions."""
+    args = docopt.docopt(__doc__, version=VERSION)
+
+    org = args["--org"]
+
+    if args["list"]:
+        print_available_skeletons(org)
+    elif args["clone"]:
+        parent_repo = args["<parent-repo-name>"]
+        new_repo = args["<new-repo-name>"]
+        dir = args["--change-dir"]
+        clone_repo(parent_repo, new_repo, org, dir)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
