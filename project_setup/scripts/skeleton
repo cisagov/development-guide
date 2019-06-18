@@ -78,7 +78,7 @@ def clone_repo(parent_repo, new_repo, org, dir=None):
         f"""
 The repository "{parent_repo}" has been cloned and renamed to "{new_repo}".
 Use the following commands to push the new repository to github:
-    cd {os.path.join(dir, new_repo)}
+    cd {os.path.join(dir, new_repo) if dir else new_repo}
     git push --set-upstream origin develop
     """
     )
