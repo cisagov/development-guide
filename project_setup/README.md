@@ -1,5 +1,7 @@
 # Project Setup
 
+## Skeleton Tool
+
 It is recommended that you start your project from one of the
 [skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
 that exist in this organization.  The [`skeleton`](scripts/skeleton)
@@ -90,3 +92,20 @@ If everything looks good, publish your new repository to GitHub:
 ```bash
 git push --set-upstream origin develop
 ```
+
+## Ansible Requirement File Generation Tool
+
+We have a [plethora](https://www.youtube.com/watch?v=zWld721Wk-Q) of
+[ansible-roles in our organization](https://github.com/search?q=org%3Acisagov+topic%3Aansible-role+NOT+skeleton+archived%3Afalse).
+To facilitate the creation of a `requirements.yml` file used in an Ansible
+project, we have created the [`ansible-roles`](scripts/ansible-roles) tool
+located in the [`scripts`](scripts) directory.  The tool will output `yml`
+for all the current (non-archived) Ansible role repositories.  A common
+usage of the tool is:
+
+```bash
+./ansible-roles > myproject/src/requirements.yml
+```
+
+This file will now contain definitions for all the Ansible roles.  Edit
+the file, and remove any role that will not be required for your project.
