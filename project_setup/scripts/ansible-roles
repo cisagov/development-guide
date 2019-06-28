@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+
+"""Helper tool to create a requirements.yml file with all ansible-roles.
+
+Usage:
+  ansible-roles (-h | --help)
+  ansible-roles [--org=<name>]
+
+Options:
+  -h --help              Show this message.
+  -o --org=<name>        Organization to search [default: cisagov].
+"""
+
+import sys
+
+import docopt
+from github import Github
+
+VERSION = "0.0.1"
+
+
+def eprint(*args, **kwargs):
+    """Print to stderr."""
+    print(*args, file=sys.stderr, **kwargs)
+
+
+def print_reqs(org):
+    """Output a list of all ansible-roles in requirements.yml format."""
+    # There is a bug in the pager (API or library) that spuriously returns
+    # duplicate results.  So set per_page high enough to get one page.
+    g = Github(per_page=512)
+    repos = g.search_repositories(
+        query=f"org:{org} topic:ansible-role NOT skeleton archived:false"
+    )
+    sorted_repos = sorted(repos, key=lambda r: r.html_url)
+    eprint(f"Adding {len(sorted_repos)} ansible-roles.")
+    prev_repo = None
+    for repo in sorted_repos:
+        if prev_repo and repo.id == prev_repo.id:
+            eprint(">>> DUP >>>")
+            # github api bug?  Same repo can be returned more than once.
+            continue
+        short_name = repo.name.replace("ansible-role-", "").replace("-", "_")
+        print(f"- src: {repo.html_url}")
+        print(f"  name: {short_name}")
+        prev_repo = repo
+
+
+def main():
+    """Parse arguments and perform requested actions."""
+    args = docopt.docopt(__doc__, version=VERSION)
+
+    org = args["--org"]
+
+    print_reqs(org)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
