@@ -1,6 +1,6 @@
 # Project Setup
 
-## Skeleton Tool
+## Skeleton Tool 💀🛠
 
 It is recommended that you start your project from one of the
 [skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
@@ -93,7 +93,7 @@ If everything looks good, publish your new repository to GitHub:
 git push --set-upstream origin develop
 ```
 
-## Ansible Requirement File Generation Tool
+## Ansible Requirement File Generation Tool 🧻🛠
 
 We have a [plethora](https://www.youtube.com/watch?v=zWld721Wk-Q) of
 [ansible-roles in our organization](https://github.com/search?q=org%3Acisagov+topic%3Aansible-role+NOT+skeleton+archived%3Afalse).
