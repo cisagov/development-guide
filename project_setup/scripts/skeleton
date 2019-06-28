@@ -40,7 +40,7 @@ def run(cmd, comment):
 def print_available_skeletons(org):
     """Print a list of skeleton repos available for cloning."""
     g = Github()
-    skel_repos = g.search_repositories(query=f"org:{org} topic:skeleton")
+    skel_repos = g.search_repositories(query=f"org:{org} topic:skeleton archived:false")
     print(f"Available skeletons in {org}:\n")
     for repo in skel_repos:
         print(f"{repo.name}\n\t{repo.description}\n")
