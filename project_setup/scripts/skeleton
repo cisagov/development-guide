@@ -64,8 +64,8 @@ def clone_repo(parent_repo, new_repo, org, dir=None):
         "Add a new remote origin for the this repository.",
     )
     run(
-        fr"""find . \( ! -regex '.*/\.git/.*' \) -type f -print0 | """
-        fr'''xargs -0 sed -i "" "s/{parent_repo}/{new_repo}/g"''',
+        f"find . \( ! -regex '.*/\.git/.*' \) -type f -exec "
+        f'perl -pi -e s/{parent_repo}/{new_repo}/g {{}} \;',
         "Search and replace repository name in source files.",
     )
     run("git add --verbose .", "Stage modified files.")
