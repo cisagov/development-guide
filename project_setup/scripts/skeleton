@@ -63,6 +63,7 @@ def clone_repo(parent_repo, new_repo, org, dir=None):
         f"git remote add origin git@github.com:{org}/{new_repo}.git",
         "Add a new remote origin for the this repository.",
     )
+    run(f"git tag -d $(git tag -l)", f"Delete all local git tags from {parent_repo}")
     run(
         fr"find . \( ! -regex '.*/\.git/.*' \) -type f -exec "
         fr"perl -pi -e s/{parent_repo}/{new_repo}/g {{}} \;",
