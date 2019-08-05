@@ -8,6 +8,17 @@ Heavily "inspired" by the
 
 * [Project Setup](/project_setup)
 
+## Tools and Services We Use ##
+
+* [Travis CI](https://travis-ci.com/cisagov) - Continuous integration and delivery
+* [LGTM](https://lgtm.com/search?q=cisagov) - Code analysis platform
+  for finding zero-days and preventing critical vulnerabilities
+* [Snyk](https://app.snyk.io/org/cisagov) -
+Dependency vulnerability management and remediation
+* [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
+* [PyPi](https://pypi.org/search/?q=cisagov) - Python package publication
+* [AWS](https://aws.amazon.com) - Providing of the Cloud
+
 ## Contributing ##
 
 We welcome contributions!  Please see [here](CONTRIBUTING.md) for
