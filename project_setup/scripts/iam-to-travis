@@ -1,0 +1,128 @@
+#!/usr/bin/env python
+
+"""Extract AWS credentials from terraform state, encrypt, and format for Travis.
+
+This command must be executed in the directory containing the .terraform state
+within the a GitHub project.
+
+Usage:
+  iam-to-travis [--log-level=LEVEL] [--indent=SPACES] [--width=WIDTH]
+  iam-to-travis (-h | --help)
+
+Options:
+  -h --help              Show this message.
+  -i --indent=SPACES     Number of spaces to indent yaml block. Minimum 2.
+                         [default: 6]
+  --log-level=LEVEL      If specified, then the log level will be set to
+                         the specified value.  Valid values are "debug", "info",
+                         "warning", "error", and "critical". [default: warning]
+  -w --width=WIDTH       Maximum width of yaml block. Minimum 16. [default: 80]
+"""
+
+import json
+import logging
+import subprocess  # nosec
+import sys
+import docopt
+
+
+def creds_from_child(child_module):
+    """Search for IAM access keys in child resources.
+
+    Returns (key_id, secret) if found, (None, None) otherwise.
+    """
+    for resource in child_module["resources"]:
+        if resource["address"] == "aws_iam_access_key.key":
+            key_id = resource["values"]["id"]
+            secret = resource["values"]["secret"]
+            return key_id, secret
+    return None, None
+
+
+def creds_from_terraform():
+    """Retrieve IAM credentials from terraform state.
+
+    Returns (key_id, secret) if found, (None, None) otherwise.
+    """
+    c = subprocess.run(  # nosec
+        "terraform show --json", shell=True, stdout=subprocess.PIPE  # nosec
+    )
+    j = json.loads(c.stdout)
+
+    if not j.get("values"):
+        return None, None
+
+    for child_module in j["values"]["root_module"]["child_modules"]:
+        key_id, secret = creds_from_child(child_module)
+        if key_id:
+            return key_id, secret
+    else:
+        return None, None
+
+
+def wrap_for_yml(s, indent=6, width=75):
+    """Wrap a string in yamly way."""
+    result = []
+    width = width - 1
+    while True:
+        result.append(s[:width])
+        s = s[width:]
+        if not s:
+            break
+        s = " " * indent + s
+    return "\\\n".join(result)
+
+
+def encrypt_for_travis(variable_name, value, indent, width):
+    """Encrypt a value for a variable and print it as yaml."""
+    logging.debug(f"Encrypting {variable_name}.")
+    command = f'travis encrypt --com --no-interactive "{variable_name}={value}"'
+    c = subprocess.run(command, shell=True, stdout=subprocess.PIPE)  # nosec
+    s = f"{' ' * (indent - 2)}- secure: {c.stdout.decode('utf-8')}"
+    print(f"{' ' * (indent - 2)}# {variable_name}")
+    print(wrap_for_yml(s, indent, width))
+
+
+def main():
+    """Set up logging and call the requested commands."""
+    args = docopt.docopt(__doc__, version="0.0.1")
+
+    # Set up logging
+    log_level = args["--log-level"]
+    try:
+        logging.basicConfig(
+            format="%(asctime)-15s %(levelname)s %(message)s", level=log_level.upper()
+        )
+    except ValueError:
+        logging.critical(
+            f'"{log_level}" is not a valid logging level.  Possible values '
+            "are debug, info, warning, and error."
+        )
+        return 1
+
+    indent = int(args["--indent"])
+    width = int(args["--width"])
+
+    if width < 16:
+        logging.error("Width must be 16 or greater.")
+        sys.exit(-1)
+
+    if indent < 2 or indent > width - 10:
+        logging.error("Indent must be greater than 2, and less than (width - 10).")
+        sys.exit(-1)
+
+    logging.info("Searching Terraform state for IAM credentials.")
+    key_id, secret = creds_from_terraform()
+    if key_id is None:
+        logging.error("Credentials not found in terraform state.")
+        logging.error("Is there a .terraform state directory here?")
+        sys.exit(-1)
+
+    encrypt_for_travis("AWS_ACCESS_KEY_ID", key_id, indent, width)
+    encrypt_for_travis("AWS_SECRET_ACCESS_KEY", secret, indent, width)
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

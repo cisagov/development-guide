@@ -1,0 +1,119 @@
+#!/usr/bin/env python
+
+"""Manage SSM parameters accross multiple regions.
+
+The cp command can copy multiple files to a parameter path.  Specify each file
+followed by parameter that ends in a /.
+
+Usage:
+  ssm-param cp [--log-level=LEVEL] [--overwrite] <file_or_param> <file_or_param>...
+  ssm-param rm <parameter_name>...
+  ssm-param (-h | --help)
+
+Options:
+  -h --help              Show this message.
+  --log-level=LEVEL      If specified, then the log level will be set to
+                         the specified value.  Valid values are "debug", "info",
+                         "warning", "error", and "critical". [default: info]
+  -o --overwrite         Overwrite existing parameters.
+"""
+
+import logging
+from os import path
+import sys
+
+import docopt
+import boto3
+
+REGIONS = ["us-east-1", "us-east-2", "us-west-1", "us-west-2"]
+
+
+def calc_parameter_name(filename, parameter_name):
+    """Calculate a the parameter_name to allow "folders"."""
+    if parameter_name.endswith("/"):
+        return path.join(parameter_name, path.basename(filename))
+    else:
+        return parameter_name
+
+
+def put_file(session, filename, parameter_name, overwrite, regions):
+    """Create a parameter from the contents of a file in multiple regions."""
+    new_parameter_name = calc_parameter_name(filename, parameter_name)
+
+    with open(filename, "r") as f:
+        file_contents = f.read()
+
+    for region in regions:
+        logging.debug(f"Creating client for {region}")
+        client = session.client("ssm", region_name=region)
+        logging.info(f"Putting parameter '{new_parameter_name}' in region '{region}'")
+        logging.debug(f"Overwrite = {overwrite}")
+        try:
+            client.put_parameter(
+                Name=new_parameter_name,
+                Value=file_contents,
+                Type="SecureString",
+                Overwrite=overwrite,
+            )
+        except client.exceptions.ParameterAlreadyExists:
+            logging.warning(
+                f"Parameter {new_parameter_name} already exists in {region}. "
+                "Not overwriting."
+            )
+
+
+def delete_parameter(session, parameter_name, regions):
+    """Delete a parameter from multiple regions."""
+    for region in regions:
+        logging.debug(f"Creating client for {region}")
+        client = session.client("ssm", region_name=region)
+        logging.info(f"Deleting parameter '{parameter_name}' in region '{region}'")
+        try:
+            client.delete_parameter(Name=parameter_name)
+        except client.exceptions.ParameterNotFound:
+            logging.warning(f"Parameter {parameter_name} does not exists in {region}.")
+
+
+def main():
+    """Set up logging and call the requested commands."""
+    args = docopt.docopt(__doc__, version="0.0.1")
+
+    # Set up logging
+    log_level = args["--log-level"]
+    try:
+        logging.basicConfig(
+            format="%(asctime)-15s %(levelname)s %(message)s", level=log_level.upper()
+        )
+    except ValueError:
+        logging.critical(
+            f'"{log_level}" is not a valid logging level.  Possible values '
+            "are debug, info, warning, and error."
+        )
+        return 1
+
+    session = boto3.Session()
+
+    if args["cp"]:
+        # Working around docopt limitations.
+        # No support for: <file>... <param>
+        # The last <file_or_param> is the parameter
+        parameter_name = args["<file_or_param>"][-1]
+        filenames = args["<file_or_param>"][:-1]
+        overwrite = args["--overwrite"]
+        if len(filenames) > 1 and not parameter_name.endswith("/"):
+            print("Cannot cp multiple files unless parameter_name ends in a '/'")
+            sys.exit(-1)
+        for filename in filenames:
+            put_file(session, filename, parameter_name, overwrite, REGIONS)
+    elif args["rm"]:
+        parameter_names = args["<parameter_name>"]
+        for parameter_name in parameter_names:
+            delete_parameter(session, parameter_name, REGIONS)
+
+    # Stop logging and clean up
+    logging.shutdown()
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
