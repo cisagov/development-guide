@@ -110,7 +110,7 @@ usage of the tool is:
 This file will now contain definitions for all the Ansible roles.  Edit
 the file, and remove any role that will not be required for your project.
 
-## Terraform IAM Credentials to Travis Tool ##
+## Terraform IAM Credentials to Travis Tool 🔑‍👉👷🏻 ##
 
 When Travis-CI needs credentials to run we provide them in its `.travis.yml`
 file in an encrypted format.  Extracting fresh IAM credentials from a
@@ -156,7 +156,7 @@ iam-to-travis
   injrwJ5qqmcUljFdByuA08WyX4UkBCWtkJE="
 ```
 
-## Managing SSM Parameters from Files ##
+## Managing SSM Parameters from Files 🗂👉☁️ ##
 
 Use the `ssm-param` tool to copy files into
 [SSM parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-about-examples.html)
