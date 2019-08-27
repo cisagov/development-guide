@@ -158,7 +158,7 @@ iam-to-travis
 
 ## Managing SSM Parameters from Files 🗂👉☁️ ##
 
-Use the `ssm-param` tool to copy files into
+Use the [`ssm-param`](scripts/ssm-param) tool to copy files into
 [SSM parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-about-examples.html)
 in multiple regions simultaneously:
 
