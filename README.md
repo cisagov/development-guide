@@ -10,7 +10,7 @@ Heavily "inspired" by the
 
 ## Tools and Services We Use ##
 
-* [AWS](https://aws.amazon.com) - Providing of the Cloud
+* [AWS](https://aws.amazon.com) - Our main cloud provider
 * [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
 * [GitHub Actions](https://github.com/features/actions) -
   Continuous integration and delivery
