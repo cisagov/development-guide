@@ -20,6 +20,18 @@ Heavily "inspired" by the
 * [Snyk](https://app.snyk.io/org/cisagov) - Dependency vulnerability management
   and remediation
 
+## Installation ##
+
+This guide has several supporting Python scripts.  The simplest way to install these
+scripts and their dependencies is to use `pip`.  In the root of this project execute:
+
+`pip install -r requirements.txt`
+
+Please see the
+[Creating the Python virtual environment](CONTRIBUTING.md#creating-the-python-virtual-environment)
+section of the [CONTRIBUTING](CONTRIBUTING.md) document for
+information about setting up these scripts in a Python virtual environment.
+
 ## Contributing ##
 
 We welcome contributions!  Please see [here](CONTRIBUTING.md) for
