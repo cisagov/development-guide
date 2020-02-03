@@ -13,10 +13,12 @@ Options:
   -o --org=<name>        Organization to search [default: cisagov].
 """
 
+# Standard Python Libraries
 import os
 import subprocess  # nosec
 import sys
 
+# Third-Party Libraries
 import docopt
 from github import Github
 

@@ -19,10 +19,13 @@ Options:
   -w --width=WIDTH       Maximum width of yaml block. Minimum 16. [default: 80]
 """
 
+# Standard Python Libraries
 import json
 import logging
 import subprocess  # nosec
 import sys
+
+# Third-Party Libraries
 import docopt
 
 
