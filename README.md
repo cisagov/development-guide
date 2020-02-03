@@ -12,7 +12,8 @@ Heavily "inspired" by the
 
 * [AWS](https://aws.amazon.com) - Providing of the Cloud
 * [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
-* [GitHub Actions](https://github.com/features/actions) - Continuous integration and delivery
+* [GitHub Actions](https://github.com/features/actions) -
+  Continuous integration and delivery
 * [LGTM](https://lgtm.com/search?q=cisagov) - Code analysis platform for
   finding zero-days and preventing critical vulnerabilities
 * [PyPi](https://pypi.org/search/?q=cisagov) - Python package publication
