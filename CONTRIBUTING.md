@@ -66,7 +66,7 @@ On WSL you should treat your platform as whatever Linux distribution you've
 chosen to install.
 
 Once you have installed `pyenv` you will need to add the following lines to your
-``.bashrc`:
+`.bashrc`:
 
 ```bash
 export PATH="$PATH:$HOME/.pyenv/bin"
