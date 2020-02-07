@@ -76,6 +76,9 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 ```
 
+If you are using a shell other than `bash` you should follow the instructions
+that the `pyenv-installer` script outputs.
+
 You will need to reload your shell for these changes to take effect so
 you can begin to use `pyenv`.
 
