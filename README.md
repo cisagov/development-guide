@@ -6,7 +6,13 @@ A set of guidelines and best practices for an awesome engineering team.
 Heavily "inspired" by the
 [18-F Development Guide](https://github.com/18f/development-guide).
 
+<!-- * [Development Ethos](/ethos)-->
 * [Project Setup](/project_setup)
+<!-- * [Personal Development Environments](/dev_envs)-->
+* Language Guides
+  * HCL
+  * JavaScript
+  * [Python](/languages/python)
 
 ## Tools and Services We Use ##
 
