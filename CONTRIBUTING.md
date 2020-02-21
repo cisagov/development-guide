@@ -102,7 +102,7 @@ commands:
 cd development-guide
 pyenv virtualenv <python_version_to_use> development-guide
 pyenv local development-guide
-pip install -r requirements-dev.txt
+pip install --requirement requirements-dev.txt
 ```
 
 #### Installing the pre-commit hook ####
