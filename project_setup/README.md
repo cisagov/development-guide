@@ -113,7 +113,8 @@ the file, and remove any role that will not be required for your project.
 ## Terraform IAM Credentials to GitHub Secrets 🔑‍👉🤫 ##
 
 When GitHub Actions workflows require credentials to run we provide them via
-secrets.  This usually involves extracting the secrets from the Terraform state
+[secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
+This usually involves extracting the secrets from the Terraform state
 json output.  Then some pointing, clicking, cutting and pasting on the
 repository's settings.
 
