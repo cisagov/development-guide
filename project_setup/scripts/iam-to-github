@@ -238,6 +238,7 @@ def main() -> int:
         aws_secret,
         public_key,
     )
+    logging.info("Success!")
 
     return 0
 
