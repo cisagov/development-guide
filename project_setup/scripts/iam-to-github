@@ -24,7 +24,7 @@ import subprocess  # nosec
 import sys
 from typing import Dict
 
-# cisagov Libraries
+# Third-Party Libraries
 import docopt
 from nacl import encoding, public
 import requests
