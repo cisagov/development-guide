@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-"""Extract AWS credentials from terraform state, encrypt, and upload to GitHub.
+"""Create GitHub secrets from AWS credentials extracted from Terraform state.
 
 This command must be executed in the directory containing the .terraform state
 within a GitHub project.  It will attempt to detect the repository name from
-the projects origin.
+the projects git origin.
 
 It requires a Personal Access Token from GitHub that has "repo" access scope.
 
