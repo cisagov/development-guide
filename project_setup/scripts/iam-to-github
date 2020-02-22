@@ -3,10 +3,13 @@
 """Extract AWS credentials from terraform state, encrypt, and upload to GitHub.
 
 This command must be executed in the directory containing the .terraform state
-within the a GitHub project.
+within a GitHub project.  It will attempt to detect the repository name from
+the projects origin.
+
+It requires a Personal Access Token from GitHub that has "repo" access scope.
 
 Usage:
-  iam-to-github [--log-level=LEVEL] <github-token> <repository-name>
+  iam-to-github [options] <github-personal-access-token>
   iam-to-github (-h | --help)
 
 Options:
@@ -14,54 +17,63 @@ Options:
   --log-level=LEVEL      If specified, then the log level will be set to
                          the specified value.  Valid values are "debug", "info",
                          "warning", "error", and "critical". [default: info]
+  --repo=REPONAME        Use provided repository name instead of detecting it.
+  --suffix=SUFFIX        Append a suffix to the secret names.
+  --user=FILTER          Only process users that contain the filter text.
 """
 
 # Standard Python Libraries
 from base64 import b64encode
 import json
 import logging
-import subprocess  # nosec
+import re
+import subprocess  # nosec : security implications have been considered
 import sys
-from typing import Dict
+from typing import Any, Dict, Generator, List, Optional, Tuple
 
 # Third-Party Libraries
 import docopt
 from nacl import encoding, public
 import requests
+from schema import And, Or, Schema, SchemaError, Use
+
+GIT_URL_RE: re.Pattern = re.compile("git@github.com:(.*).git")
 
 
-def creds_from_child(child_module):
+def creds_from_child(child_module: Dict) -> Generator[Tuple[str, str, str], None, None]:
     """Search for IAM access keys in child resources.
 
-    Returns (key_id, secret) if found, (None, None) otherwise.
+    Yields (user, key_id, secret) when found.
     """
     for resource in child_module["resources"]:
         if resource["address"] == "aws_iam_access_key.key":
-            key_id = resource["values"]["id"]
-            secret = resource["values"]["secret"]
-            return key_id, secret
-    return None, None
+            key_id: str = resource["values"]["id"]
+            secret: str = resource["values"]["secret"]
+            user: str = resource["values"]["user"]
+            yield user, key_id, secret
+    return
 
 
-def creds_from_terraform():
+def creds_from_terraform() -> Generator[Tuple[str, str, str], None, None]:
     """Retrieve IAM credentials from terraform state.
 
-    Returns (key_id, secret) if found, (None, None) otherwise.
+    Yields (user, key_id, secret) when found.
     """
-    c = subprocess.run(  # nosec
-        "terraform show --json", shell=True, stdout=subprocess.PIPE  # nosec
-    )
-    j = json.loads(c.stdout)
+    user: str
+    key_id: str
+    secret: str
+    c = subprocess.run(["terraform", "show", "--json"], stdout=subprocess.PIPE)  # nosec
+    # Normally we'd check the process return code here.  But terraform is perfectly
+    # happy to return zero even if there was no state files.
+    j: Dict = json.loads(c.stdout)
 
     if not j.get("values"):
-        return None, None
+        return
 
     for child_module in j["values"]["root_module"]["child_modules"]:
-        key_id, secret = creds_from_child(child_module)
-        if key_id:
-            return key_id, secret
-    else:
-        return None, None
+        for user, key_id, secret in creds_from_child(child_module):
+            yield user, key_id, secret
+    return
 
 
 def encrypt(public_key: str, secret_value: str) -> str:
@@ -89,7 +101,7 @@ def set_secret(
     secret_value: str,
     public_key: Dict[str, str],
 ) -> None:
-    """Create a secret in the repository."""
+    """Create a secret in a repository."""
     logging.info(f"Creating secret {secret_name}")
     encrypted_secret_value = encrypt(public_key["key"], secret_value)
     response = session.put(
@@ -102,43 +114,130 @@ def set_secret(
     response.raise_for_status()
 
 
+def get_repo_name() -> str:
+    """Get the repository name using git."""
+    logging.debug(f"Trying to determine GitHub repository name using git.")
+    c = subprocess.run(  # nosec
+        ["git", "remote", "get-url", "origin"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if c.returncode != 0:
+        logging.critical("Could not determine GitHub repository name.")
+        raise Exception(c.stderr)
+    match = GIT_URL_RE.match(c.stdout.decode())
+    repo_name = match.groups()[0]  # type: ignore
+    return repo_name
+
+
 def main() -> int:
     """Set up logging and call the requested commands."""
-    args = docopt.docopt(__doc__, version="0.0.1")
+    args: Dict[str, str] = docopt.docopt(__doc__, version="1.0.0")
 
-    # Set up logging
-    log_level = args["--log-level"]
+    # Validate and convert arguments as needed
+    schema: Schema = Schema(
+        {
+            "<github-personal-access-token>": And(
+                str,
+                lambda n: len(n) == 40,
+                error="<github-token> must be a 40 character personal access token.",
+            ),
+            "--log-level": And(
+                str,
+                Use(str.lower),
+                lambda n: n in ("debug", "info", "warning", "error", "critical"),
+                error="Possible values for --log-level are "
+                + "debug, info, warning, error, and critical.",
+            ),
+            "--repo": Or(
+                None,
+                And(
+                    str,
+                    lambda n: "/" in n,
+                    error='Repository names must contain a "/"',
+                ),
+            ),
+            "--suffix": Or(And(None, Use(lambda n: "")), And(str, Use(str.upper))),
+            str: object,  # Don't care about other keys, if any
+        }
+    )
+
     try:
-        logging.basicConfig(
-            format="%(asctime)-15s %(levelname)s %(message)s", level=log_level.upper()
-        )
-    except ValueError:
-        logging.critical(
-            f'"{log_level}" is not a valid logging level.  Possible values '
-            "are debug, info, warning, and error."
-        )
+        validated_args: Dict[str, Any] = schema.validate(args)
+    except SchemaError as err:
+        # Exit because one or more of the arguments were invalid
+        print(err, file=sys.stderr)
         return 1
 
-    github_token: str = args["<github-token>"]
-    repo_name: str = args["<repository-name>"]
+    # Assign validated arguments to variables
+    github_token: str = validated_args["<github-personal-access-token>"]
+    log_level: str = validated_args["--log-level"]
+    repo_name: str = validated_args["--repo"]
+    secret_suffix: str = validated_args["--suffix"]
+    user_filter: str = validated_args["--user"]
+
+    # Set up logging
+    logging.basicConfig(
+        format="%(asctime)-15s %(levelname)s %(message)s", level=log_level.upper()
+    )
+
+    # If the user does not provide a repo name we'll try to determine it from git
+    if not repo_name:
+        repo_name = get_repo_name()
+    logging.info(f"Using GitHub repository name: {repo_name}")
+
+    if user_filter:
+        logging.info(f"Filter to users containing: {user_filter}")
+
+    if secret_suffix:
+        if not secret_suffix.startswith("_"):
+            secret_suffix = f"_{secret_suffix}"
+        logging.info(f'Apending "{secret_suffix}" to secret names.')
+
+    aws_user: Optional[str] = None
+    aws_key_id: Optional[str] = None
+    aws_secret: Optional[str] = None
+    cred_list: List[Tuple[str, str, str]] = []
 
     logging.info("Searching Terraform state for IAM credentials.")
-    aws_key_id: str
-    aws_secret: str
-    aws_key_id, aws_secret = creds_from_terraform()
-    if aws_key_id is None:
-        logging.error("Credentials not found in terraform state.")
-        logging.error("Is there a .terraform state directory here?")
+    for aws_user, aws_key_id, aws_secret in creds_from_terraform():
+        logging.info(f"Found credentials for user: {aws_user}")
+        if not user_filter or user_filter in aws_user:
+            logging.debug(f"User {aws_user} matches filter {user_filter}")
+            cred_list.append((aws_user, aws_key_id, aws_secret))
+
+    if len(cred_list) == 0:
+        logging.error("No credentials matched in terraform state.")
+        if aws_user:  # We found a user but it wasn't used
+            logging.error(
+                "Users found in Terraform state but were filtered out by --user"
+            )
+        else:  # We never saw a user
+            logging.error("Is there a .terraform state directory here?")
         sys.exit(-1)
 
-    logging.info("Creating GitHub API session.")
+    if len(cred_list) > 1:
+        logging.error("Too many credentials found.  Use --user to match one.")
+        sys.exit(-2)
+
+    # All the ducks are in a row, let's do this thang!
+    logging.info("Creating GitHub API session using personal access token.")
     session: requests.Session = requests.Session()
     session.auth = ("", github_token)
 
     public_key: Dict[str, str] = get_public_key(session, repo_name)
 
-    set_secret(session, repo_name, "AWS_ACCESS_KEY_ID", aws_key_id, public_key)
-    set_secret(session, repo_name, "AWS_SECRET_ACCESS_KEY", aws_secret, public_key)
+    logging.info(f"Setting secrets for user: {aws_user}")
+    set_secret(
+        session, repo_name, "AWS_ACCESS_KEY_ID" + secret_suffix, aws_key_id, public_key
+    )
+    set_secret(
+        session,
+        repo_name,
+        "AWS_SECRET_ACCESS_KEY" + secret_suffix,
+        aws_secret,
+        public_key,
+    )
 
     return 0
 
