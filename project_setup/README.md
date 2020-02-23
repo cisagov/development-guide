@@ -139,6 +139,7 @@ iam-to-github 9f4ae878de917c7cf191b9861d3c1cf9224939f7
 2020-02-22 15:50:40,832 INFO Setting secrets for user: test-ansible-role-dev-ssh-access
 2020-02-22 15:50:40,832 INFO Creating secret AWS_ACCESS_KEY_ID
 2020-02-22 15:50:41,027 INFO Creating secret AWS_SECRET_ACCESS_KEY
+2020-02-22 15:50:41,036 INFO Success!
 ```
 
 ## Managing SSM Parameters from Files 🗂👉☁️ ##
