@@ -78,7 +78,7 @@ setup(
     scripts=[
         "project_setup/scripts/ansible-roles",
         "project_setup/scripts/iam-to-travis",
-        "project_setup/scripts/iam-to-github",
+        "project_setup/scripts/terraform-to-secrets",
         "project_setup/scripts/skeleton",
         "project_setup/scripts/ssm-param",
     ],
