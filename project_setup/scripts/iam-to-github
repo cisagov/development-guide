@@ -46,7 +46,7 @@ def creds_from_child(child_module: Dict) -> Generator[Tuple[str, str, str], None
     Yields (user, key_id, secret) when found.
     """
     for resource in child_module["resources"]:
-        if resource["address"] == "aws_iam_access_key.key":
+        if resource["type"] == "aws_iam_access_key":
             key_id: str = resource["values"]["id"]
             secret: str = resource["values"]["secret"]
             user: str = resource["values"]["user"]
