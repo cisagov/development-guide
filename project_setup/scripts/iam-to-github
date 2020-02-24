@@ -126,7 +126,12 @@ def get_repo_name() -> str:
         logging.critical("Could not determine GitHub repository name.")
         raise Exception(c.stderr)
     match = GIT_URL_RE.match(c.stdout.decode())
-    repo_name = match.groups()[0]  # type: ignore
+    if match:
+        repo_name = match.groups()[0]  # type: ignore
+    else:
+        logging.critical("Could not determine GitHub repository name.")
+        logging.critical("Use the --repo option to specify it manually.")
+        raise Exception("Could not determine GitHub repository name.")
     return repo_name
 
 
