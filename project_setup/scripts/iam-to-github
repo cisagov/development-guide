@@ -55,7 +55,7 @@ def creds_from_child(child_module: Dict) -> Generator[Tuple[str, str, str], None
 
 
 def creds_from_terraform() -> Generator[Tuple[str, str, str], None, None]:
-    """Retrieve IAM credentials from terraform state.
+    """Retrieve IAM credentials from Terraform state.
 
     Yields (user, key_id, secret) when found.
     """
@@ -63,8 +63,8 @@ def creds_from_terraform() -> Generator[Tuple[str, str, str], None, None]:
     key_id: str
     secret: str
     c = subprocess.run(["terraform", "show", "--json"], stdout=subprocess.PIPE)  # nosec
-    # Normally we'd check the process return code here.  But terraform is perfectly
-    # happy to return zero even if there was no state files.
+    # Normally we'd check the process return code here.  But Terraform is perfectly
+    # happy to return zero even if there were no state files.
     j: Dict = json.loads(c.stdout)
 
     if not j.get("values"):
@@ -207,7 +207,7 @@ def main() -> int:
             cred_list.append((aws_user, aws_key_id, aws_secret))
 
     if len(cred_list) == 0:
-        logging.error("No credentials matched in terraform state.")
+        logging.error("No credentials matched in Terraform state.")
         if aws_user:  # We found a user but it wasn't used
             logging.error(
                 "Users found in Terraform state but were filtered out by --user"
