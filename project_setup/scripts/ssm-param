@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Manage SSM parameters accross multiple regions.
+"""Manage SSM parameters across multiple regions.
 
 The cp command can copy multiple files to a parameter path.  Specify each file
 followed by parameter that ends in a /.

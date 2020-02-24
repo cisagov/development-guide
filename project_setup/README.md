@@ -118,8 +118,8 @@ This usually involves extracting the secrets from the Terraform state
 json output.  Then some pointing, clicking, cutting and pasting on the
 repository's settings.
 
-To simplify this task use the [`iam-to-github`](scripts/iam-to-github) tool
-located in the [`scripts`](scripts) directory.  The tool will create secrets
+To simplify this task use the [`terraform-to-secrets`](scripts/terraform-to-secrets)
+tool located in the [`scripts`](scripts) directory.  The tool will create secrets
 using your
 [personal access token (PAT)](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 Note: Your PAT needs to have the "repo" scope set.
@@ -127,7 +127,7 @@ Note: Your PAT needs to have the "repo" scope set.
 Execute the tool from your GitHub project's terraform directory:
 
 ```bash
-iam-to-github 9f4ae878de917c7cf191b9861d3c1cf9224939f7
+terraform-to-secrets 9f4ae878de917c7cf191b9861d3c1cf9224939f7
 ```
 
 ```console
