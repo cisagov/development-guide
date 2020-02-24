@@ -192,7 +192,7 @@ def main() -> int:
     if secret_suffix:
         if not secret_suffix.startswith("_"):
             secret_suffix = f"_{secret_suffix}"
-        logging.info(f'Apending "{secret_suffix}" to secret names.')
+        logging.info(f'Appending "{secret_suffix}" to secret names.')
 
     aws_user: Optional[str] = None
     aws_key_id: Optional[str] = None
