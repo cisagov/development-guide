@@ -37,7 +37,7 @@ from nacl import encoding, public
 import requests
 from schema import And, Or, Schema, SchemaError, Use
 
-GIT_URL_RE: re.Pattern = re.compile("git@github.com:(.*).git")
+GIT_URL_RE: re.Pattern = re.compile("(?:git@|https://)github.com[:/](.*).git")
 
 
 def creds_from_child(child_module: Dict) -> Generator[Tuple[str, str, str], None, None]:
