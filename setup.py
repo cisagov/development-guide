@@ -62,7 +62,7 @@ setup(
     python_requires=">=3.6",
     # What does your project relate to?
     keywords="documentation",
-    install_requires=["docopt", "setuptools >= 24.2.0", "schema", "PyGithub"],
+    install_requires=["docopt", "PyNaCl", "setuptools >= 24.2.0", "schema", "PyGithub"],
     extras_require={
         "test": [
             "pre-commit",
@@ -78,6 +78,7 @@ setup(
     scripts=[
         "project_setup/scripts/ansible-roles",
         "project_setup/scripts/iam-to-travis",
+        "project_setup/scripts/iam-to-github",
         "project_setup/scripts/skeleton",
         "project_setup/scripts/ssm-param",
     ],

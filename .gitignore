@@ -2,4 +2,5 @@
 __pycache__
 .python-version
 .coverage
+.mypy_cache
 .pytest_cache
