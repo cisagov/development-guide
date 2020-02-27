@@ -62,7 +62,14 @@ setup(
     python_requires=">=3.6",
     # What does your project relate to?
     keywords="documentation",
-    install_requires=["docopt", "PyNaCl", "setuptools >= 24.2.0", "schema", "PyGithub"],
+    install_requires=[
+        "docopt",
+        "keyring",
+        "PyNaCl",
+        "setuptools >= 24.2.0",
+        "schema",
+        "PyGithub",
+    ],
     extras_require={
         "test": [
             "pre-commit",
