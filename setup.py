@@ -63,6 +63,7 @@ setup(
     # What does your project relate to?
     keywords="documentation",
     install_requires=[
+        "boto3",
         "docopt",
         "keyring",
         "PyNaCl",
