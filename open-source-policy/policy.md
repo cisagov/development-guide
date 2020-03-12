@@ -1,4 +1,4 @@
-# CISA: An Open Source Agency #
+# CISA: An open source agency #
 
 The Cybersecurity and Infrastructure Security Agency ([CISA](https://cisa.gov))
 is the Nation’s risk advisor, working with partners to defend against today’s
@@ -50,7 +50,7 @@ economic value by lowering the burden of replicating similar work or by allowing
 the private sector to build off of and create new businesses around code
 developed at CISA.
 
-## Maximizing Community Involvement and Reuse ##
+## Maximizing community involvement and reuse ##
 
 Active involvement from the open source community is integral to the success of
 open source code. CISA will be an active contributor to FOSS projects that it or
@@ -81,7 +81,7 @@ systems. CISA would appreciate that users of our code disclose its lineage, but
 CISA maintains no legal right to require disclosure. Notifications that our work
 is used in a new system are always greatly appreciated.
 
-## Open Source Licenses ##
+## Open source licenses ##
 
 As previously mentioned, most work generated at CISA falls within the U.S.
 public domain.
@@ -107,7 +107,7 @@ question.
 Each project may need to modify or extend the above LICENSE and CONTRIBUTING
 files as needed for its own circumstances.
 
-## Distribution of Code ##
+## Distribution of code ##
 
 There is a misconception that FOSS that is distributed to the public should not
 be integrated or modified for use in sensitive systems. On the contrary, FOSS is
@@ -142,7 +142,7 @@ consider other options, including creating an open source solution itself.
 Ultimately, the software that best meets the needs and mission of CISA should be
 used.
 
-## Further Reading ##
+## Further reading ##
 
 [OMB M-16-21](https://sourcecode.cio.gov/) - A White House policy pertaining to
 federal source code, published by the White House Office of Management and
@@ -160,7 +160,7 @@ CISA would like to thank 18-F, Consumer Financial Protection Bureau, Department
 of Defense, and Office of Management and Budget for their work in blazing the
 path for the use of FOSS in the Federal Government.
 
-## Future Changes ##
+## Future changes ##
 
 This policy is a living document. CISA expects to make changes to this policy in
 the future, and we welcome
