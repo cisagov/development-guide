@@ -15,8 +15,8 @@ the release of source code.
 
 ## Credits ##
 
-This policy was originally copied from 18-F which was forked from the [Consumer
-Financial Protection Bureau's
+This policy was originally copied from [18-F](https://18f.gsa.gov) which was
+forked from the [Consumer Financial Protection Bureau's
 policy](https://github.com/cfpb/source-code-policy). Thanks also to
 [@benbalter](https://github.com/benbalter) for his [insights regarding CFPB's
 initial
