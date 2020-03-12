@@ -69,9 +69,7 @@ official capacity.
 
 1. See if there is an organizational CLA available.
 1. Send the agreement to DHS's Office of General Counsel (OGC) for review.
-    * Email <a
-      href="mailto:cisagov-github-group@trio.dhs.gov">cisagov-github-group@trio.dhs.gov</a>
-      for who the best contact is.
+    * Email cisagov-github-group@trio.dhs.gov for who the best contact is.
 1. Collect names/emails/GitHub usernames (whatever is needed) for folks you
    think will be contributing.
     * Usually easier to add too many than too few.
@@ -129,8 +127,8 @@ better software.
 All CISA team members are expected to make new source code repositories public
 from the time of creation. This means we often publish drafts in our repos that
 may change substantially. If you're interested in learning more about the
-contents of a repo, email CISA@gsa.gov and we'll direct you to the right person
-or team.
+contents of a repo, email cisagov-github-group@trio.dhs.gov and we'll direct you
+to the right person or team.
 
 ## Protecting sensitive information ##
 
