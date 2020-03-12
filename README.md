@@ -6,6 +6,7 @@ A set of guidelines and best practices for an awesome engineering team.
 Heavily "inspired" by the
 [18-F Development Guide](https://github.com/18f/development-guide).
 
+* [Open Source Policy](/open-source-policy)
 <!-- * [Development Ethos](/ethos)-->
 * [Project Setup](/project_setup)
 <!-- * [Personal Development Environments](/dev_envs)-->
