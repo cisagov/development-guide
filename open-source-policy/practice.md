@@ -86,7 +86,7 @@ CISA currently has the following CLAs signed:
 When creating a repo, we highly recommend that you start from one of our
 maintained skeleton projects.  This will quickly get you setup with the correct
 LICENSE and CONTRIBUTING documents as well as some spiffy tooling to keep your
-project healthy.  See the our [project setup](/project_setup) document for the
+project healthy.  See our [project setup](/project_setup) document for the
 best way to do this.
 
 ## Accepting contributions from the public ##
