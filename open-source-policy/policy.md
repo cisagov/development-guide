@@ -164,5 +164,6 @@ path for the use of FOSS in the Federal Government.
 
 This policy is a living document. CISA expects to make changes to this policy in
 the future, and we welcome
-[issues](https://github.com/cisagov/development-guide/issues) and pull requests.
-To contact us privately, email cisagov-github-group@trio.dhs.gov .
+[issues](https://github.com/cisagov/development-guide/issues) and [pull
+requests](https://github.com/cisagov/development-guide/pulls). To contact us
+privately, email cisagov-github-group@trio.dhs.gov .
