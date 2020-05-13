@@ -61,7 +61,7 @@ repos:
     hooks:
       - id: black
   # Disabling seed-isort-config in this project (development-guide) since it
-  # doesn't identifying docopt, et al. as third-party libraries.
+  # doesn't identify docopt, et al. as third-party libraries.
   # - repo: https://github.com/asottile/seed-isort-config
   #   rev: v2.1.0
   #   hooks:
