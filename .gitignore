@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 *.egg-info
 __pycache__
 .python-version
 .coverage
 .mypy_cache
 .pytest_cache
+=======
+.mypy_cache
+.python-version
+__pycache__
+>>>>>>> 3301dfa04f4cce444deb0443858a37f05503207c
