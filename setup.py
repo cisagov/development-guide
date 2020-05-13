@@ -66,10 +66,11 @@ setup(
         "boto3",
         "docopt",
         "keyring",
-        "PyNaCl",
-        "setuptools >= 24.2.0",
-        "schema",
         "PyGithub",
+        "PyNaCl",
+        "pyyaml",
+        "schema",
+        "setuptools >= 24.2.0",
     ],
     extras_require={
         "test": [
