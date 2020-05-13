@@ -60,19 +60,10 @@ repos:
     rev: 19.10b0
     hooks:
       - id: black
-<<<<<<< HEAD
-  # Disabling seed-isort-config since it doesn't identifying docopt, et al.
-  # as third-party libraries.
-  #- repo: https://github.com/asottile/seed-isort-config
-  #  rev: v1.9.4
-  #  hooks:
-  #    - id: seed-isort-config
-=======
   - repo: https://github.com/asottile/seed-isort-config
     rev: v2.1.0
     hooks:
       - id: seed-isort-config
->>>>>>> 3301dfa04f4cce444deb0443858a37f05503207c
   - repo: https://github.com/pre-commit/mirrors-isort
     # pick the isort version you'd like to use from
     # https://github.com/pre-commit/mirrors-isort/releases
