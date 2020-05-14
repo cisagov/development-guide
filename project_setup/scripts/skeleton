@@ -15,6 +15,7 @@ Options:
 
 # Standard Python Libraries
 import os
+from pathlib import Path
 import subprocess  # nosec
 import sys
 
@@ -22,6 +23,11 @@ import sys
 import docopt
 from github import Github
 
+# cisagov Libraries
+import yaml
+
+LINEAGE_CONFIG = Path(".github/lineage.yml")
+LINEAGE_CONFIG_VERSION = "1"
 VERSION = "0.0.1"
 
 
@@ -65,12 +71,20 @@ def clone_repo(parent_repo, new_repo, org, dir=None):
         f"git remote add origin git@github.com:{org}/{new_repo}.git",
         "Add a new remote origin for the this repository.",
     )
-    run(f"git tag -d $(git tag -l)", f"Delete all local git tags from {parent_repo}")
+    run("git tag -d $(git tag -l)", f"Delete all local git tags from {parent_repo}")
     run(
         fr"find . \( ! -regex '.*/\.git/.*' \) -type f -exec "
         fr"perl -pi -e s/{parent_repo}/{new_repo}/g {{}} \;",
         "Search and replace repository name in source files.",
     )
+    lineage = {
+        "version": LINEAGE_CONFIG_VERSION,
+        "lineage": {
+            "skeleton": {"remote-url": f"https://github.com/{org}/{parent_repo}.git"}
+        },
+    }
+    with LINEAGE_CONFIG.open("w") as f:
+        yaml.dump(lineage, stream=f, explicit_start=True)
     run("git add --verbose .", "Stage modified files.")
     run(
         'git commit --message "Rename repository references after clone."',
