@@ -26,8 +26,9 @@ from github import Github
 # cisagov Libraries
 import yaml
 
-VERSION = "0.0.1"
 LINEAGE_CONFIG = Path(".github/lineage.yml")
+LINEAGE_CONFIG_VERSION = "1"
+VERSION = "0.0.1"
 
 
 def run(cmd, comment):
@@ -77,7 +78,7 @@ def clone_repo(parent_repo, new_repo, org, dir=None):
         "Search and replace repository name in source files.",
     )
     lineage = {
-        "version": 1,
+        "version": LINEAGE_CONFIG_VERSION,
         "lineage": {
             "skeleton": {"remote-url": f"https://github.com/{org}/{parent_repo}.git"}
         },
