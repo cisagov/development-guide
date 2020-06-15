@@ -71,6 +71,7 @@ setup(
         "pyyaml",
         "schema",
         "setuptools >= 24.2.0",
+        "wheel",
     ],
     extras_require={
         "test": [
