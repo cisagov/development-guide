@@ -19,13 +19,13 @@ xcode-select --install
 
 Download the latest stable [Docker for Mac](https://www.docker.com/docker-mac). Install it by double-clicking the downloaded `dmg` file and dragging to the `Applications` folder.
 
-## iTerm2
+### iTerm2
 
 To set up iTerm2 - a MacOS terminal replacement with some nifty features, visit the [iTerm2 download page](https://www.iterm2.com/downloads.html) to get the latest stable release. Install it by double-clicking the downloaded `dmg` file and dragging to the `Applications` folder.
 
 Once you've installed it, run the iTerm2 app and select the menu option `iTerm2 > Make iTerm2 Default Term`. NOTE: This setting may need to also be done in your standard user.
 
-### Account Permissions
+## Account Permissions
 
 If you have a Standard user account, you’ll need to allow it access to run `sudo` commands. First, you’ll want to take note of your account name by viewing the folders listed inside of the `/Users/` folder - in this example, the account name is **username**. 
 
