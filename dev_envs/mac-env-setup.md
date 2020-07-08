@@ -69,7 +69,7 @@ bash <(curl -s https://raw.githubusercontent.com/cisagov/laptop/master/laptop)
 
 ### Manual Installation
 
-## Brew installation
+#### Brew installation
 
 Open Terminal and install `brew` per the instructions from [Homebrew](https://brew.sh). You probably have to do this as an admin user or with `sudo`.
 
@@ -77,7 +77,7 @@ Open Terminal and install `brew` per the instructions from [Homebrew](https://br
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
-## Stow and dotfiles
+### Stow and dotfiles
 
 For portability between computers and environments, you may want to switch from the usual dotfiles setup to using `stow` to be able to use a personal repository and then map your dotfiles to that directory. This makes it much easier to sync and set up.
 
@@ -108,7 +108,7 @@ Generate a GPG key to sign your git commits etc and add it to the `.gitconfig` f
 gpg --gen-key
 ```
 
-## Configure `git`
+### Configure `git`
 
 To allow access to the saved OSX Keychain credential for command line usage, run:
 
