@@ -61,7 +61,7 @@ For this section and following sections, log back into your standard user.
 
 ### Automatic Installation
 
-To set up a dev environment via the [`laptop` script](https://github.com/cisagov/laptop/), execute the following in your terminal:
+To set up a dev environment via the [CISA `laptop` script](https://github.com/cisagov/laptop/), execute the following in your terminal:
 
 ```sh
 bash <(curl -s https://raw.githubusercontent.com/cisagov/laptop/master/laptop)
@@ -76,6 +76,8 @@ Open Terminal and install `brew` per the instructions from [Homebrew](https://br
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
+
+After installing Brew, you'll want to install other useful packages. For some ideas, visit the [CISA `laptop` script repository](https://github.com/cisagov/laptop/)
 
 ### Stow and dotfiles
 
@@ -108,9 +110,16 @@ Generate a GPG key to sign your git commits etc and add it to the `.gitconfig` f
 gpg --gen-key
 ```
 
+### Set up your favorite IDE
+
+- Install your favorite IDE and set up its preferences to your liking
+- For python development, please set up `black` for opinionated linting so your code formatting will match the rest of the codebase
+
 ### Configure `git`
 
 To allow access to the saved OSX Keychain credential for command line usage, run:
 
 > git config --global credential.helper osxkeychain
+
+- TBD: Add pre-commit hooks etc for the dev team setup
 
