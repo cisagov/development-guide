@@ -19,11 +19,11 @@ xcode-select --install
 
 Download the latest stable [Docker for Mac](https://www.docker.com/docker-mac). Install it by double-clicking the downloaded `dmg` file and dragging to the `Applications` folder.
 
-### iTerm2
+### iTerm2 (recommended)
 
 To set up iTerm2 - a MacOS terminal replacement with some nifty features, visit the [iTerm2 download page](https://www.iterm2.com/downloads.html) to get the latest stable release. Install it by double-clicking the downloaded `dmg` file and dragging to the `Applications` folder.
 
-Once you've installed it, run the iTerm2 app and select the menu option `iTerm2 > Make iTerm2 Default Term`. NOTE: This setting may need to also be done in your standard user.
+Once you've installed it, run the iTerm2 app and select the menu option `iTerm2 > Make iTerm2 Default Term`. NOTE: You may also need to set this setting as your Standard user account.
 
 ## Account Permissions
 
@@ -53,13 +53,13 @@ Press `Esc` followed by `:wq` to save and quit `visudo`.
 
 ### VPN Configuration
 
-We recommend you set up split-tunneling for your lab (CAL) VPN connection. Instructions and a generator script are located in the [vpn-config-gen repository](https://github.com/cisagov/vpn-config-gen).
+Once you're set up with the lab (CAL) VPN connection, we recommend you set up split-tunneling. Instructions and a generator script are located in the [vpn-config-gen repository](https://github.com/cisagov/vpn-config-gen).
 
 ## Dev Environment Setup
 
 For this section and following sections, log back into your standard user.
 
-### Automatic Installation
+### Automatic Installation (recommended)
 
 To set up a dev environment via the [CISA `laptop` script](https://github.com/cisagov/laptop/), execute the following in your terminal:
 
@@ -67,19 +67,21 @@ To set up a dev environment via the [CISA `laptop` script](https://github.com/ci
 bash <(curl -s https://raw.githubusercontent.com/cisagov/laptop/master/laptop)
 ```
 
-### Manual Installation
+This will `curl` the current install files and script. You can specify additional packages to install by creating a `Brewfile.local`, as described in the Readme for the `laptop` repo where an example is provided.
 
-#### Brew installation
+### Manual Installation (alternative)
 
-Open Terminal and install `brew` per the instructions from [Homebrew](https://brew.sh). You probably have to do this as an admin user or with `sudo`.
+#### Install Homebrew and packages
+
+Open Terminal and install `brew` per the instructions from [Homebrew](https://brew.sh). You will probably have to do this with `sudo`.
 
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
-After installing Brew, you'll want to install other useful packages. For some ideas, visit the [CISA `laptop` script repository](https://github.com/cisagov/laptop/)
+After installing Brew, you'll want to install other useful packages. We recommend installing all the packages specified in the [CISA `laptop` script repository](https://github.com/cisagov/laptop/).
 
-### Stow and dotfiles
+#### Stow and dotfiles
 
 For portability between computers and environments, you may want to switch from the usual dotfiles setup to using `stow` to be able to use a personal repository and then map your dotfiles to that directory. This makes it much easier to sync and set up.
 
@@ -113,7 +115,7 @@ gpg --gen-key
 ### Set up your favorite IDE
 
 - Install your favorite IDE and set up its preferences to your liking
-- For python development, please set up `black` for opinionated linting so your code formatting will match the rest of the codebase
+- For python development, please set up `black` for opinionated linting so your code formatting will match the rest of the codebase - the pre-commit hooks will automatically run this as well.
 
 ### Configure `git`
 
@@ -123,3 +125,13 @@ To allow access to the saved OSX Keychain credential for command line usage, run
 
 - TBD: Add pre-commit hooks etc for the dev team setup
 
+### Setup for the COOL
+
+There are some additional setup steps to access the [COOL (Cloud-Optimized Operations Lab)](https://github.com/cisagov/cool-system/wiki/):
+
+1. [Installing MIT Kerberos](https://github.com/cisagov/cool-system/wiki/Installing-MIT-Kerberos)
+    - NOTE: This step was already performed by the `laptop` script if you chose Automatic Installation above
+2. [Configuring Kerberos for the COOL](https://github.com/cisagov/cool-system/wiki/Configuring-Kerberos-for-the-COOL)
+3. [Configuring your browser for the COOL](https://github.com/cisagov/cool-system/wiki/Configuring-your-browser-for-the-COOL)
+
+After you have successfully completed the tasks above, follow [these instructions to access Guacamole](https://github.com/cisagov/cool-system/wiki/Accessing-an-assessment-environment-with-Guacamole).
