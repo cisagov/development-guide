@@ -22,8 +22,6 @@ import sys
 # Third-Party Libraries
 import docopt
 from github import Github
-
-# cisagov Libraries
 import yaml
 
 LINEAGE_CONFIG = Path(".github/lineage.yml")
