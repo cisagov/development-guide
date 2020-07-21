@@ -2,7 +2,7 @@
 
 In general, we work in the open by default.
 
-**[Read CISA's open source policy ](policy.md)** for the official [Open Source Policy](policy.md) of [CISA](https://cisa.gov/) and more details about what "open by default" means. 
+**[Read CISA's open source policy](policy.md)** for the official [Open Source Policy](policy.md) of [CISA](https://cisa.gov/) and more details about what "open by default" means.
 
 ## CISA Team Guidance ##
 
