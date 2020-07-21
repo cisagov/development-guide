@@ -29,7 +29,9 @@ Heavily "inspired" by the
 
 ## Installation ##
 
-This guide has several supporting Python scripts.  The simplest way to install these scripts and their dependencies is to use `pip`.  In the root of this project execute:
+This guide has several supporting Python scripts.  The simplest way to install
+these scripts and their dependencies is to use `pip`.  In the root of this
+project execute:
 
 `pip install -r requirements.txt`
 
