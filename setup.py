@@ -77,9 +77,6 @@ setup(
         "test": [
             "pre-commit",
             "coveralls",
-            # coveralls does not currently support coverage 5.0
-            # https://github.com/coveralls-clients/coveralls-python/issues/203
-            # is the issue for this on the coveralls project
             "coverage < 6.0",
             "pytest-cov",
             "pytest",
