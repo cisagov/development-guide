@@ -2,12 +2,19 @@
 
 ## Skeleton Tool 💀🛠 ##
 
-It is recommended that you start your project from one of the
+We recommend that you start your project from one of the
 [skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
-that exist in this organization.  The [`skeleton`](scripts/skeleton)
+that exist in this organization. The [`skeleton`](scripts/skeleton)
 helper tool included in the [`scripts`](scripts) directory can quickly setup
-a new local repository.  Once you've cloned and configured the repository
+a new local repository. Once you've cloned and configured the repository
 to your local machine, it can be published to a repository created on GitHub.
+
+## Adding a skeleton configuration to an existing repository ##
+
+To skeletonize an existing repository, please see the guide to
+[skeletonize an existing repository](Skeletonize-existing-repository.md).
+
+## Creating a new repository from a skeleton ##
 
 First, identify a suitable skeleton project to use as the starting point
 for your new repository.
@@ -32,6 +39,10 @@ skeleton-python-library
         A skeleton project for quickly getting a new cisagov Python library started.
 
 ```
+
+Note: If you discover a new flavor of skeleton that doesn't yet exist, use
+`skeleton-generic` to create it, or add an issue to this repository to get
+assistance.
 
 Next, use the `skeleton` tool to clone, rename, and prepare the contents of your
 new repository for publication.  The tool will print out each command it is
