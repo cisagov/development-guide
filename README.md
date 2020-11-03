@@ -9,11 +9,13 @@ Heavily "inspired" by the
 * [Open Source Policy](/open-source-policy)
 <!-- * [Development Ethos](/ethos)-->
 * [Project Setup](/project_setup)
-<!-- * [Personal Development Environments](/dev_envs)-->
+* [Development Environments](/dev_envs)
+  * [CISA-provided Mac Setup](/dev_envs/mac-env-setup.md)
 * Language Guides
   * HCL
   * JavaScript
   * [Python](/languages/python)
+* [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules)
 
 ## Tools and Services We Use ##
 
