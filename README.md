@@ -31,15 +31,15 @@ Heavily "inspired" by the
 
 ## Installation ##
 
-This guide has several supporting Python scripts.  The simplest way to install
-these scripts and their dependencies is to use `pip`.  In the root of this
-project execute:
+This guide has several supporting Python scripts.  The simplest way to install these
+scripts and their dependencies is to use `pip`.  In the root of this project execute:
 
 `pip install -r requirements.txt`
 
-Please see the [Creating the Python virtual environment](CONTRIBUTING.md#creating-the-python-virtual-environment)
-section of the [CONTRIBUTING](CONTRIBUTING.md) document for information about
-setting up these scripts in a Python virtual environment.
+Please see the
+[Creating the Python virtual environment](CONTRIBUTING.md#creating-the-python-virtual-environment)
+section of the [CONTRIBUTING](CONTRIBUTING.md) document for
+information about setting up these scripts in a Python virtual environment.
 
 ## Contributing ##
 
@@ -50,10 +50,11 @@ details.
 
 This project is in the worldwide [public domain](LICENSE).
 
-This project is in the public domain within the United States, and copyright
-and related rights in the work worldwide are waived through the
-[CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
+This project is in the public domain within the United States, and
+copyright and related rights in the work worldwide are waived through
+the [CC0 1.0 Universal public domain
+dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 
-All contributions to this project will be released under the CC0 dedication.
-By submitting a pull request, you are agreeing to comply with this waiver of
-copyright interest.
+All contributions to this project will be released under the CC0
+dedication. By submitting a pull request, you are agreeing to comply
+with this waiver of copyright interest.
