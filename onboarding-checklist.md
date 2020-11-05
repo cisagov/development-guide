@@ -21,8 +21,8 @@ GitHub.
 **Onboardee and buddy:** Try to go through your checklists in order.
 
 **Buddy:** If you can’t complete any of the items on your checklist
-personally, you are responsible for ensuring that someone with the correct
-access completes that item.
+personally, _you are responsible for ensuring that someone with the
+correct access completes that item._
 
 ## Onboardee checklist ##
 
