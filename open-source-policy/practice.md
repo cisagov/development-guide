@@ -174,7 +174,8 @@ can be public.
 * Emergency procedures, such as evacuation plans.
 
 There are more categories of controlled unclassified information to protect;
-those are just the kinds that we work with most often. [Here’s the complete list.](https://www.archives.gov/cui/registry)
+those are just the kinds that we work with most often. Here’s the
+[complete list of CUI categories](https://www.archives.gov/cui/registry/category-list).
 
 ## Private repositories ##
 

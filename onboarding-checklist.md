@@ -9,7 +9,7 @@ GitHub.
 1. Create a new issue called "Onboard _Name_".
 1. View the raw source of this file.
 1. Copy the text after the line below to the issue.
-1. Remove any block of tasks that doesn't apply to the new team member's role
+1. Remove any block of tasks that doesn't apply to the new team member's role.
 1. Submit the issue.
 1. Assign the new person and their onboarding buddy to the issue.
 1. Move the issue into _In Progress_.
@@ -34,7 +34,7 @@ onboarding process.
   make things better.
   - If you notice a problem (especially with things like documentation), you
   are more than welcome to fix it!
-  - You can also file issues and pull requests on the [template onboarding checklist]
+  - You can also file issues and pull requests on the [template onboarding .
 - [ ] Meet with your onboarding buddy (they should reach out to you).
 - [ ] Once you've finished the checklists below, make suggestions for steps
 that would have improved your onboarding experience as pull requests on the
@@ -53,14 +53,15 @@ including Mandatory Cyber Security and Privacy Training, including accepting
 the Rules of Behavior, which is required before we can give you access to any
 systems, like Trio.
 - [ ] Go through the [FISMA-Ready Github guide](https://github.com/fisma-ready/github)
-to set up your Github account to be added to CISA
+to set up your Github account to be added to CISA.
 
 ### Microsoft Teams chat ###
 
 Once you're set up on Microsoft Teams, we recommend you join the following:
 
 - [ ] [CISA](https://teams.microsoft.com/l/team/19%3aa40fd338ea7a45de994a7c7ce9671fd4%40thread.skype/conversations?groupId=8c6c0b00-7244-46e1-bef9-76ce2a1906f5&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
-- [ ] [CISA - VM- Fusion Branch](https://teams.microsoft.com/l/team/19%3a2d4e9f3e321f4ef9a09f4ed94a32105c%40thread.skype/conversations?groupId=2992771f-df53-4097-87dd-75898a5830db&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
+- [ ] [CSD All Staff](https://teams.microsoft.com/l/team/19%3a65f1c4b58edf4246995ae3fa732767ee%40thread.skype/conversations?groupId=6dfc3f23-3a49-44ce-ad37-6c7a9d8fb0aa&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
+- [ ] [Vulnerability Management](https://teams.microsoft.com/l/team/19%3a2161749c8eb94adeb31480e298f3b532%40thread.skype/conversations?groupId=61e939a6-2165-4085-a26e-decae97d1471&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
 
 ### Getting to know the VM Fusion Dev Team ###
 
@@ -96,8 +97,7 @@ repo for information about what's stored in the MongoDB database
 - [ ] [CISA COOL AWS Accounts](https://docs.google.com/spreadsheets/d/1It0FIlG7ZxTwrRV-zVYUAMw18L6ZstQiAYT7vGYf5VE/edit#gid=2069139012)
 sheet for AWS accounts reference
 - [ ] [Performance Plans](https://docs.google.com/spreadsheets/d/1UaGI8u70CXOGBtvJFQ85vCkPbqyDh5PVws0Xu893piw/edit?ts=5e558417&pli=1#gid=474573185)
-sheet, until performance plans are individualized again (sometime after
-June 2020).
+sheet, which is similar to what you'll see in USAPerformance.
 - [ ] [COOL Wiki](https://github.com/cisagov/cool-system/wiki/)
 - [ ] [CyHy Wiki](https://github.com/cisagov/cyhy-system/wiki/)
 - [ ] Set up your [environment on your CISA-provided Mac laptop](/dev_envs/mac-env-setup.md).
@@ -117,8 +117,8 @@ improved and open as PRs on the [template onboarding checklist].
 
 ## Required items for all team members ##
 
-- [ ] Add them to recurring meetings that are relevant for them
-- [ ] Add them to the relevant [Github cisagov teams](https://github.com/orgs/cisagov/teams/)
+- [ ] Invite them to relevant recurring meetings.
+- [ ] Invite them to relevant [Github cisagov teams](https://github.com/orgs/cisagov/teams/).
 
 ## Platform- and compliance-specific required items ##
 

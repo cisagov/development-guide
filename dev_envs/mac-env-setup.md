@@ -224,10 +224,10 @@ ssh-keygen -t ed25519
 1. Use a passphrase you'll remember and/or save in your keychain
 1. Start the `ssh-agent` in the background and add your new credential:
 
-```bash
-eval "$(ssh-agent -s)"
-ssh-add -K ~/.ssh/id_ed25519
-```
+    ```bash
+    eval "$(ssh-agent -s)"
+    ssh-add -K ~/.ssh/id_ed25519
+    ```
 
 #### Add ssh key to GitHub ####
 

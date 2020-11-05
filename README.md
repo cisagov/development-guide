@@ -16,12 +16,12 @@ Heavily "inspired" by the
   * JavaScript
   * [Python](/languages/python)
 
-## Git, GitHub, and You ##
+## Git, GitHub, and you ##
 
 * [FISMA-Ready Github account setup](https://github.com/fisma-ready/github)
 * [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules)
 
-## Tools and Services We Use ##
+## Tools and services we use ##
 
 * [AWS](https://aws.amazon.com) - Our main cloud provider
 * [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
