@@ -15,6 +15,10 @@ Heavily "inspired" by the
   * HCL
   * JavaScript
   * [Python](/languages/python)
+
+## Git, GitHub, and You ##
+
+* [FISMA-Ready Github account setup](https://github.com/fisma-ready/github)
 * [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules)
 
 ## Tools and Services We Use ##
