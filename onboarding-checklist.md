@@ -34,7 +34,7 @@ onboarding process.
   make things better.
   - If you notice a problem (especially with things like documentation), you
   are more than welcome to fix it!
-  - You can also file issues and pull requests on the [template onboarding .
+  - You can also file issues and pull requests on the [template onboarding checklist].
 - [ ] Meet with your onboarding buddy (they should reach out to you).
 - [ ] Once you've finished the checklists below, make suggestions for steps
 that would have improved your onboarding experience as pull requests on the
@@ -66,7 +66,7 @@ Once you're set up on Microsoft Teams, we recommend you join the following:
 ### Getting to know the VM Fusion Dev Team ###
 
 - [ ] Bookmark the [dev team project board] to track issues and work across
-multiple Github repositories
+multiple Github repositories.
 - [ ] Bookmark [VM JIRA] to work with the rest of VM Fusion.
 - [ ] In addition to your CISA email address `first.last@cisa.dhs.gov`, you'll
 also get an account on Trio, which is a Google-based account used for
