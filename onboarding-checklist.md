@@ -6,40 +6,36 @@ When someone new joins the team:
 
 1. A team member adds the new team member to the `cisagov` organization in
 GitHub.
-1. Create a new issue called "Onboard [NewPerson]".
+1. Create a new issue called "Onboard _Name_".
 1. View the raw source of this file.
-1. Copy the text after the line to the issue, replacing "NewPerson" with the
-new person's name and "Buddy" with the onboarding buddy's name.
+1. Copy the text after the line below to the issue.
 1. Remove any block of tasks that doesn't apply to the new team member's role
 1. Submit the issue.
-1. Assign the new person and the new person's Onboarding Buddy to the issue.
+1. Assign the new person and their onboarding buddy to the issue.
 1. Move the issue into _In Progress_.
 
 ---
 
-To get NewPerson productively contributing to the team, Buddy should help
-NewPerson complete a prescribed set of tasks that will bring them up to speed.
-
 ## Directions ##
 
-**NewPerson and Buddy:** Try to go through your checklists in order.
+**Onboardee and buddy:** Try to go through your checklists in order.
 
 **Buddy:** If you can’t complete any of the items on your checklist
-personally, _you are responsible for ensuring that someone with the correct_
-_access completes that item_.
+personally, you are responsible for ensuring that someone with the correct
+access completes that item.
 
-## New Person checklist ##
+## Onboardee checklist ##
 
 ### Getting to know VM Fusion ###
 
-- [ ] Take judicious notes on what about your onboarding process is confusing
-or frustrating.
-  - Please share this information with your buddy (or the team) so we can make
-  things better.
+- [ ] Take notes on anything that is confusing or frustrating during your
+onboarding process.
+  - Please share this information with your buddy and/or the team so we can
+  make things better.
   - If you notice a problem (especially with things like documentation), you
   are more than welcome to fix it!
   - You can also file issues and pull requests on the [template onboarding checklist]
-- [ ] Figure out who your onboarding buddy is (they should reach out to you).
+- [ ] Meet with your onboarding buddy (they should reach out to you).
 - [ ] Once you've finished the checklists below, make suggestions for steps
 that would have improved your onboarding experience as pull requests on the
 [template onboarding checklist] used to make this issue.
@@ -101,24 +97,23 @@ repo for information about what's stored in the MongoDB database
 sheet for AWS accounts reference
 - [ ] [Performance Plans](https://docs.google.com/spreadsheets/d/1UaGI8u70CXOGBtvJFQ85vCkPbqyDh5PVws0Xu893piw/edit?ts=5e558417&pli=1#gid=474573185)
 sheet, until performance plans are individualized again (sometime after
-June 2020)
+June 2020).
 - [ ] [COOL Wiki](https://github.com/cisagov/cool-system/wiki/)
-- [ ] Set up your development environment on your CISA-provided Mac laptop
-(Link TBD)
+- [ ] [CyHy Wiki](https://github.com/cisagov/cyhy-system/wiki/)
+- [ ] Set up your [environment on your CISA-provided Mac laptop](/dev_envs/mac-env-setup.md).
 
 ## Buddy checklist ##
 
-- [ ] Introduce yourself to the new team member and give them some of your
+- [ ] Introduce yourself to the new team member and talk about your
 background so they know who you are.
-- [ ] Identify a straightforward, well-groomed story in progress that involves
+- [ ] Identify a straightforward, well-defined issue that involves
 their skills domain, schedule a meeting with the owner for an introduction (if
-it's not you), and set up pairing sessions several times in the first week on
-the project.
-- [ ] Identify a straightforward, well-groomed first story, ideally something
+it's not you), and set up pairing sessions several times a week to start.
+- [ ] Identify a straightforward, well-defined first story, ideally something
 they could conceivably complete in their first two/three weeks using their
 existing skills. Discuss the context with them, then make them the assignee.
 - [ ] Discuss suggestions for how the onboarding experience could have been
-improved and open as PRs on [the onboarding template]
+improved and open as PRs on the [template onboarding checklist].
 
 ## Required items for all team members ##
 

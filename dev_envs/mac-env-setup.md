@@ -1,23 +1,22 @@
 # Setting up a Mac-based development environment #
 
-## Initial Account Setup (as Administrator) ##
+## Initial account setup (as administrator) ##
 
-For this section, log in as your Administrator account.
+For this section, log in as your administrator account.
 
-### Account Permissions ###
+### Account permissions ###
 
-If you have a Standard user account, you’ll need to allow it access to run
-`sudo` commands. First, you’ll want to take note of your account name by
-viewing the folders listed inside of the `/Users/` folder - in this example,
-the account name is **username**.
+You’ll need to allow your standard user access to run `sudo` commands.
+First, you’ll want to take note of your account name by viewing the folders
+listed inside of the `/Users/` folder - in this example, the account
+name is **username**.
 
 ```bash
 $ ls /Users/
 username        Shared        fedadmin
 ```
 
-Then, you’ll add your **username** to the `/etc/sudoers` file using `visudo`
-like this:
+Then, you’ll add your **username** to the `/etc/sudoers` file using `visudo`:
 
 ```sh
 $ sudo visudo
@@ -34,10 +33,10 @@ username    ALL = (ALL) ALL
 
 Press `Esc` followed by `:wq` to save and quit `visudo`.
 
-### Install XCode Command Line Tools ###
+### Install XCode command line tools ###
 
 Download XCode and Accept the License Agreement, then install the XCode
-Command Line Tools.
+command line tools.
 
 ```bash
 sudo xcodebuild -license
@@ -52,26 +51,30 @@ Install it by double-clicking the downloaded `dmg` file and dragging to the
 
 ### iTerm2 (recommended) ###
 
-To set up iTerm2 - a MacOS terminal replacement with some nifty features, visit
-the [iTerm2 download page](https://www.iterm2.com/downloads.html) to get the
-latest stable release. Install it by double-clicking the downloaded `dmg` file
-and dragging to the `Applications` folder.
+To set up iTerm2 - a MacOS terminal replacement with some nifty features -
+visit the [iTerm2 download page](https://www.iterm2.com/downloads.html) to
+get the latest stable release. Install it by double-clicking the downloaded
+`dmg` file and dragging to the `Applications` folder.
 
 Once installed, run the iTerm2 app and select the menu option
-`iTerm2 > Make iTerm2 Default Term`. NOTE: You may also need to set this
-setting as your Standard user account.
+`iTerm2 > Make iTerm2 Default Term`.
 
-### VPN Configuration ###
+NOTE: You may also `Make iTerm2 Default Term` on your standard user account.
+
+### VPN configuration ###
 
 Once you're set up with the lab (CAL) VPN connection, we recommend you set up
 split-tunneling. Instructions and a generator script are located in the
 [vpn-config-gen repository](https://github.com/cisagov/vpn-config-gen).
 
-## User Environment Setup ##
+## User environment setup ##
 
 For this section and following sections, log back in as your standard user.
 
-### Automatic Package Installation (recommended) ###
+Note: if you installed iTerm2 above, run the iTerm2 app and select the menu
+option `iTerm2 > Make iTerm2 Default Term` to make it your default too.
+
+### Automatic package installation (recommended) ###
 
 To set up a dev environment via the [CISA `laptop` script](https://github.com/cisagov/laptop/),
 execute the following in your terminal:
@@ -84,7 +87,7 @@ This will `curl` the current install files and script. You can specify
 additional packages to install by creating a `Brewfile.local`, as described in
 the Readme for the `laptop` repo where an example is provided.
 
-### Manual Package Installation (alternative) ###
+### Manual package installation (alternative) ###
 
 Open Terminal and install `brew` per the instructions from
 [Homebrew](https://brew.sh). You will probably have to do this with `sudo`.
@@ -103,7 +106,7 @@ from the usual dotfiles setup to using `stow` to be able to use a personal
 repository and then map your dotfiles to that directory. This makes it much
 easier to sync and set up.
 
-Using a `stow` based setup also allows for some nifty features like
+Using a `stow`-based setup also allows for some nifty features like
 subdirectories to split out useful files into a more modular approach.
 
 #### Prerequisites ####
@@ -113,7 +116,6 @@ script above.
 
 ```sh
 brew install stow
-
 brew install s3cmd
 brew install figlet
 brew install pinentry-mac
