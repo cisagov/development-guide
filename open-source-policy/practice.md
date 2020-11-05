@@ -67,8 +67,7 @@ official capacity.
 
 1. See if there is an organizational CLA available
 1. Send the agreement to DHS's Office of General Counsel (OGC) for review
-    * Email cisagov-github-group@trio.dhs.gov to determine who the best
-    contact is
+    * Email cisagov-github-group@trio.dhs.gov to determine the best contact
 1. Collect names/emails/GitHub usernames (whatever is needed) for folks you
 think will be contributing
     * Err on the side of adding too many than too few - this is much easier
