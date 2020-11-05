@@ -4,12 +4,12 @@ We have an "open-by-default" development policy. This document is meant to
 give specific team guidance on putting our [open source policy](policy.md)
 into practice.
 
-* CISA releases software into the [international public domain](#public-domain)
+* CISA releases software into the [international public domain](#public-domain).
 * Contribute back to outside open source projects whenever possible.
 * We [develop our software in the open](#working-in-public), while also
-  [protecting sensitive information](#protecting-sensitive-information)
+  [protecting sensitive information](#protecting-sensitive-information).
 * There are [narrow, documented exceptions](#exceptions) where we may delay or
-  withhold source code
+  withhold source code.
 
 CISA team members should work with the strong presumption that all of their
 code will be public, both during and after development.
@@ -27,7 +27,7 @@ so CISA intentionally waives this copyright abroad using [Creative Commons Zero
 
 There are potentially other cases where copyright is involved: where
 contractors produce the work, or where work was otherwise originally performed
-not in the capacity of a US government employee.
+outside the capacity of a US government employee.
 
 To the extent CISA has the rights to do so, CISA will normalize the copyright
 status of its work product under CC0.
@@ -67,7 +67,8 @@ official capacity.
 
 1. See if there is an organizational CLA available
 1. Send the agreement to DHS's Office of General Counsel (OGC) for review
-    * Email cisagov-github-group@trio.dhs.gov for who the best contact is
+    * Email cisagov-github-group@trio.dhs.gov to determine who the best
+    contact is
 1. Collect names/emails/GitHub usernames (whatever is needed) for folks you
 think will be contributing
     * Err on the side of adding too many than too few - this is much easier
