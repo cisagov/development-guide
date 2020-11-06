@@ -11,14 +11,14 @@ First, you’ll want to take note of your account name by viewing the folders
 listed inside of the `/Users/` folder - in this example, the account
 name is **username**.
 
-```bash
+```console
 $ ls /Users/
 username        Shared        fedadmin
 ```
 
 Then, you’ll add your **username** to the `/etc/sudoers` file using `visudo`:
 
-```sh
+```console
 $ sudo visudo
 ...
 ##
@@ -38,7 +38,7 @@ Press `Esc` followed by `:wq` to save and quit `visudo`.
 Download XCode and accept the license agreement, then install the XCode
 command line tools.
 
-```bash
+```console
 sudo xcodebuild -license
 xcode-select --install
 ```
@@ -51,7 +51,7 @@ Docker application file to the `Applications` folder.
 
 ### iTerm2 (recommended) ###
 
-To set up iTerm2 - a MacOS terminal replacement with some nifty features -
+To set up iTerm2 - a macOS terminal replacement with some nifty features -
 visit the [iTerm2 download page](https://www.iterm2.com/downloads.html) to
 get the latest stable release. Install it by double-clicking the downloaded
 `zip` file and dragging the extracted `iTerm` application file to the
@@ -80,7 +80,7 @@ option `iTerm2 > Make iTerm2 Default Term` to make it your default too.
 To set up a dev environment via the [CISA `laptop` script](https://github.com/cisagov/laptop/),
 execute the following in your terminal:
 
-```sh
+```console
 bash <(curl --silent https://raw.githubusercontent.com/cisagov/laptop/master/laptop)
 ```
 
@@ -93,7 +93,7 @@ the Readme for the `laptop` repo where an example is provided.
 Open Terminal and install `brew` per the instructions from
 [Homebrew](https://brew.sh). You will probably have to do this with `sudo`.
 
-```sh
+```console
 /bin/bash -c "$(curl --fail --silent --show-error --location https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
