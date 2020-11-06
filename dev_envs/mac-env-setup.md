@@ -115,11 +115,8 @@ These are automatically installed if you used the
 [automatic package installation](#automatic-package-installation-recommended)
 script above.
 
-```sh
-brew install stow
-brew install s3cmd
-brew install figlet
-brew install pinentry-mac
+```console
+brew install figlet pinentry-mac s3cmd stow
 ```
 
 #### Install ####
@@ -128,7 +125,7 @@ Fork [cisagov's `.dotfiles` repo](https://github.com/cisagov/.dotfiles) and
 clone it as shown below. Then, stow all the packages from `.dotfiles` into
 your home directory per the [`.dotfiles` README](https://github.com/cisagov/.dotfiles).
 
-```bash
+```console
 cd ~
 git clone git@github.com:<username>/.dotfiles.git
 cd ~/.dotfiles
@@ -146,16 +143,16 @@ files are already symlinked.
 #### Set up your favorite IDE ####
 
 - Install your favorite IDE and set up its preferences to your liking
-- For python development, please set up `black` for opinionated linting so
+- For Python development, please set up `black` for opinionated linting so
 your code formatting will match the rest of the codebase
   - Note: the pre-commit hooks will automatically run `black` on commit
 
 #### Configure `git` ####
 
-To allow access to the saved OSX Keychain credential for command line
+To allow access to the saved macOS Keychain credential for command line
 usage, run:
 
-```bash
+```console
 git config --global credential.helper osxkeychain
 ```
 
@@ -163,7 +160,7 @@ git config --global credential.helper osxkeychain
 
 Generate a key to sign your git commits and add it to your `~/.gitconfig`:
 
-```bash
+```console
 gpg --gen-key
 ```
 
@@ -207,7 +204,7 @@ Next, export the public key via command line and add it to your GitHub account:
 
 Lastly, enable the global configuration option for commit signing:
 
-```bash
+```console
 git config --global commit.gpgsign true
 ```
 
@@ -217,7 +214,7 @@ Reference: [Github: Generating a new SSH key](https://docs.github.com/en/github/
 
 Note: use `ed25519` instead of `rsa`
 
-```bash
+```console
 ssh-keygen -t ed25519
 ```
 
@@ -225,7 +222,7 @@ ssh-keygen -t ed25519
 1. Use a passphrase you'll remember and/or save in your keychain
 1. Start the `ssh-agent` in the background and add your new credential:
 
-    ```bash
+    ```console
     eval "$(ssh-agent -s)"
     ssh-add -K ~/.ssh/id_ed25519
     ```
@@ -236,7 +233,7 @@ Reference: [Github: Adding a new SSH key to your GitHub account](https://docs.gi
 
 Note: use `ed25519` instead of `rsa`
 
-```bash
+```console
 $ pbcopy < ~/.ssh/id_ed25519.pub
 # Copies the contents of the id_ed25519.pub file to your clipboard
 ```

@@ -30,7 +30,7 @@ correct access completes that item._
 
 - [ ] Take notes on anything that is confusing or frustrating during your
 onboarding process.
-  - Please share this information with your buddy and/or the team so we can
+  - Please share this information with your buddy and the team so we can
   make things better.
   - If you notice a problem (especially with things like documentation), you
   are more than welcome to fix it!
@@ -53,7 +53,7 @@ including Mandatory Cyber Security and Privacy Training, including accepting
 the Rules of Behavior, which is required before we can give you access to any
 systems, like Trio.
 - [ ] Go through the [FISMA-Ready Github guide](https://github.com/fisma-ready/github)
-to set up your Github account to be added to CISA.
+to set up your GitHub account to be added to CISA.
 
 ### Microsoft Teams chat ###
 
@@ -69,7 +69,7 @@ Once you're set up on Microsoft Teams, we recommend you join the following:
 multiple Github repositories.
 - [ ] Bookmark [VM JIRA] to work with the rest of VM Fusion.
 - [ ] In addition to your CISA email address `first.last@cisa.dhs.gov`, you'll
-also get an account on Trio, which is a Google-based account used for
+also get an account on Trio, which is a Google Workspace account used for
 cross-team and cross-agency collaboration and is generally
 `first.last@trio.dhs.gov`. Trio may take a few days to get set up.
   - Once you're set up on Trio, visit
@@ -128,7 +128,7 @@ VM Fusion team member.
   - [ ] [CISA AWS Accounts](https://docs.google.com/spreadsheets/d/1It0FIlG7ZxTwrRV-zVYUAMw18L6ZstQiAYT7vGYf5VE/edit#gid=2069139012)
   and provide one-time credentials.
   - Note: AWS user names should be identical across accounts so that
-  permissions can be correctly managed by terraform
+  permissions can be correctly managed by Terraform.
 
 <!-- Links for use throughout the checklist -->
 [template onboarding checklist]: https://github.com/cisagov/development-guide/blob/master/onboarding-checklist.md

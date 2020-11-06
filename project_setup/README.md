@@ -37,7 +37,7 @@ Next, use the `skeleton` tool to clone, rename, and prepare the contents of
 your new repository for publication.  The tool will print out each command it
 is issuing and its result.
 
-```bash
+```console
 ./skeleton clone [options] <parent-repo-name> <new-repo-name>
 ```
 
