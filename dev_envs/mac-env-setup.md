@@ -35,7 +35,7 @@ Press `Esc` followed by `:wq` to save and quit `visudo`.
 
 ### Install XCode command line tools ###
 
-Download XCode and Accept the License Agreement, then install the XCode
+Download XCode and accept the license agreement, then install the XCode
 command line tools.
 
 ```bash
@@ -46,17 +46,18 @@ xcode-select --install
 ### Docker ###
 
 Download the latest stable [Docker for Mac](https://www.docker.com/docker-mac).
-Install it by double-clicking the downloaded `dmg` file and dragging to the
-`Applications` folder.
+Install it by double-clicking the downloaded `dmg` file and dragging the
+Docker application file to the `Applications` folder.
 
 ### iTerm2 (recommended) ###
 
 To set up iTerm2 - a MacOS terminal replacement with some nifty features -
 visit the [iTerm2 download page](https://www.iterm2.com/downloads.html) to
 get the latest stable release. Install it by double-clicking the downloaded
-`dmg` file and dragging to the `Applications` folder.
+`zip` file and dragging the extracted `iTerm` application file to the
+`Applications` folder.
 
-Once installed, run the iTerm2 app and select the menu option
+Once installed, run the app and select the menu option
 `iTerm2 > Make iTerm2 Default Term`.
 
 NOTE: You may also `Make iTerm2 Default Term` on your standard user account.
@@ -167,7 +168,7 @@ gpg --gen-key
 Follow the prompts for name and email address, using either your CISA
 or Trio email address. The output should look like:
 
-```bash
+```console
 We need to generate a lot of random bytes. It is a good idea to perform
 some other action (type on the keyboard, move the mouse, utilize the
 disks) during the prime generation; this gives the random number
@@ -234,8 +235,8 @@ Reference: [Github: Adding a new SSH key to your GitHub account](https://docs.gi
 Note: use `ed25519` instead of `rsa`
 
 ```console
+# Copy the contents of the id_ed25519.pub file to your clipboard
 $ pbcopy < ~/.ssh/id_ed25519.pub
-# Copies the contents of the id_ed25519.pub file to your clipboard
 ```
 
 1. Load your [Github Settings page for adding an SSH key](https://github.com/settings/ssh/new)
@@ -256,3 +257,6 @@ There are some additional setup steps to access the
 
 After you have successfully completed the tasks above, follow
 [these instructions to access Guacamole](https://github.com/cisagov/cool-system/wiki/Accessing-an-assessment-environment-with-Guacamole).
+
+Note that you will need to have been given access to one or more COOL
+environments to be able to access anything with Guacamole.
