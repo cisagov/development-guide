@@ -111,7 +111,8 @@ subdirectories to split out useful files into a more modular approach.
 
 #### Prerequisites ####
 
-These are automatically installed if you used the Automatic installation
+These are automatically installed if you used the
+[automatic package installation](#automatic-package-installation-recommended)
 script above.
 
 ```sh
