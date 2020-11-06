@@ -76,12 +76,14 @@ cross-team and cross-agency collaboration and is generally
   [chat.google.com](https://chat.google.com) and join applicable rooms.
 - [ ] Make sure you have been added to several [dev team Google Groups] so you
 can participate in team-wide internal communication:
-  - [ ] [ALL Trio users@beta.dhs.gov](https://groups.google.com/a/beta.dhs.gov/d/forum/all)
-  - [ ] [CISA COOL](https://groups.google.com/a/trio.dhs.gov/forum/#!forum/cisa-cool-group)
+  - [ ] [ALL Trio users](https://groups.google.com/a/beta.dhs.gov/d/forum/all)
+  - [ ] [CISA COOL Administrators](https://groups.google.com/a/trio.dhs.gov/forum/#!forum/cisa-cool-group)
+  - [ ] [cisa-cool-account-support](https://groups.google.com/a/trio.dhs.gov/d/forum/cisa-cool-account-support-group)
+  - [ ] [cisa-cool-users](https://groups.google.com/a/trio.dhs.gov/d/forum/cisa-cool-users-group)
   - [ ] [cisagov-github](https://groups.google.com/a/trio.dhs.gov/forum/#!forum/cisagov-github-group)
-  - [ ] [NCATS@beta.dhs.gov](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats)
-  - [ ] [NCATS AWS Support@beta.dhs.gov](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats-aws-support)
-  - [ ] [NCATS Infrastructure Development@beta.dhs.gov](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats-dev)
+  - [ ] [NCATS](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats)
+  - [ ] [NCATS AWS Support](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats-aws-support)
+  - [ ] [NCATS Infrastructure Development](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats-dev)
 - [ ] Add the [NCATS Google Drive folder] to your Google Drive. If you create
 or move a doc there, it'll get the right access permissions for team members
 to be able to view and edit it.
