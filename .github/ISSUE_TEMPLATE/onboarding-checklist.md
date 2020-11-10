@@ -72,11 +72,17 @@ Once you're set up on Microsoft Teams, we recommend you join the following:
 - [ ] Bookmark the [dev team project board] to track issues and work across
 multiple Github repositories.
 - [ ] Bookmark [VM JIRA] to work with the rest of VM Fusion.
-- [ ] In addition to your CISA email address `first.last@cisa.dhs.gov`, you'll
+
+### Trio Google Workspace ###
+
+In addition to your CISA email address `first.last@cisa.dhs.gov`, you'll
 also get an account on Trio, which is a Google Workspace account used for
 cross-team and cross-agency collaboration and is generally
 `first.last@trio.dhs.gov`. Trio may take a few days to get set up.
-  - Once you're set up on Trio, visit
+
+Once your Trio account is set up:
+
+- [ ] Visit
   [chat.google.com](https://chat.google.com) and join applicable rooms.
 - [ ] Make sure you have been added to several [dev team Google Groups] so you
 can participate in team-wide internal communication:
@@ -88,9 +94,10 @@ can participate in team-wide internal communication:
   - [ ] [NCATS](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats)
   - [ ] [NCATS AWS Support](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats-aws-support)
   - [ ] [NCATS Infrastructure Development](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats-dev)
-- [ ] Add the [NCATS Google Drive folder] to your Google Drive. If you create
+- [ ] In Google Drive, add the [NCATS Google Drive folder]. If you create
 or move a doc there, it'll get the right access permissions for team members
 to be able to view and edit it.
+- [ ] In Google Calendar, add the [Dev Team - Events & OOO calendar](https://calendar.google.com/calendar/embed?src=beta.dhs.gov_pou7e62ob7h1qadu1m8n4o996g%40group.calendar.google.com&ctz=America%2FNew_York).
 
 ## Role-specific items ##
 
@@ -112,10 +119,7 @@ sheet, which is similar to what you'll see in USAPerformance.
 
 - [ ] Introduce yourself to the new team member and talk about your
 background so they know who you are.
-- [ ] Identify a straightforward, well-defined issue that involves
-their skills domain, schedule a meeting with the owner for an introduction (if
-it's not you), and set up pairing sessions several times a week to start.
-- [ ] Identify a straightforward, well-defined first story, ideally something
+- [ ] Identify a straightforward, well-defined first issue, ideally something
 they could conceivably complete in their first two/three weeks using their
 existing skills. Discuss the context with them, then make them the assignee.
 - [ ] Discuss suggestions for how the onboarding experience could have been
@@ -126,19 +130,15 @@ improved and open as PRs on the [template onboarding checklist].
 - [ ] Invite them to relevant recurring meetings.
 - [ ] Invite them to relevant [Github cisagov teams](https://github.com/orgs/cisagov/teams/).
 
-## Platform- and compliance-specific required items ##
+## Required items for VM Fusion dev team members ##
 
-- [ ] Help them review and understand the responsibilities of becoming a
-VM Fusion team member.
-- Grant them access to the following:
-  - [ ] [CISA AWS Accounts](https://docs.google.com/spreadsheets/d/1It0FIlG7ZxTwrRV-zVYUAMw18L6ZstQiAYT7vGYf5VE/edit#gid=2069139012)
-  and provide one-time credentials.
-  - Note: AWS user names should be identical across accounts so that
-  permissions can be correctly managed by Terraform.
+- [ ] Add them as a member of the [Dev Team - Events & OOO calendar].
+- [ ] Add them as a member of the [NCATS Infrastructure Development group](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats-dev).
 
 <!-- Links for use throughout the checklist -->
 [template onboarding checklist]: https://github.com/cisagov/development-guide/blob/master/onboarding-checklist.md
 [NCATS Google Drive folder]: https://drive.google.com/drive/folders/0APw76nbCAmzuUk9PVA
+[Dev Team - Events & OOO calendar]: https://calendar.google.com/calendar/embed?src=beta.dhs.gov_pou7e62ob7h1qadu1m8n4o996g%40group.calendar.google.com&ctz=America%2FNew_York
 [VM JIRA]: https://jira.ncats.cyber.dhs.gov/secure/Dashboard.jspa
 
 <!-- dev team -->
