@@ -4,15 +4,11 @@
 
 When someone new joins the team:
 
-1. A team member adds the new team member to the `cisagov` organization in
-GitHub.
-1. Create a new issue called "Onboard _Name_".
-1. View the raw source of this file.
-1. Copy the text after the line below to the issue.
+1. Create a new issue called "Onboard _Name_" from this template.
 1. Remove any block of tasks that doesn't apply to the new team member's role.
-1. Submit the issue.
-1. Assign the new person and their onboarding buddy to the issue.
-1. Move the issue into _In Progress_.
+1. Assign the new person's onboarding buddy to this issue.
+1. Remove this `Instructions` block.
+1. Submit this issue.
 
 ---
 
@@ -46,14 +42,22 @@ Completing these items helps us fulfill security and compliance requirements.
 If you get stuck, or if these requirements are confusing, ask for help from
 your onboarding buddy.
 
-Pre-requisites:
+#### GitHub ####
+
+- [ ] If you don't already have a GitHub account,
+[create a GitHub account with your government email address](https://github.com/join).
+- [ ] If you already have a GitHub account, [add your government email address](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-user-account/adding-an-email-address-to-your-github-account).
+- [ ] Go through the [FISMA-Ready Github guide](https://github.com/fisma-ready/github)
+to set up your GitHub account to be added to CISA.
+- [ ] Once your GitHub account has been added to the `cisagov` organization,
+make sure you're assigned to this issue.
+
+#### Mandatory Training ####
 
 - [ ] Complete [PALMS Cybersecurity Training](https://etms.hq.dhs.gov),
 including Mandatory Cyber Security and Privacy Training, including accepting
 the Rules of Behavior, which is required before we can give you access to any
 systems, like Trio.
-- [ ] Go through the [FISMA-Ready Github guide](https://github.com/fisma-ready/github)
-to set up your GitHub account to be added to CISA.
 
 ### Microsoft Teams chat ###
 
