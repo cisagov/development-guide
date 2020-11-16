@@ -22,8 +22,8 @@ the team and be prepared to publicly document this exception.
 [By law](http://www.law.cornell.edu/uscode/text/17/105), works of the United
 States government are not copyrightable in the US, and so are public domain.
 But by default, US government works **are** copyrightable internationally, and
-so CISA intentionally waives this copyright abroad using [Creative Commons Zero
-(CC0) 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+so CISA intentionally waives this copyright abroad using
+[Creative Commons Zero (CC0) 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 
 There are potentially other cases where copyright is involved: where
 contractors produce the work, or where work was otherwise originally performed
@@ -108,7 +108,8 @@ international public domain wherever possible. In this situation, contributors
 must agree to release their contributions into the international public
 domain. Projects can inform contributors of this agreement by copying the
 [`CONTRIBUTING.md`](CONTRIBUTING.md) file from this repo into new project
-repos, and copying the ["Public domain" section of this repo's README](README.md#public-domain)
+repos, and copying the
+["Public domain" section of this repo's README](README.md#public-domain)
 into the new project's README.
 
 When an CISA project has a non-standard license status (e.g. it's a fork of a
@@ -117,7 +118,8 @@ that project needs to figure out an appropriate contributing agreement.
 
 ## Working in public ##
 
-CISA believes in [working in public](https://18f.gsa.gov/2014/07/31/working-in-public-from-day-1/)
+CISA believes in
+[working in public](https://18f.gsa.gov/2014/07/31/working-in-public-from-day-1/)
 It creates a healthier working environment, a more collaborative process, and
 just better software.
 
