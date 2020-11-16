@@ -80,7 +80,7 @@ option `iTerm2 > Make iTerm2 Default Term` to make it your default too.
 To set up a dev environment via the [CISA `laptop` script](https://github.com/cisagov/laptop/),
 execute the following in your terminal:
 
-```console
+```bash
 bash <(curl --silent https://raw.githubusercontent.com/cisagov/laptop/master/laptop)
 ```
 
@@ -211,7 +211,7 @@ git config --global commit.gpgsign true
 
 #### Generate `ssh` key to use git on the command line ####
 
-Reference: [Github: Generating a new SSH key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
+Reference: [GitHub: Generating a new SSH key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
 
 Note: use `ed25519` instead of `rsa`
 
@@ -230,7 +230,7 @@ ssh-keygen -t ed25519
 
 #### Add ssh key to GitHub ####
 
-Reference: [Github: Adding a new SSH key to your GitHub account](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+Reference: [GitHub: Adding a new SSH key to your GitHub account](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
 
 Note: use `ed25519` instead of `rsa`
 
@@ -239,7 +239,7 @@ Note: use `ed25519` instead of `rsa`
 $ pbcopy < ~/.ssh/id_ed25519.pub
 ```
 
-1. Load your [Github Settings page for adding an SSH key](https://github.com/settings/ssh/new)
+1. Load your [GitHub Settings page for adding an SSH key](https://github.com/settings/ssh/new)
 and paste the contents of your clipboard
 1. Give this device a descriptive name and `Add SSH key`
 1. Confirm your password to continue (if requested)

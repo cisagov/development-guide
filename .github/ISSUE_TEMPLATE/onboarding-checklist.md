@@ -47,7 +47,7 @@ your onboarding buddy.
 - [ ] If you don't already have a GitHub account,
 [create a GitHub account with your government email address](https://github.com/join).
 - [ ] If you already have a GitHub account, [add your government email address](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-user-account/adding-an-email-address-to-your-github-account).
-- [ ] Go through the [FISMA-Ready Github guide](https://github.com/fisma-ready/github)
+- [ ] Go through the [FISMA-Ready GitHub guide](https://github.com/fisma-ready/github)
 to set up your GitHub account to be added to CISA.
 - [ ] Once your GitHub account has been added to the `cisagov` organization,
 make sure you're assigned to this issue.
@@ -55,7 +55,7 @@ make sure you're assigned to this issue.
 #### Mandatory Training ####
 
 - [ ] Complete [PALMS Cybersecurity Training](https://etms.hq.dhs.gov),
-including Mandatory Cyber Security and Privacy Training, including accepting
+including Mandatory Cyber Security and Privacy Training, and accepting
 the Rules of Behavior, which is required before we can give you access to any
 systems, like Trio.
 
@@ -70,7 +70,7 @@ Once you're set up on Microsoft Teams, we recommend you join the following:
 ### Getting to know the VM Fusion Dev Team ###
 
 - [ ] Bookmark the [dev team project board] to track issues and work across
-multiple Github repositories.
+multiple GitHub repositories.
 - [ ] Bookmark [VM JIRA] to work with the rest of VM Fusion.
 
 ### Trio Google Workspace ###
@@ -106,7 +106,7 @@ to be able to view and edit it.
 Useful links:
 
 - [ ] [NCATS Data Dictionary](https://github.com/cisagov/ncats-data-dictionary)
-repo for information about what's stored in the MongoDB database
+repo for information about what's stored in the CyHy environment MongoDB databases
 - [ ] [CISA COOL AWS Accounts](https://docs.google.com/spreadsheets/d/1It0FIlG7ZxTwrRV-zVYUAMw18L6ZstQiAYT7vGYf5VE/edit#gid=2069139012)
 sheet for AWS accounts reference
 - [ ] [Performance Plans](https://docs.google.com/spreadsheets/d/1UaGI8u70CXOGBtvJFQ85vCkPbqyDh5PVws0Xu893piw/edit?ts=5e558417&pli=1#gid=474573185)
@@ -128,7 +128,7 @@ improved and open as PRs on the [template onboarding checklist].
 ## Required items for all team members ##
 
 - [ ] Invite them to relevant recurring meetings.
-- [ ] Invite them to relevant [Github cisagov teams](https://github.com/orgs/cisagov/teams/).
+- [ ] Invite them to relevant [GitHub cisagov teams](https://github.com/orgs/cisagov/teams/).
 
 ## Required items for VM Fusion dev team members ##
 

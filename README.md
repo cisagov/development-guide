@@ -18,7 +18,7 @@ Heavily "inspired" by the
 
 ## Git, GitHub, and you ##
 
-* [FISMA-Ready Github account setup](https://github.com/fisma-ready/github)
+* [FISMA-Ready GitHub account setup](https://github.com/fisma-ready/github)
 * [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules)
 
 ## Tools and services we use ##
