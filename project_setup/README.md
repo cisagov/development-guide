@@ -33,9 +33,16 @@ skeleton-python-library
 
 ```
 
-Next, use the `skeleton` tool to clone, rename, and prepare the contents of your
-new repository for publication.  The tool will print out each command it is
-issuing and its result.
+Next, use the `skeleton` tool to clone, rename, and prepare the contents of
+your new repository for publication.  The tool will print out each command it
+is issuing and its result.
+
+```console
+./skeleton clone [options] <parent-repo-name> <new-repo-name>
+```
+
+For example, to create a project based on `skeleton-ansible-role` named
+`ansible-role-quantum-rng` in your `~/projects` directory:
 
 ```bash
 ./skeleton clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng

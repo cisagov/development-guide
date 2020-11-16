@@ -4,18 +4,24 @@
 
 A set of guidelines and best practices for an awesome engineering team.
 Heavily "inspired" by the
-[18-F Development Guide](https://github.com/18f/development-guide).
+[18F Development Guide](https://github.com/18f/development-guide).
 
 * [Open Source Policy](/open-source-policy)
 <!-- * [Development Ethos](/ethos)-->
 * [Project Setup](/project_setup)
-<!-- * [Personal Development Environments](/dev_envs)-->
+* [Development Environments](/dev_envs)
+  * [CISA-provided Mac Setup](/dev_envs/mac-env-setup.md)
 * Language Guides
   * HCL
   * JavaScript
   * [Python](/languages/python)
 
-## Tools and Services We Use ##
+## Git, GitHub, and you ##
+
+* [FISMA-Ready GitHub account setup](https://github.com/fisma-ready/github)
+* [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules)
+
+## Tools and services we use ##
 
 * [AWS](https://aws.amazon.com) - Our main cloud provider
 * [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
