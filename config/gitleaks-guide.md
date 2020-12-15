@@ -27,7 +27,7 @@ Useful flags:
 - `--verbose` gives you more details about each item found
 - `--pretty` formats the output so it's more human-readable
 
-```console
+```sh
 gitleaks --config=$HOME/.git-support/gitleaks.toml --repo-path=<relative-repo-path> --verbose --pretty
 ```
 
@@ -41,7 +41,7 @@ WARN[2020-12-08T10:47:03-05:00] 7 leaks detected. 24 commits scanned in 325 mill
 If you want to save the console output to file so you can review it at your
 leisure, use the `>` syntax and specify a location and filename.
 
-```console
+```sh
 gitleaks --config=$HOME/.git-support/gitleaks.toml --repo-path=<relative-repo-path> --verbose --pretty > ~/gitleaks.txt
 ```
 
