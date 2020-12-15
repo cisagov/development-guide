@@ -15,7 +15,9 @@ repos:
       - id: detect-aws-credentials
         args:
           - --allow-missing-credentials
+        exclude: config/gitleaks.toml
       - id: detect-private-key
+        exclude: config/gitleaks.toml
       - id: end-of-file-fixer
         exclude: files/(issue|motd)
       - id: mixed-line-ending
