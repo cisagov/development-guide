@@ -77,7 +77,7 @@ Please note these output files are the same format as the `default-labels.toml`
 file, so you can use one as a template if you have a repository set up with
 the labels you want organization-wide.
 
-```console
+```sh
 # Make the directory if it doesn't already exist
 # The -p option specifies to create intermediate directories as required
 mkdir -p repo-labels-backup
@@ -103,7 +103,7 @@ Once you've set up your `default-labels.toml` file, create a list of all the
 repositories in a file so you can edit the list to remove any repositories you
 do not want to alter labels for.
 
-```console
+```sh
 python list-all-repos.py > repolist.txt
 ```
 
@@ -111,7 +111,7 @@ Make any edits to the list to exclude repositories that are special or that
 you don't want to sync the labels for whatever reason, and then apply the
 labels to the remaining list of repositories.
 
-```console
+```sh
 cat repolist.txt | xargs -I {} labels --verbose sync --owner $LABELS_ORGNAME --repo {} --filename default-labels.toml
 ```
 
@@ -121,6 +121,6 @@ The following is **not recommended**, but to apply the `sync` without an
 interstitial `repolist.txt` file (and live dangerously), you can instead run
 the `sync` in one step.
 
-```console
+```sh
 python list-all-repos.py | xargs -I {} labels sync --owner $LABELS_ORGNAME --repo {} --filename default-labels.toml
 ```
