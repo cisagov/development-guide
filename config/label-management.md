@@ -53,7 +53,7 @@ set up the environment and have the script ready.
 When you return to the directory in a new shell, remember to:
 
 ```console
-source venv/bin/activate
+pyenv activate github-label-management
 source config
 ```
 
