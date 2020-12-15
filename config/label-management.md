@@ -17,22 +17,22 @@ git clone https://github.com/alta3/github-label-management.git
 cd github-label-management
 ```
 
-1. Activate the virtual environment and install the requirements
+1. Activate/create the virtual environment and install the requirements
 
 ```console
-python3.8 -m venv venv
-source venv/bin/activate
-python -m pip install --upgrade pip wheel
-python -m pip install --requirement requirements.txt
+pyenv local 3.8.3
+pyenv virtualenv github-label-management
+pyenv activate github-label-management
+python3 -m pip install --upgrade pip setuptools wheel
+python3 -m pip install --requirement requirements.txt
 ```
 
 1. Create a local configuration file by running `touch config`
 1. Open `config` in your favorite editor for editing
 1. Create a GitHub [personal access token](https://github.com/settings/tokens)
-
-- Give it a descriptive name like "label management"
-- **Only** select the `repo` scope
-- Copy the generated token into `GITHUB_USER_TOKEN`
+    - Give it a descriptive name like "label management"
+    - **Only** select the `repo` scope
+    - Copy the generated token into `GITHUB_USER_TOKEN`
 
 ```sh
 export GITHUB_USER_TOKEN="<YOUR_TOKEN_HERE>"
