@@ -1,11 +1,11 @@
 # Managing cross-organization labels in existing repositories #
 
-This is a step-by-step guide/script for managing organization-wide github
+This is a step-by-step guide/script for managing organization-wide GitHub
 issue labels across all repositories.
 
 ## Prerequisites ##
 
-- User has access to the github organization's repositories
+- User has access to the GitHub organization's repositories
 - User can generate a GitHub [Personal access token](https://github.com/settings/tokens)
 
 ## Initial Setup ##
@@ -23,12 +23,12 @@ cd github-label-management
 python3.8 -m venv venv
 source venv/bin/activate
 python -m pip install --upgrade pip wheel
-python -m pip install -r requirements.txt
+python -m pip install --requirement requirements.txt
 ```
 
 1. Create a local configuration file by running `touch config`
 1. Open `config` in your favorite editor for editing
-1. Create a GitHub [Personal access token](https://github.com/settings/tokens)
+1. Create a GitHub [personal access token](https://github.com/settings/tokens)
 
 - Give it a descriptive name like "label management"
 - **Only** select the `repo` scope
