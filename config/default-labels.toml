@@ -1,0 +1,74 @@
+["blocked"]
+color = "eb6420"
+name = "blocked"
+description = "This issue or pull request is blocked"
+
+["breaking change"]
+color = "000000"
+name = "breaking change"
+description = "This issue or pull request will cause existing functionality to change"
+
+["bug"]
+color = "d73a4a"
+name = "bug"
+description = "This issue or pull request addresses broken functionality"
+
+["code.gov"]
+color = "07648d"
+name = "code.gov"
+description = "This issue will be advertised on code.gov's \"Open Tasks\" page (https://code.gov/open-tasks)"
+
+["documentation"]
+color = "5319e7"
+name = "documentation"
+description = "This issue or pull request involves improvements or additions to documentation"
+
+["duplicate"]
+color = "cfd3d7"
+name = "duplicate"
+description = "This issue or pull request already exists"
+
+["epic"]
+color = "b005bc"
+name = "epic"
+description = "This issue is an epic"
+
+["good first issue"]
+color = "0e8a16"
+name = "good first issue"
+description = "Good for newcomers"
+
+["improvement"]
+color = "a2eeef"
+name = "improvement"
+description = "This issue or pull request will add new or improve existing functionality"
+
+["invalid"]
+color = "fef2c0"
+name = "invalid"
+description = "This doesn't seem right"
+
+["need info"]
+color = "a4fc5d"
+name = "need info"
+description = "This issue or pull request requires further information"
+
+["question"]
+color = "ef476c"
+name = "question"
+description = "Further information is requested"
+
+["upstream update"]
+color = "1d76db"
+name = "upstream update"
+description = "This issue or pull request relates to pulling in upstream updates"
+
+["version bump"]
+color = "d4c5f9"
+name = "version bump"
+description = "This issue or pull request involves a version bump"
+
+["wontfix"]
+color = "ffffff"
+name = "wontfix"
+description = "This issue will not be worked on"
