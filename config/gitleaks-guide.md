@@ -10,7 +10,7 @@ Results should be reviewed by humans.
 
 ## Installation ##
 
-This assumes you are on MacOS with HomeBrew installed.
+This assumes you are on MacOS with [HomeBrew](https://brew.sh) installed.
 
 - Install `gitleaks` via `brew install gitleaks`
 - Add the pattern configuration file somewhere like `$HOME/.git-support/gitleaks.toml`
