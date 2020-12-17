@@ -10,12 +10,58 @@ documentation, issues, pull requests, and other forms of written expression.
 
 ## Repositories ##
 
-- Set a minimum of two codeowners for all repositories.
-- Set all repositories containing code public.
-- Use repository names to describe its purpose specifically and descriptively.
-  - Avoid references to pop culture or other secondary implications.
+**All repositories should be public.**
+
+Whether creating new repositories or transferring existing repositories,
+remember that we work in the open by default. For more, when we might use
+private repositories, read our [open source policy](https://github.com/cisagov/development-guide/tree/develop/open-source-policy).
+
+### Repository naming ###
+
+Use a repository's name to describe its purpose. Names should be:
+
+1. Descriptive
+1. Readable
+1. Consistent
+1. Contextual
+1. Future-friendly
+1. Extensible
+1. Reusable
+
+Avoid references to pop culture or other implicit references. GitLab has a
+good guide on using [inclusive language in documentation](https://docs.gitlab.com/ee/development/documentation/styleguide/#inclusive-language.)
+
+Specifically, when naming a repository:
+
+- Use lower case
+- Use dashes
+  - For readability, where spaces would otherwise separate words
+  - Avoid underscores, which require extra keystrokes
+
+### Repository settings ###
+
+Specify code owners in each repository's `.github/codeowners` file to make
+sure that changes and pull requests are reviewed by people familiar with
+the codebase. This way, we'll catch more problems before they get into the
+protected branch.
+
+- Set a minimum of two code owners for all repositories.
+  - Add or edit each repository's `.github/codeowners` file.
+- Set up [branch protection](project_setup/branch-protection.md).
+
+## Headers and headings ##
+
+Use sentence case. For example:
+
+- `# Use variables to configure pipelines`
+- `## Use the Style Guide`
 
 ## Lists ##
+
+Use bulleted lists unless order matters, in which case use numbered lists.
+
+Always capitalize the first word of list items, unless they’re parameters or
+commands that are in backticks, or a similar situation.
 
 ### List punctuation ###
 
