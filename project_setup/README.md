@@ -1,5 +1,15 @@
 # Project Setup #
 
+We recommend you use a skeleton for all new repositories following the
+directions below.
+
+For repositories from skeletons, run `pre-commit install` to run linting
+and other tools before committing a faux pas to the repository which
+will immediately cause linting failures.
+
+Once you've set up a repository, make sure to enable
+[branch protection](branch-protection.md).
+
 ## Skeleton Tool 💀🛠 ##
 
 It is recommended that you start your project from one of the
