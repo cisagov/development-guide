@@ -8,16 +8,16 @@ documentation, issues, pull requests, and other forms of written expression.
 - [Plain Language guide](https://www.plainlanguage.gov/guidelines/)
 - [GitHub list of supported languages](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
 
-### Repositories ###
+## Repositories ##
 
 - Set a minimum of two codeowners for all repositories.
 - Set all repositories containing code public.
 - Use repository names to describe its purpose specifically and descriptively.
   - Avoid references to pop culture or other secondary implications.
 
-### Lists ###
+## Lists ##
 
-#### List punctuation ####
+### List punctuation ###
 
 Periods or no periods?
 
@@ -25,7 +25,7 @@ Periods or no periods?
 - Omit periods at the end of partial sentences.
 - Match the rest of the bulleted or numbered list as much as possible.
 
-### Code blocks ###
+## Code blocks ##
 
 When formatting code blocks, use the formatting that best highlights the
 syntax in the code block.
@@ -33,7 +33,7 @@ syntax in the code block.
 We generally use code blocks for scripts, command-line usage, and when showing
 file contents like configuration files.
 
-#### Scripts ####
+### Scripts ###
 
 - Use `shell` formatting for shell scripts
   - `shell` is also aliased as `sh`, `bash`, `zsh`, and others
@@ -41,7 +41,7 @@ file contents like configuration files.
 written in specific languages
   - Reference the [GitHub list of supported languages](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
 
-#### Command-line ####
+### Command-line ###
 
 - `console` is most effective at highlighting a command _and_ its resulting
 output, like this:
@@ -58,6 +58,6 @@ output, like this:
 there is any shell-fu like pipes, file redirects, shell variables, etc. to
 apply syntax highlighting so the reader is more aware of the magic happening
 
-#### File contents ####
+### File contents ###
 
 - Extension-specific formatting, such as `hcl` for Terraform, should be used
