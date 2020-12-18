@@ -6,7 +6,7 @@ issue labels across all repositories.
 ## Prerequisites ##
 
 - User has access to the GitHub organization's repositories
-- User can generate a GitHub [Personal access token](https://github.com/settings/tokens)
+- User can generate a GitHub [personal access token](https://github.com/settings/tokens)
 
 ## Initial Setup ##
 
@@ -20,9 +20,8 @@ issue labels across all repositories.
 1. Activate/create the virtual environment and install the requirements
 
     ```console
-    pyenv local 3.8.3
-    pyenv virtualenv github-label-management
-    pyenv activate github-label-management
+    pyenv virtualenv 3.8.3 github-label-management
+    pyenv local github-label-management
     python3 -m pip install --upgrade pip setuptools wheel
     python3 -m pip install --requirement requirements.txt
     ```
@@ -60,7 +59,7 @@ source config
 ### List all organization repositories ###
 
 ```console
-python list-all-repos.py
+python3 list-all-repos.py
 ```
 
 This will yield a list of all repositories you have access to in the specified
@@ -83,15 +82,16 @@ the labels you want organization-wide.
 mkdir -p repo-labels-backup
 
 # Use the output of list-all-repos.py to fetch each repository's labels
-python list-all-repos.py | xargs -I {} labels fetch --owner $LABELS_ORGNAME --repo {} --filename repo-labels-backup/{}-labels.toml
+python3 list-all-repos.py | xargs -I {} labels fetch --owner "$LABELS_ORGNAME" --repo {} --filename repo-labels-backup/{}-labels.toml
 ```
 
 ### Apply default labels across the organization ###
 
 View and edit `default-labels.toml` to specify the default labels and their
 attributes such as name, color, and description. This is the same format as
-the output `.toml` files from the "back up" step, so if you have an example
-repository, you can copy straight from that repository's file.
+the output `.toml` files from the ["back up" step](#Back-up-all-current-repository-labels),
+so if you have an example repository, you can copy straight from that
+repository's file.
 
 Please note that the `labels ... sync` operation is **destructive** and will
 reduce the set of labels in each repository to _only_ those specified.
@@ -104,7 +104,7 @@ repositories in a file so you can edit the list to remove any repositories you
 do not want to alter labels for.
 
 ```sh
-python list-all-repos.py > repolist.txt
+python3 list-all-repos.py > repolist.txt
 ```
 
 Make any edits to the list to exclude repositories that are special or that
@@ -112,15 +112,15 @@ you don't want to sync the labels for whatever reason, and then apply the
 labels to the remaining list of repositories.
 
 ```sh
-cat repolist.txt | xargs -I {} labels --verbose sync --owner $LABELS_ORGNAME --repo {} --filename default-labels.toml
+cat repolist.txt | xargs -I {} labels --verbose sync --owner "$LABELS_ORGNAME" --repo {} --filename default-labels.toml
 ```
 
-#### Dangerous operation: Apply labels in one step ####
+#### ⚠️ Dangerous operation: Apply labels in one step ####
 
 The following is **not recommended**, but to apply the `sync` without an
 interstitial `repolist.txt` file (and live dangerously), you can instead run
 the `sync` in one step.
 
 ```sh
-python list-all-repos.py | xargs -I {} labels sync --owner $LABELS_ORGNAME --repo {} --filename default-labels.toml
+python3 list-all-repos.py | xargs -I {} labels sync --owner "$LABELS_ORGNAME" --repo {} --filename default-labels.toml
 ```
