@@ -58,7 +58,7 @@ For example, to create a project based on `skeleton-ansible-role` named
 ./skeleton clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng
 ```
 
-```text
+```console
 ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 💬 Clone an existing remote repository to the new name locally.
 ➤  git clone git@github.com:cisagov/skeleton-ansible-role.git ansible-role-quantum-rng
@@ -99,16 +99,42 @@ Use the following commands to push the new repository to github:
 
 Once the `skeleton` tool is complete, inspect the new repository for accuracy.
 
+## Publishing the repository ##
+
 To publish your new repository on GitHub, the remote must already exist.
 [Create a new repository](https://github.com/organizations/cisagov/repositories/new)
 on GitHub with the same name as your new local repository.  If you do not
 have permission, ask an administrator to create it for you.
+
+Add the name and description, set the repository to public, and then the rest
+of the options can be skipped.
 
 If everything looks good, publish your new repository to GitHub:
 
 ```bash
 git push --set-upstream origin develop
 ```
+
+## Setting up branch protection ##
+
+Once you've made your initial commits, enable [branch protection](branch-protection.md)
+to enforce the codeowners approval requirements for pull requests.
+
+## Setting up Coveralls for Python projects ##
+
+The README for your new Python project will be prepared with a Coveralls badge.
+To make the badge work properly, you'll need to add a repository secret.
+
+1. Visit [Coveralls](https://coveralls.io/) and go to `Add Repos`.
+1. Select your new repository and enable it. This will take you to a
+page with `Python set up for Coveralls`. The code block will have an entry for
+`repo_token: <token>`.
+1. Copy the `repo_token` value.
+1. On GitHub, visit your new repository's `Settings -> Secrets` page.
+    - Note: If you don't have access to `Settings`, please contact an
+    administrator to do this step for you.
+1. Add a `New repository secret` and name it `COVERALLS_REPO_TOKEN` with the
+value from Coveralls.
 
 ## Ansible Requirement File Generation Tool 🧻🛠 ##
 

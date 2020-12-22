@@ -29,7 +29,7 @@ Use a repository's name to describe its purpose. Names should be:
 1. Reusable
 
 Avoid references to pop culture or other implicit references. GitLab has a
-good guide on using [inclusive language in documentation](https://docs.gitlab.com/ee/development/documentation/styleguide/#inclusive-language.)
+good guide on using [inclusive language in documentation](https://docs.gitlab.com/ee/development/documentation/styleguide/#inclusive-language).
 
 Specifically, when naming a repository:
 
