@@ -1,4 +1,4 @@
-# Using gitleaks to check for PII and credentials #
+# Check for PII and Credentials with `gitleaks` #
 
 This process is based on [`caulking`](https://github.com/cloud-gov/caulking)
 by 18F's cloud.gov.

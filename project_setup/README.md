@@ -10,7 +10,7 @@ will immediately cause linting failures.
 Once you've set up a repository, make sure to enable
 [branch protection](branch-protection.md).
 
-## Skeleton Tool 💀🛠 ##
+## Skeleton tool 💀🛠 ##
 
 It is recommended that you start your project from one of the
 [skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
@@ -136,7 +136,7 @@ page with `Python set up for Coveralls`. The code block will have an entry for
 1. Add a `New repository secret` and name it `COVERALLS_REPO_TOKEN` with the
 value from Coveralls.
 
-## Ansible Requirement File Generation Tool 🧻🛠 ##
+## Ansible requirement file generation tool 🧻🛠 ##
 
 We have a [plethora](https://www.youtube.com/watch?v=zWld721Wk-Q) of
 [ansible-roles in our organization](https://github.com/search?q=org%3Acisagov+topic%3Aansible-role+NOT+skeleton+archived%3Afalse).
@@ -153,7 +153,7 @@ usage of the tool is:
 This file will now contain definitions for all the Ansible roles.  Edit
 the file, and remove any role that will not be required for your project.
 
-## Terraform IAM Credentials to GitHub Secrets 🔑‍👉🤫 ##
+## Terraform IAM credentials to GitHub secrets 🔑‍👉🤫 ##
 
 When GitHub Actions workflows require credentials to run we provide them via
 [secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
@@ -185,7 +185,7 @@ terraform-to-secrets 9f4ae878de917c7cf191b9861d3c1cf9224939f7
 2020-02-22 15:50:41,036 INFO Success!
 ```
 
-## Managing SSM Parameters from Files 🗂👉☁️ ##
+## Managing SSM parameters from files 🗂👉☁️ ##
 
 Use the [`ssm-param`](scripts/ssm-param) tool to copy files into
 [SSM parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-about-examples.html)
