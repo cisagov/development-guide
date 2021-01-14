@@ -14,7 +14,7 @@ documentation, issues, pull requests, and other forms of written expression.
 
 Whether creating new repositories or transferring existing repositories,
 remember that we work in the open by default. For a discussion of the
-rare cases in which we might use private repositories, read our 
+rare cases in which we might use private repositories, read our
 [open source policy](https://github.com/cisagov/development-guide/tree/develop/open-source-policy).
 
 ### Repository naming ###
@@ -52,7 +52,13 @@ protected branch.
 
 ## Headers and headings ##
 
-Use sentence case. For example:
+Use sentence case for every heading except for the inital document title,
+which should use title case.
+
+Use both opening and closing octothorpes (`#`) to indicate the Markdown header
+level. Our Markdown linting enforces this as well.
+
+For example:
 
 - `# Use variables to configure pipelines #`
 - `## Use the Style Guide ##`
