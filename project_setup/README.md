@@ -1,9 +1,9 @@
 # Project Setup #
 
-We recommend you use a skeleton for all new repositories following the
-directions below.
+We recommend you follow the directions below and use a skeleton for
+all new repositories.
 
-For repositories from skeletons, run `pre-commit install` to run linting
+For repositories created from skeletons, run `pre-commit install` to run linting
 and other tools before committing a faux pas to the repository which
 will immediately cause linting failures.
 

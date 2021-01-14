@@ -13,8 +13,9 @@ documentation, issues, pull requests, and other forms of written expression.
 **All repositories should be public.**
 
 Whether creating new repositories or transferring existing repositories,
-remember that we work in the open by default. For more, when we might use
-private repositories, read our [open source policy](https://github.com/cisagov/development-guide/tree/develop/open-source-policy).
+remember that we work in the open by default. For a discussion of the
+rare cases in which we might use private repositories, read our 
+[open source policy](https://github.com/cisagov/development-guide/tree/develop/open-source-policy).
 
 ### Repository naming ###
 
@@ -53,8 +54,8 @@ protected branch.
 
 Use sentence case. For example:
 
-- `# Use variables to configure pipelines`
-- `## Use the Style Guide`
+- `# Use variables to configure pipelines #`
+- `## Use the Style Guide ##`
 
 ## Lists ##
 
