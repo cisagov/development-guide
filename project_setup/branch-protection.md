@@ -20,10 +20,12 @@ In `Settings`, go to the `Branches` entry and create a rule with the following:
     - Required approving reviews: `2`
     - [ ] Dismiss stale pull request approvals when new commits are pushed
     - [X] Require review from Code Owners
-    - [ ] Restrict who can dismiss pull request reviews
+    - [X] Restrict who can dismiss pull request reviews
   - [X] Require status checks to pass before merging
   - [X] Require branches to be up to date before merging
-    - TBD note about status checks
+    - There may be a list of status checks under this option. We require
+    passing status checks to merge, so all status checks should generally be
+    checked as required.
   - [ ] Require signed commits
   - [ ] Require linear history
   - [X] Include administrators
