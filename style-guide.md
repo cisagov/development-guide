@@ -8,6 +8,27 @@ documentation, issues, pull requests, and other forms of written expression.
 - [Plain Language guide](https://www.plainlanguage.gov/guidelines/)
 - [GitHub list of supported languages](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
 
+## Capitalization ##
+
+Follow standard capitalization for written work such as comments,
+documentation, reports, and emails, namely that
+
+> words are lowercase unless there is specific guidance to capitalize them.
+> For example, capitalize the first word of a sentence, unless the sentence
+> begins with the name of a person whose name starts with a lowercase letter.
+
+Reference: [APA's capitalization guidelines](https://apastyle.apa.org/style-grammar-guidelines/capitalization)
+
+When an object being referenced has a nonstandard capitalization, defer to its
+capitalization. For example, GitHub has a capital letter mid-word.
+
+Use uppercase for abbreviations, including technical protocols such as HTTPS
+and SSL.
+
+Please note that this guidance is specifically for *written work such as
+documentation* and that code capitalization has its own standards that vary by
+language.
+
 ## Repositories ##
 
 **All repositories should be public.**
@@ -50,18 +71,26 @@ protected branch.
   - Add or edit each repository's `.github/codeowners` file.
 - Set up [branch protection](project_setup/branch-protection.md).
 
+## Titles and subjects ##
+
+Use [title case](https://apastyle.apa.org/style-grammar-guidelines/capitalization/title-case)
+for the main title of a document.
+
 ## Headers and headings ##
 
-Use sentence case for every heading except for the inital document title,
-which should use title case.
+Use [sentence case](https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case)
+for headings within a document that are not the inital document title.
+
+When referencing an object or another document, use the capitalization of the
+referenced item, such as "GitHub" or "the Style Guide".
 
 Use both opening and closing octothorpes (`#`) to indicate the Markdown header
 level. Our Markdown linting enforces this as well.
 
 For example:
 
-- `# Use variables to configure pipelines #`
-- `## Use the Style Guide ##`
+- `### Use variables to configure pipelines ###`
+- `## Using the Style Guide ##`
 
 ## Lists ##
 
