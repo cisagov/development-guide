@@ -26,6 +26,8 @@ In `Settings`, go to the `Branches` entry and create a rule with the following:
     - There may be a list of status checks under this option. We require
     passing status checks to merge, so all status checks should generally be
     checked as required.
+    - Please note that the list of status checks will not fully populate in a
+    new repository until the first pull request (PR) has been created.
   - [ ] Require signed commits
   - [ ] Require linear history
   - [X] Include administrators

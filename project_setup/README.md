@@ -3,21 +3,37 @@
 We recommend you follow the directions below and use a skeleton for
 all new repositories.
 
-For repositories created from skeletons, run `pre-commit install` to run linting
-and other tools before committing a faux pas to the repository which
-will immediately cause linting failures.
+For repositories created from skeletons, run `pre-commit install` to enable
+linting and other tools to prevent new commits from immediately running into
+linting failures.
 
 Once you've set up a repository, make sure to enable
-[branch protection](branch-protection.md).
+branch protection - [see our branch protection guide for details](branch-protection.md).
 
-## Skeleton tool 💀🛠 ##
+## Contents ##
 
-It is recommended that you start your project from one of the
+- [Using the skeleton tool to start a new repository 💀🛠](#using-the-skeleton-tool-to-start-a-new-repository-%F0%9F%92%80%F0%9F%9B%A0)
+  - [Selecting a skeleton](#selecting-a-skeleton)
+  - [Cloning a selected skeleton](#cloning-a-selected-skeleton)
+- [Create and publish the GitHub repository](#create-and-publish-the-github-repository)
+- [Create an initial pull request](#create-an-initial-pull-request)
+- [Setting up branch protection](#setting-up-branch-protection)
+- [Setting up type-specific configuration settings](#setting-up-type-specific-configuration-settings)
+  - [Setting up Coveralls for Python projects](#setting-up-coveralls-for-python-projects)
+  - [Ansible requirement file generation tool 🧻🛠](#ansible-requirement-file-generation-tool-%F0%9F%A7%BB%F0%9F%9B%A0)
+  - [Terraform IAM credentials to GitHub secrets 🔑‍👉🤫](#terraform-iam-credentials-to-github-secrets-%F0%9F%94%91%E2%80%8D%F0%9F%91%89%F0%9F%A4%AB)
+  - [Managing SSM parameters from files 🗂👉☁️](#managing-ssm-parameters-from-files-%F0%9F%97%82%F0%9F%91%89%E2%98%81%EF%B8%8F)
+
+## Using the skeleton tool to start a new repository 💀🛠 ##
+
+We recommend that you start your project from one of the
 [skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
-that exist in this organization.  The [`skeleton`](scripts/skeleton)
+in this organization.  The [`skeleton`](scripts/skeleton)
 helper tool included in the [`scripts`](scripts) directory can quickly setup
 a new local repository.  Once you've cloned and configured the repository
-to your local machine, it can be published to a repository created on GitHub.
+to your local machine, you then publish it to a repository created on GitHub.
+
+### Selecting a skeleton ###
 
 First, identify a suitable skeleton project to use as the starting point
 for your new repository.
@@ -26,22 +42,35 @@ for your new repository.
 ./skeleton list
 ```
 
-```text
+```console
 Available skeletons in cisagov:
 
-skeleton-docker
-        A skeleton project for quickly getting a new cisagov Docker container started.
+skeleton-python-library
+    A skeleton project for quickly getting a new cisagov Python library started.
 
-skeleton-ansible-role
-        A skeleton project for quickly getting a new cisagov Ansible role started.
+skeleton-docker
+    A skeleton project for quickly getting a new cisagov Docker container started.
 
 skeleton-generic
-        A generic skeleton project for quickly getting a new cisagov project started.
+    A generic skeleton project for quickly getting a new cisagov project started.
 
-skeleton-python-library
-        A skeleton project for quickly getting a new cisagov Python library started.
+skeleton-tf-module
+    A skeleton project for quickly getting a new cisagov Terraform module started.
 
+skeleton-ansible-role
+    A skeleton project for quickly getting a new cisagov Ansible role started.
+
+skeleton-ansible-role-with-test-user
+    A skeleton project for quickly getting a new cisagov Ansible role started when that role requires an AWS test user.
+
+skeleton-packer
+    A skeleton project for quickly getting a new cisagov packer project started.
+
+skeleton-aws-lambda
+    A skeleton project for quickly getting a new cisagov Python AWS Lambda started.
 ```
+
+### Cloning a selected skeleton ###
 
 Next, use the `skeleton` tool to clone, rename, and prepare the contents of
 your new repository for publication.  The tool will print out each command it
@@ -52,11 +81,13 @@ is issuing and its result.
 ```
 
 For example, to create a project based on `skeleton-ansible-role` named
-`ansible-role-quantum-rng` in your `~/projects` directory:
+`ansible-role-quantum-rng` in your local `~/projects` directory:
 
 ```bash
 ./skeleton clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng
 ```
+
+This command results in:
 
 ```console
 ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
@@ -97,30 +128,55 @@ Use the following commands to push the new repository to github:
     git push --set-upstream origin develop
 ```
 
-Once the `skeleton` tool is complete, inspect the new repository for accuracy.
+## Create and publish the GitHub repository ##
 
-## Publishing the repository ##
+Once the `skeleton` tool has run, the next step is to publish GitHub remote repository.
 
 To publish your new repository on GitHub, the remote must already exist.
 [Create a new repository](https://github.com/organizations/cisagov/repositories/new)
 on GitHub with the same name as your new local repository.  If you do not
 have permission, ask an administrator to create it for you.
 
-Add the name and description, set the repository to public, and then the rest
-of the options can be skipped.
+Add the repository name and description, set the repository to public, and
+skip the rest of the options.
 
-If everything looks good, publish your new repository to GitHub:
+Next, publish your new repository to GitHub:
 
 ```bash
 git push --set-upstream origin develop
 ```
 
+## Create an initial pull request ##
+
+You probably want to add code, documentation, and other items to your
+repository to customize it from the skeleton and make changes.
+
+Create a new branch called `first-commits` and publish it:
+
+```bash
+git checkout -b first-commits
+git push origin first-commits --set-upstream
+```
+
+Edit the existing files and add your own as needed, then commit your changes,
+push them, and create a PR via GitHub or the command-line for your teammates
+to review.
+
+GitHub only populates its list of status checks once a pull request (PR)
+has been created so checks can run against changes. Status checks are
+extremely useful for quality control and automated testing,
+so we require these checks to pass before merging. This first PR will ensure
+your new repository is ready to go and give your teammates a chance to review
+your code before merging it.
+
 ## Setting up branch protection ##
 
-Once you've made your initial commits, enable [branch protection](branch-protection.md)
-to enforce the codeowners approval requirements for pull requests.
+Once you've made your initial pull request, enable [branch protection](branch-protection.md)
+to enforce the `codeowners` approval requirements for pull requests.
 
-## Setting up Coveralls for Python projects ##
+## Setting up type-specific configuration settings ##
+
+### Setting up Coveralls for Python projects ###
 
 The README for your new Python project will be prepared with a Coveralls badge.
 To make the badge work properly, you'll need to add a repository secret.
@@ -136,7 +192,7 @@ page with `Python set up for Coveralls`. The code block will have an entry for
 1. Add a `New repository secret` and name it `COVERALLS_REPO_TOKEN` with the
 value from Coveralls.
 
-## Ansible requirement file generation tool 🧻🛠 ##
+### Ansible requirement file generation tool 🧻🛠 ###
 
 We have a [plethora](https://www.youtube.com/watch?v=zWld721Wk-Q) of
 [ansible-roles in our organization](https://github.com/search?q=org%3Acisagov+topic%3Aansible-role+NOT+skeleton+archived%3Afalse).
@@ -153,7 +209,7 @@ usage of the tool is:
 This file will now contain definitions for all the Ansible roles.  Edit
 the file, and remove any role that will not be required for your project.
 
-## Terraform IAM credentials to GitHub secrets 🔑‍👉🤫 ##
+### Terraform IAM credentials to GitHub secrets 🔑‍👉🤫 ###
 
 When GitHub Actions workflows require credentials to run we provide them via
 [secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
@@ -185,7 +241,7 @@ terraform-to-secrets 9f4ae878de917c7cf191b9861d3c1cf9224939f7
 2020-02-22 15:50:41,036 INFO Success!
 ```
 
-## Managing SSM parameters from files 🗂👉☁️ ##
+### Managing SSM parameters from files 🗂👉☁️ ###
 
 Use the [`ssm-param`](scripts/ssm-param) tool to copy files into
 [SSM parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-about-examples.html)
