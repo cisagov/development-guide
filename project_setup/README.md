@@ -130,7 +130,7 @@ Use the following commands to push the new repository to github:
 
 ## Create and publish the GitHub repository ##
 
-Once the `skeleton` tool has run, the next step is to publish GitHub remote repository.
+Once the `skeleton` tool has run, the next step is to publish to a GitHub remote repository.
 
 To publish your new repository on GitHub, the remote must already exist.
 [Create a new repository](https://github.com/organizations/cisagov/repositories/new)
@@ -159,10 +159,10 @@ git push origin first-commits --set-upstream
 ```
 
 Edit the existing files and add your own as needed, then commit your changes,
-push them, and create a PR via GitHub or the command-line for your teammates
-to review.
+push them, and create a pull request (PR) via GitHub or the command-line for
+your teammates to review.
 
-GitHub only populates its list of status checks once a pull request (PR)
+GitHub only populates its list of status checks once a PR
 has been created so checks can run against changes. Status checks are
 extremely useful for quality control and automated testing,
 so we require these checks to pass before merging. This first PR will ensure
