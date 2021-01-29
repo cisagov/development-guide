@@ -130,7 +130,8 @@ Use the following commands to push the new repository to github:
 
 ## Create and publish the GitHub repository ##
 
-Once the `skeleton` tool has run, the next step is to publish to a GitHub remote repository.
+Once the `skeleton` tool has run, the next step is to publish to a GitHub
+remote repository.
 
 To publish your new repository on GitHub, the remote must already exist.
 [Create a new repository](https://github.com/organizations/cisagov/repositories/new)
