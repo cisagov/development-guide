@@ -6,7 +6,7 @@ In general, we work in the open by default.
 policy of [CISA](https://cisa.gov/) and more details about what "open by
 default" means.
 
-## CISA Team Guidance ##
+## CISA team guidance ##
 
 **[Read CISA's open source team practices](practice.md)** for guidance on how
 CISA puts this open-by-default policy into practice, and how we handle the

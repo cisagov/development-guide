@@ -1,4 +1,7 @@
-# Using gitleaks to check for PII and credentials #
+# Check for PII and credentials with `gitleaks` #
+
+This guide describes how to check a codebase for PII (personally identifiable
+information) or credentials that may have inadvertently been committed.
 
 This process is based on [`caulking`](https://github.com/cloud-gov/caulking)
 by 18F's cloud.gov.

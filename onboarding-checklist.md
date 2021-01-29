@@ -52,7 +52,7 @@ to set up your GitHub account to be added to CISA.
 - [ ] Once your GitHub account has been added to the `cisagov` organization,
 make sure you're assigned to this issue.
 
-#### Mandatory Training ####
+#### Mandatory training ####
 
 - [ ] Complete [PALMS Cybersecurity Training](https://etms.hq.dhs.gov),
 including Mandatory Cyber Security and Privacy Training, and accepting
@@ -101,7 +101,7 @@ to be able to view and edit it.
 
 ## Role-specific items ##
 
-### Dev Team ###
+### Dev team ###
 
 Useful links:
 
