@@ -2,7 +2,7 @@
 
 When Lineage runs to push out skeleton updates to its descendent
 repositories, this often results in generating tens of PRs to review. To
-minimize this kraken-like behavior and reduce the burden on team of so many
+minimize this Kraken-like behavior and reduce the burden on team of so many
 PR reviews, we try to coordinate updates to the skeletons in batches.
 
 ## Checking the Lineage GitHub Action ##
@@ -19,7 +19,7 @@ the merge process.
 The part that takes the longest is waiting for the checks to complete as you
 update each PR from the newly-updated `develop` branch before merging.
 
-Wait until a the [lineage GitHub Action] has completed, and do the process:
+Wait until the [lineage GitHub Action] has completed, and do the process:
 
 1. Merge a PR
 2. Go to the next PR, `update from ##words here##`

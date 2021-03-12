@@ -1,8 +1,8 @@
-# Skeletonize an existing repository #
+# Skeletonize an Existing Repository #
 
-Skeletonizing a repository standardizes our development setup and environment
-as well as enables our [Lineage](https://github.com/cisagov/action-lineage/)
-Github Action to keep it updated and standardized.
+Skeletonizing a repository standardizes our development setup and environment,
+and it enables our [Lineage](https://github.com/cisagov/action-lineage/)
+Github Action to keep the repository updated and standardized.
 
 ## About skeletons ##
 
