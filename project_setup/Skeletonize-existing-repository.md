@@ -1,10 +1,10 @@
 # Skeletonize an Existing Repository #
 
 Skeletonizing a repository standardizes our development setup and environment,
-and it enables our [Lineage](https://github.com/cisagov/action-lineage/)
-Github Action to keep the repository updated and standardized.
+and it enables our [Lineage GitHub Action](https://github.com/cisagov/action-lineage/)
+to keep the repository updated and standardized.
 
-## About skeletons ##
+## About ##
 
 Skeleton projects contain [licensing information](LICENSE), as
 well as [pre-commit hooks](https://pre-commit.com) and
@@ -17,22 +17,27 @@ appropriate for the major languages that we use. This lets us standardize
 
 The general outline of how to add a skeleton to a repository is:
 
-1. Add the skeleton as a remote to the non-skeletonized repository
-2. Pull with `--allow-unrelated-histories`
-3. Fix all the inevitable conflicts (this takes the longest)
-4. Run `pre-commit install`
-5. Fix problems that may arise from `pre-commit` being added
-6. Commit to a branch and submit a PR
+1. [Add the skeleton as a remote](#add-a-skeleton-as-remote) to the
+non-skeletonized repository
+1. Pull with `--allow-unrelated-histories`
+1. [Fix all the inevitable conflicts](#fix-merge-conflicts)
+1. [Review non-conflicting changes](#review-non-conflicting-changes) to
+prevent merging destructive upstream changes
+1. [Update skeleton's `example` references](#update-skeletons-example-references)
+1. [Set up pre-commit](#set-up-pre-commit)
+1. Fix additional problems that may arise
+1. [Make a pull request](#make-a-pull-request)
 
-## Adding a skeleton as remote ##
-
-### Choose a skeleton ###
+## Add a skeleton as remote ##
 
 First, decide which of the available skeletons fits your existing repository.
+To see a list of available skeletons, use the `skeleton list` command or see
+the [list of skeletons](skeleton-list.md).
+
 As an example, we'll be using [`skeleton-python-library`](https://github.com/cisagov/skeleton-python-library)
 in this document.
 
-```console
+```sh
 cd <target_repository>
 git remote add skeleton-parent git@github.com:cisagov/skeleton-python-library.git
 
@@ -52,7 +57,7 @@ This merge process will almost certainly fail, resulting in merge conflicts.
 The next step is to fix those conflicts and add the files once the fixes are
 in place.
 
-```console
+```sh
 # Determine which files need fixes
 git status
 
@@ -61,24 +66,78 @@ git add <filename>
 
 ...
 # When all conflicts have been fixed and added, commit to complete the merge
+# Remember to add a descriptive and useful commit message
 git commit
 ```
 
-## Fix GitHub Actions ##
+## Review non-conflicting changes ##
 
-**Note:** Remainder of doc still in-progress
+You don't only have to fix merge conflicts. It is important to also look at
+the unconflicted changes listed in the output of `git status` and verify that
+you want to include all those changes.
 
-- Run `pre-commit install` to set up pre-commit hooks
-- `pre-commit run --all-files` - runs against all files to check the
-pre-commit hooks
-- isort and `.isort.cfg` - will have to deconflict packages (remove the
-known-first and known-third and let it populate them) and manually add the
-package name as known-first-party
-- If the repository needs coverage checks and integration with
+This step is often overlooked because it is rarely needed, but it can save you
+from merging in destructive upstream changes.
+
+## Update skeleton's `example` references ##
+
+This step includes such activities as:
+
+- Update `setup.py` with non-example information
+- Arrange into appropriate folders, such as `src` and `test`
+- Update the `codeowners` to reflect subject matter expertise and
+codebase familiarity
+  - Aim to have at least two codeowners for every repository
+
+Some skeletons need additional configuration, such as with
+`skeleton-python-library` and its module structure inside `src/example`.
+
+## Set up pre-commit ##
+
+The skeleton will bring along with it our standard pre-commit hook
+configurations, including linting and other checks.
+
+```sh
+# Install pre-commit
+pre-commit install
+
+# Run against all your existing files
+pre-commit run --all-files
+```
+
+The linters will automatically fix files where it can, however you are
+probably looking at a long list of updates to make before automated checks
+will pass. You may want to send this output to a file to make it easier to
+review, e.g. `pre-commit run --all-files > fixme.txt`.
+
+### isort ###
+
+For our `skeleton-python-library` example, you'll need to do some
+configuration with `isort` and `.isort.cfg` to deconflict packages.
+
+- Remove known-first-party and known-third-party packages so the tool will
+auto-populate them during the `pre-commit` step.
+- Manually add your package name (i.e. in `src`) as known-first-party.
+
+### Coveralls ###
+
+If the repository needs coverage checks and integration with
 [Coveralls](https://coveralls.io/github/cisagov):
-  - Modify the `.coveragerc` to point to the src package
-  - Add appropriate secrets so they're available to the Actions
-workflow, e.g. `secrets.COVERALLS_REPO_TOKEN` for the repo badge
-    - Once the commit/repo is up, add a token from
-  [Coveralls](https://coveralls.io/github/cisagov) to the repository's secrets
-- Run pytest manually
+
+- Modify the `.coveragerc` to point to the src package
+- Add appropriate secrets so they're available to the Actions workflow,
+e.g. add a token from [Coveralls](https://coveralls.io/github/cisagov) to the
+repository's secrets as `secrets.COVERALLS_REPO_TOKEN` for the repo badge.
+
+### pytest ###
+
+For Python projects, run `pytest` manually to verify that your newly-updated
+repository still passes its test suite.
+
+## Make a pull request ##
+
+Once you've run through the configuration and testing stages, you've probably
+accumulated a number of commits on your `skeletonize` branch.
+
+The next step is to [make a pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)
+and have the team perform code reviews.
