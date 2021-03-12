@@ -5,17 +5,21 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+    rev: v3.4.0
     hooks:
+      - id: check-case-conflict
       - id: check-executables-have-shebangs
       - id: check-json
       - id: check-merge-conflict
+      - id: check-toml
       - id: check-xml
       - id: debug-statements
       - id: detect-aws-credentials
         args:
           - --allow-missing-credentials
+        exclude: config/gitleaks.toml
       - id: detect-private-key
+        exclude: config/gitleaks.toml
       - id: end-of-file-fixer
         exclude: files/(issue|motd)
       - id: mixed-line-ending
@@ -26,51 +30,80 @@ repos:
           - --autofix
       - id: requirements-txt-fixer
       - id: trailing-whitespace
+
+  # Text file hooks
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.24.0
+    rev: v0.26.0
     hooks:
       - id: markdownlint
         args:
           - --config=.mdl_config.json
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.2.1
+    hooks:
+      - id: prettier
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.25.0
+    rev: v1.26.0
     hooks:
       - id: yamllint
+        args:
+          - --strict
+
+  # Shell script hooks
+  - repo: https://github.com/lovesegfault/beautysh
+    rev: 6.0.1
+    hooks:
+      - id: beautysh
+        args:
+          - --indent-size
+          - '2'
   - repo: https://github.com/detailyang/pre-commit-shell
     rev: 1.0.5
     hooks:
       - id: shell-lint
+
+  # Python hooks
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.0
+    hooks:
+      - id: bandit
+        args:
+          - --config=.bandit.yml
+  - repo: https://github.com/psf/black
+    rev: 20.8b1
+    hooks:
+      - id: black
   - repo: https://gitlab.com/pycqa/flake8
     rev: 3.8.4
     hooks:
       - id: flake8
         additional_dependencies:
           - flake8-docstrings
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v2.7.2
-    hooks:
-      - id: pyupgrade
-  - repo: https://github.com/PyCQA/bandit
-    rev: 1.6.2
-    hooks:
-      - id: bandit
-        args:
-          - --config=.bandit.yml
-  - repo: https://github.com/python/black
-    rev: 20.8b1
-    hooks:
-      - id: black
-  - repo: https://github.com/timothycrosley/isort
-    rev: 5.6.4
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.7.0
     hooks:
       - id: isort
-  - repo: https://github.com/ansible/ansible-lint.git
-    rev: v4.3.5
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.800
+    hooks:
+      - id: mypy
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.10.0
+    hooks:
+      - id: pyupgrade
+
+  # Ansible hooks
+  - repo: https://github.com/ansible-community/ansible-lint
+    # This is intentionally being held back because of issues in v5 per
+    # https://github.com/cisagov/skeleton-ansible-role/issues/69
+    rev: v4.3.7
     hooks:
       - id: ansible-lint
       # files: molecule/default/playbook.yml
-  - repo: https://github.com/antonbabenko/pre-commit-terraform.git
-    rev: v1.43.0
+
+  # Terraform hooks
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.45.0
     hooks:
       - id: terraform_fmt
       # There are ongoing issues with how this command works. This issue
@@ -89,15 +122,16 @@ repos:
       # above have been resolved, which we hope will be with the release of
       # Terraform 0.13.
       # - id: terraform_validate
+
+  # Docker hooks
   - repo: https://github.com/IamTheFij/docker-pre-commit
     rev: v2.0.0
     hooks:
       - id: docker-compose-check
-  - repo: https://github.com/prettier/pre-commit
-    rev: v2.1.2
+
+  # Packer hooks
+  - repo: https://github.com/cisagov/pre-commit-packer
+    rev: v0.0.2
     hooks:
-      - id: prettier
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.790
-    hooks:
-      - id: mypy
+      - id: packer_validate
+      - id: packer_fmt
