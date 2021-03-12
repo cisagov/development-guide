@@ -17,7 +17,8 @@ To skeletonize an existing repository, please see the guide to
 ## Creating a new repository from a skeleton ##
 
 First, identify a suitable skeleton project to use as the starting point
-for your new repository.
+for your new repository. For a list of available skeletons, see the
+[Skeleton List](skeleton-list.md) or use the following command:
 
 ```bash
 ./skeleton list
