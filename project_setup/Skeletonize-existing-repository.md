@@ -76,6 +76,10 @@ You don't only have to fix merge conflicts. It is important to also look at
 the unconflicted changes listed in the output of `git status` and verify that
 you want to include all those changes.
 
+```sh
+git diff origin/develop
+```
+
 This step is often overlooked because it is rarely needed, but it can save you
 from merging in destructive upstream changes.
 
