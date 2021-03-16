@@ -73,8 +73,9 @@ git commit
 ## Review non-conflicting changes ##
 
 You don't only have to fix merge conflicts. It is important to also look at
-the unconflicted changes listed in the output of `git status` and verify that
-you want to include all those changes.
+the unconflicted changes listed in the outputs of `git status` and 
+`git diff origin/develop` and verify that you want to include all those 
+changes.
 
 ```sh
 git diff origin/develop
