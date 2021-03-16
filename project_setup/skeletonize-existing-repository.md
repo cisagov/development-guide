@@ -51,6 +51,18 @@ git checkout -b skeletonize
 git pull skeleton-parent develop --allow-unrelated-histories
 ```
 
+## Set up your environment and pre-commit hooks ##
+
+Follow the instructions in [CONTRIBUTING.md on setting up pre-commit](../CONTRIBUTING.md#setting-up-pre-commit)
+to run `setup-env` and enable the `pre-commit` hooks. If you have already set
+up the prerequisites, this involves:
+
+```sh
+# In the root directory of the repository
+./setup-env
+pre-commit install
+```
+
 ## Fix merge conflicts ##
 
 This merge process will almost certainly fail, resulting in merge conflicts.
@@ -73,8 +85,8 @@ git commit
 ## Review non-conflicting changes ##
 
 You don't only have to fix merge conflicts. It is important to also look at
-the unconflicted changes listed in the outputs of `git status` and 
-`git diff origin/develop` and verify that you want to include all those 
+the unconflicted changes listed in the outputs of `git status` and
+`git diff origin/develop` and verify that you want to include all those
 changes.
 
 ```sh
@@ -97,16 +109,13 @@ codebase familiarity
 Some skeletons need additional configuration, such as with
 `skeleton-python-library` and its module structure inside `src/example`.
 
-## Set up pre-commit ##
+## Run pre-commit against existing files ##
 
 The skeleton will bring along with it our standard pre-commit hook
-configurations, including linting and other checks.
+configurations, including linting and other checks, with `setup-env`.
 
 ```sh
-# Install pre-commit
-pre-commit install
-
-# Run against all your existing files
+# Check all existing files
 pre-commit run --all-files
 ```
 
