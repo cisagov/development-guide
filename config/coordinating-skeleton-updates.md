@@ -34,7 +34,7 @@ Wait until the [Lineage GitHub Action] has completed, then:
 1. Go to the next PR and click `Merge branch 'develop' into <this-branch>` -
   you can also rebase from the command-line if you prefer
 1. Wait for tests to complete and merge this PR
-1. Repeat the precending steps for the next batched PR until all PRs are merged
+1. Repeat the preceding steps for the next batched PR until all PRs are merged
 1. Wait for Lineage to run and then review and merge the resulting PRs
 
 ## Schedule ##
