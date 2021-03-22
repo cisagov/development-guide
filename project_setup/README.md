@@ -3,19 +3,27 @@
 We recommend you follow the directions below and use a skeleton for
 all new repositories.
 
-For repositories created from skeletons, run `pre-commit install` to enable
-linting and other tools to prevent new commits from immediately running into
-linting failures.
+The [`skeleton`](scripts/skeleton)
+helper tool included in the [`scripts`](scripts) directory can quickly setup
+a new local repository. Once you've cloned and configured the repository
+to your local machine, it can be published to a repository created on GitHub.
+
+For repositories created from skeletons, run `setup-env` and
+`pre-commit install` to [set up your environment](#set-up-your-environment-and-pre-commit),
+enable linting and other tools to prevent new commits from immediately
+running into linting failures.
 
 Once you've set up a repository, make sure to enable
 branch protection - [see our branch protection guide for details](branch-protection.md).
 
 ## Contents ##
 
+- [Adding a skeleton configuration to an existing repository](#adding-a-skeleton-configuration-to-an-existing-repository)
 - [Using the skeleton tool to start a new repository 💀🛠](#using-the-skeleton-tool-to-start-a-new-repository-%F0%9F%92%80%F0%9F%9B%A0)
   - [Selecting a skeleton](#selecting-a-skeleton)
   - [Cloning a selected skeleton](#cloning-a-selected-skeleton)
 - [Create and publish the GitHub repository](#create-and-publish-the-github-repository)
+- [Set up your environment and pre-commit](#set-up-your-environment-and-pre-commit)
 - [Create an initial pull request](#create-an-initial-pull-request)
 - [Setting up branch protection](#setting-up-branch-protection)
 - [Setting up type-specific configuration settings](#setting-up-type-specific-configuration-settings)
@@ -23,6 +31,11 @@ branch protection - [see our branch protection guide for details](branch-protect
   - [Ansible requirement file generation tool 🧻🛠](#ansible-requirement-file-generation-tool-%F0%9F%A7%BB%F0%9F%9B%A0)
   - [Terraform IAM credentials to GitHub secrets 🔑‍👉🤫](#terraform-iam-credentials-to-github-secrets-%F0%9F%94%91%E2%80%8D%F0%9F%91%89%F0%9F%A4%AB)
   - [Managing SSM parameters from files 🗂👉☁️](#managing-ssm-parameters-from-files-%F0%9F%97%82%F0%9F%91%89%E2%98%81%EF%B8%8F)
+
+## Adding a skeleton configuration to an existing repository ##
+
+To skeletonize an existing repository, please see the guide to
+[skeletonize an existing repository](skeletonize-existing-repository.md).
 
 ## Using the skeleton tool to start a new repository 💀🛠 ##
 
@@ -36,7 +49,8 @@ to your local machine, you then publish it to a repository created on GitHub.
 ### Selecting a skeleton ###
 
 First, identify a suitable skeleton project to use as the starting point
-for your new repository.
+for your new repository. For a list of available skeletons, see the
+[Skeleton List](skeleton-list.md) or use the following command:
 
 ```bash
 ./skeleton list
@@ -147,6 +161,18 @@ Next, publish your new repository to GitHub:
 git push --set-upstream origin develop
 ```
 
+## Set up your environment and pre-commit ##
+
+Follow the instructions in [CONTRIBUTING.md on setting up pre-commit](../CONTRIBUTING.md#setting-up-pre-commit)
+to run `setup-env` and enable the `pre-commit` hooks. If you have already set
+up the prerequisites, this involves:
+
+```sh
+# In the root directory of the repository
+./setup-env
+pre-commit install
+```
+
 ## Create an initial pull request ##
 
 You probably want to add code, documentation, and other items to your
@@ -169,6 +195,9 @@ extremely useful for quality control and automated testing,
 so we require these checks to pass before merging. This first PR will ensure
 your new repository is ready to go and give your teammates a chance to review
 your code before merging it.
+
+If a status check doesn't apply to your new repository, leave it enabled
+anyway - it won't hurt anything.
 
 ## Setting up branch protection ##
 
