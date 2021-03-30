@@ -16,7 +16,8 @@ Results should be reviewed by humans.
 This assumes you are on MacOS with [HomeBrew](https://brew.sh) installed.
 
 - Install `gitleaks` via `brew install gitleaks`
-- Add the pattern configuration file somewhere like `$HOME/.git-support/gitleaks.toml`
+- Add the pattern configuration file `gitleaks.toml` somewhere like
+`$HOME/.git-support/gitleaks.toml`
 
 ## Usage ##
 
@@ -25,13 +26,13 @@ finished installation, you can use the `--repo-path=<relative path>` option.
 
 Useful flags:
 
-- `--config=<file-path>` specifies the configuration file to use
-- `--repo-path=<relative-path>` specifies a local repository folder to check
+- `--config-path=<file-path>` specifies the configuration file to use
+- `--path=<relative-path>` specifies a local repository folder to check
 - `--verbose` gives you more details about each item found
 - `--pretty` formats the output so it's more human-readable
 
 ```sh
-gitleaks --config=$HOME/.git-support/gitleaks.toml --repo-path=<relative-repo-path> --verbose --pretty
+gitleaks --config-path=$HOME/.git-support/gitleaks.toml --path=<relative-repo-path> --verbose --pretty
 ```
 
 Without the `--verbose` flag, you'll get output with totals but not details,
