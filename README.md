@@ -6,31 +6,31 @@ A set of guidelines and best practices for an awesome engineering team.
 Heavily "inspired" by the
 [18F Development Guide](https://github.com/18f/development-guide).
 
-* [Open Source Policy](/open-source-policy)
-<!-- * [Development Ethos](/ethos)-->
-* [Project Setup](/project_setup)
-* [Development Environments](/dev_envs)
-  * [CISA-provided Mac Setup](/dev_envs/mac-env-setup.md)
-* Language Guides
-  * HCL
-  * JavaScript
-  * [Python](/languages/python)
+- [Open Source Policy](/open-source-policy)
+<!-- - [Development Ethos](/ethos)-->
+- [Project Setup](/project_setup)
+- [Development Environments](/dev_envs)
+  - [CISA-provided Mac Setup](/dev_envs/mac-env-setup.md)
+- Language Guides
+  - HCL
+  - JavaScript
+  - [Python](/languages/python)
 
 ## Git, GitHub, and you ##
 
-* [FISMA-Ready GitHub account setup](https://github.com/fisma-ready/github)
-* [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules)
+- [FISMA-Ready GitHub account setup](https://github.com/fisma-ready/github)
+- [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules)
 
 ## Tools and services we use ##
 
-* [AWS](https://aws.amazon.com) - Our main cloud provider
-* [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
-* [GitHub Actions](https://github.com/features/actions) -
+- [AWS](https://aws.amazon.com) - Our main cloud provider
+- [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
+- [GitHub Actions](https://github.com/features/actions) -
   Continuous integration and delivery
-* [LGTM](https://lgtm.com/search?q=cisagov) - Code analysis platform for
+- [LGTM](https://lgtm.com/search?q=cisagov) - Code analysis platform for
   finding zero-days and preventing critical vulnerabilities
-* [PyPi](https://pypi.org/search/?q=cisagov) - Python package publication
-* [Snyk](https://app.snyk.io/org/cisagov) - Dependency vulnerability management
+- [PyPi](https://pypi.org/search/?q=cisagov) - Python package publication
+- [Snyk](https://app.snyk.io/org/cisagov) - Dependency vulnerability management
   and remediation
 
 ## Installation ##
