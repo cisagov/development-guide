@@ -100,6 +100,9 @@ repos:
     rev: v0.910
     hooks:
       - id: mypy
+        additional_dependencies:
+          - types-PyYAML
+          - types-requests
   - repo: https://github.com/asottile/pyupgrade
     rev: v2.21.2
     hooks:
