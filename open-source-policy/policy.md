@@ -10,8 +10,8 @@ The default position of CISA when developing new projects is to:
 1. Use Free and Open Source Software (FOSS), which is software that does not
 charge users a purchase or licensing fee for modifying or redistributing the
 source code, in our projects and contribute back to the open source community.
-2. Develop our work in the open.
-3. Publish publicly all source code created or modified by CISA, whether
+1. Develop our work in the open.
+1. Publish publicly all source code created or modified by CISA, whether
 developed in-house by government staff or through contracts negotiated by CISA.
 
 ## Benefits ##
@@ -125,10 +125,10 @@ organization, then the code is subject to whatever license it carries.
 The only conditions where code shall not be developed and released in the open
 are:
 
-* The U.S. Government does not have the rights to reproduce and release the
+- The U.S. Government does not have the rights to reproduce and release the
   item.
 
-* The public release of the item is restricted by other law or regulation, such
+- The public release of the item is restricted by other law or regulation, such
   as the Export Administration Regulations or the International Traffic in Arms
   Regulation.
 
