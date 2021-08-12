@@ -170,7 +170,6 @@ up the prerequisites, this involves:
 ```sh
 # In the root directory of the repository
 ./setup-env
-pre-commit install
 ```
 
 ## Create an initial pull request ##
