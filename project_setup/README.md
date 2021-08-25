@@ -23,6 +23,7 @@ branch protection - [see our branch protection guide for details](branch-protect
   - [Selecting a skeleton](#selecting-a-skeleton)
   - [Cloning a selected skeleton](#cloning-a-selected-skeleton)
 - [Create and publish the GitHub repository](#create-and-publish-the-github-repository)
+- [Disabling squash merging](#disabling-squash-merging)
 - [Set up your environment and pre-commit](#set-up-your-environment-and-pre-commit)
 - [Create an initial pull request](#create-an-initial-pull-request)
 - [Setting up branch protection](#setting-up-branch-protection)
@@ -160,6 +161,12 @@ Next, publish your new repository to GitHub:
 ```bash
 git push --set-upstream origin develop
 ```
+
+## Disabling squash merging ##
+
+Click on the settings tab for your new repository and, in the
+"Options" section, make sure that "Allow squash merging" is
+_unchecked_.
 
 ## Set up your environment and pre-commit ##
 

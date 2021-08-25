@@ -22,18 +22,19 @@ In `Settings`, go to the `Branches` entry and create a rule with the following:
     - [X] Require review from Code Owners
     - [X] Restrict who can dismiss pull request reviews
   - [X] Require status checks to pass before merging
-  - [X] Require branches to be up to date before merging
-    - There may be a list of status checks under this option. We require
-    passing status checks to merge, so all status checks should generally be
-    checked as required.
-    - Please note that the list of status checks will not fully populate in a
-    new repository until the first pull request (PR) has been created.
+    - [X] Require branches to be up to date before merging
+      - There may be a list of status checks under this option. We require
+      passing status checks to merge, so all status checks should generally be
+      checked as required.
+      - Please note that the list of status checks will not fully populate in a
+      new repository until the first pull request (PR) has been created.
+  - [X] Require conversation resolution before merging
   - [ ] Require signed commits
   - [ ] Require linear history
   - [X] Include administrators
   - [X] Restrict who can push to matching branches
     - Note: this allows by default "People, teams or apps with push access", so
-you likely don't have to make any changes under this entry
+you likely don't have to make any changes _under_ this entry
 
 - Rules applied to everyone including administrators
   - [ ] Allow force pushes
