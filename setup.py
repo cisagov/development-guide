@@ -77,7 +77,7 @@ setup(
         "test": [
             "pre-commit",
             "coveralls",
-            "coverage < 6.0",
+            "coverage < 7.0",
             "pytest-cov",
             "pytest",
         ]
