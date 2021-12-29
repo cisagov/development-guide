@@ -4,11 +4,11 @@ We have an "open-by-default" development policy. This document is meant to
 give specific team guidance on putting our [open source policy](policy.md)
 into practice.
 
-* CISA releases software into the [international public domain](#public-domain).
-* Contribute back to outside open source projects whenever possible.
-* We [develop our software in the open](#working-in-public), while also
+- CISA releases software into the [international public domain](#public-domain).
+- Contribute back to outside open source projects whenever possible.
+- We [develop our software in the open](#working-in-public), while also
   [protecting sensitive information](#protecting-sensitive-information).
-* There are [narrow, documented exceptions](#exceptions) where we may delay or
+- There are [narrow, documented exceptions](#exceptions) where we may delay or
   withhold source code.
 
 CISA team members should work with the strong presumption that all of their
@@ -67,17 +67,17 @@ official capacity.
 
 1. See if there is an organizational CLA available
 1. Send the agreement to DHS's Office of General Counsel (OGC) for review
-    * Email cisagov-github-group@trio.dhs.gov to determine the best contact
+    - Email cisagov-github-group@trio.dhs.gov to determine the best contact
 1. Collect names/emails/GitHub usernames (whatever is needed) for folks you
 think will be contributing
-    * Err on the side of adding too many than too few - this is much easier
+    - Err on the side of adding too many than too few - this is much easier
 1. Get it signed
 1. Add to list below
 1. Contribute
 
 CISA currently has the following CLAs signed:
 
-* None 😒
+- None 😒
 
 ## How to license CISA repos ##
 
@@ -94,14 +94,14 @@ public.
 
 Projects can **encourage public contributions** by:
 
-* Creating open issues where public help would be especially welcome
-* Labeling those issues with `help wanted` so people can scan issues quickly
+- Creating open issues where public help would be especially welcome
+- Labeling those issues with `help wanted` so people can scan issues quickly
 and [services](http://www.codeforamerica.org/geeks/civicissues) can aggregate
 volunteer opportunities
-* Asking for contributions, in the README and in other public writing about the
+- Asking for contributions, in the README and in other public writing about the
   project
-* Providing solid documentation for any project setup process
-* Being super nice when communicating with volunteers
+- Providing solid documentation for any project setup process
+- Being super nice when communicating with volunteers
 
 As [described above](#public-domain), CISA projects are dedicated to the
 international public domain wherever possible. In this situation, contributors
@@ -150,29 +150,29 @@ incident and follow the established information spill procedures.
 
 Sensitive information we need to protect includes, but is not limited to:
 
-* Information an attacker could plausibly use to help them compromise any
+- Information an attacker could plausibly use to help them compromise any
 system (including a prototype/development system). Examples:
-  * **Secret keys:** Passwords, passcodes, access codes, access tokens, API
+  - **Secret keys:** Passwords, passcodes, access codes, access tokens, API
   keys, TLS keys, SSH keys, OAuth secrets, or any other “secret keys” that
   protect access to something.
-  * **Undisclosed vulnerabilities:** If we know of a security problem or
+  - **Undisclosed vulnerabilities:** If we know of a security problem or
   potential security problem with our code that isn’t already publicly-known
   (such as a vulnerability that can’t be found with a publicly-available open
   source scanning tool run on the public-facing system), we shouldn’t write
   publicly about it until we fix it.
-* Nonpublic information in general about vulnerabilities, including
+- Nonpublic information in general about vulnerabilities, including
 attribution/source information (such as how and when we learned about a
 vulnerability, if the disclosure to us was not public).
-* We may wish to withhold some non-CISA IP addresses. If something looks like
+- We may wish to withhold some non-CISA IP addresses. If something looks like
 an IP address, ask CISA Infrastructure before publishing that info.
-* Personally Identifiable Information (PII). Here’s [OMB's definition and GSA's policy](http://www.gsa.gov/portal/content/104256).
+- Personally Identifiable Information (PII). Here’s [OMB's definition and GSA's policy](http://www.gsa.gov/portal/content/104256).
 18F also has [guidance for systems involving PII](https://pages.18f.gov/before-you-ship/security/pii/).
-* Some kinds of procurement and acquisition information, which may include
+- Some kinds of procurement and acquisition information, which may include
 non-public cost or pricing data, contract information, trade secrets, indirect
 costs, and direct labor rates. If you’re an CISA team member working with this
 kind of data, ask our acquisition specialists for help determining whether it
 can be public.
-* Emergency procedures, such as evacuation plans.
+- Emergency procedures, such as evacuation plans.
 
 There are more categories of controlled unclassified information to protect;
 those are just the kinds that we work with most often. Here’s the
@@ -209,11 +209,11 @@ some work applicability.
 
 When creating new open source projects:
 
-* If you're creating a repo because it's primarily for your CISA work, and the
+- If you're creating a repo because it's primarily for your CISA work, and the
 work you perform in it is primarily to benefit CISA, start the repo's life in
 the CISA organization. It's okay if you also think it'll be helpful in
 personal work.
-* If you're creating a repo that isn't primarily for CISA work, but you think
+- If you're creating a repo that isn't primarily for CISA work, but you think
 will likely see use at CISA, start it in your personal account. If you don't
 have strong feelings or concerns about ownership, consider releasing the
 project under CC0 to save yourself even having to ever think about it.

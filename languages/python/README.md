@@ -30,7 +30,7 @@ contains a set of **default** linters and syntax checkers.  See the
 [`CONTRIBUTING`](https://github.com/cisagov/skeleton-python-library/blob/develop/CONTRIBUTING.md)
 file of this project for the most up-to-date information.
 
-## Correctness and Security ##
+## Correctness and security ##
 
 Our **standard** code vulnerability scanners in cisagov are
 [LGTM](https://lgtm.com) and [Snyk](https://snyk.io).
@@ -56,7 +56,7 @@ recommend when trying to solve them.
 | Test Runner | [py.test](https://docs.pytest.org/en/latest/) | Standard |
 | Web framework | [Flask](https://palletsprojects.com/p/flask/) | Default |
 
-## Type Support ##
+## Type support ##
 
 Python 3.5 and beyond have had partial support for static type hints. Static
 typing can both make code authors' intent clearer and reduce the number of

@@ -4,8 +4,9 @@ set -o nounset
 set -o errexit
 set -o pipefail
 
-USAGE=$(cat << 'END_OF_LINE'
-Configure a developement environment for this repository.
+USAGE=$(
+  cat << 'END_OF_LINE'
+Configure a development environment for this repository.
 
 It does the following:
   - Verifies pyenv and pyenv-virtualenv are installed.
@@ -35,29 +36,29 @@ FORCE=0
 PARAMS=""
 
 # Parse command line arguments
-while (( "$#" )); do
+while (("$#")); do
   case "$1" in
-    -f|--force)
+    -f | --force)
       FORCE=1
       shift
       ;;
-    -h|--help)
+    -h | --help)
       echo "${USAGE}"
       exit 0
       ;;
-    -i|--install-hooks)
+    -i | --install-hooks)
       INSTALL_HOOKS=1
       shift
       ;;
     -*) # unsupported flags
-       echo "Error: Unsupported flag $1" >&2
-       exit 1
-       ;;
+      echo "Error: Unsupported flag $1" >&2
+      exit 1
+      ;;
     *) # preserve positional arguments
-       PARAMS="$PARAMS $1"
-       shift
-       ;;
-      esac
+      PARAMS="$PARAMS $1"
+      shift
+      ;;
+  esac
 done
 
 # set positional arguments in their proper place
@@ -160,7 +161,8 @@ pre-commit install ${INSTALL_HOOKS:+"--install-hooks"}
 # This could fail if the remotes are already setup, but that is ok.
 set +o errexit
 
-eval "$(python3 << 'END_OF_LINE'
+eval "$(
+  python3 << 'END_OF_LINE'
 from pathlib import Path
 import yaml
 import sys

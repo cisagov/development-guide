@@ -1,37 +1,91 @@
 # Project Setup #
 
-## Skeleton Tool 💀🛠 ##
+We recommend you follow the directions below and use a skeleton for
+all new repositories.
 
-It is recommended that you start your project from one of the
-[skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
-that exist in this organization.  The [`skeleton`](scripts/skeleton)
+The [`skeleton`](scripts/skeleton)
 helper tool included in the [`scripts`](scripts) directory can quickly setup
-a new local repository.  Once you've cloned and configured the repository
+a new local repository. Once you've cloned and configured the repository
 to your local machine, it can be published to a repository created on GitHub.
 
+For repositories created from skeletons, run `setup-env` and
+`pre-commit install` to [set up your environment](#set-up-your-environment-and-pre-commit),
+enable linting and other tools to prevent new commits from immediately
+running into linting failures.
+
+Once you've set up a repository, make sure to enable
+branch protection - [see our branch protection guide for details](branch-protection.md).
+
+## Contents ##
+
+- [Adding a skeleton configuration to an existing repository](#adding-a-skeleton-configuration-to-an-existing-repository)
+- [Using the skeleton tool to start a new repository 💀🛠](#using-the-skeleton-tool-to-start-a-new-repository-%F0%9F%92%80%F0%9F%9B%A0)
+  - [Selecting a skeleton](#selecting-a-skeleton)
+  - [Cloning a selected skeleton](#cloning-a-selected-skeleton)
+- [Create and publish the GitHub repository](#create-and-publish-the-github-repository)
+- [Disabling squash merging](#disabling-squash-merging)
+- [Set up your environment and pre-commit](#set-up-your-environment-and-pre-commit)
+- [Create an initial pull request](#create-an-initial-pull-request)
+- [Setting up branch protection](#setting-up-branch-protection)
+- [Setting up type-specific configuration settings](#setting-up-type-specific-configuration-settings)
+  - [Setting up Coveralls for Python projects](#setting-up-coveralls-for-python-projects)
+  - [Ansible requirement file generation tool 🧻🛠](#ansible-requirement-file-generation-tool-%F0%9F%A7%BB%F0%9F%9B%A0)
+  - [Terraform IAM credentials to GitHub secrets 🔑‍👉🤫](#terraform-iam-credentials-to-github-secrets-%F0%9F%94%91%E2%80%8D%F0%9F%91%89%F0%9F%A4%AB)
+  - [Managing SSM parameters from files 🗂👉☁️](#managing-ssm-parameters-from-files-%F0%9F%97%82%F0%9F%91%89%E2%98%81%EF%B8%8F)
+
+## Adding a skeleton configuration to an existing repository ##
+
+To skeletonize an existing repository, please see the guide to
+[skeletonize an existing repository](skeletonize-existing-repository.md).
+
+## Using the skeleton tool to start a new repository 💀🛠 ##
+
+We recommend that you start your project from one of the
+[skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
+in this organization.  The [`skeleton`](scripts/skeleton)
+helper tool included in the [`scripts`](scripts) directory can quickly setup
+a new local repository.  Once you've cloned and configured the repository
+to your local machine, you then publish it to a repository created on GitHub.
+
+### Selecting a skeleton ###
+
 First, identify a suitable skeleton project to use as the starting point
-for your new repository.
+for your new repository. For a list of available skeletons, see the
+[Skeleton List](skeleton-list.md) or use the following command:
 
 ```bash
 ./skeleton list
 ```
 
-```text
+```console
 Available skeletons in cisagov:
 
-skeleton-docker
-        A skeleton project for quickly getting a new cisagov Docker container started.
+skeleton-python-library
+    A skeleton project for quickly getting a new cisagov Python library started.
 
-skeleton-ansible-role
-        A skeleton project for quickly getting a new cisagov Ansible role started.
+skeleton-docker
+    A skeleton project for quickly getting a new cisagov Docker container started.
 
 skeleton-generic
-        A generic skeleton project for quickly getting a new cisagov project started.
+    A generic skeleton project for quickly getting a new cisagov project started.
 
-skeleton-python-library
-        A skeleton project for quickly getting a new cisagov Python library started.
+skeleton-tf-module
+    A skeleton project for quickly getting a new cisagov Terraform module started.
 
+skeleton-ansible-role
+    A skeleton project for quickly getting a new cisagov Ansible role started.
+
+skeleton-ansible-role-with-test-user
+    A skeleton project for quickly getting a new cisagov Ansible role started when that role requires an AWS test user.
+
+skeleton-packer
+    A skeleton project for quickly getting a new cisagov packer project started.
+
+skeleton-aws-lambda
+    A skeleton project for quickly getting a new cisagov Python AWS Lambda started.
 ```
+
+### Cloning a selected skeleton ###
 
 Next, use the `skeleton` tool to clone, rename, and prepare the contents of
 your new repository for publication.  The tool will print out each command it
@@ -42,13 +96,15 @@ is issuing and its result.
 ```
 
 For example, to create a project based on `skeleton-ansible-role` named
-`ansible-role-quantum-rng` in your `~/projects` directory:
+`ansible-role-quantum-rng` in your local `~/projects` directory:
 
 ```bash
 ./skeleton clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng
 ```
 
-```text
+This command results in:
+
+```console
 ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 💬 Clone an existing remote repository to the new name locally.
 ➤  git clone git@github.com:cisagov/skeleton-ansible-role.git ansible-role-quantum-rng
@@ -87,20 +143,92 @@ Use the following commands to push the new repository to github:
     git push --set-upstream origin develop
 ```
 
-Once the `skeleton` tool is complete, inspect the new repository for accuracy.
+## Create and publish the GitHub repository ##
+
+Once the `skeleton` tool has run, the next step is to publish to a GitHub
+remote repository.
 
 To publish your new repository on GitHub, the remote must already exist.
 [Create a new repository](https://github.com/organizations/cisagov/repositories/new)
 on GitHub with the same name as your new local repository.  If you do not
 have permission, ask an administrator to create it for you.
 
-If everything looks good, publish your new repository to GitHub:
+Add the repository name and description, set the repository to public, and
+skip the rest of the options.
+
+Next, publish your new repository to GitHub:
 
 ```bash
 git push --set-upstream origin develop
 ```
 
-## Ansible Requirement File Generation Tool 🧻🛠 ##
+## Disabling squash merging ##
+
+Click on the settings tab for your new repository and, in the
+"Options" section, make sure that "Allow squash merging" is
+_unchecked_.
+
+## Set up your environment and pre-commit ##
+
+Follow the instructions in [CONTRIBUTING.md on setting up pre-commit](../CONTRIBUTING.md#setting-up-pre-commit)
+to run `setup-env` and enable the `pre-commit` hooks. If you have already set
+up the prerequisites, this involves:
+
+```sh
+# In the root directory of the repository
+./setup-env
+```
+
+## Create an initial pull request ##
+
+You probably want to add code, documentation, and other items to your
+repository to customize it from the skeleton and make changes.
+
+Create a new branch called `first-commits` and publish it:
+
+```bash
+git checkout -b first-commits
+git push origin first-commits --set-upstream
+```
+
+Edit the existing files and add your own as needed, then commit your changes,
+push them, and create a pull request (PR) via GitHub or the command-line for
+your teammates to review.
+
+GitHub only populates its list of status checks once a PR
+has been created so checks can run against changes. Status checks are
+extremely useful for quality control and automated testing,
+so we require these checks to pass before merging. This first PR will ensure
+your new repository is ready to go and give your teammates a chance to review
+your code before merging it.
+
+If a status check doesn't apply to your new repository, leave it enabled
+anyway - it won't hurt anything.
+
+## Setting up branch protection ##
+
+Once you've made your initial pull request, enable [branch protection](branch-protection.md)
+to enforce the `codeowners` approval requirements for pull requests.
+
+## Setting up type-specific configuration settings ##
+
+### Setting up Coveralls for Python projects ###
+
+The README for your new Python project will be prepared with a Coveralls badge.
+To make the badge work properly, you'll need to add a repository secret.
+
+1. Visit [Coveralls](https://coveralls.io/) and go to `Add Repos`.
+1. Select your new repository and enable it. This will take you to a
+page with `Python set up for Coveralls`. The code block will have an entry for
+`repo_token: <token>`.
+1. Copy the `repo_token` value.
+1. On GitHub, visit your new repository's `Settings -> Secrets` page.
+    - Note: If you don't have access to `Settings`, please contact an
+    administrator to do this step for you.
+1. Add a `New repository secret` and name it `COVERALLS_REPO_TOKEN` with the
+value from Coveralls.
+
+### Ansible requirement file generation tool 🧻🛠 ###
 
 We have a [plethora](https://www.youtube.com/watch?v=zWld721Wk-Q) of
 [ansible-roles in our organization](https://github.com/search?q=org%3Acisagov+topic%3Aansible-role+NOT+skeleton+archived%3Afalse).
@@ -117,7 +245,7 @@ usage of the tool is:
 This file will now contain definitions for all the Ansible roles.  Edit
 the file, and remove any role that will not be required for your project.
 
-## Terraform IAM Credentials to GitHub Secrets 🔑‍👉🤫 ##
+### Terraform IAM credentials to GitHub secrets 🔑‍👉🤫 ###
 
 When GitHub Actions workflows require credentials to run we provide them via
 [secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
@@ -149,7 +277,7 @@ terraform-to-secrets 9f4ae878de917c7cf191b9861d3c1cf9224939f7
 2020-02-22 15:50:41,036 INFO Success!
 ```
 
-## Managing SSM Parameters from Files 🗂👉☁️ ##
+### Managing SSM parameters from files 🗂👉☁️ ###
 
 Use the [`ssm-param`](scripts/ssm-param) tool to copy files into
 [SSM parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-about-examples.html)
