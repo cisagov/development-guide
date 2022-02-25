@@ -125,7 +125,7 @@ written in specific languages
 
 ### Command-line ###
 
-- `console` is most effective at highlighting a command _and_ its resulting
+- `console` is most effective at highlighting a command *and* its resulting
 output, like this:
 
     ```console
@@ -136,7 +136,7 @@ output, like this:
     yet more output
     ```
 
-- `shell` should be used for result-less commands, _especially_ if
+- `shell` should be used for result-less commands, *especially* if
 there is any shell-fu like pipes, file redirects, shell variables, etc. to
 apply syntax highlighting so the reader is more aware of the magic happening
 

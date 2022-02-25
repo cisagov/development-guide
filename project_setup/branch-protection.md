@@ -34,7 +34,7 @@ In `Settings`, go to the `Branches` entry and create a rule with the following:
   - [X] Include administrators
   - [X] Restrict who can push to matching branches
     - Note: this allows by default "People, teams or apps with push access", so
-you likely don't have to make any changes _under_ this entry
+you likely don't have to make any changes *under* this entry
 
 - Rules applied to everyone including administrators
   - [ ] Allow force pushes

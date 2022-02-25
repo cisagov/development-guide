@@ -142,7 +142,7 @@ information can include code, configuration, content, or documentation. (We
 have [approved options for sharing sensitive information](https://handbook.18f.gov/sensitive-information/).)
 
 If CISA team members aren't sure whether they should make something public,
-they should ask a person on our CISA Infrastructure team for advice _first_.
+they should ask a person on our CISA Infrastructure team for advice *first*.
 
 If CISA team members inadvertently come into the possession of classified
 information (Secret, Top Secret, etc.), they should immediately report the

@@ -166,7 +166,7 @@ git push --set-upstream origin develop
 
 Click on the settings tab for your new repository and, in the
 "Options" section, make sure that "Allow squash merging" is
-_unchecked_.
+*unchecked*.
 
 ## Set up your environment and pre-commit ##
 

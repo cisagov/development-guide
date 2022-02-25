@@ -71,8 +71,8 @@ def clone_repo(parent_repo, new_repo, org, dir=None):
     )
     run("git tag -d $(git tag -l)", f"Delete all local git tags from {parent_repo}")
     run(
-        fr"find . \( ! -regex '.*/\.git/.*' \) -type f -exec "
-        fr"perl -pi -e s/{parent_repo}/{new_repo}/g {{}} \;",
+        rf"find . \( ! -regex '.*/\.git/.*' \) -type f -exec "
+        rf"perl -pi -e s/{parent_repo}/{new_repo}/g {{}} \;",
         "Search and replace repository name in source files.",
     )
     lineage = {
