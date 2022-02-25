@@ -4,7 +4,7 @@
 
 When someone new joins the team:
 
-1. Create a new issue called "Onboard _Name_" from this template.
+1. Create a new issue called "Onboard *Name*" from this template.
 1. Remove any block of tasks that doesn't apply to the new team member's role.
 1. Assign the new person's onboarding buddy to this issue.
 1. Remove this `Instructions` block.
@@ -17,8 +17,8 @@ When someone new joins the team:
 **Onboardee and buddy:** Try to go through your checklists in order.
 
 **Buddy:** If you can’t complete any of the items on your checklist
-personally, _you are responsible for ensuring that someone with the
-correct access completes that item._
+personally, *you are responsible for ensuring that someone with the
+correct access completes that item.*
 
 ## Onboardee checklist ##
 
