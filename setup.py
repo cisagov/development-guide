@@ -62,6 +62,7 @@ setup(
     python_requires=">=3.6",
     # What does your project relate to?
     keywords="documentation",
+    package_dir={"": "project_setup/scripts"},
     install_requires=[
         "boto3",
         "docopt",
