@@ -31,7 +31,7 @@ In `Settings`, go to the `Branches` entry and create a rule with the following:
   - [X] Require conversation resolution before merging
   - [ ] Require signed commits
   - [ ] Require linear history
-  - [X] Include administrators
+  - [X] Do not allow bypassing the above settings
   - [X] Restrict who can push to matching branches
     - Note: this allows by default "People, teams or apps with push access", so
 you likely don't have to make any changes *under* this entry
