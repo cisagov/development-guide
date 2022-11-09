@@ -24,7 +24,7 @@ non-skeletonized repository
 1. [Review non-conflicting changes](#review-non-conflicting-changes) to
 prevent merging destructive upstream changes
 1. [Update skeleton's `example` references](#update-skeletons-example-references)
-1. [Set up pre-commit](#set-up-pre-commit)
+1. [Set up pre-commit](#set-up-your-environment-and-pre-commit-hooks)
 1. Fix additional problems that may arise
 1. [Make a pull request](#make-a-pull-request)
 

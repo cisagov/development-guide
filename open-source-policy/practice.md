@@ -8,8 +8,8 @@ into practice.
 - Contribute back to outside open source projects whenever possible.
 - We [develop our software in the open](#working-in-public), while also
   [protecting sensitive information](#protecting-sensitive-information).
-- There are [narrow, documented exceptions](#exceptions) where we may delay or
-  withhold source code.
+- There are [narrow, documented exceptions](policy.md#exceptions) where we may
+  delay or withhold source code.
 
 CISA team members should work with the strong presumption that all of their
 code will be public, both during and after development.
