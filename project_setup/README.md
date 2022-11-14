@@ -19,7 +19,7 @@ branch protection - [see our branch protection guide for details](branch-protect
 ## Contents ##
 
 - [Adding a skeleton configuration to an existing repository](#adding-a-skeleton-configuration-to-an-existing-repository)
-- [Using the skeleton tool to start a new repository 💀🛠](#using-the-skeleton-tool-to-start-a-new-repository-%F0%9F%92%80%F0%9F%9B%A0)
+- [Using the skeleton tool to start a new repository 💀🛠](#using-the-skeleton-tool-to-start-a-new-repository-)
   - [Selecting a skeleton](#selecting-a-skeleton)
   - [Cloning a selected skeleton](#cloning-a-selected-skeleton)
 - [Create and publish the GitHub repository](#create-and-publish-the-github-repository)
@@ -29,9 +29,9 @@ branch protection - [see our branch protection guide for details](branch-protect
 - [Setting up branch protection](#setting-up-branch-protection)
 - [Setting up type-specific configuration settings](#setting-up-type-specific-configuration-settings)
   - [Setting up Coveralls for Python projects](#setting-up-coveralls-for-python-projects)
-  - [Ansible requirement file generation tool 🧻🛠](#ansible-requirement-file-generation-tool-%F0%9F%A7%BB%F0%9F%9B%A0)
-  - [Terraform IAM credentials to GitHub secrets 🔑‍👉🤫](#terraform-iam-credentials-to-github-secrets-%F0%9F%94%91%E2%80%8D%F0%9F%91%89%F0%9F%A4%AB)
-  - [Managing SSM parameters from files 🗂👉☁️](#managing-ssm-parameters-from-files-%F0%9F%97%82%F0%9F%91%89%E2%98%81%EF%B8%8F)
+  - [Ansible requirement file generation tool 🧻🛠](#ansible-requirement-file-generation-tool-)
+  - [Terraform IAM credentials to GitHub secrets 🔑‍👉🤫](#terraform-iam-credentials-to-github-secrets-)
+  - [Managing SSM parameters from files 🗂👉☁️](#managing-ssm-parameters-from-files-%EF%B8%8F)
 
 ## Adding a skeleton configuration to an existing repository ##
 

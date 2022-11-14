@@ -42,7 +42,7 @@ def put_file(session, filename, parameter_name, overwrite, regions):
     """Create a parameter from the contents of a file in multiple regions."""
     new_parameter_name = calc_parameter_name(filename, parameter_name)
 
-    with open(filename, "r") as f:
+    with open(filename) as f:
         file_contents = f.read()
 
     for region in regions:
