@@ -27,8 +27,10 @@ Heavily "inspired" by the
 - [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
 - [GitHub Actions](https://github.com/features/actions) -
   Continuous integration and delivery
-- [LGTM](https://lgtm.com/search?q=cisagov) - Code analysis platform for
-  finding zero-days and preventing critical vulnerabilities
+- (Deprecated) [LGTM](https://lgtm.com/search?q=cisagov) - Code analysis
+  platform for finding zero-days and preventing critical vulnerabilities
+- [CodeQL](https://codeql.github.com) - Code analysis engine developed by GitHub
+  to automate security checks, replaces LGTM
 - [PyPi](https://pypi.org/search/?q=cisagov) - Python package publication
 - [Snyk](https://app.snyk.io/org/cisagov) - Dependency vulnerability management
   and remediation

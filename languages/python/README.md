@@ -33,7 +33,7 @@ file of this project for the most up-to-date information.
 ## Correctness and security ##
 
 Our **standard** code vulnerability scanners in cisagov are
-[LGTM](https://lgtm.com) and [Snyk](https://snyk.io).
+[LGTM](https://lgtm.com) (soon to be [CodeQL](https://codeql.github.com/) and [Snyk](https://snyk.io).
 By **default** all repositories in the organization are scanned by these tools.
 
 ## Libraries ##

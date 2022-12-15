@@ -153,6 +153,17 @@ At this point the pre-commit checks will run against any files that
 you attempt to commit.  If you want to run the checks against the
 entire repo, just execute `pre-commit run --all-files`.
 
+## Quality Assurance/Code reviews ##
+
+In order to maintain standardization with practices, ensure security standards
+are being met, and to incorporate third party code as seamlessly as possible,
+submitted code will go through our quality assurance team.
+Code contributors are welcome to start communications with QA as early as
+project inception, but will need to engage prior to any code submissions.
+
+Third parties are responsible for coordinating initial code reviews between
+members of their support teams to ensure quality code is merged
+
 ## Public domain ##
 
 This project is in the public domain within the United States, and
