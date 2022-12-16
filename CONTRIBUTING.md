@@ -157,12 +157,13 @@ entire repo, just execute `pre-commit run --all-files`.
 
 In order to maintain standardization with practices, ensure security standards
 are being met, and to incorporate third party code as seamlessly as possible,
-submitted code will go through our quality assurance (QA) team.
-Code contributors are welcome to start communications with QA as early as
-project inception, but will need to engage prior to any code submissions.
+submitted code will go through our quality assurance team.  Anybody looking to
+introduce new code or make changes to how any existing code operates are
+welcome to start communications with QA as early as project inception, but will
+need to engage prior to any code submissions.
 
-Third parties are responsible for coordinating initial code reviews between
-members of their support teams to ensure quality code is merged
+Code contributors are responsible for coordinating initial code reviews between
+members of their support team and the QA team to ensure quality code is merged.
 
 ## Public domain ##
 
