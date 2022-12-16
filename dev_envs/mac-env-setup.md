@@ -77,10 +77,13 @@ option `iTerm2 > Make iTerm2 Default Term` to make it your default too.
 
 ### Automatic package installation (recommended) ###
 
-NOTE (DEC 2022):  This code is out of date but still functional.
+NOTE (DEC 2022): The [CISA `laptop`
+script](https://github.com/cisagov/laptop/) is out of date but still
+functional.
 
-To set up a dev environment via the [CISA `laptop` script](https://github.com/cisagov/laptop/),
-execute the following in your terminal:
+To set up a dev environment via the [CISA `laptop`
+script](https://github.com/cisagov/laptop/), execute the following in
+your terminal:
 
 ```bash
 bash <(curl --silent https://raw.githubusercontent.com/cisagov/laptop/master/laptop)
