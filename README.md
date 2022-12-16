@@ -28,7 +28,7 @@ Heavily "inspired" by the
 - [GitHub Actions](https://github.com/features/actions) -
   Continuous integration and delivery
 - [CodeQL](https://codeql.github.com) - Code analysis engine developed by GitHub
-  to automate security checks, replaces LGTM
+  to automate security checks and help prevent critical vulnerabilities.  Replaces [LGTM](https://lgtm.com).
 - [PyPi](https://pypi.org/search/?q=cisagov) - Python package publication
 - [Snyk](https://app.snyk.io/org/cisagov) - Dependency vulnerability management
   and remediation
