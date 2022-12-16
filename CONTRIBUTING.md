@@ -157,7 +157,7 @@ entire repo, just execute `pre-commit run --all-files`.
 
 In order to maintain standardization with practices, ensure security standards
 are being met, and to incorporate third party code as seamlessly as possible,
-submitted code will go through our quality assurance team.
+submitted code will go through our quality assurance (QA) team.
 Code contributors are welcome to start communications with QA as early as
 project inception, but will need to engage prior to any code submissions.
 
