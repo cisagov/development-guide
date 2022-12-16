@@ -153,7 +153,7 @@ At this point the pre-commit checks will run against any files that
 you attempt to commit.  If you want to run the checks against the
 entire repo, just execute `pre-commit run --all-files`.
 
-## Quality Assurance/Code reviews ##
+## Quality assurance/code reviews ##
 
 In order to maintain standardization with practices, ensure security standards
 are being met, and to incorporate third party code as seamlessly as possible,
