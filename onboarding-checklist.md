@@ -83,7 +83,7 @@ also get an account on Trio, which is a Google Workspace account used for
 cross-team and cross-agency collaboration and is generally
 `first.last@trio.dhs.gov`. Trio may take a few days to get set up.
 
-- Trio accounts are currently on hold.
+*Note that the issuance of Trio accounts is currently on hold.*
 
 Once your Trio account is set up:
 
