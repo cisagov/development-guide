@@ -60,7 +60,7 @@ the Rules of Behavior, which is required before we can give you access to any
 systems, like Trio.
 
 - PALMS has been retired, and is temporarily replaced by the
-[CISA Course Management Site](https://usdhs.sharepoint.com/sites/CISA_OCLO_Intranet/CISACourses/SitePages/LearningTeamHome.aspx)
+[CISA Course Management Site](https://usdhs.sharepoint.com/sites/CISA_OCLO_Intranet/CISACourses/SitePages/LearningTeamHome.aspx).
 
 ### Microsoft Teams chat ###
 
