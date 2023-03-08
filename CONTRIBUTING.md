@@ -153,25 +153,26 @@ At this point the pre-commit checks will run against any files that
 you attempt to commit.  If you want to run the checks against the
 entire repo, just execute `pre-commit run --all-files`.
 
-## Quality assurance/code reviews ##
+## Quality assurance and code reviews ##
 
-In order to maintain standardization with practices, ensure security standards
+In order to maintain standardization of practices, ensure security standards
 are being met, and to incorporate third party code as seamlessly as possible,
-all submitted code will go through our quality assurance team.
+all submitted code will go through our quality assurance (QA) team.
 
-Code contributors are able to coordinate with the QA team at any point in their
-projects. We would recommend initiating the discussions as early as possible, to
-decrease the likelihood of blockers to merging or using their code occurring
-later in the process. However, the QA team is not responsible for the success of
-the project or ensuring all team members follow the development standards which
-have been established. Any discussion or initial input is a courtesy evaluation,
-where contributing teams remain responsible for the quality of their code,
-internal coordination, and alignment with the standards set forth in this guide.
+Code contributors are able to coordinate with the QA team at any point during
+the contribution process. We recommend initiating the discussions as early as
+possible, to decrease the likelihood of issues around merging or using the
+contributed code occurring late in the process. However, the QA team is not
+responsible for the success of the project or for ensuring that all team
+members follow the development standards which have been established. Any
+discussions or initial inputs are a courtesy evaluation, and contributing teams
+remain responsible for the quality of their code, internal coordination, and
+alignment with the standards set forth in this guide.
 
 The type of contribution being made (e.g. typo corrections vs a new repository),
 complexity of code change (e.g. adding a new test vs adding a new function), and
-the testability of the code (e.g. well documented and replicable) will factor
-into the level of interaction needed with the quality assurance (QA) team.
+the testability of the code (e.g. well-documented and replicable) will factor
+into the level of interaction needed with the QA team.
 
 ## Public domain ##
 
