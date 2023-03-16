@@ -54,13 +54,11 @@ make sure you're assigned to this issue.
 
 #### Mandatory training ####
 
-- [ ] Complete ~~[PALMS Cybersecurity Training](https://etms.hq.dhs.gov)~~,
-including Mandatory Cyber Security and Privacy Training, and accepting
-the Rules of Behavior, which is required before we can give you access to any
-systems, like Trio.
-
-- PALMS has been retired, and is temporarily replaced by the
-[CISA Course Management Site](https://usdhs.sharepoint.com/sites/CISA_OCLO_Intranet/CISACourses/SitePages/LearningTeamHome.aspx).
+- [ ] Complete Cybersecurity Training at the [CISA Course Management
+Site](https://usdhs.sharepoint.com/sites/CISA_OCLO_Intranet/CISACourses/),
+including Mandatory Cyber Security and Privacy Training, and
+acceptance of the Rules of Behavior, which are both required before we
+can give you access to any systems, including Trio.
 
 ### Microsoft Teams chat ###
 
