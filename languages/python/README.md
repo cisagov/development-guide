@@ -33,8 +33,9 @@ file of this project for the most up-to-date information.
 ## Correctness and security ##
 
 Our **standard** code vulnerability scanners in cisagov are
-[CodeQL](https://codeql.github.com/) and [Snyk](https://snyk.io).
-By **default** all repositories in the organization are scanned by these tools.
+[CodeQL](https://codeql.github.com/), [Snyk](https://snyk.io), and
+[Dependabot](https://github.com/dependabot).  By **default** all
+repositories in the organization are scanned by these tools.
 
 ## Libraries ##
 
