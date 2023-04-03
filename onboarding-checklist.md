@@ -139,7 +139,7 @@ improved and open as PRs on the [template onboarding checklist].
 [template onboarding checklist]: https://github.com/cisagov/development-guide/blob/master/onboarding-checklist.md
 [NCATS Google Drive folder]: https://drive.google.com/drive/folders/0APw76nbCAmzuUk9PVA
 [Dev Team - Events & OOO calendar]: https://calendar.google.com/calendar/embed?src=beta.dhs.gov_pou7e62ob7h1qadu1m8n4o996g%40group.calendar.google.com&ctz=America%2FNew_York
-[VM JIRA]: https://jira.ncats.cyber.dhs.gov/secure/Dashboard.jspa
+[VM JIRA]: https://jira.ceil.cyber.dhs.gov/secure/Dashboard.jspa
 
 <!-- dev team -->
 [dev team project board]: https://app.zenhub.com/workspaces/vm-bizops-dev-5e596691c12d3435405dfaf3/board
