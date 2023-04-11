@@ -28,6 +28,9 @@ Heavily "inspired" by the
   to automate security checks and help prevent critical vulnerabilities.
   Replaces [LGTM](https://lgtm.com).
 - [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
+- [Dependabot](https://docs.github.com/en/code-security/dependabot) -
+  Monitor vulnerabilities in dependencies and keep dependencies
+  up-to-date
 - [GitHub Actions](https://github.com/features/actions) -
   Continuous integration and delivery
 - [PyPi](https://pypi.org/search/?q=cisagov) - Python package publication
