@@ -142,5 +142,5 @@ improved and open as PRs on the [template onboarding checklist].
 [VM JIRA]: https://jira.ceil.cyber.dhs.gov/secure/Dashboard.jspa
 
 <!-- dev team -->
-[dev team project board]: https://app.zenhub.com/workspaces/vm-bizops-dev-5e596691c12d3435405dfaf3/board
+[dev team project board]: https://github.com/orgs/cisagov/projects/32
 [dev team Google Groups]: https://groups.google.com/a/trio.dhs.gov/forum/#!myforums
