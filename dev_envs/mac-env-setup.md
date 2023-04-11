@@ -249,13 +249,20 @@ and paste the contents of your clipboard
 There are some additional setup steps to access the
 [COOL (Cloud-Optimized Operations Lab)](https://github.com/cisagov/cool-system/wiki/):
 
+**Note**
+These steps are only necessary if you want to manually configure these vs.
+using the Jamf-pushed configuration.
+
 1. [Install MIT Kerberos](https://github.com/cisagov/cool-system-internal/blob/master/Installing-MIT-Kerberos.md)
     - NOTE: If you chose Automatic Installation above, this step was already
     performed by the `laptop` script
 1. [Configuring Kerberos for the COOL](https://github.com/cisagov/cool-system-internal/blob/master/Configuring-Kerberos-for-the-COOL.md)
 1. [Configuring your browser for the COOL](https://github.com/cisagov/cool-system-internal/blob/master/Configuring-your-browser-for-the-COOL.md)
+1. [Configuring Kerberos for the COOL](https://github.com/cisagov/cool-system-internal/blob/master/Configuring-Kerberos-for-the-COOL.md)
+1. [Configuring your browser for the COOL](https://github.com/cisagov/cool-system-internal/blob/master/Configuring-your-browser-for-the-COOL.md)
 
 After you have successfully completed the tasks above, follow
+[these instructions to access Guacamole](https://github.com/cisagov/cool-system-internal/blob/master/Accessing-an-assessment-environment-with-Guacamole.md).
 [these instructions to access Guacamole](https://github.com/cisagov/cool-system-internal/blob/master/Accessing-an-assessment-environment-with-Guacamole.md).
 
 Note that you will need to have been given access to one or more COOL
