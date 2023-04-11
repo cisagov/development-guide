@@ -24,12 +24,12 @@ Heavily "inspired" by the
 ## Tools and services we use ##
 
 - [AWS](https://aws.amazon.com) - Our main cloud provider
-- [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
-- [GitHub Actions](https://github.com/features/actions) -
-  Continuous integration and delivery
 - [CodeQL](https://codeql.github.com) - Code analysis engine developed by GitHub
   to automate security checks and help prevent critical vulnerabilities.
   Replaces [LGTM](https://lgtm.com).
+- [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
+- [GitHub Actions](https://github.com/features/actions) -
+  Continuous integration and delivery
 - [PyPi](https://pypi.org/search/?q=cisagov) - Python package publication
 - [Snyk](https://app.snyk.io/org/cisagov) - Dependency vulnerability management
   and remediation
