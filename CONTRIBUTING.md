@@ -169,8 +169,8 @@ discussions or initial inputs are a courtesy evaluation, and contributing teams
 remain responsible for the quality of their code, internal coordination, and
 alignment with the standards set forth in this guide.
 
-The type of contribution being made (e.g. typo corrections vs a new repository),
-complexity of code change (e.g. adding a new test vs adding a new function), and
+The type of contribution being made (e.g. typo corrections vs. a new repository),
+complexity of code change (e.g. adding a new test vs. adding a new function), and
 the testability of the code (e.g. well-documented and replicable) will factor
 into the level of interaction needed with the QA team.
 
