@@ -72,8 +72,9 @@ split-tunneling. Instructions and a generator script are located in the
 
 For this section and following sections, log back in as your standard user.
 
-Note: if you installed iTerm2 above, run the iTerm2 app and select the menu
-option `iTerm2 > Make iTerm2 Default Term` to make it your default too.
+> **Note**
+> If you installed iTerm2 above, run the iTerm2 app and select the menu option
+> `iTerm2 > Make iTerm2 Default Term` to make it your default too.
 
 ### Automatic package installation (recommended) ###
 
@@ -138,8 +139,9 @@ cd ~/.dotfiles
 You'll want to make some changes, e.g. username/email should be set to your
 own - you can do this by editing the files in your new `~/.dotfiles` folder.
 
-Note: You don't need to rerun `stow` or `deploy.sh` after this because your
-files are already symlinked.
+> **Note**
+> You don't need to rerun `stow` or `deploy.sh` after this because your
+> files are already symlinked.
 
 #### Set up your favorite IDE ####
 
@@ -213,7 +215,8 @@ git config --global commit.gpgsign true
 
 Reference: [GitHub: Generating a new SSH key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
 
-Note: use `ed25519` instead of `rsa`
+> **Note**
+> Use `ed25519` instead of `rsa`!
 
 ```console
 ssh-keygen -t ed25519
@@ -232,7 +235,8 @@ ssh-keygen -t ed25519
 
 Reference: [GitHub: Adding a new SSH key to your GitHub account](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
 
-Note: use `ed25519` instead of `rsa`
+> **Note**
+> Use `ed25519` instead of `rsa`!
 
 ```console
 # Copy the contents of the id_ed25519.pub file to your clipboard
@@ -249,9 +253,9 @@ and paste the contents of your clipboard
 There are some additional setup steps to access the
 [COOL (Cloud-Optimized Operations Lab)](https://github.com/cisagov/cool-system/wiki/):
 
-**Note**
-These steps are only necessary if you want to manually configure these vs.
-using the Jamf-pushed configuration.
+> **Note**
+> These steps are only necessary if you want to manually configure these vs.
+> using the Jamf-pushed configuration.
 
 1. [Install MIT Kerberos](https://github.com/cisagov/cool-system-internal/blob/master/Installing-MIT-Kerberos.md)
     - NOTE: If you chose Automatic Installation above, this step was already
