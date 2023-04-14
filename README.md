@@ -24,11 +24,15 @@ Heavily "inspired" by the
 ## Tools and services we use ##
 
 - [AWS](https://aws.amazon.com) - Our main cloud provider
+- [CodeQL](https://codeql.github.com) - Code analysis engine developed by GitHub
+  to automate security checks and help prevent critical vulnerabilities.
+  Replaces [LGTM](https://lgtm.com).
 - [Coveralls](https://coveralls.io/github/cisagov) - Test coverage tracking
+- [Dependabot](https://docs.github.com/en/code-security/dependabot) -
+  Monitor vulnerabilities in dependencies and keep dependencies
+  up-to-date
 - [GitHub Actions](https://github.com/features/actions) -
   Continuous integration and delivery
-- [LGTM](https://lgtm.com/search?q=cisagov) - Code analysis platform for
-  finding zero-days and preventing critical vulnerabilities
 - [PyPi](https://pypi.org/search/?q=cisagov) - Python package publication
 - [Snyk](https://app.snyk.io/org/cisagov) - Dependency vulnerability management
   and remediation

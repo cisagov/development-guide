@@ -79,8 +79,11 @@ For this section and following sections, log back in as your standard user.
 
 ### Automatic package installation (recommended) ###
 
-To set up a dev environment via the [CISA `laptop` script](https://github.com/cisagov/laptop/),
-execute the following in your terminal:
+NOTE (DEC 2022): The [CISA `laptop` script] is out of date but still
+functional.
+
+To set up a dev environment via the [CISA `laptop` script], execute
+the following in your terminal:
 
 ```bash
 bash <(curl --silent https://raw.githubusercontent.com/cisagov/laptop/master/laptop)
@@ -99,8 +102,9 @@ Open Terminal and install `brew` per the instructions from
 /bin/bash -c "$(curl --fail --silent --show-error --location https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
-After installing Brew, you'll want to install other useful packages. We
-recommend installing all the packages specified in the [CISA `laptop` script repository](https://github.com/cisagov/laptop/).
+After installing Brew, you'll want to install other useful
+packages. We recommend installing all the packages specified in the
+[CISA `laptop` script repository](https://github.com/cisagov/laptop/blob/master/Brewfile).
 
 ### Environment configuration ###
 
@@ -273,3 +277,5 @@ After you have successfully completed the tasks above, follow
 > **Note** 
 > You will need to have been given access to one or more COOL environments
 > to be able to access anything with Guacamole.
+
+[CISA `laptop` script]: https://github.com/cisagov/laptop/

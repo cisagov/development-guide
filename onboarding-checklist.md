@@ -54,10 +54,11 @@ make sure you're assigned to this issue.
 
 #### Mandatory training ####
 
-- [ ] Complete [PALMS Cybersecurity Training](https://etms.hq.dhs.gov),
-including Mandatory Cyber Security and Privacy Training, and accepting
-the Rules of Behavior, which is required before we can give you access to any
-systems, like Trio.
+- [ ] Complete Cybersecurity Training at the [CISA Course Management
+Site](https://usdhs.sharepoint.com/sites/CISA_OCLO_Intranet/CISACourses/),
+including Mandatory Cyber Security and Privacy Training, and
+acceptance of the Rules of Behavior, which are both required before we
+can give you access to any systems, including Trio.
 
 ### Microsoft Teams chat ###
 
@@ -79,6 +80,8 @@ In addition to your CISA email address `first.last@cisa.dhs.gov`, you'll
 also get an account on Trio, which is a Google Workspace account used for
 cross-team and cross-agency collaboration and is generally
 `first.last@trio.dhs.gov`. Trio may take a few days to get set up.
+
+*Note that the issuance of Trio accounts is currently on hold.*
 
 Once your Trio account is set up:
 
