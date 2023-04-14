@@ -272,7 +272,6 @@ There are some additional setup steps to access the
 
 After you have successfully completed the tasks above, follow
 [these instructions to access Guacamole](https://github.com/cisagov/cool-system-internal/blob/master/Accessing-an-assessment-environment-with-Guacamole.md).
-[these instructions to access Guacamole](https://github.com/cisagov/cool-system-internal/blob/master/Accessing-an-assessment-environment-with-Guacamole.md).
 
 > **Note** 
 > You will need to have been given access to one or more COOL environments
