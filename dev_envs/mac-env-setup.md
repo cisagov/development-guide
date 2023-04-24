@@ -220,7 +220,7 @@ git config --global commit.gpgsign true
 
 Reference: [GitHub: Generating a new SSH key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
 
-> **Note**
+> **Warning**
 > Use `ed25519` instead of `rsa`!
 
 ```console
@@ -240,7 +240,7 @@ ssh-keygen -t ed25519
 
 Reference: [GitHub: Adding a new SSH key to your GitHub account](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
 
-> **Note**
+> **Warning**
 > Use `ed25519` instead of `rsa`!
 
 ```console
