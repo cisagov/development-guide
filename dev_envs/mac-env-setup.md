@@ -267,8 +267,6 @@ There are some additional setup steps to access the
     performed by the `laptop` script
 1. [Configuring Kerberos for the COOL](https://github.com/cisagov/cool-system-internal/blob/master/Configuring-Kerberos-for-the-COOL.md)
 1. [Configuring your browser for the COOL](https://github.com/cisagov/cool-system-internal/blob/master/Configuring-your-browser-for-the-COOL.md)
-1. [Configuring Kerberos for the COOL](https://github.com/cisagov/cool-system-internal/blob/master/Configuring-Kerberos-for-the-COOL.md)
-1. [Configuring your browser for the COOL](https://github.com/cisagov/cool-system-internal/blob/master/Configuring-your-browser-for-the-COOL.md)
 
 After you have successfully completed the tasks above, follow
 [these instructions to access Guacamole](https://github.com/cisagov/cool-system-internal/blob/master/Accessing-an-assessment-environment-with-Guacamole.md).
