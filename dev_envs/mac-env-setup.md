@@ -256,7 +256,7 @@ and paste the contents of your clipboard
 ## Setup for the COOL ##
 
 There are some additional setup steps to access the
-[COOL (Cloud-Optimized Operations Lab)](https://github.com/cisagov/cool-system/wiki/):
+[COOL (Cloud-Optimized Operations Lab)](https://github.com/cisagov/cool-system/):
 
 > **Note**
 > These steps are only necessary if you want to manually configure these vs.
