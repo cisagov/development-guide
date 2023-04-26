@@ -30,7 +30,8 @@ onboarding process.
   make things better.
   - If you notice a problem (especially with things like documentation), you
   are more than welcome to fix it!
-  - You can also file issues and pull requests on the [template onboarding checklist].
+  - You can also file issues and pull requests against the [template
+    onboarding checklist].
 - [ ] Meet with your onboarding buddy (they should reach out to you).
 - [ ] Once you've finished the checklists below, make suggestions for steps
 that would have improved your onboarding experience as pull requests on the
@@ -62,7 +63,8 @@ can give you access to any systems, including Trio.
 
 ### Microsoft Teams chat ###
 
-Once you're set up on Microsoft Teams, we recommend you join the following:
+Once you're set up on Microsoft Teams, we recommend you join the
+following:
 
 - [ ] [CISA](https://teams.microsoft.com/l/team/19%3aa40fd338ea7a45de994a7c7ce9671fd4%40thread.skype/conversations?groupId=8c6c0b00-7244-46e1-bef9-76ce2a1906f5&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
 - [ ] [CSD All Staff](https://teams.microsoft.com/l/team/19%3a65f1c4b58edf4246995ae3fa732767ee%40thread.skype/conversations?groupId=6dfc3f23-3a49-44ce-ad37-6c7a9d8fb0aa&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
