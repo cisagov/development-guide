@@ -56,10 +56,11 @@ make sure you're assigned to this issue.
 #### Mandatory training ####
 
 - [ ] Complete Cybersecurity Training at the [CISA Course Management
-Site](https://usdhs.sharepoint.com/sites/CISA_OCLO_Intranet/CISACourses/),
-including Mandatory Cyber Security and Privacy Training, and
-acceptance of the Rules of Behavior, which are both required before we
-can give you access to any systems, including Trio.
+      Site](https://usdhs.sharepoint.com/sites/CISA_OCLO_Intranet/CISACourses/),
+      including Mandatory Cyber Security and Privacy Training, and
+      acceptance of the Rules of Behavior, which are both required
+      before we can give you access to any systems, including CISA GWE
+      (Google Workspace Enterprise).
 
 ### Microsoft Teams chat ###
 
@@ -70,45 +71,26 @@ following:
 - [ ] [CSD All Staff](https://teams.microsoft.com/l/team/19%3a65f1c4b58edf4246995ae3fa732767ee%40thread.skype/conversations?groupId=6dfc3f23-3a49-44ce-ad37-6c7a9d8fb0aa&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
 - [ ] [Vulnerability Management](https://teams.microsoft.com/l/team/19%3a2161749c8eb94adeb31480e298f3b532%40thread.skype/conversations?groupId=61e939a6-2165-4085-a26e-decae97d1471&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
 
-### Getting to know the VM Fusion Dev Team ###
+### CISA Google Workspace Enterprise ###
 
-- [ ] Bookmark the [dev team project board] to track issues and work across
-multiple GitHub repositories.
-- [ ] Bookmark [VM JIRA] to work with the rest of VM Fusion.
+In addition to your CISA email address `first.last@cisa.dhs.gov`,
+you'll also get an account on CISA GWE, which is a Google Workspace
+account used for cross-team and cross-agency collaboration and is
+generally `first.last@gwe.cisa.dhs.gov`. Your CISA GWE account may
+take a few days to get set up.
 
-### Trio Google Workspace ###
+Once your CISA GWE account is set up, ask a dev team member to help
+you perform the following:
 
-In addition to your CISA email address `first.last@cisa.dhs.gov`, you'll
-also get an account on Trio, which is a Google Workspace account used for
-cross-team and cross-agency collaboration and is generally
-`first.last@trio.dhs.gov`. Trio may take a few days to get set up.
+- [ ] Join the appropriate rooms in Google Chat.
+- [ ] Join the appropriate Google Groups so you can participate in
+      team-wide internal communication.
+- [ ] Get access to the Google Drive dev team share.  If you create or
+      move a doc there, it'll get the right access permissions for
+      team members to be able to view and edit it.
+- [ ] Get access to the dev team's shared Google Calendar.
 
-*Note that the issuance of Trio accounts is currently on hold.*
-
-Once your Trio account is set up:
-
-- [ ] Visit
-  [chat.google.com](https://chat.google.com) and join applicable rooms.
-- [ ] Make sure you have been added to several [dev team Google Groups] so you
-can participate in team-wide internal communication:
-  - [ ] [ALL Trio users](https://groups.google.com/a/beta.dhs.gov/d/forum/all)
-  - [ ] [CISA COOL Administrators](https://groups.google.com/a/trio.dhs.gov/forum/#!forum/cisa-cool-group)
-  - [ ] [cisa-cool-account-support](https://groups.google.com/a/trio.dhs.gov/d/forum/cisa-cool-account-support-group)
-  - [ ] [cisa-cool-users](https://groups.google.com/a/trio.dhs.gov/d/forum/cisa-cool-users-group)
-  - [ ] [cisagov-github](https://groups.google.com/a/trio.dhs.gov/forum/#!forum/cisagov-github-group)
-  - [ ] [NCATS](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats)
-  - [ ] [NCATS AWS Support](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats-aws-support)
-  - [ ] [NCATS Infrastructure Development](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats-dev)
-- [ ] In Google Drive, add the [NCATS Google Drive folder]. If you create
-or move a doc there, it'll get the right access permissions for team members
-to be able to view and edit it.
-- [ ] In Google Calendar, add the [Dev Team - Events & OOO calendar](https://calendar.google.com/calendar/embed?src=beta.dhs.gov_pou7e62ob7h1qadu1m8n4o996g%40group.calendar.google.com&ctz=America%2FNew_York).
-
-## Role-specific items ##
-
-### Dev team ###
-
-Useful links:
+## Useful links ##
 
 - [ ] [NCATS Data Dictionary](https://github.com/cisagov/ncats-data-dictionary)
 repo for information about what's stored in the CyHy environment MongoDB databases
@@ -123,29 +105,17 @@ sheet, which is similar to what you'll see in USAPerformance.
 ## Buddy checklist ##
 
 - [ ] Introduce yourself to the new team member and talk about your
-background so they know who you are.
-- [ ] Identify a straightforward, well-defined first issue, ideally something
-they could conceivably complete in their first two/three weeks using their
-existing skills. Discuss the context with them, then make them the assignee.
-- [ ] Discuss suggestions for how the onboarding experience could have been
-improved and open as PRs on the [template onboarding checklist].
-
-## Required items for all team members ##
-
-- [ ] Invite them to relevant recurring meetings.
-- [ ] Invite them to relevant [GitHub cisagov teams](https://github.com/orgs/cisagov/teams/).
-
-## Required items for VM Fusion dev team members ##
-
-- [ ] Add them as a member of the [Dev Team - Events & OOO calendar].
-- [ ] Add them as a member of the [NCATS Infrastructure Development group](https://groups.google.com/a/beta.dhs.gov/d/forum/ncats-dev).
+      background so they know who you are.
+- [ ] Identify a straightforward and well-defined first issue, ideally
+      something the new team member could conceivably complete in
+      their first two/three weeks using their existing skills. Discuss
+      the context with them, then make them the assignee.
+- [ ] Discuss suggestions for how the onboarding experience could have
+      been improved and open as PRs on the [template onboarding
+      checklist].
+- [ ] Invite the new team member to all relevant recurring meetings.
+- [ ] Invite the new team member to all relevant [GitHub cisagov
+      teams](https://github.com/orgs/cisagov/teams/).
 
 <!-- Links for use throughout the checklist -->
 [template onboarding checklist]: https://github.com/cisagov/development-guide/blob/master/onboarding-checklist.md
-[NCATS Google Drive folder]: https://drive.google.com/drive/folders/0APw76nbCAmzuUk9PVA
-[Dev Team - Events & OOO calendar]: https://calendar.google.com/calendar/embed?src=beta.dhs.gov_pou7e62ob7h1qadu1m8n4o996g%40group.calendar.google.com&ctz=America%2FNew_York
-[VM JIRA]: https://jira.ceil.cyber.dhs.gov/secure/Dashboard.jspa
-
-<!-- dev team -->
-[dev team project board]: https://github.com/orgs/cisagov/projects/32
-[dev team Google Groups]: https://groups.google.com/a/trio.dhs.gov/forum/#!myforums
