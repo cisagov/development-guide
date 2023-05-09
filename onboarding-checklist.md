@@ -61,15 +61,6 @@ make sure you're assigned to this issue.
       both required before we can give you access to any systems,
       including CISA GWE (Google Workspace Enterprise).
 
-### Microsoft Teams chat ###
-
-Once you're set up on Microsoft Teams, we recommend you join the
-following:
-
-- [ ] [CISA](https://teams.microsoft.com/l/team/19%3aa40fd338ea7a45de994a7c7ce9671fd4%40thread.skype/conversations?groupId=8c6c0b00-7244-46e1-bef9-76ce2a1906f5&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
-- [ ] [CSD All Staff](https://teams.microsoft.com/l/team/19%3a65f1c4b58edf4246995ae3fa732767ee%40thread.skype/conversations?groupId=6dfc3f23-3a49-44ce-ad37-6c7a9d8fb0aa&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
-- [ ] [Vulnerability Management](https://teams.microsoft.com/l/team/19%3a2161749c8eb94adeb31480e298f3b532%40thread.skype/conversations?groupId=61e939a6-2165-4085-a26e-decae97d1471&tenantId=3ccde76c-946d-4a12-bb7a-fc9d0842354a)
-
 ### CISA Google Workspace Enterprise ###
 
 In addition to your CISA email address `first.last@cisa.dhs.gov`,
