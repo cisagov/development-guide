@@ -60,7 +60,8 @@ get the latest stable release. Install it by double-clicking the downloaded
 Once installed, run the app and select the menu option
 `iTerm2 > Make iTerm2 Default Term`.
 
-NOTE: You may also `Make iTerm2 Default Term` on your standard user account.
+> **Note**
+> You may also `Make iTerm2 Default Term` on your standard user account.
 
 ### VPN configuration ###
 
@@ -72,8 +73,9 @@ split-tunneling. Instructions and a generator script are located in the
 
 For this section and following sections, log back in as your standard user.
 
-Note: if you installed iTerm2 above, run the iTerm2 app and select the menu
-option `iTerm2 > Make iTerm2 Default Term` to make it your default too.
+> **Note**
+> If you installed iTerm2 above, run the iTerm2 app and select the menu option
+> `iTerm2 > Make iTerm2 Default Term` to make it your default too.
 
 ### Automatic package installation (recommended) ###
 
@@ -142,8 +144,9 @@ cd ~/.dotfiles
 You'll want to make some changes, e.g. username/email should be set to your
 own - you can do this by editing the files in your new `~/.dotfiles` folder.
 
-Note: You don't need to rerun `stow` or `deploy.sh` after this because your
-files are already symlinked.
+> **Note**
+> You don't need to rerun `stow` or `deploy.sh` after this because your
+> files are already symlinked.
 
 #### Set up your favorite IDE ####
 
@@ -217,7 +220,8 @@ git config --global commit.gpgsign true
 
 Reference: [GitHub: Generating a new SSH key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
 
-Note: use `ed25519` instead of `rsa`
+> **Warning**
+> Use `ed25519` instead of `rsa`!
 
 ```console
 ssh-keygen -t ed25519
@@ -236,7 +240,8 @@ ssh-keygen -t ed25519
 
 Reference: [GitHub: Adding a new SSH key to your GitHub account](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
 
-Note: use `ed25519` instead of `rsa`
+> **Warning**
+> Use `ed25519` instead of `rsa`!
 
 ```console
 # Copy the contents of the id_ed25519.pub file to your clipboard
@@ -251,18 +256,23 @@ and paste the contents of your clipboard
 ## Setup for the COOL ##
 
 There are some additional setup steps to access the
-[COOL (Cloud-Optimized Operations Lab)](https://github.com/cisagov/cool-system/wiki/):
+[COOL (Cloud-Optimized Operations Lab)](https://github.com/cisagov/cool-system/):
 
-1. [Install MIT Kerberos](https://github.com/cisagov/cool-system/wiki/Installing-MIT-Kerberos)
+> **Note**
+> These steps are only necessary if you want to manually configure these vs.
+> using the Jamf-pushed configuration.
+
+1. [Install MIT Kerberos](https://github.com/cisagov/cool-system-internal/blob/master/Installing-MIT-Kerberos.md)
     - NOTE: If you chose Automatic Installation above, this step was already
     performed by the `laptop` script
-1. [Configuring Kerberos for the COOL](https://github.com/cisagov/cool-system/wiki/Configuring-Kerberos-for-the-COOL)
-1. [Configuring your browser for the COOL](https://github.com/cisagov/cool-system/wiki/Configuring-your-browser-for-the-COOL)
+1. [Configuring Kerberos for the COOL](https://github.com/cisagov/cool-system-internal/blob/master/Configuring-Kerberos-for-the-COOL.md)
+1. [Configuring your browser for the COOL](https://github.com/cisagov/cool-system-internal/blob/master/Configuring-your-browser-for-the-COOL.md)
 
 After you have successfully completed the tasks above, follow
-[these instructions to access Guacamole](https://github.com/cisagov/cool-system/wiki/Accessing-an-assessment-environment-with-Guacamole).
+[these instructions to access Guacamole](https://github.com/cisagov/cool-system-internal/blob/master/Accessing-an-assessment-environment-with-Guacamole.md).
 
-Note that you will need to have been given access to one or more COOL
-environments to be able to access anything with Guacamole.
+> **Note**
+> You will need to have been given access to one or more COOL environments
+> to be able to access anything with Guacamole.
 
 [CISA `laptop` script]: https://github.com/cisagov/laptop/
