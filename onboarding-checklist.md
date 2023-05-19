@@ -84,7 +84,7 @@ you perform the following:
 
 - [ ] [NCATS Data Dictionary](https://github.com/cisagov/ncats-data-dictionary)
 repo for information about what's stored in the CyHy environment MongoDB databases
-- [ ] [COOL Wiki](https://github.com/cisagov/cool-system/wiki/)
+- [ ] [COOL Wiki](https://github.com/cisagov/cool-system-internal)
 - [ ] [CyHy Wiki](https://github.com/cisagov/cyhy-system/wiki/)
 - [ ] Set up your [environment on your CISA-provided Mac laptop](/dev_envs/mac-env-setup.md).
 
