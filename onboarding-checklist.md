@@ -84,10 +84,6 @@ you perform the following:
 
 - [ ] [NCATS Data Dictionary](https://github.com/cisagov/ncats-data-dictionary)
 repo for information about what's stored in the CyHy environment MongoDB databases
-- [ ] [CISA COOL AWS Accounts](https://docs.google.com/spreadsheets/d/1It0FIlG7ZxTwrRV-zVYUAMw18L6ZstQiAYT7vGYf5VE/edit#gid=2069139012)
-sheet for AWS accounts reference
-- [ ] [Performance Plans](https://docs.google.com/spreadsheets/d/1UaGI8u70CXOGBtvJFQ85vCkPbqyDh5PVws0Xu893piw/edit?ts=5e558417&pli=1#gid=474573185)
-sheet, which is similar to what you'll see in USAPerformance.
 - [ ] [COOL Wiki](https://github.com/cisagov/cool-system/wiki/)
 - [ ] [CyHy Wiki](https://github.com/cisagov/cyhy-system/wiki/)
 - [ ] Set up your [environment on your CISA-provided Mac laptop](/dev_envs/mac-env-setup.md).
