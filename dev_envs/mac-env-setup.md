@@ -173,7 +173,7 @@ gpg --gen-key
 ```
 
 Follow the prompts for name and email address, using either your CISA
-or Trio email address. The output should look like:
+or GWE email address. The output should look like:
 
 ```console
 We need to generate a lot of random bytes. It is a good idea to perform

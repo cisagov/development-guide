@@ -30,7 +30,7 @@ title = "gitleaks config"
 	tags = ["email"]
 	[rules.allowlist]
 		regexes = ['''(?i)@(github.com|test.org)''',
-			'''(?i)@(trio.dhs.gov|cisa.dhs.gov|beta.dhs.gov|hq.dhs.gov)''',
+			'''(?i)@(beta|cisa|gwe.cisa|hq|trio).dhs.gov''',
 			'''(?i)(Author|Copyright|Contact|MAINTAINER)''']
 		pathes = ['''Godeps._workspace''']
 
