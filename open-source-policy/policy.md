@@ -166,5 +166,4 @@ This policy is a living document. CISA expects to make changes to this policy in
 the future, and we welcome
 [issues](https://github.com/cisagov/development-guide/issues) and [pull
 requests](https://github.com/cisagov/development-guide/pulls). To contact us
-privately, email
-[cisagov-github-group@trio.dhs.gov](mailto:cisagov-github-group@trio.dhs.gov).
+privately, email [github@cisa.dhs.gov](mailto:github@cisa.dhs.gov).
