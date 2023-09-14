@@ -8,3 +8,12 @@
 # These folks own any files in the .github directory at the root of
 # the repository and any of its subdirectories.
 /.github/ @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
+
+# These folks own all linting configuration files.
+/.*.cfg @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
+/.*.yaml @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
+/.*.yml @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
+/.ansible-lint @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
+/.flake8 @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
+/.prettierignore @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
+/.yamllint @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
