@@ -17,3 +17,5 @@
 /.flake8 @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
 /.prettierignore @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
 /.yamllint @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
+/requirements*.txt @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
+/setup-env @dav3r @felddy @jasonodoom @jsf9k @mcdonnnj
