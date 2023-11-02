@@ -2,8 +2,8 @@
 name: build
 
 on:
-  push:
   pull_request:
+  push:
   repository_dispatch:
     types:
       - apb
@@ -58,8 +58,8 @@ jobs:
           # it relies on the existence of a go.sum file.
           cache: false
           go-version: "1.20"
-      - name: Lookup Go cache directory
-        id: go-cache
+      - id: go-cache
+        name: Lookup Go cache directory
         run: |
           echo "dir=$(go env GOCACHE)" >> $GITHUB_OUTPUT
       - uses: actions/cache@v3
@@ -70,6 +70,10 @@ jobs:
             packer${{ steps.setup-env.outputs.packer-version }}-\
             tf${{ steps.setup-env.outputs.terraform-version }}-"
         with:
+          key: "${{ env.BASE_CACHE_KEY }}\
+            ${{ hashFiles('**/requirements-test.txt') }}-\
+            ${{ hashFiles('**/requirements.txt') }}-\
+            ${{ hashFiles('**/.pre-commit-config.yaml') }}"
           # Note that the .terraform directory IS NOT included in the
           # cache because if we were caching, then we would need to use
           # the `-upgrade=true` option. This option blindly pulls down the
@@ -81,10 +85,6 @@ jobs:
             ${{ env.PRE_COMMIT_CACHE_DIR }}
             ${{ env.CURL_CACHE_DIR }}
             ${{ steps.go-cache.outputs.dir }}
-          key: "${{ env.BASE_CACHE_KEY }}\
-            ${{ hashFiles('**/requirements-test.txt') }}-\
-            ${{ hashFiles('**/requirements.txt') }}-\
-            ${{ hashFiles('**/.pre-commit-config.yaml') }}"
           restore-keys: |
             ${{ env.BASE_CACHE_KEY }}
       - name: Setup curl cache
