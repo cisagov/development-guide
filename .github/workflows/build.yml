@@ -5,7 +5,8 @@ on:
   push:
   pull_request:
   repository_dispatch:
-    types: [apb]
+    types:
+      - apb
 
 env:
   CURL_CACHE_DIR: ~/.cache/curl
