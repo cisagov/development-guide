@@ -2,6 +2,9 @@
 name: build
 
 on:
+  merge_group:
+    types:
+      - checks_requested
   pull_request:
   push:
   repository_dispatch:
