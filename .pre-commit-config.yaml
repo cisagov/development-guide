@@ -37,9 +37,16 @@ repos:
         args:
           - --config=.mdl_config.yaml
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.3
+    # This is the last version of v3 available from the mirror. We should hold
+    # here until v4, which is currently in alpha, is more stable.
+    rev: v3.1.0
     hooks:
       - id: prettier
+        # This is the latest version of v3 available from NPM. The pre-commit
+        # mirror does not pull tags for old major versions once a new major
+        # version tag is published.
+        additional_dependencies:
+          - prettier@3.2.5
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.35.1
     hooks:
