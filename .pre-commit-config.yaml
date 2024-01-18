@@ -91,6 +91,10 @@ repos:
     hooks:
       - id: shfmt
         args:
+          # List files that will be formatted
+          - --list
+          # Write result to file instead of stdout
+          - --write
           # Indent by two spaces
           - --indent
           - "2"
