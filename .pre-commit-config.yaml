@@ -92,14 +92,14 @@ repos:
       - id: shfmt
         args:
           # Indent by two spaces
-          - -i
-          - '2'
+          - --indent
+          - "2"
           # Binary operators may start a line
-          - -bn
+          - --binary-next-line
           # Switch cases are indented
-          - -ci
+          - --case-indent
           # Redirect operators are followed by a space
-          - -sr
+          - --space-redirects
   - repo: https://github.com/detailyang/pre-commit-shell
     rev: 1.0.5
     hooks:
