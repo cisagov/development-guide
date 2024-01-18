@@ -86,8 +86,8 @@ repos:
       - id: nixpkgs-fmt
 
   # Shell script hooks
-  - repo: https://github.com/cisagov/pre-commit-shfmt
-    rev: v0.0.2
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.7.0-4
     hooks:
       - id: shfmt
         args:
