@@ -8,13 +8,13 @@ on:
     types: [apb]
 
 env:
-  BRANCH_NAME: improvement/support_atx_closed_markdown_headers
   CURL_CACHE_DIR: ~/.cache/curl
-  DEPTH: 1
   PIP_CACHE_DIR: ~/.cache/pip
   PRE_COMMIT_CACHE_DIR: ~/.cache/pre-commit
-  REPO_URL: https://github.com/mcdonnnj/terraform-docs.git
   RUN_TMATE: ${{ secrets.RUN_TMATE }}
+  TERRAFORM_DOCS_REPO_BRANCH_NAME: improvement/support_atx_closed_markdown_headers
+  TERRAFORM_DOCS_REPO_DEPTH: 1
+  TERRAFORM_DOCS_REPO_URL: https://github.com/mcdonnnj/terraform-docs.git
 
 jobs:
   diagnostics:
@@ -133,8 +133,10 @@ jobs:
       # terraform-docs is ran during lint.
       - name: Clone ATX Headers branch from Terraform-docs Fork
         run: |
-          git clone --branch $BRANCH_NAME --single-branch \
-           --depth=$DEPTH $REPO_URL /tmp/terraform-docs
+          git clone --single-branch \
+           --branch $TERRAFORM_DOCS_REPO_BRANCH_NAME \
+           --depth $TERRAFORM_DOCS_REPO_DEPTH \
+           $TERRAFORM_DOCS_REPO_URL /tmp/terraform-docs
       - name: Build and Install Terraform-docs Binary
         run: |
           cd /tmp/terraform-docs
