@@ -139,10 +139,9 @@ jobs:
            $TERRAFORM_DOCS_REPO_URL /tmp/terraform-docs
       - name: Build and install terraform-docs binary
         run: |
-          cd /tmp/terraform-docs
-          GOBIN=$(go env GOPATH)/bin
-          go build -o $GOBIN/terraform-docs
-          echo "$GOBIN" >> $GITHUB_PATH
+          go build \
+          -C /tmp/terraform-docs \
+          -o $(go env GOPATH)/bin/terraform-docs
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel
