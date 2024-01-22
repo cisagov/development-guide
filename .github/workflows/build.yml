@@ -8,9 +8,12 @@ on:
     types: [apb]
 
 env:
+  BRANCH_NAME: improvement/support_atx_closed_markdown_headers
   CURL_CACHE_DIR: ~/.cache/curl
+  DEPTH: 1
   PIP_CACHE_DIR: ~/.cache/pip
   PRE_COMMIT_CACHE_DIR: ~/.cache/pre-commit
+  REPO_URL: https://github.com/mcdonnnj/terraform-docs.git
   RUN_TMATE: ${{ secrets.RUN_TMATE }}
 
 jobs:
@@ -124,11 +127,20 @@ jobs:
           PACKAGE_URL: honnef.co/go/tools/cmd/staticcheck
           PACKAGE_VERSION: ${{ steps.setup-env.outputs.staticcheck-version }}
         run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
-      - name: Install Terraform-docs
-        env:
-          PACKAGE_URL: github.com/terraform-docs/terraform-docs
-          PACKAGE_VERSION: ${{ steps.setup-env.outputs.terraform-docs-version }}
-        run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
+      # We are temporarily using @mcdonnnj's forked branch of terraform-docs
+      # until his PR: https://github.com/terraform-docs/terraform-docs/pull/745
+      # is approved. This temporary fix will allow for ATX Header Support when
+      # terraform-docs is ran during lint.
+      - name: Clone ATX Headers branch from Terraform-docs Fork
+        run: |
+          git clone --branch $BRANCH_NAME --single-branch \
+           --depth=$DEPTH $REPO_URL /tmp/terraform-docs
+      - name: Build and Install Terraform-docs Binary
+        run: |
+          cd /tmp/terraform-docs
+          GOBIN=$(go env GOPATH)/bin
+          go build -o $GOBIN/terraform-docs
+          echo "$GOBIN" >> $GITHUB_PATH
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel
