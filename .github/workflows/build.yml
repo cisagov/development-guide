@@ -134,9 +134,10 @@ jobs:
       # terraform-docs is run during linting.
       - name: Clone ATX headers branch from terraform-docs fork
         run: |
-          git clone --single-branch \
+          git clone \
            --branch $TERRAFORM_DOCS_REPO_BRANCH_NAME \
            --depth $TERRAFORM_DOCS_REPO_DEPTH \
+           --single-branch \
            $TERRAFORM_DOCS_REPO_URL /tmp/terraform-docs
       - name: Build and install terraform-docs binary
         run: |
