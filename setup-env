@@ -129,12 +129,12 @@ set -o nounset
 if [ $LIST_VERSIONS -ne 0 ]; then
   echo Available Python versions:
   pyenv versions --bare --skip-aliases --skip-envs
-  read -p -r "Enter the desired Python version: " PYTHON_VERSION
+  read -r -p "Enter the desired Python version: " PYTHON_VERSION
 fi
 
 # Check if PYTHON_VERSION isn't empty. If it is installed, set it locally.
 if [ -n "$PYTHON_VERSION" ]; then
-  if pyenv versions --bare --skip-aliases --skip-envs | grep --fixed-strings "$PYTHON_VERSION" >/dev/null; then
+  if pyenv versions --bare --skip-aliases --skip-envs | grep --fixed-strings "$PYTHON_VERSION" > /dev/null; then
     echo Using Python version "$PYTHON_VERSION"
     pyenv local "$PYTHON_VERSION"
   else
