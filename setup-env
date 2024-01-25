@@ -41,9 +41,6 @@ PARAMS=""
 PYTHON_VERSION=""
 LIST_VERSIONS=0
 
-# Temp file that is used to search through available installed Python versions
-TMPFILE=/tmp/versions.$$
-
 # Parse command line arguments
 while (("$#")); do
   case "$1" in
@@ -136,9 +133,8 @@ if [ $LIST_VERSIONS -ne 0 ]; then
 fi
 
 # Check if PYTHON_VERSION isn't empty. If it is installed, set it locally.
-pyenv versions --bare --skip-aliases --skip-envs > $TMPFILE
 if [ -n "$PYTHON_VERSION" ]; then
-  if grep --fixed-strings --quiet "$PYTHON_VERSION" $TMPFILE; then
+  if pyenv versions --bare --skip-aliases --skip-envs | grep --fixed-strings "$PYTHON_VERSION" >/dev/null; then
     echo Using Python version "$PYTHON_VERSION"
     pyenv local "$PYTHON_VERSION"
   else
