@@ -162,10 +162,10 @@ fi
 # Create a new virtual environment for this project
 if ! pyenv virtualenv "${env_name}"; then
   cat << END_OF_LINE
-    An existing virtual environment named $env_name was found.  Either delete this
-    environment yourself or re-run with --force option to have it deleted.
+  An existing virtual environment named $env_name was found.  Either delete this
+  environment yourself or re-run with --force option to have it deleted.
 
-    pyenv virtualenv-delete ${env_name}
+  pyenv virtualenv-delete ${env_name}
 
 END_OF_LINE
   exit 1
