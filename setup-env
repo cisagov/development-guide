@@ -25,6 +25,8 @@ Options:
   -h --help           Show this message.
   -i --install-hooks  Install hook environments for all environments in the
                       pre-commit config file.
+  -v --version        Specify the Python version for the virtual environment.
+  -l --list-versions  List available Python versions and select interactively.
 
 END_OF_LINE
 )
@@ -34,6 +36,13 @@ FORCE=0
 
 # Positional parameters
 PARAMS=""
+
+# Flags to allow a user to specify which version of Python they want to use
+PYTHON_VERSION=""
+LIST_VERSIONS=0
+
+# Temp file that is used to search through available installed Python versions
+TMPFILE=/tmp/versions.$$
 
 # Parse command line arguments
 while (("$#")); do
@@ -48,6 +57,14 @@ while (("$#")); do
       ;;
     -i | --install-hooks)
       INSTALL_HOOKS=1
+      shift
+      ;;
+    -v | --version)
+      PYTHON_VERSION=$2
+      shift 2
+      ;;
+    -l | --list-versions)
+      LIST_VERSIONS=1
       shift
       ;;
     -*) # unsupported flags
@@ -111,6 +128,25 @@ else
 fi
 set -o nounset
 
+# List Python versions and select one interactively
+if [ $LIST_VERSIONS -ne 0 ]; then
+  echo Available Python versions:
+  pyenv versions --bare --skip-aliases --skip-envs
+  read -p -r "Enter the desired Python version: " PYTHON_VERSION
+fi
+
+# Check if PYTHON_VERSION isn't empty. If it is installed, set it locally.
+pyenv versions --bare --skip-aliases --skip-envs > $TMPFILE
+if [ -n "$PYTHON_VERSION" ]; then
+  if grep --fixed-strings --quiet "$PYTHON_VERSION" $TMPFILE; then
+    echo Using Python version "$PYTHON_VERSION"
+    pyenv local "$PYTHON_VERSION"
+  else
+    echo Error: Python version "$PYTHON_VERSION" is not installed.
+  fi
+  exit 1
+fi
+
 # Remove any lingering local configuration.
 if [ $FORCE -ne 0 ]; then
   rm -f .python-version
@@ -130,10 +166,10 @@ fi
 # Create a new virtual environment for this project
 if ! pyenv virtualenv "${env_name}"; then
   cat << END_OF_LINE
-  An existing virtual environment named $env_name was found.  Either delete this
-  environment yourself or re-run with --force option to have it deleted.
+    An existing virtual environment named $env_name was found.  Either delete this
+    environment yourself or re-run with --force option to have it deleted.
 
-  pyenv virtualenv-delete ${env_name}
+    pyenv virtualenv-delete ${env_name}
 
 END_OF_LINE
   exit 1
