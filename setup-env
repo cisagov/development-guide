@@ -136,7 +136,6 @@ fi
 if [ -n "$PYTHON_VERSION" ]; then
   if pyenv versions --bare --skip-aliases --skip-envs | grep --fixed-strings "$PYTHON_VERSION" > /dev/null; then
     echo Using Python version "$PYTHON_VERSION"
-    pyenv local "$PYTHON_VERSION"
   else
     echo Error: Python version "$PYTHON_VERSION" is not installed.
     exit 1
