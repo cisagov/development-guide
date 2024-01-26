@@ -139,8 +139,8 @@ if [ -n "$PYTHON_VERSION" ]; then
     pyenv local "$PYTHON_VERSION"
   else
     echo Error: Python version "$PYTHON_VERSION" is not installed.
+    exit 1
   fi
-  exit 1
 fi
 
 # Remove any lingering local configuration.
