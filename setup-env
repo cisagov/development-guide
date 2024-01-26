@@ -37,8 +37,8 @@ FORCE=0
 # Positional parameters
 PARAMS=""
 
-# Flags to allow a user to specify which version of Python they want to use
-PYTHON_VERSION=""
+# A flag to allow a user to specify which version of Python they want
+# to use.
 LIST_VERSIONS=0
 
 # Parse command line arguments
@@ -132,8 +132,9 @@ if [ $LIST_VERSIONS -ne 0 ]; then
   read -r -p "Enter the desired Python version: " PYTHON_VERSION
 fi
 
-# Check if PYTHON_VERSION isn't empty. If it is installed, set it locally.
-if [ -n "$PYTHON_VERSION" ]; then
+# Check if PYTHON_VERSION is defined. If it is defined then check that
+# it is a valid value.
+if [ -n "${PYTHON_VERSION+x}" ]; then
   if pyenv versions --bare --skip-aliases --skip-envs | grep --fixed-strings "$PYTHON_VERSION" > /dev/null; then
     echo Using Python version "$PYTHON_VERSION"
   else
@@ -159,7 +160,15 @@ END_OF_LINE
 fi
 
 # Create a new virtual environment for this project
-if ! pyenv virtualenv "${env_name}"; then
+#
+# If $PYTHON_VERSION is undefined then the system Python will be used.
+#
+# We can't quote ${PYTHON_VERSION:=} below since if the variable is
+# undefined then we want nothing to appear; this is the reason for the
+# "shellcheck disable" line below.
+#
+# shellcheck disable=SC2086
+if ! pyenv virtualenv ${PYTHON_VERSION:=} "${env_name}"; then
   cat << END_OF_LINE
   An existing virtual environment named $env_name was found.  Either delete this
   environment yourself or re-run with --force option to have it deleted.
