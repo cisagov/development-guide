@@ -49,10 +49,6 @@ OPTS="fhilv:n:"
 # Parse options using BSD getopt
 OPTIND=1
 
-# A flag to allow a user to specify which version of Python they want
-# to use.
-LIST_VERSIONS=0
-
 # Parse command line arguments
 while (("$#")); do
   case "$1" in
