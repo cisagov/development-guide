@@ -49,39 +49,54 @@ OPTS="fhilv:n:"
 # Parse options using BSD getopt
 OPTIND=1
 
+# Display installed python versions 
+python_versions() {
+    pyenv versions --bare --skip-aliases --skip-envs
+}
+
 # Parse command line arguments
-while (("$#")); do
-  case "$1" in
-    -f | --force)
+while getopts :$OPTS opt; do
+  case $opt in
+    f)
       FORCE=1
-      shift
       ;;
-    -h | --help)
-      echo "${USAGE}"
+    h)
+      echo "$USAGE"
       exit 0
       ;;
-    -i | --install-hooks)
+    i)
       INSTALL_HOOKS=1
-      shift
       ;;
-    -l | --list-versions)
+    l)
       LIST_VERSIONS=1
-      shift
       ;;
-    -v | --version)
-      PYTHON_VERSION=$2
-      shift 2
+    n)
+      VENV_NAME="$OPTARG"
       ;;
-    -*) # unsupported flags
-      echo "Error: Unsupported flag $1" >&2
+    v)
+      PYTHON_VERSION="$OPTARG"
+      # Check if Python version is valid and installed
+      if ! python_versions | grep --fixed-strings "$PYTHON_VERSION" > /dev/null; then
+        echo "Error: Python version $PYTHON_VERSION is not installed. Versions available:"
+        python_versions
+        exit 1
+      fi
+      ;;
+    \:)
+      echo Error: Option -$OPTARG requires an argument.
+      echo "$USAGE"
       exit 1
       ;;
-    *) # preserve positional arguments
-      PARAMS="$PARAMS $1"
-      shift
+    \?)
+      echo -e "Invalid option please look through usage: \n" 
+      echo "$USAGE"
+      exit 1
       ;;
+    
   esac
 done
+
+shift $((OPTIND-1))
 
 # set positional arguments in their proper place
 eval set -- "$PARAMS"
@@ -124,9 +139,9 @@ fi
 
 set +o nounset
 # Determine the virtual environment name
-if [ "$1" ]; then
+if [ -n "$VENV_NAME" ]; then
   # Use the user-provided environment name
-  env_name=$1
+  env_name="$VENV_NAME"
 else
   # Set the environment name to the last part of the working directory.
   env_name=${PWD##*/}
@@ -136,7 +151,7 @@ set -o nounset
 # List Python versions and select one interactively
 if [ $LIST_VERSIONS -ne 0 ]; then
   echo Available Python versions:
-  pyenv versions --bare --skip-aliases --skip-envs
+  python_versions
   read -r -p "Enter the desired Python version: " PYTHON_VERSION
 fi
 
