@@ -34,8 +34,20 @@ END_OF_LINE
 # Flag to force deletion and creation of virtual environment
 FORCE=0
 
+# Initialize the all other flags
+INSTALL_HOOKS=0
+LIST_VERSIONS=0
+PYTHON_VERSION=""
+VENV_NAME=""
+
 # Positional parameters
 PARAMS=""
+
+# Define short options for getopt
+OPTS="fhilv:n:"
+
+# Parse options using BSD getopt
+OPTIND=1
 
 # A flag to allow a user to specify which version of Python they want
 # to use.
