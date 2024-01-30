@@ -17,16 +17,18 @@ It does the following:
   - Configures git upstream remote "lineage" repositories.
 
 Usage:
-  setup-env [options] [virt_env_name]
-  setup-env (-h | --help)
+  setup-env [-n] [virt_env_name]
+  setup-env [-v] [python_version]
+  setup-env (-h)
 
 Options:
-  -f --force          Delete virtual enviroment if it already exists.
-  -h --help           Show this message.
-  -i --install-hooks  Install hook environments for all environments in the
-                      pre-commit config file.
-  -l --list-versions  List available Python versions and select interactively.
-  -v --version        Specify the Python version for the virtual environment.
+  -f      Delete virtual enviroment if it already exists.
+  -h      Show this message.
+  -i      Install hook environments for all environments in the
+          pre-commit config file.
+  -l      List available Python versions and select interactively.
+  -n      Choose the name of the virtual environment.
+  -v      Specify the Python version for the virtual environment.
 
 END_OF_LINE
 )
@@ -49,9 +51,9 @@ OPTS="fhilv:n:"
 # Parse options using BSD getopt
 OPTIND=1
 
-# Display installed python versions 
+# Display installed python versions
 python_versions() {
-    pyenv versions --bare --skip-aliases --skip-envs
+  pyenv versions --bare --skip-aliases --skip-envs
 }
 
 # Parse command line arguments
@@ -82,21 +84,21 @@ while getopts :$OPTS opt; do
         exit 1
       fi
       ;;
-    \:)
-      echo Error: Option -$OPTARG requires an argument.
+    :)
+      echo -e "Error: Option -$OPTARG requires an argument. \n"
       echo "$USAGE"
       exit 1
       ;;
     \?)
-      echo -e "Invalid option please look through usage: \n" 
+      echo -e "Invalid option please look through usage: \n"
       echo "$USAGE"
       exit 1
       ;;
-    
+
   esac
 done
 
-shift $((OPTIND-1))
+shift $((OPTIND - 1))
 
 # set positional arguments in their proper place
 eval set -- "$PARAMS"
@@ -155,17 +157,6 @@ if [ $LIST_VERSIONS -ne 0 ]; then
   read -r -p "Enter the desired Python version: " PYTHON_VERSION
 fi
 
-# Check if PYTHON_VERSION is defined. If it is defined then check that
-# it is a valid value.
-if [ -n "${PYTHON_VERSION+x}" ]; then
-  if pyenv versions --bare --skip-aliases --skip-envs | grep --fixed-strings "$PYTHON_VERSION" > /dev/null; then
-    echo Using Python version "$PYTHON_VERSION"
-  else
-    echo Error: Python version "$PYTHON_VERSION" is not installed.
-    exit 1
-  fi
-fi
-
 # Remove any lingering local configuration.
 if [ $FORCE -ne 0 ]; then
   rm -f .python-version
@@ -173,7 +164,7 @@ if [ $FORCE -ne 0 ]; then
 elif [[ -f .python-version ]]; then
   cat << 'END_OF_LINE'
   An existing .python-version file was found.  Either remove this file yourself
-  or re-run with --force option to have it deleted along with the associated
+  or re-run with -f (force) option to have it deleted along with the associated
   virtual environment.
 
   rm .python-version
@@ -194,7 +185,7 @@ fi
 if ! pyenv virtualenv ${PYTHON_VERSION:=} "${env_name}"; then
   cat << END_OF_LINE
   An existing virtual environment named $env_name was found.  Either delete this
-  environment yourself or re-run with --force option to have it deleted.
+  environment yourself or re-run with -f (force) option to have it deleted.
 
   pyenv virtualenv-delete ${env_name}
 
