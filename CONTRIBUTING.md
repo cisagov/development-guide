@@ -82,7 +82,7 @@ install the necessary tools. Before running this ensure that you have
 installed the prerequisites for your platform according to the
 [`pyenv` wiki
 page](https://github.com/pyenv/pyenv/wiki/common-build-problems).
-`Gnu-getopt` is generally included in the core utilities of most
+`gnu-getopt` is generally included in the core utilities of most
 Linux distributions.
 
 On WSL you should treat your platform as whatever Linux distribution
