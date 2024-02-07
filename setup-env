@@ -19,8 +19,7 @@ It does the following:
   - Configures git upstream remote "lineage" repositories.
 
 Usage:
-  setup-env (-n | --name) [virt_env_name]
-  setup-env (-v | --version) [python_version]
+  setup-env (-n | --name) [virt_env_name] (-v | --version) [python_version]
   setup-env (-h | --help)
 
 Options:
