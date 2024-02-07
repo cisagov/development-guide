@@ -35,6 +35,11 @@ Options:
 END_OF_LINE
 )
 
+# Display installed python versions
+python_versions() {
+  pyenv versions --bare --skip-aliases --skip-envs
+}
+
 # Flag to force deletion and creation of virtual environment
 FORCE=0
 
@@ -44,66 +49,81 @@ LIST_VERSIONS=0
 PYTHON_VERSION=""
 VENV_NAME=""
 
-# Positional parameters
-PARAMS=""
+# Define long options
+LONGOPTS="force,help,install-hooks,list-versions,name:,version:"
 
 # Define short options for getopt
-OPTS="fhilv:n:"
+SHORTOPTS="fhiln:v:"
 
-# Parse options using BSD getopt
-OPTIND=1
+# Check if GNU getopt is available
+if [[ $(getopt --version 2> /dev/null) != *"getopt from util-linux"* ]]; then
+  cat << 'END_OF_LINE'
 
-# Display installed python versions
-python_versions() {
-  pyenv versions --bare --skip-aliases --skip-envs
-}
+  Gnu-getopt is not detected and is a dependency to run this script.
+  On the Mac, we recommend installing brew, https://brew.sh/.  Then installation
+  is as simple as `brew install gnu-getopt` and adding this to your
+  profile:
 
-# Parse command line arguments
-while getopts :$OPTS opt; do
-  case $opt in
-    f)
+  export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+
+END_OF_LINE
+  exit 1
+fi
+
+# Use GNU getopt to parse options
+if ! PARSED=$(getopt --options $SHORTOPTS --longoptions $LONGOPTS --name "$0" -- "$@"); then
+  echo "Error parsing options"
+  exit 2
+fi
+eval set -- "$PARSED"
+
+while true; do
+  case "$1" in
+    -f | --force)
       FORCE=1
+      shift
       ;;
-    h)
+    -h | --help)
       echo "$USAGE"
       exit 0
       ;;
-    i)
+    -i | --install-hooks)
       INSTALL_HOOKS=1
+      shift
       ;;
-    l)
+    -l | --list-versions)
       LIST_VERSIONS=1
+      shift
       ;;
-    n)
-      VENV_NAME="$OPTARG"
+    -n | --name)
+      VENV_NAME="$2"
+      shift 2
       ;;
-    v)
-      PYTHON_VERSION="$OPTARG"
-      # Check if Python version is valid and installed
-      if ! python_versions | grep --fixed-strings "$PYTHON_VERSION" > /dev/null; then
-        echo "Error: Python version $PYTHON_VERSION is not installed. Versions available:"
-        python_versions
-        exit 1
+    -v | --version)
+      PYTHON_VERSION="$2"
+      shift 2
+      # Check the Python versions being passed in.
+      if [ -n "${PYTHON_VERSION+x}" ]; then
+        if python_versions | grep -E "^${PYTHON_VERSION}$" > /dev/null; then
+          echo Using Python version "$PYTHON_VERSION"
+        else
+          echo Error: Python version "$PYTHON_VERSION" is not installed.
+          echo Installed Python versions are:
+          python_versions
+          exit 1
+        fi
       fi
       ;;
-    :)
-      echo -e "Error: Option -$OPTARG requires an argument. \n"
-      echo "$USAGE"
-      exit 1
+    --)
+      shift
+      break
       ;;
-    \?)
-      echo -e "Invalid option please look through usage: \n"
-      echo "$USAGE"
-      exit 1
+    *)
+      echo "Programming error"
+      exit 3
       ;;
-
   esac
 done
-
-shift $((OPTIND - 1))
-
-# set positional arguments in their proper place
-eval set -- "$PARAMS"
 
 # Check to see if pyenv is installed
 if [ -z "$(command -v pyenv)" ] || { [ -z "$(command -v pyenv-virtualenv)" ] && [ ! -f "$(pyenv root)/plugins/pyenv-virtualenv/bin/pyenv-virtualenv" ]; }; then
@@ -157,6 +177,15 @@ if [ $LIST_VERSIONS -ne 0 ]; then
   echo Available Python versions:
   python_versions
   read -r -p "Enter the desired Python version: " PYTHON_VERSION
+  # Check the Python versions being passed in.
+  if [ -n "${PYTHON_VERSION+x}" ]; then
+    if python_versions | grep -E "^${PYTHON_VERSION}$" > /dev/null; then
+      echo Using Python version "$PYTHON_VERSION"
+    else
+      echo Error: Python version "$PYTHON_VERSION" is not installed.
+      exit 1
+    fi
+  fi
 fi
 
 # Remove any lingering local configuration.
