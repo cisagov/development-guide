@@ -9,6 +9,8 @@ USAGE=$(
 Configure a development environment for this repository.
 
 It does the following:
+  - Allows user to specify Python version.
+  - Allows user to choose name for their virtual environment.
   - Verifies pyenv and pyenv-virtualenv are installed.
   - Creates a Python virtual environment.
   - Configures the activation of the virtual enviroment for the repo directory.
@@ -17,18 +19,18 @@ It does the following:
   - Configures git upstream remote "lineage" repositories.
 
 Usage:
-  setup-env [-n] [virt_env_name]
-  setup-env [-v] [python_version]
-  setup-env (-h)
+  setup-env (-n | --name) [virt_env_name]
+  setup-env (-v | --version) [python_version]
+  setup-env (-h | --help)
 
 Options:
-  -f      Delete virtual enviroment if it already exists.
-  -h      Show this message.
-  -i      Install hook environments for all environments in the
-          pre-commit config file.
-  -l      List available Python versions and select interactively.
-  -n      Choose the name of the virtual environment.
-  -v      Specify the Python version for the virtual environment.
+  -f | --force             Delete virtual enviroment if it already exists.
+  -h | --help              Show this message.
+  -i | --install-hooks     Install hook environments for all environments in the
+                           pre-commit config file.
+  -l | --list-versions     List available Python versions and select interactively.
+  -n | --name              Choose the name of the virtual environment.
+  -v | --version           Specify the Python version for the virtual environment.
 
 END_OF_LINE
 )
