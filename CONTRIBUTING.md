@@ -46,9 +46,12 @@ There are a few ways to do this, but we prefer to use
 create and manage a Python virtual environment specific to this
 project.
 
-If you already have `pyenv` and `pyenv-virtualenv` configured you can
-take advantage of the `setup-env` tool in this repo to automate the
-entire environment configuration process.
+The `setup-env` tool in this repository is our recommended method
+for automating the entire environment configuration process. The
+dependencies required to run this tool are
+[`gnu-getopt`](https://manned.org/getopt.1), `pyenv`, and
+`pyenv-virtualenv`. If these tools are already configured on
+your system, you can simply run the following command.
 
 ```console
 ./setup-env
@@ -57,13 +60,14 @@ entire environment configuration process.
 Otherwise, follow the steps below to manually configure your
 environment.
 
-#### Installing and using `pyenv` and `pyenv-virtualenv` ####
+#### Installing and using `gnu-getopt`, `pyenv`, and `pyenv-virtualenv` ####
 
 On the Mac, we recommend installing [brew](https://brew.sh/).  Then
-installation is as simple as `brew install pyenv pyenv-virtualenv` and
+installation is as simple as `brew install gnu-getopt pyenv pyenv-virtualenv` and
 adding this to your profile:
 
 ```bash
+export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
@@ -78,6 +82,8 @@ install the necessary tools. Before running this ensure that you have
 installed the prerequisites for your platform according to the
 [`pyenv` wiki
 page](https://github.com/pyenv/pyenv/wiki/common-build-problems).
+`Gnu-getopt` is generally included in the core utilities of most
+Linux distributions.
 
 On WSL you should treat your platform as whatever Linux distribution
 you've chosen to install.
