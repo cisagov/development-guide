@@ -68,7 +68,7 @@ adding this to your profile:
 
 ```bash
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:/usr/local/opt/gnu-getopt/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$(brew --prefix)/opt/gnu-getopt/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

@@ -63,7 +63,7 @@ if [[ $(getopt --version 2> /dev/null) != *"getopt from util-linux"* ]]; then
   is as simple as `brew install gnu-getopt` and adding this to your
   profile:
 
-  export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+  export PATH="$(brew --prefix)/opt/gnu-getopt/bin:$PATH"
 
 END_OF_LINE
   exit 1
