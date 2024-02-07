@@ -67,9 +67,8 @@ installation is as simple as `brew install gnu-getopt pyenv pyenv-virtualenv` an
 adding this to your profile:
 
 ```bash
-export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:/usr/local/opt/gnu-getopt/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
