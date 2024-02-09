@@ -43,12 +43,6 @@ sudo xcodebuild -license
 xcode-select --install
 ```
 
-### Docker ###
-
-Download the latest stable [Docker for Mac](https://www.docker.com/docker-mac).
-Install it by double-clicking the downloaded `dmg` file and dragging the
-Docker application file to the `Applications` folder.
-
 ### iTerm2 (recommended) ###
 
 To set up iTerm2 - a macOS terminal replacement with some nifty features -
@@ -105,6 +99,107 @@ Open Terminal and install `brew` per the instructions from
 After installing Brew, you'll want to install other useful
 packages. We recommend installing all the packages specified in the
 [CISA `laptop` script repository](https://github.com/cisagov/laptop/blob/master/Brewfile).
+
+### Colima (Docker alternative) ###
+
+Since [Docker](https://www.docker.com/pricing/faq/) comes with licensing
+conditions that might not be suitable for everyone, including certain
+individuals or businesses. For those looking to operate containers on a Mac
+or Linux, [Colima](https://github.com/abiosoft/colima) is our suggested
+alternative. It is an open-source container runtime that is easy to set
+up and compatible with both MacOS and Linux systems. It leverages the
+power of Docker as its container runtime, enabling users to utilize
+Docker commands directly within a terminal without needing a full
+Docker Desktop installation.
+
+#### Installing Colima ####
+
+Before installing Colima, you’ll want to remove the Docker Desktop app
+from your system if you have it installed.
+
+Then run the following commands:
+
+```console
+brew install colima
+brew install docker docker-compose
+```
+
+After the installation you will want to run the following to verify the
+a successful installation.
+
+```console
+colima start
+```
+
+Running this will initialize the Docker Daemon within a lightweight Linux
+virtual machine on your system and might take some time. When it finishes
+you can confirm that Docker is working by running:
+
+```console
+docker
+```
+
+Afterwards you should see the `docker` usage menu. Next confirm that
+`docker-compose` is working by running:
+
+```console
+docker-compose
+```
+
+Like the previous command you should be prompted with the `docker-compose`
+usage menu.
+
+#### Additional Colima configurations (optional, but strongly encouraged) ####
+
+The following Colima configurations come from this [tutorial](https://smallsharpsoftwaretools.com/tutorials/use-colima-to-run-docker-containers-on-macos/).
+
+To configure docker-compose as a Docker plugin so you can use docker compose
+as a command instead of the legacy docker-compose script. First, create a
+folder in your home directory to hold Docker CLI plugins:
+
+```console
+mkdir -p ~/.docker/cli-plugins
+```
+
+Then symlink the docker-compose command into that new folder:
+
+```console
+ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+```
+
+Run docker compose:
+
+```console
+docker compose
+```
+
+Ensure that you see the `docker-compose` usage menu.
+
+You’ll also need Buildx to build some Docker containers. This is installed
+with Docker Engine on macOS, but you can install this with Homebrew:
+
+```console
+brew install docker-Buildx
+```
+
+Once downloaded, symlink it to the cli-plugins folder:
+
+```console
+ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
+```
+
+To create a VM with four CPUs, 4GB of memory, and 100GiB of disk space,
+follow these options:
+
+```console
+colima stop
+```
+
+Wait for Colima to shutdown the VM. Then restart it with:
+
+```console
+colima start --cpu 4 --memory 4 --disk 100
+```
 
 ### Environment configuration ###
 
