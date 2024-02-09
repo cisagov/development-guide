@@ -124,7 +124,7 @@ brew install colima
 brew install docker docker-compose
 ```
 
-After the installation you will want to run the following to verify the
+After the installation you will want to run the following to verify
 a successful installation.
 
 ```console
@@ -153,9 +153,10 @@ usage menu.
 
 The following Colima configurations come from this [tutorial](https://smallsharpsoftwaretools.com/tutorials/use-colima-to-run-docker-containers-on-macos/).
 
-To configure docker-compose as a Docker plugin so you can use docker compose
-as a command instead of the legacy docker-compose script. First, create a
-folder in your home directory to hold Docker CLI plugins:
+To configure `docker-compose` as a Docker plugin so you can use 
+`docker compose` as a command instead of the legacy `docker-compose`
+script. First, create a folder in your home directory to hold 
+Docker CLI plugins:
 
 ```console
 mkdir -p ~/.docker/cli-plugins
