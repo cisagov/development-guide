@@ -49,9 +49,10 @@ project.
 The `setup-env` tool in this repository is our recommended method
 for automating the entire environment configuration process. The
 dependencies required to run this tool are
-[`gnu-getopt`](https://manned.org/getopt.1), `pyenv`, and
-`pyenv-virtualenv`. If these tools are already configured on
-your system, you can simply run the following command.
+[GNU `getopt`](https://github.com/util-linux/util-linux/blob/master/misc-utils/getopt.1.adoc),
+[`pyenv`](https://github.com/pyenv/pyenv), and [`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv).
+If these tools are already configured on your system, you can simply run the
+following command:
 
 ```console
 ./setup-env
@@ -60,7 +61,7 @@ your system, you can simply run the following command.
 Otherwise, follow the steps below to manually configure your
 environment.
 
-#### Installing and using `gnu-getopt`, `pyenv`, and `pyenv-virtualenv` ####
+#### Installing and using GNU `getopt`, `pyenv`, and `pyenv-virtualenv` ####
 
 On the Mac, we recommend installing [brew](https://brew.sh/).  Then
 installation is as simple as `brew install gnu-getopt pyenv pyenv-virtualenv` and
@@ -81,8 +82,8 @@ install the necessary tools. Before running this ensure that you have
 installed the prerequisites for your platform according to the
 [`pyenv` wiki
 page](https://github.com/pyenv/pyenv/wiki/common-build-problems).
-`gnu-getopt` is generally included in the core utilities of most
-Linux distributions.
+GNU `getopt` is included in most Linux distributions as part of the
+[`util-linux`](https://github.com/util-linux/util-linux) package.
 
 On WSL you should treat your platform as whatever Linux distribution
 you've chosen to install.
