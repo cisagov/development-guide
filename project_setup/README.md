@@ -3,11 +3,9 @@
 We recommend you follow the directions below and use a skeleton for
 all new repositories.
 
-The [`gh CLI extension`](https://github.com/cisagov/gh-skeleton)
+The [`gh-skeleton`](https://github.com/cisagov/gh-skeleton)
 tool provides the ability to easily start new projects from the
-existing library of skeleton repositories. Once you've cloned
-and configured the repository to your local machine, it can
-be published to a repository created on GitHub.
+existing library of skeleton repositories.
 
 For repositories created from skeletons, run `setup-env` and
 `pre-commit install` to [set up your environment](#set-up-your-environment-and-pre-commit),
@@ -20,7 +18,7 @@ branch protection - [see our branch protection guide for details](branch-protect
 ## Contents ##
 
 - [Adding a skeleton configuration to an existing repository](#adding-a-skeleton-configuration-to-an-existing-repository)
-- [Using the gh CLI extension tool to start a new repository 💀🛠](#using-the-gh-cli-extension-tool-to-start-a-new-repository-)
+- [Using the gh-skeleton tool to start a new repository 💀🛠](#using-the-gh-skeleton-tool-to-start-a-new-repository-)
   - [Selecting a skeleton](#selecting-a-skeleton)
   - [Cloning a selected skeleton](#cloning-a-selected-skeleton)
 - [Create and publish the GitHub repository](#create-and-publish-the-github-repository)
@@ -39,15 +37,13 @@ branch protection - [see our branch protection guide for details](branch-protect
 To skeletonize an existing repository, please see the guide to
 [skeletonize an existing repository](skeletonize-existing-repository.md).
 
-## Using the gh CLI extension tool to start a new repository 💀🛠 ##
+## Using the gh-skeleton tool to start a new repository 💀🛠 ##
 
 We recommend that you start your project from one of the
 [skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
-in this organization.  The [`gh CLI`](https://github.com/cisagov/gh-skeleton)
-extension provides the ability to easily start new projects from the existing
-library of skeleton repositories. Once you've cloned and configured the
-repository to your local machine, you then publish it to a repository
-created on GitHub.
+in this organization.  The [`gh-skeleton`](https://github.com/cisagov/gh-skeleton)
+tool provides the ability to easily start new projects from the existing
+library of skeleton repositories.
 
 ### Selecting a skeleton ###
 
@@ -89,19 +85,20 @@ skeleton-aws-lambda
 
 ### Cloning a selected skeleton ###
 
-Next, use the `git` tool to clone, rename, and prepare the contents of
-your new repository for publication.  The tool will print out each command it
-is issuing and its result.
+Next, use the [`gh-skeleton`](https://github.com/cisagov/gh-skeleton)
+tool to clone, rename, and prepare the contents of your new repository
+for publication.  The tool will print out each command it is issuing
+and its result.
 
 ```console
-git clone [options] <parent-repo-name> <new-repo-name>
+gh skeleton clone [options] <parent-repo-name> <new-repo-name>
 ```
 
 For example, to create a project based on `skeleton-ansible-role` named
 `ansible-role-quantum-rng` in your local `~/projects` directory:
 
 ```bash
-git clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng
+gh skeleton clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng
 ```
 
 This command results in:
@@ -147,7 +144,7 @@ Use the following commands to push the new repository to github:
 
 ## Create and publish the GitHub repository ##
 
-Once the `gh CLI extension` tool has run, the next step is to publish to a GitHub
+Once the `gh-skeleton` tool has run, the next step is to publish to a GitHub
 remote repository.
 
 To publish your new repository on GitHub, the remote must already exist.
