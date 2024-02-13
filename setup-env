@@ -59,7 +59,7 @@ if [[ $(getopt --version 2> /dev/null) != *"getopt from util-linux"* ]]; then
   cat << 'END_OF_LINE'
 
   GNU getopt is not detected and is a dependency to run this script.
-  On the Mac, we recommend installing brew, https://brew.sh/.  Then installation
+  On the Mac, we recommend installing brew (https://brew.sh/).  Then installation
   is as simple as `brew install gnu-getopt` and adding this to your
   profile:
 
