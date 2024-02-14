@@ -166,7 +166,6 @@ END_OF_LINE
   exit 1
 fi
 
-set +o nounset
 # Determine the virtual environment name
 if [ -n "$VENV_NAME" ]; then
   # Use the user-provided environment name
@@ -175,7 +174,6 @@ else
   # Set the environment name to the last part of the working directory.
   env_name=${PWD##*/}
 fi
-set -o nounset
 
 # List Python versions and select one interactively
 if [ $LIST_VERSIONS -ne 0 ]; then
