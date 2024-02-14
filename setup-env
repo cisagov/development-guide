@@ -19,7 +19,7 @@ It does the following:
   - Configures git upstream remote "lineage" repositories.
 
 Usage:
-  setup-env (-n | --name) [virtual_env_name] (-v | --version) [python_version]
+  setup-env [--venv-name virtual_env_name] [--python-version python_version]
   setup-env (-h | --help)
 
 Options:
@@ -28,8 +28,8 @@ Options:
   -i | --install-hooks     Install hook environments for all environments in the
                            pre-commit config file.
   -l | --list-versions     List available Python versions and select interactively.
-  -n | --name              Specify the name of the virtual environment.
-  -v | --version           Specify the Python version for the virtual environment.
+  -v | --venv-name              Specify the name of the virtual environment.
+  -p | --python-version           Specify the Python version for the virtual environment.
 
 END_OF_LINE
 )
@@ -49,10 +49,10 @@ PYTHON_VERSION=""
 VENV_NAME=""
 
 # Define long options
-LONGOPTS="force,help,install-hooks,list-versions,name:,version:"
+LONGOPTS="force,help,install-hooks,list-versions,python-version:,venv-name:"
 
 # Define short options for getopt
-SHORTOPTS="fhiln:v:"
+SHORTOPTS="fhilp:v:"
 
 # Check if GNU getopt is available
 if [[ $(getopt --version 2> /dev/null) != *"getopt from util-linux"* ]]; then
@@ -94,11 +94,7 @@ while true; do
       LIST_VERSIONS=1
       shift
       ;;
-    -n | --name)
-      VENV_NAME="$2"
-      shift 2
-      ;;
-    -v | --version)
+    -p | --python-version)
       PYTHON_VERSION="$2"
       shift 2
       # Check the Python versions being passed in.
@@ -112,6 +108,10 @@ while true; do
           exit 1
         fi
       fi
+      ;;
+    -v | --venv-name)
+      VENV_NAME="$2"
+      shift 2
       ;;
     --)
       shift
