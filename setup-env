@@ -58,7 +58,13 @@ SHORTOPTS="fhilp:v:"
 if [[ $(getopt --version 2> /dev/null) != *"getopt from util-linux"* ]]; then
   cat << 'END_OF_LINE'
 
-  GNU getopt is not detected and is a dependency to run this script.
+  Please note, this script requires GNU getopt due to its enhanced
+  functionality and compatibility with certain script features that
+  are not supported by the POSIX getopt found in some systems, particularly
+  those with a non-GNU version of getopt. This distinction is crucial
+  as a system might have a non-GNU version of getopt installed by default,
+  which could lead to unexpected behavior or script failure.
+
   On the Mac, we recommend installing brew (https://brew.sh/).  Then installation
   is as simple as `brew install gnu-getopt` and adding this to your
   profile:
