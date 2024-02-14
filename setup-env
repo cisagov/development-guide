@@ -39,12 +39,41 @@ python_versions() {
   pyenv versions --bare --skip-aliases --skip-envs
 }
 
-check_semantic_version() {
+check_python_version() {
   local version=$1
-  local regex="^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?\$"
 
-  # Use Perl for regex matching and output true or false
-  echo "$version" | perl -ne "exit(!/$regex/)"
+  # Break down the regex into readable parts major.minor.patch
+  local major="0|[1-9]\\d*"
+  local minor="0|[1-9]\\d*"
+  local patch="0|[1-9]\\d*"
+
+  # Splitting the prerelease part for readability
+  # Start of prerelease
+  local prerelease="(?:-"
+  # Numeric or alphanumeric identifiers
+  local prerelease+="(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)"
+  # Additional dot-separated identifiers
+  local prerelease+="(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*"
+  # End of prerelease, making it optional
+  local prerelease+=")?"
+  # Optional build metadata
+  local build="(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?"
+
+  # Final regex composed of parts
+  local regex="^($major)\\.($minor)\\.($patch)$prerelease$build\$"
+
+  if ! echo "$version" | perl -ne "exit(!/$regex/)"; then
+    echo "Error: The specified Python version $version does not follow the semantic versioning standard."
+    echo "Example of a valid version: 3.8.1, 3.8.1-alpha.1, or 3.8.1+20130313144700"
+    exit 1
+  elif ! python_versions | grep -E "^${version}$" > /dev/null; then
+    echo "Error: Python version $version is not installed."
+    echo "Installed Python versions are:"
+    python_versions
+    exit 1
+  else
+    echo "Using Python version $version"
+  fi
 }
 
 # Flag to force deletion and creation of virtual environment
@@ -152,19 +181,8 @@ while true; do
     -p | --python-version)
       PYTHON_VERSION="$2"
       shift 2
-      # Validate the semantic version format
-      if ! check_semantic_version "$PYTHON_VERSION"; then
-        echo "Error: The specified Python version $PYTHON_VERSION does not follow the semantic versioning standard."
-        echo "Example of a valid version: 3.8.1, 3.8.1-alpha.1, or 3.8.1+20130313144700"
-        exit 1
-      elif ! python_versions | grep -E "^${PYTHON_VERSION}$" > /dev/null; then
-        echo "Error: Python version $PYTHON_VERSION is not installed."
-        echo "Installed Python versions are:"
-        python_versions
-        exit 1
-      else
-        echo "Using Python version $PYTHON_VERSION"
-      fi
+      # Check the Python version being passed in.
+      check_python_version "$PYTHON_VERSION"
       ;;
     -v | --venv-name)
       VENV_NAME="$2"
@@ -199,7 +217,7 @@ if [ $LIST_VERSIONS -ne 0 ]; then
   # -r: treat backslashes as literal, -p: display prompt before input.
   read -r -p "Enter the desired Python version: " PYTHON_VERSION
   # Check the Python versions being passed in.
-  check_semantic_version "$PYTHON_VERSION"
+  check_python_version "$PYTHON_VERSION"
 fi
 
 # Remove any lingering local configuration.
