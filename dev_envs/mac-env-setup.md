@@ -150,7 +150,7 @@ uninstall it before proceeding.
 
 ### Optional Configurations ###
 
-Enhance your Colima setup with the following optionalcon figurations:
+Enhance your Colima setup with the following optional configurations:
 
 #### Docker Compose as a Docker Plugin ####
 
