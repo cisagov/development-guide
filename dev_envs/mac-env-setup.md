@@ -116,8 +116,7 @@ uninstall it before proceeding.
 
 **Installation Steps:**
 
-1. Install Colima and Docker
-   command-line tools using Homebrew:
+1. Install Colima and Docker command-line tools using Homebrew:
 
     ```console
     brew install colima docker docker-compose
@@ -129,7 +128,7 @@ uninstall it before proceeding.
     colima start
     ```
 
-    This initializes the Docker Daemon within a lightweight VM.
+    This initializes the Docker daemon within a lightweight VM.
     The first startup may take a moment.
 
 1. Confirm Docker is operational:
