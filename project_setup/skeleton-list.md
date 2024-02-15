@@ -11,7 +11,7 @@ from existing library of skeleton repositories.
 - To skeletonize an existing repository, please see the guide to
 [skeletonize an existing repository](skeletonize-existing-repository.md).
 - To skeletonize a new repository, please see the guide to
-[start a new repository from a skeleton](https://github.com/cisagov/gh-skeleton).
+[start a new repository from a skeleton](README.md).
 
 ## List available skeletons with the command-line tool ##
 
