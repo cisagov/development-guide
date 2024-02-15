@@ -3,9 +3,9 @@
 We recommend you follow the directions below and use a skeleton for
 all new repositories.
 
-The [`gh-skeleton`](https://github.com/cisagov/gh-skeleton)
-GitHub CLI (`gh`) extension provides the ability to easily start new projects from the
-existing library of skeleton repositories.
+The [`gh-skeleton`](https://github.com/cisagov/gh-skeleton) GitHub CLI
+(`gh`) extension provides the ability to easily start new projects
+from the existing library of skeleton repositories.
 
 For repositories created from skeletons, run `setup-env` and
 `pre-commit install` to [set up your environment](#set-up-your-environment-and-pre-commit),
