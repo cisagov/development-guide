@@ -3,7 +3,7 @@
 Skeletonizing a repository standardizes our development setup and environment,
 and enables our [Lineage GitHub Action](https://github.com/cisagov/action-lineage/)
 to keep the repository updated and standardized. The purpose of the
-instruction here is to skeletonize an existing non-skeletonized
+instructions here is to describe how to skeletonize an existing non-skeletonized
 repository.
 
 ## About ##
@@ -20,7 +20,7 @@ appropriate for the major languages that we use. This lets us standardize
 The general outline of how to add a skeleton to an existing repository is:
 
 1. [Add the skeleton as a remote](#add-the-skeleton-as-a-remote) to the
-non-skeletonized existing repository
+existing non-skeletonized repository
 1. Pull with `--allow-unrelated-histories`
 1. [Fix all the inevitable merge conflicts](#fix-all-the-inevitable-merge-conflicts)
 1. [Review non-conflicting changes](#review-non-conflicting-changes) to
@@ -115,7 +115,7 @@ codebase familiarity
 ## Run pre-commit against existing files ##
 
 The skeleton will bring along with it our standard pre-commit hook
-configurations, including linting and other checks, within `setup-env`.
+configurations, including linting and other checks, with `setup-env`.
 
 ```sh
 # Check all existing files
