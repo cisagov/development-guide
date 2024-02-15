@@ -5,7 +5,7 @@ to make starting new repositories quicker and to simplify maintaining
 configurations and dependencies across the organization.
 
 The [`gh-skeleton`](https://github.com/cisagov/gh-skeleton) is
-a custom tool that provides the ability to easily start new projects
+a GitHub CLI (`gh`) extension that provides the ability to easily start new projects
 from existing library of skeleton repositories.
 
 - To skeletonize an existing repository, please see the guide to
