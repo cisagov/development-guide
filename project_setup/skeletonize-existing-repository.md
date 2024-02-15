@@ -22,7 +22,7 @@ The general outline of how to add a skeleton to an existing repository is:
 1. [Add the skeleton as a remote](#add-the-skeleton-as-a-remote) to the
 existing non-skeletonized repository
 1. Pull with `--allow-unrelated-histories`
-1. [Fix all the inevitable merge conflicts](#fix-all-the-inevitable-merge-conflicts)
+1. [Fix merge conflicts](#fix-merge-conflicts)
 1. [Review non-conflicting changes](#review-non-conflicting-changes) to
 prevent merging destructive upstream changes
 1. [Update skeleton's `example` references](#update-skeletons-example-references)
@@ -66,7 +66,7 @@ up the prerequisites, this involves:
 pre-commit install
 ```
 
-## Fix all the inevitable merge conflicts ##
+## Fix merge conflicts ##
 
 The merge process will almost certainly fail, resulting in merge conflicts.
 The next step is to fix the conflicts and add the files once the fixes are
