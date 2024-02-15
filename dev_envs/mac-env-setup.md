@@ -100,7 +100,7 @@ After installing Brew, you'll want to install other useful
 packages. We recommend installing all the packages specified in the
 [CISA `laptop` script repository](https://github.com/cisagov/laptop/blob/master/Brewfile).
 
-### Colima: A Docker Alternative ###
+### Colima: A Docker alternative ###
 
 For individuals or businesses seeking a container solution without
 the licensing conditions associated with [Docker](https://www.docker.com/pricing/faq/)
@@ -148,11 +148,11 @@ uninstall it before proceeding.
 
     The `docker-compose` usage menu should appear.
 
-### Optional Configurations ###
+### Optional configurations ###
 
 Enhance your Colima setup with the following optional configurations:
 
-#### Docker Compose as a Docker Plugin ####
+#### Docker Compose as a Docker plugin ####
 
 Convert `docker-compose` to a Docker plugin for streamlined commands:
 
@@ -192,7 +192,7 @@ Buildx is necessary for building some Docker containers:
     ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
     ```
 
-#### Customizing VM Resources ####
+#### Customizing VM resources ####
 
 To customize the VM's resources, such as CPUs, memory, and disk space:
 
