@@ -173,7 +173,7 @@ Convert `docker-compose` to a Docker plugin for streamlined commands:
     docker compose
     ```
 
-    Ensure the `docker-compose` usage menu is displayed.
+    Ensure the `docker compose` usage menu is displayed.
 
 #### Installing Buildx ####
 
