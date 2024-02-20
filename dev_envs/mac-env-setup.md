@@ -103,7 +103,7 @@ packages. We recommend installing all the packages specified in the
 ### Colima: A Docker alternative ###
 
 For individuals or businesses seeking a container solution without
-the licensing conditions associated with [Docker](https://www.docker.com/pricing/faq/)
+the licensing conditions associated with [Docker Desktop](https://www.docker.com/pricing/faq/)
 , [Colima](https://github.com/abiosoft/colima) offers a compelling
 open-source alternative. Compatible with both MacOS and Linux,
 Colima facilitates running containers directly using Docker
