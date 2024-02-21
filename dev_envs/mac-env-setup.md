@@ -43,6 +43,15 @@ sudo xcodebuild -license
 xcode-select --install
 ```
 
+### Docker ###
+
+> **Note**
+> *[Colima](https://github.com/abiosoft/colima) is our preferred solution on macOS.*
+
+Download the latest stable [Docker Desktop on Mac](https://www.docker.com/products/docker-desktop/).
+Install it by double-clicking the downloaded `dmg` file and dragging the
+Docker application file to the `Applications` folder.
+
 ### iTerm2 (recommended) ###
 
 To set up iTerm2 - a macOS terminal replacement with some nifty features -
