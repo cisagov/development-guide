@@ -68,9 +68,12 @@ installation is as simple as `brew install gnu-getopt pyenv pyenv-virtualenv` an
 adding this to your profile:
 
 ```bash
+# Enable GNU getopt since it is keg-only
+export PATH="$(brew --prefix)/opt/gnu-getopt/bin:$PATH"
+
+# Setup pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$(brew --prefix)/opt/gnu-getopt/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
