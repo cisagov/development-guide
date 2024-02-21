@@ -45,8 +45,8 @@ xcode-select --install
 
 ### Docker ###
 
-> **Note**
-> *[Colima](https://github.com/abiosoft/colima) is our preferred solution on macOS.*
+> [!NOTE]
+> [Colima](#colima-a-docker-alternative) is our preferred solution on macOS.
 
 Download the latest stable [Docker Desktop on Mac](https://www.docker.com/products/docker-desktop/).
 Install it by double-clicking the downloaded `dmg` file and dragging the
