@@ -46,8 +46,8 @@ There are a few ways to do this, but we prefer to use
 create and manage a Python virtual environment specific to this
 project.
 
-The `setup-env` tool in this repository is our recommended method
-for automating the entire environment configuration process. The
+We recommend using the `setup-env` tool located in this repository,
+as it automates the entire environment configuration process. The
 dependencies required to run this tool are
 [GNU `getopt`](https://github.com/util-linux/util-linux/blob/master/misc-utils/getopt.1.adoc),
 [`pyenv`](https://github.com/pyenv/pyenv), and [`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv).

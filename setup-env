@@ -27,7 +27,7 @@ Options:
   -h | --help              Show this message.
   -i | --install-hooks     Install hook environments for all environments in the
                            pre-commit config file.
-  -l | --list-versions     List available Python versions and select interactively.
+  -l | --list-versions     List available Python versions and select one interactively.
   -v | --venv-name              Specify the name of the virtual environment.
   -p | --python-version           Specify the Python version for the virtual environment.
 
@@ -63,7 +63,7 @@ if [[ $(getopt --version 2> /dev/null) != *"getopt from util-linux"* ]]; then
   are not supported by the POSIX getopt found in some systems, particularly
   those with a non-GNU version of getopt. This distinction is crucial
   as a system might have a non-GNU version of getopt installed by default,
-  which could lead to unexpected behavior or script failure.
+  which could lead to unexpected behavior.
 
   On the Mac, we recommend installing brew (https://brew.sh/).  Then installation
   is as simple as `brew install gnu-getopt` and adding this to your
