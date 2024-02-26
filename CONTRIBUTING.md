@@ -48,7 +48,7 @@ project.
 
 We recommend using the `setup-env` script located in this repository,
 as it automates the entire environment configuration process. The
-dependencies required to run this tool are
+dependencies required to run this script are
 [GNU `getopt`](https://github.com/util-linux/util-linux/blob/master/misc-utils/getopt.1.adoc),
 [`pyenv`](https://github.com/pyenv/pyenv), and [`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv).
 If these tools are already configured on your system, you can simply run the
