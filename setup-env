@@ -83,7 +83,7 @@ fi
 # Use GNU getopt to parse options
 if ! PARSED=$(getopt --options $SHORTOPTS --longoptions $LONGOPTS --name "$0" -- "$@"); then
   echo "Error parsing options"
-  exit 2
+  exit 1
 fi
 eval set -- "$PARSED"
 
