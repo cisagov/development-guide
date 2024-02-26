@@ -180,10 +180,12 @@ else
   env_name=${PWD##*/}
 fi
 
-# List Python versions and select one interactively
+# List Python versions and select one interactively.
 if [ $LIST_VERSIONS -ne 0 ]; then
   echo Available Python versions:
   python_versions
+  # Read the user's desired Python version.
+  # -r: treat backslashes as literal, -p: display prompt before input.
   read -r -p "Enter the desired Python version: " PYTHON_VERSION
   # Check the Python versions being passed in.
   if [ -n "${PYTHON_VERSION+x}" ]; then
