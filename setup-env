@@ -80,6 +80,42 @@ END_OF_LINE
   exit 1
 fi
 
+# Check to see if pyenv is installed
+if [ -z "$(command -v pyenv)" ] || { [ -z "$(command -v pyenv-virtualenv)" ] && [ ! -f "$(pyenv root)/plugins/pyenv-virtualenv/bin/pyenv-virtualenv" ]; }; then
+  echo "pyenv and pyenv-virtualenv are required."
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    cat << 'END_OF_LINE'
+
+  On the Mac, we recommend installing brew, https://brew.sh/.  Then installation
+  is as simple as `brew install pyenv pyenv-virtualenv` and adding this to your
+  profile:
+
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+
+END_OF_LINE
+
+  fi
+  cat << 'END_OF_LINE'
+  For Linux, Windows Subsystem for Linux (WSL), or on the Mac (if you don't want
+  to use "brew") you can use https://github.com/pyenv/pyenv-installer to install
+  the necessary tools. Before running this ensure that you have installed the
+  prerequisites for your platform according to the pyenv wiki page,
+  https://github.com/pyenv/pyenv/wiki/common-build-problems.
+
+  On WSL you should treat your platform as whatever Linux distribution you've
+  chosen to install.
+
+  Once you have installed "pyenv" you will need to add the following lines to
+  your ".bashrc":
+
+  export PATH="$PATH:$HOME/.pyenv/bin"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+END_OF_LINE
+  exit 1
+fi
+
 # Use GNU getopt to parse options
 if ! PARSED=$(getopt --options $SHORTOPTS --longoptions $LONGOPTS --name "$0" -- "$@"); then
   echo "Error parsing options"
@@ -134,42 +170,6 @@ while true; do
       ;;
   esac
 done
-
-# Check to see if pyenv is installed
-if [ -z "$(command -v pyenv)" ] || { [ -z "$(command -v pyenv-virtualenv)" ] && [ ! -f "$(pyenv root)/plugins/pyenv-virtualenv/bin/pyenv-virtualenv" ]; }; then
-  echo "pyenv and pyenv-virtualenv are required."
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    cat << 'END_OF_LINE'
-
-  On the Mac, we recommend installing brew, https://brew.sh/.  Then installation
-  is as simple as `brew install pyenv pyenv-virtualenv` and adding this to your
-  profile:
-
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-
-END_OF_LINE
-
-  fi
-  cat << 'END_OF_LINE'
-  For Linux, Windows Subsystem for Linux (WSL), or on the Mac (if you don't want
-  to use "brew") you can use https://github.com/pyenv/pyenv-installer to install
-  the necessary tools. Before running this ensure that you have installed the
-  prerequisites for your platform according to the pyenv wiki page,
-  https://github.com/pyenv/pyenv/wiki/common-build-problems.
-
-  On WSL you should treat your platform as whatever Linux distribution you've
-  chosen to install.
-
-  Once you have installed "pyenv" you will need to add the following lines to
-  your ".bashrc":
-
-  export PATH="$PATH:$HOME/.pyenv/bin"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-END_OF_LINE
-  exit 1
-fi
 
 # Determine the virtual environment name
 if [ -n "$VENV_NAME" ]; then
