@@ -115,10 +115,10 @@ repos:
           - --case-indent
           # Redirect operators are followed by a space
           - --space-redirects
-  - repo: https://github.com/detailyang/pre-commit-shell
-    rev: 1.0.5
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.6
     hooks:
-      - id: shell-lint
+      - id: shellcheck
 
   # Python hooks
   - repo: https://github.com/PyCQA/bandit
