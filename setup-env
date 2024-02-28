@@ -74,7 +74,7 @@ if [[ $(getopt --version 2> /dev/null) != *"getopt from util-linux"* ]]; then
   export PATH="$(brew --prefix)/opt/gnu-getopt/bin:$PATH"
 
   GNU getopt must be explicitly added to the PATH since it
-  is keg-only.
+  is keg-only (https://docs.brew.sh/FAQ#what-does-keg-only-mean).
 
 END_OF_LINE
   exit 1

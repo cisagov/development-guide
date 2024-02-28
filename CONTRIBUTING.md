@@ -69,7 +69,7 @@ adding this to your profile:
 
 ```bash
 # GNU getopt must be explicitly added to the path since it is
-# keg-only
+# keg-only (https://docs.brew.sh/FAQ#what-does-keg-only-mean)
 export PATH="$(brew --prefix)/opt/gnu-getopt/bin:$PATH"
 
 # Setup pyenv
