@@ -229,6 +229,7 @@ export DOCKER_HOST=unix://$HOME/.colima/default/docker.sock
 > This configuration directs Docker client tools to communicate with the
 > Docker daemon managed by Colima, ensuring that Docker commands and
 > applications (e.g. Molecule) function as expected without Docker Desktop.
+> For more information, see [here](https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#cannot-connect-to-the-docker-daemon-at-unixvarrundockersock-is-the-docker-daemon-running).
 
 ### Environment configuration ###
 
