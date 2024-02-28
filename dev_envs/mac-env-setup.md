@@ -216,7 +216,7 @@ To customize the VM's resources, such as CPUs, memory, and disk space:
     colima start --cpu 4 --memory 4 --disk 100
     ```
 
-### Configure Colima's Docker daemon ###
+### Support applications that are unaware of Docker context ###
 
 In your .zshrc profile add the following configuration.
 
