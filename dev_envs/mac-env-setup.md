@@ -216,6 +216,20 @@ To customize the VM's resources, such as CPUs, memory, and disk space:
     colima start --cpu 4 --memory 4 --disk 100
     ```
 
+### Configure Colima's Docker daemon ###
+
+In your .zshrc profile add the following configuration.
+
+```console
+# Set env variable for Colima compatibility with Docker
+export DOCKER_HOST=unix://$HOME/.colima/default/docker.sock
+```
+
+> **Note**
+> This configuration directs Docker client tools to communicate with the
+> Docker daemon managed by Colima, ensuring that Docker commands and
+> applications (e.g. Molecule) function as expected without Docker Desktop.
+
 ### Environment configuration ###
 
 For portability between computers and environments, you may want to switch
