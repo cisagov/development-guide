@@ -1,9 +1,9 @@
 # Skeletonize an Existing Repository #
 
-Skeletonizing a repository standardizes our development setup and environment,
+Skeletonizing a repository standardizes our development setup and environment
 and enables our [Lineage GitHub Action](https://github.com/cisagov/action-lineage/)
 to keep the repository updated and standardized. The purpose of the
-instructions here is to describe how to skeletonize an existing non-skeletonized
+instructions here are to describe how to skeletonize an existing non-skeletonized
 repository.
 
 ## About ##
@@ -21,7 +21,7 @@ The general outline of how to add a skeleton to an existing repository is:
 
 1. [Add the skeleton as a remote](#add-the-skeleton-as-a-remote) to the
 existing non-skeletonized repository
-1. Pull with `--allow-unrelated-histories`
+1. Pull with `git pull--allow-unrelated-histories skeleton parent`
 1. [Fix merge conflicts](#fix-merge-conflicts)
 1. [Review non-conflicting changes](#review-non-conflicting-changes) to
 prevent merging destructive upstream changes
@@ -108,7 +108,7 @@ This step includes such activities as:
 
 - Update `setup.py` with non-example information
 - Arrange into appropriate folders, such as `src` and `test`
-- Update the `codeowners` file to reflect subject matter expertise and
+- Update the `.github/CODEOWNERS` file to reflect subject matter expertise and
 codebase familiarity
   - Aim to have at least two codeowners for every repository
 

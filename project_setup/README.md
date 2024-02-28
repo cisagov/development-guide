@@ -18,7 +18,7 @@ branch protection - [see our branch protection guide for details](branch-protect
 ## Contents ##
 
 - [Adding a skeleton configuration to an existing repository](#adding-a-skeleton-configuration-to-an-existing-repository)
-- [Using the gh-skeleton `gh` extension to start a new repository 💀🛠](#using-the-gh-skeleton-gh-extension-to-start-a-new-repository-)
+- [Using the gh-skeleton `gh` extension to start a new repository](#using-the-gh-skeleton-gh-extension-to-start-a-new-repository-)
   - [Selecting a skeleton](#selecting-a-skeleton)
   - [Cloning a selected skeleton](#cloning-a-selected-skeleton)
 - [Create and publish the GitHub repository](#create-and-publish-the-github-repository)
@@ -51,11 +51,11 @@ First, identify a suitable skeleton project to use as the starting point
 for your new repository. For a list of available skeletons, see the
 [Skeleton List](skeleton-list.md) or use the following command:
 
-```bash
-gh skeleton list
-```
-
 ```console
+$ gh skeleton list
+
+
+
 Available skeletons in cisagov:
 
 skeleton-python-library
@@ -91,13 +91,13 @@ for publication.  The tool will print out each command it is issuing
 and its result.
 
 ```console
-gh skeleton clone [options] <parent-repo-name> <new-repo-name>
+$ gh skeleton clone [options] <parent-repo-name> <new-repo-name>
 ```
 
 For example, to create a project based on `skeleton-ansible-role` named
 `ansible-role-quantum-rng` in your local `~/projects` directory:
 
-```bash
+```console
 gh skeleton clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng
 ```
 
