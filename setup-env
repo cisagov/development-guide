@@ -16,7 +16,7 @@ It does the following:
   - Configures the activation of the virtual enviroment for the repo directory.
   - Installs the requirements needed for development.
   - Installs git pre-commit hooks.
-  - Configures git upstream remote "lineage" repositories.
+  - Configures git remotes for upstream "lineage" repositories.
 
 Usage:
   setup-env [--venv-name virtual_env_name] [--python-version python_version]
