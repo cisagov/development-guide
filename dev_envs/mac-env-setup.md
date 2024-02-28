@@ -225,7 +225,7 @@ In your .zshrc profile add the following configuration.
 export DOCKER_HOST=unix://$HOME/.colima/default/docker.sock
 ```
 
-> **Note**
+> [!NOTE]
 > This configuration directs Docker client tools to communicate with the
 > Docker daemon managed by Colima, ensuring that Docker commands and
 > applications (e.g. Molecule) function as expected without Docker Desktop.
