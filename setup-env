@@ -165,7 +165,7 @@ while true; do
       break
       ;;
     *)
-      # Unreachable due to gnu-getopt handling all options
+      # Unreachable due to GNU getopt handling all options
       echo "Programming error"
       exit 64
       ;;
