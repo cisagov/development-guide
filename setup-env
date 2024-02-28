@@ -34,7 +34,7 @@ Options:
 END_OF_LINE
 )
 
-# Display installed python versions
+# Display pyenv's installed Python versions
 python_versions() {
   pyenv versions --bare --skip-aliases --skip-envs
 }
