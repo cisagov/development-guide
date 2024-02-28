@@ -217,7 +217,7 @@ fi
 
 # Create a new virtual environment for this project
 #
-# If $PYTHON_VERSION is undefined then the system Python will be used.
+# If $PYTHON_VERSION is undefined then the global version of Python will be used.
 #
 # We can't quote ${PYTHON_VERSION:=} below since if the variable is
 # undefined then we want nothing to appear; this is the reason for the
