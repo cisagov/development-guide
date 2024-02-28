@@ -63,7 +63,7 @@ environment.
 
 #### Installing and using GNU `getopt`, `pyenv`, and `pyenv-virtualenv` ####
 
-On the Mac, we recommend installing [brew](https://brew.sh/).  Then
+On macOS, we recommend installing [brew](https://brew.sh/).  Then
 installation is as simple as `brew install gnu-getopt pyenv pyenv-virtualenv` and
 adding this to your profile:
 
@@ -80,7 +80,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 ```
 
-For Linux, Windows Subsystem for Linux (WSL), or on the Mac (if you
+For Linux, Windows Subsystem for Linux (WSL), or on macOS (if you
 don't want to use `brew`) you can use
 [pyenv/pyenv-installer](https://github.com/pyenv/pyenv-installer) to
 install the necessary tools. Before running this ensure that you have

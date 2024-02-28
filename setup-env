@@ -19,7 +19,7 @@ It does the following:
   - Configures git remotes for upstream "lineage" repositories.
 
 Usage:
-  setup-env [--venv-name virtual_env_name] [--python-version python_version]
+  setup-env [--venv-name venv_name] [--python-version python_version]
   setup-env (-h | --help)
 
 Options:
@@ -67,7 +67,7 @@ if [[ $(getopt --version 2> /dev/null) != *"getopt from util-linux"* ]]; then
   as a system might have a non-GNU version of getopt installed by default,
   which could lead to unexpected behavior.
 
-  On the Mac, we recommend installing brew (https://brew.sh/).  Then installation
+  On macOS, we recommend installing brew (https://brew.sh/).  Then installation
   is as simple as `brew install gnu-getopt` and adding this to your
   profile:
 
@@ -86,7 +86,7 @@ if [ -z "$(command -v pyenv)" ] || { [ -z "$(command -v pyenv-virtualenv)" ] && 
   if [[ "$OSTYPE" == "darwin"* ]]; then
     cat << 'END_OF_LINE'
 
-  On the Mac, we recommend installing brew, https://brew.sh/.  Then installation
+  On macOS, we recommend installing brew, https://brew.sh/.  Then installation
   is as simple as `brew install pyenv pyenv-virtualenv` and adding this to your
   profile:
 
@@ -97,7 +97,7 @@ END_OF_LINE
 
   fi
   cat << 'END_OF_LINE'
-  For Linux, Windows Subsystem for Linux (WSL), or on the Mac (if you don't want
+  For Linux, Windows Subsystem for Linux (WSL), or on mac OS (if you don't want
   to use "brew") you can use https://github.com/pyenv/pyenv-installer to install
   the necessary tools. Before running this ensure that you have installed the
   prerequisites for your platform according to the pyenv wiki page,
