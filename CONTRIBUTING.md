@@ -80,7 +80,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 ```
 
-For Linux, Windows Subsystem for Linux (WSL), or on macOS (if you
+For Linux, Windows Subsystem for Linux (WSL), or macOS (if you
 don't want to use `brew`) you can use
 [pyenv/pyenv-installer](https://github.com/pyenv/pyenv-installer) to
 install the necessary tools. Before running this ensure that you have

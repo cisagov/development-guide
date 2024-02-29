@@ -97,7 +97,7 @@ END_OF_LINE
 
   fi
   cat << 'END_OF_LINE'
-  For Linux, Windows Subsystem for Linux (WSL), or on mac OS (if you don't want
+  For Linux, Windows Subsystem for Linux (WSL), or macOS (if you don't want
   to use "brew") you can use https://github.com/pyenv/pyenv-installer to install
   the necessary tools. Before running this ensure that you have installed the
   prerequisites for your platform according to the pyenv wiki page,
@@ -217,7 +217,7 @@ fi
 
 # Create a new virtual environment for this project
 #
-# If $PYTHON_VERSION is undefined then the global version of Python will be used.
+# If $PYTHON_VERSION is undefined then the current pyenv Python version will be used.
 #
 # We can't quote ${PYTHON_VERSION:=} below since if the variable is
 # undefined then we want nothing to appear; this is the reason for the
