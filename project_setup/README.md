@@ -100,7 +100,9 @@ For example, to create a project based on `skeleton-ansible-role` named
 `ansible-role-quantum-rng` in your local `~/projects` directory:
 
 ```console
-gh skeleton clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng
+$ gh skeleton clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng
+# Expected output:
+# Cloning into 'repo-name'
 ```
 
 This command results in:
