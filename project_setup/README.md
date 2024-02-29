@@ -28,9 +28,9 @@ branch protection - [see our branch protection guide for details](branch-protect
 - [Setting up branch protection](#setting-up-branch-protection)
 - [Setting up type-specific configuration settings](#setting-up-type-specific-configuration-settings)
   - [Setting up Coveralls for Python projects](#setting-up-coveralls-for-python-projects)
-  - [Ansible requirement file generation tool 🧻🛠](#ansible-requirement-file-generation-tool-)
-  - [Terraform IAM credentials to GitHub secrets 🔑‍👉🤫](#terraform-iam-credentials-to-github-secrets-)
-  - [Managing SSM parameters from files 🗂👉☁️](#managing-ssm-parameters-from-files-%EF%B8%8F)
+  - [Ansible requirement file generation tool](#ansible-requirement-file-generation-tool)
+  - [Terraform IAM credentials to GitHub secrets](#terraform-iam-credentials-to-github-secrets)
+  - [Managing SSM parameters from files](#managing-ssm-parameters-from-files)
 
 ## Adding a skeleton configuration to an existing repository ##
 
@@ -229,7 +229,7 @@ page with `Python set up for Coveralls`. The code block will have an entry for
 1. Add a `New repository secret` and name it `COVERALLS_REPO_TOKEN` with the
 value from Coveralls.
 
-### Ansible requirement file generation tool 🧻🛠 ###
+### Ansible requirement file generation tool ###
 
 We have a [plethora](https://www.youtube.com/watch?v=zWld721Wk-Q) of
 [ansible-roles in our organization](https://github.com/search?q=org%3Acisagov+topic%3Aansible-role+NOT+skeleton+archived%3Afalse).
@@ -246,7 +246,7 @@ usage of the tool is:
 This file will now contain definitions for all the Ansible roles.  Edit
 the file, and remove any role that will not be required for your project.
 
-### Terraform IAM credentials to GitHub secrets 🔑‍👉🤫 ###
+### Terraform IAM credentials to GitHub secrets ###
 
 When GitHub Actions workflows require credentials to run we provide them via
 [secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
@@ -278,7 +278,7 @@ terraform-to-secrets 9f4ae878de917c7cf191b9861d3c1cf9224939f7
 2020-02-22 15:50:41,036 INFO Success!
 ```
 
-### Managing SSM parameters from files 🗂👉☁️ ###
+### Managing SSM parameters from files ###
 
 Use the [`ssm-param`](scripts/ssm-param) tool to copy files into
 [SSM parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-about-examples.html)
