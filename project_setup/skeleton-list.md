@@ -16,7 +16,7 @@ from an existing library of skeleton repositories.
 ## List available skeletons with the command-line tool ##
 
 After you've installed the [`gh` CLI][gh CLI] followed
-by the [`gh-skeleton`](https://github.com/cisagov/gh-skeleton) extension,
+by the [`gh-skeleton`][gh-skeleton] extension,
 the tool will be available to you via the command line. To see a list of
 available skeletons, use the following command:
 
