@@ -35,7 +35,7 @@ prevent merging destructive upstream changes
 First, decide which of the available skeletons best fits your
 existing non-skeletonized repository. To see a list of available
 skeletons, use the `gh skeleton list` command or see
-the [list of skeletons](skeleton-list.md).
+the [list of skeletons][skeleton-list.md].
 
 As an example, we'll be using [`skeleton-python-library`](https://github.com/cisagov/skeleton-python-library)
 in this document.
@@ -158,3 +158,5 @@ accumulated a number of commits on your `skeletonize` branch.
 
 The next step is to [make a pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)
 and have the team perform code reviews.
+
+[skeleton-list.md]: https://github.com/cisagov/development-guide/blob/develop/project_setup/skeleton-list.md#available-skeletons-in-cisagov

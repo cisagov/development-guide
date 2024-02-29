@@ -3,7 +3,7 @@
 We recommend you follow the directions below and use a skeleton for
 all new repositories.
 
-The [`gh-skeleton`](https://github.com/cisagov/gh-skeleton) GitHub CLI
+The [`gh-skeleton`][gh-skeleton] GitHub CLI
 (`gh`) extension provides the ability to easily start new projects
 from the existing library of skeleton repositories.
 
@@ -18,7 +18,7 @@ branch protection - [see our branch protection guide for details](branch-protect
 ## Contents ##
 
 - [Adding a skeleton configuration to an existing repository](#adding-a-skeleton-configuration-to-an-existing-repository)
-- [Using the gh-skeleton `gh` extension to start a new repository](#using-the-gh-skeleton-gh-extension-to-start-a-new-repository-)
+- [Using the gh-skeleton `gh` extension to start a new repository](#using-the-gh-skeleton-gh-extension-to-start-a-new-repository)
   - [Selecting a skeleton](#selecting-a-skeleton)
   - [Cloning a selected skeleton](#cloning-a-selected-skeleton)
 - [Create and publish the GitHub repository](#create-and-publish-the-github-repository)
@@ -37,11 +37,11 @@ branch protection - [see our branch protection guide for details](branch-protect
 To skeletonize an existing repository, please see the guide to
 [skeletonize an existing repository](skeletonize-existing-repository.md).
 
-## Using the gh-skeleton `gh` extension to start a new repository 💀🛠 ##
+## Using the gh-skeleton `gh` extension to start a new repository ##
 
 We recommend that you start your project from one of the
 [skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
-in this organization.  The [`gh-skeleton`](https://github.com/cisagov/gh-skeleton)
+in this organization.  The [`gh-skeleton`][gh-skeleton]
 `gh` extension provides the ability to easily start new projects from the existing
 library of skeleton repositories.
 
@@ -85,13 +85,15 @@ skeleton-aws-lambda
 
 ### Cloning a selected skeleton ###
 
-Next, use the [`gh-skeleton`](https://github.com/cisagov/gh-skeleton)
+Next, use the [`gh-skeleton`][gh-skeleton]
 `gh` extension to clone, rename, and prepare the contents of your new repository
 for publication.  The tool will print out each command it is issuing
 and its result.
 
 ```console
 $ gh skeleton clone [options] <parent-repo-name> <new-repo-name>
+# Expected output:
+# Cloning into 'new-repo-name'
 ```
 
 For example, to create a project based on `skeleton-ansible-role` named
@@ -323,3 +325,5 @@ ssm-param rm /demo/dh4096.pem /demo/private.pem /demo/public.pem
 2019-08-27 16:48:02,417 INFO Deleting parameter '/demo/public.pem' in region 'us-west-1'
 2019-08-27 16:48:02,795 INFO Deleting parameter '/demo/public.pem' in region 'us-west-2'
 ```
+
+[gh-skeleton]: https://github.com/cisagov/gh-skeleton
