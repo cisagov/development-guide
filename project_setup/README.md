@@ -56,30 +56,14 @@ $ gh skeleton list
 
 Available skeletons in cisagov:
 
-skeleton-ansible-role
-A skeleton project for quickly getting a new cisagov Ansible role started.
-
-skeleton-ansible-role-with-test-user
-A skeleton project for quickly getting a new cisagov Ansible role started when that role requires an AWS test user.
-
-skeleton-aws-lambda-python
-A skeleton project for quickly getting a new Python-based AWS Lambda project started.
-
-skeleton-docker
-A skeleton project for quickly getting a new cisagov Docker container started.
-
-skeleton-generic
-A generic skeleton project for quickly getting a new cisagov project started.
-
-skeleton-packer
-A skeleton project for quickly getting a new cisagov packer project started.
-
-skeleton-python-library
-A skeleton project for quickly getting a new cisagov Python library started.
-
-skeleton-tf-module
-A skeleton project for quickly getting a new cisagov Terraform module started.
-
+skeleton-ansible-role       A skeleton project for quickly getting a new cisagov Ansible role started.
+skeleton-ansible-role-with-test-user    A skeleton project for quickly getting a new cisagov Ansible role started when that role requires an AWS test user.
+skeleton-aws-lambda-python  A skeleton project for quickly getting a new Python-based AWS Lambda project started.
+skeleton-docker             A skeleton project for quickly getting a new cisagov Docker container started.
+skeleton-generic            A generic skeleton project for quickly getting a new cisagov project started.
+skeleton-packer             A skeleton project for quickly getting a new cisagov packer project started.
+skeleton-python-library     A skeleton project for quickly getting a new cisagov Python library started.
+skeleton-tf-module          A skeleton project for quickly getting a new cisagov Terraform module started.
 ```
 
 ### Cloning a selected skeleton ###
