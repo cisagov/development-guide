@@ -2,16 +2,31 @@
 name: build
 
 on:
-  push:
+  merge_group:
+    types:
+      - checks_requested
   pull_request:
+  push:
   repository_dispatch:
-    types: [apb]
+    types:
+      - apb
+
+# Set a default shell for any run steps. The `-Eueo pipefail` sets errtrace,
+# nounset, errexit, and pipefail. The `-x` will print all commands as they are
+# run. Please see the GitHub Actions documentation for more information:
+# https://docs.github.com/en/actions/using-jobs/setting-default-values-for-jobs
+defaults:
+  run:
+    shell: bash -Eueo pipefail -x {0}
 
 env:
   CURL_CACHE_DIR: ~/.cache/curl
   PIP_CACHE_DIR: ~/.cache/pip
   PRE_COMMIT_CACHE_DIR: ~/.cache/pre-commit
   RUN_TMATE: ${{ secrets.RUN_TMATE }}
+  TERRAFORM_DOCS_REPO_BRANCH_NAME: improvement/support_atx_closed_markdown_headers
+  TERRAFORM_DOCS_REPO_DEPTH: 1
+  TERRAFORM_DOCS_REPO_URL: https://github.com/mcdonnnj/terraform-docs.git
 
 jobs:
   diagnostics:
@@ -27,7 +42,7 @@ jobs:
           egress-policy: audit
       - id: github-status
         name: Check GitHub status
-        uses: crazy-max/ghaction-github-status@v3
+        uses: crazy-max/ghaction-github-status@v4
       - id: dump-context
         name: Dump context
         uses: crazy-max/ghaction-dump-context@v2
@@ -45,20 +60,20 @@ jobs:
         uses: cisagov/setup-env-github-action@develop
       - uses: actions/checkout@v4
       - id: setup-python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ steps.setup-env.outputs.python-version }}
       # We need the Go version and Go cache location for the actions/cache step,
       # so the Go installation must happen before that.
       - id: setup-go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           # There is no expectation for actual Go code so we disable caching as
           # it relies on the existence of a go.sum file.
           cache: false
-          go-version: "1.20"
-      - name: Lookup Go cache directory
-        id: go-cache
+          go-version: ${{ steps.setup-env.outputs.go-version }}
+      - id: go-cache
+        name: Lookup Go cache directory
         run: |
           echo "dir=$(go env GOCACHE)" >> $GITHUB_OUTPUT
       - uses: actions/cache@v3
@@ -69,6 +84,10 @@ jobs:
             packer${{ steps.setup-env.outputs.packer-version }}-\
             tf${{ steps.setup-env.outputs.terraform-version }}-"
         with:
+          key: "${{ env.BASE_CACHE_KEY }}\
+            ${{ hashFiles('**/requirements-test.txt') }}-\
+            ${{ hashFiles('**/requirements.txt') }}-\
+            ${{ hashFiles('**/.pre-commit-config.yaml') }}"
           # Note that the .terraform directory IS NOT included in the
           # cache because if we were caching, then we would need to use
           # the `-upgrade=true` option. This option blindly pulls down the
@@ -80,10 +99,6 @@ jobs:
             ${{ env.PRE_COMMIT_CACHE_DIR }}
             ${{ env.CURL_CACHE_DIR }}
             ${{ steps.go-cache.outputs.dir }}
-          key: "${{ env.BASE_CACHE_KEY }}\
-            ${{ hashFiles('**/requirements-test.txt') }}-\
-            ${{ hashFiles('**/requirements.txt') }}-\
-            ${{ hashFiles('**/.pre-commit-config.yaml') }}"
           restore-keys: |
             ${{ env.BASE_CACHE_KEY }}
       - name: Setup curl cache
@@ -101,7 +116,7 @@ jobs:
             ${{ env.CURL_CACHE_DIR }}/"${PACKER_ZIP}"
           sudo mv /usr/local/bin/packer /usr/local/bin/packer-default
           sudo ln -s /opt/packer/packer /usr/local/bin/packer
-      - uses: hashicorp/setup-terraform@v2
+      - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: ${{ steps.setup-env.outputs.terraform-version }}
       - name: Install go-critic
@@ -109,26 +124,38 @@ jobs:
           PACKAGE_URL: github.com/go-critic/go-critic/cmd/gocritic
           PACKAGE_VERSION: ${{ steps.setup-env.outputs.go-critic-version }}
         run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
+      - name: Install goimports
+        env:
+          PACKAGE_URL: golang.org/x/tools/cmd/goimports
+          PACKAGE_VERSION: ${{ steps.setup-env.outputs.goimports-version }}
+        run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
       - name: Install gosec
         env:
           PACKAGE_URL: github.com/securego/gosec/v2/cmd/gosec
           PACKAGE_VERSION: ${{ steps.setup-env.outputs.gosec-version }}
-        run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
-      - name: Install shfmt
-        env:
-          PACKAGE_URL: mvdan.cc/sh/v3/cmd/shfmt
-          PACKAGE_VERSION: ${{ steps.setup-env.outputs.shfmt-version }}
         run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
       - name: Install staticcheck
         env:
           PACKAGE_URL: honnef.co/go/tools/cmd/staticcheck
           PACKAGE_VERSION: ${{ steps.setup-env.outputs.staticcheck-version }}
         run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
-      - name: Install Terraform-docs
-        env:
-          PACKAGE_URL: github.com/terraform-docs/terraform-docs
-          PACKAGE_VERSION: ${{ steps.setup-env.outputs.terraform-docs-version }}
-        run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
+      # TODO: https://github.com/cisagov/skeleton-generic/issues/165
+      # We are temporarily using @mcdonnnj's forked branch of terraform-docs
+      # until his PR: https://github.com/terraform-docs/terraform-docs/pull/745
+      # is approved. This temporary fix will allow for ATX header support when
+      # terraform-docs is run during linting.
+      - name: Clone ATX headers branch from terraform-docs fork
+        run: |
+          git clone \
+           --branch $TERRAFORM_DOCS_REPO_BRANCH_NAME \
+           --depth $TERRAFORM_DOCS_REPO_DEPTH \
+           --single-branch \
+           $TERRAFORM_DOCS_REPO_URL /tmp/terraform-docs
+      - name: Build and install terraform-docs binary
+        run: |
+          go build \
+          -C /tmp/terraform-docs \
+          -o $(go env GOPATH)/bin/terraform-docs
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel
