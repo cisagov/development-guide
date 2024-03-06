@@ -93,20 +93,24 @@ repos:
       - id: nixpkgs-fmt
 
   # Shell script hooks
-  - repo: https://github.com/cisagov/pre-commit-shfmt
-    rev: v0.0.2
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.7.0-4
     hooks:
       - id: shfmt
         args:
+          # List files that will be formatted
+          - --list
+          # Write result to file instead of stdout
+          - --write
           # Indent by two spaces
-          - -i
-          - '2'
+          - --indent
+          - "2"
           # Binary operators may start a line
-          - -bn
+          - --binary-next-line
           # Switch cases are indented
-          - -ci
+          - --case-indent
           # Redirect operators are followed by a space
-          - -sr
+          - --space-redirects
   - repo: https://github.com/detailyang/pre-commit-shell
     rev: 1.0.5
     hooks:
