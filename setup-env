@@ -9,60 +9,76 @@ USAGE=$(
 Configure a development environment for this repository.
 
 It does the following:
+  - Allows the user to specify the Python version to use for the virtual environment.
+  - Allows the user to specify a name for the virtual environment.
   - Verifies pyenv and pyenv-virtualenv are installed.
-  - Creates a Python virtual environment.
+  - Creates the Python virtual environment.
   - Configures the activation of the virtual enviroment for the repo directory.
   - Installs the requirements needed for development.
   - Installs git pre-commit hooks.
-  - Configures git upstream remote "lineage" repositories.
+  - Configures git remotes for upstream "lineage" repositories.
 
 Usage:
-  setup-env [options] [virt_env_name]
+  setup-env [--venv-name venv_name] [--python-version python_version]
   setup-env (-h | --help)
 
 Options:
-  -f --force          Delete virtual enviroment if it already exists.
-  -h --help           Show this message.
-  -i --install-hooks  Install hook environments for all environments in the
-                      pre-commit config file.
+  -f | --force             Delete virtual enviroment if it already exists.
+  -h | --help              Show this message.
+  -i | --install-hooks     Install hook environments for all environments in the
+                           pre-commit config file.
+  -l | --list-versions     List available Python versions and select one interactively.
+  -v | --venv-name         Specify the name of the virtual environment.
+  -p | --python-version    Specify the Python version for the virtual environment.
 
 END_OF_LINE
 )
 
+# Display pyenv's installed Python versions
+python_versions() {
+  pyenv versions --bare --skip-aliases --skip-envs
+}
+
 # Flag to force deletion and creation of virtual environment
 FORCE=0
 
-# Positional parameters
-PARAMS=""
+# Initialize the other flags
+INSTALL_HOOKS=0
+LIST_VERSIONS=0
+PYTHON_VERSION=""
+VENV_NAME=""
 
-# Parse command line arguments
-while (("$#")); do
-  case "$1" in
-    -f | --force)
-      FORCE=1
-      shift
-      ;;
-    -h | --help)
-      echo "${USAGE}"
-      exit 0
-      ;;
-    -i | --install-hooks)
-      INSTALL_HOOKS=1
-      shift
-      ;;
-    -*) # unsupported flags
-      echo "Error: Unsupported flag $1" >&2
-      exit 1
-      ;;
-    *) # preserve positional arguments
-      PARAMS="$PARAMS $1"
-      shift
-      ;;
-  esac
-done
+# Define long options
+LONGOPTS="force,help,install-hooks,list-versions,python-version:,venv-name:"
 
-# set positional arguments in their proper place
-eval set -- "$PARAMS"
+# Define short options for getopt
+SHORTOPTS="fhilp:v:"
+
+# Check for GNU getopt by matching a specific pattern ("getopt from util-linux")
+# in its version output. This approach presumes the output format remains stable.
+# Be aware that format changes could invalidate this check.
+if [[ $(getopt --version 2> /dev/null) != *"getopt from util-linux"* ]]; then
+  cat << 'END_OF_LINE'
+
+  Please note, this script requires GNU getopt due to its enhanced
+  functionality and compatibility with certain script features that
+  are not supported by the POSIX getopt found in some systems, particularly
+  those with a non-GNU version of getopt. This distinction is crucial
+  as a system might have a non-GNU version of getopt installed by default,
+  which could lead to unexpected behavior.
+
+  On macOS, we recommend installing brew (https://brew.sh/).  Then installation
+  is as simple as `brew install gnu-getopt` and adding this to your
+  profile:
+
+  export PATH="$(brew --prefix)/opt/gnu-getopt/bin:$PATH"
+
+  GNU getopt must be explicitly added to the PATH since it
+  is keg-only (https://docs.brew.sh/FAQ#what-does-keg-only-mean).
+
+END_OF_LINE
+  exit 1
+fi
 
 # Check to see if pyenv is installed
 if [ -z "$(command -v pyenv)" ] || { [ -z "$(command -v pyenv-virtualenv)" ] && [ ! -f "$(pyenv root)/plugins/pyenv-virtualenv/bin/pyenv-virtualenv" ]; }; then
@@ -70,7 +86,7 @@ if [ -z "$(command -v pyenv)" ] || { [ -z "$(command -v pyenv-virtualenv)" ] && 
   if [[ "$OSTYPE" == "darwin"* ]]; then
     cat << 'END_OF_LINE'
 
-  On the Mac, we recommend installing brew, https://brew.sh/.  Then installation
+  On macOS, we recommend installing brew, https://brew.sh/.  Then installation
   is as simple as `brew install pyenv pyenv-virtualenv` and adding this to your
   profile:
 
@@ -81,7 +97,7 @@ END_OF_LINE
 
   fi
   cat << 'END_OF_LINE'
-  For Linux, Windows Subsystem for Linux (WSL), or on the Mac (if you don't want
+  For Linux, Windows Subsystem for Linux (WSL), or macOS (if you don't want
   to use "brew") you can use https://github.com/pyenv/pyenv-installer to install
   the necessary tools. Before running this ensure that you have installed the
   prerequisites for your platform according to the pyenv wiki page,
@@ -100,16 +116,88 @@ END_OF_LINE
   exit 1
 fi
 
-set +o nounset
+# Use GNU getopt to parse options
+if ! PARSED=$(getopt --options $SHORTOPTS --longoptions $LONGOPTS --name "$0" -- "$@"); then
+  echo "Error parsing options"
+  exit 1
+fi
+eval set -- "$PARSED"
+
+while true; do
+  case "$1" in
+    -f | --force)
+      FORCE=1
+      shift
+      ;;
+    -h | --help)
+      echo "$USAGE"
+      exit 0
+      ;;
+    -i | --install-hooks)
+      INSTALL_HOOKS=1
+      shift
+      ;;
+    -l | --list-versions)
+      LIST_VERSIONS=1
+      shift
+      ;;
+    -p | --python-version)
+      PYTHON_VERSION="$2"
+      shift 2
+      # Check the Python versions being passed in.
+      if [ -n "${PYTHON_VERSION+x}" ]; then
+        if python_versions | grep -E "^${PYTHON_VERSION}$" > /dev/null; then
+          echo Using Python version "$PYTHON_VERSION"
+        else
+          echo Error: Python version "$PYTHON_VERSION" is not installed.
+          echo Installed Python versions are:
+          python_versions
+          exit 1
+        fi
+      fi
+      ;;
+    -v | --venv-name)
+      VENV_NAME="$2"
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      # Unreachable due to GNU getopt handling all options
+      echo "Programming error"
+      exit 64
+      ;;
+  esac
+done
+
 # Determine the virtual environment name
-if [ "$1" ]; then
+if [ -n "$VENV_NAME" ]; then
   # Use the user-provided environment name
-  env_name=$1
+  env_name="$VENV_NAME"
 else
   # Set the environment name to the last part of the working directory.
   env_name=${PWD##*/}
 fi
-set -o nounset
+
+# List Python versions and select one interactively.
+if [ $LIST_VERSIONS -ne 0 ]; then
+  echo Available Python versions:
+  python_versions
+  # Read the user's desired Python version.
+  # -r: treat backslashes as literal, -p: display prompt before input.
+  read -r -p "Enter the desired Python version: " PYTHON_VERSION
+  # Check the Python versions being passed in.
+  if [ -n "${PYTHON_VERSION+x}" ]; then
+    if python_versions | grep -E "^${PYTHON_VERSION}$" > /dev/null; then
+      echo Using Python version "$PYTHON_VERSION"
+    else
+      echo Error: Python version "$PYTHON_VERSION" is not installed.
+      exit 1
+    fi
+  fi
+fi
 
 # Remove any lingering local configuration.
 if [ $FORCE -ne 0 ]; then
@@ -118,7 +206,7 @@ if [ $FORCE -ne 0 ]; then
 elif [[ -f .python-version ]]; then
   cat << 'END_OF_LINE'
   An existing .python-version file was found.  Either remove this file yourself
-  or re-run with --force option to have it deleted along with the associated
+  or re-run with the --force option to have it deleted along with the associated
   virtual environment.
 
   rm .python-version
@@ -128,10 +216,18 @@ END_OF_LINE
 fi
 
 # Create a new virtual environment for this project
-if ! pyenv virtualenv "${env_name}"; then
+#
+# If $PYTHON_VERSION is undefined then the current pyenv Python version will be used.
+#
+# We can't quote ${PYTHON_VERSION:=} below since if the variable is
+# undefined then we want nothing to appear; this is the reason for the
+# "shellcheck disable" line below.
+#
+# shellcheck disable=SC2086
+if ! pyenv virtualenv ${PYTHON_VERSION:=} "${env_name}"; then
   cat << END_OF_LINE
   An existing virtual environment named $env_name was found.  Either delete this
-  environment yourself or re-run with --force option to have it deleted.
+  environment yourself or re-run with the --force option to have it deleted.
 
   pyenv virtualenv-delete ${env_name}
 

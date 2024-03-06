@@ -5,7 +5,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: check-case-conflict
       - id: check-executables-have-shebangs
@@ -33,17 +33,24 @@ repos:
 
   # Text file hooks
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.36.0
+    rev: v0.39.0
     hooks:
       - id: markdownlint
         args:
           - --config=.mdl_config.yaml
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.3
+    # This is the last version of v3 available from the mirror. We should hold
+    # here until v4, which is currently in alpha, is more stable.
+    rev: v3.1.0
     hooks:
       - id: prettier
+        # This is the latest version of v3 available from NPM. The pre-commit
+        # mirror does not pull tags for old major versions once a new major
+        # version tag is published.
+        additional_dependencies:
+          - prettier@3.2.5
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.32.0
+    rev: v1.35.1
     hooks:
       - id: yamllint
         args:
@@ -51,14 +58,14 @@ repos:
 
   # GitHub Actions hooks
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.26.3
+    rev: 0.28.0
     hooks:
       - id: check-github-actions
       - id: check-github-workflows
 
   # pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit
-    rev: v3.4.0
+    rev: v3.6.2
     hooks:
       - id: validate_manifest
 
@@ -80,7 +87,11 @@ repos:
       - id: go-vet-repo-mod
       # GoSec
       - id: go-sec-repo-mod
-
+      # goimports
+      - id: go-imports-repo
+        args:
+          # Write changes to files
+          - -w
   # Nix hooks
   - repo: https://github.com/nix-community/nixpkgs-fmt
     rev: v1.3.0
@@ -88,68 +99,72 @@ repos:
       - id: nixpkgs-fmt
 
   # Shell script hooks
-  - repo: https://github.com/cisagov/pre-commit-shfmt
-    rev: v0.0.2
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.7.0-4
     hooks:
       - id: shfmt
         args:
+          # List files that will be formatted
+          - --list
+          # Write result to file instead of stdout
+          - --write
           # Indent by two spaces
-          - -i
-          - '2'
+          - --indent
+          - "2"
           # Binary operators may start a line
-          - -bn
+          - --binary-next-line
           # Switch cases are indented
-          - -ci
+          - --case-indent
           # Redirect operators are followed by a space
-          - -sr
-  - repo: https://github.com/detailyang/pre-commit-shell
-    rev: 1.0.5
+          - --space-redirects
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.6
     hooks:
-      - id: shell-lint
+      - id: shellcheck
 
   # Python hooks
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.7.5
+    rev: 1.7.7
     hooks:
       - id: bandit
         args:
           - --config=.bandit.yml
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 23.9.1
+    rev: 24.2.0
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/flake8
-    rev: 6.1.0
+    rev: 7.0.0
     hooks:
       - id: flake8
         additional_dependencies:
           - flake8-docstrings
   - repo: https://github.com/PyCQA/isort
-    rev: 5.12.0
+    rev: 5.13.2
     hooks:
       - id: isort
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.5.1
+    rev: v1.8.0
     hooks:
       - id: mypy
         additional_dependencies:
           - types-PyYAML
           - types-requests
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.10.1
+    rev: v3.15.1
     hooks:
       - id: pyupgrade
 
   # Ansible hooks
   - repo: https://github.com/ansible/ansible-lint
-    rev: v6.19.0
+    rev: v24.2.0
     hooks:
       - id: ansible-lint
       # files: molecule/default/playbook.yml
 
   # Terraform hooks
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.83.2
+    rev: v1.88.0
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
