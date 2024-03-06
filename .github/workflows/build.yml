@@ -24,6 +24,9 @@ env:
   PIP_CACHE_DIR: ~/.cache/pip
   PRE_COMMIT_CACHE_DIR: ~/.cache/pre-commit
   RUN_TMATE: ${{ secrets.RUN_TMATE }}
+  TERRAFORM_DOCS_REPO_BRANCH_NAME: improvement/support_atx_closed_markdown_headers
+  TERRAFORM_DOCS_REPO_DEPTH: 1
+  TERRAFORM_DOCS_REPO_URL: https://github.com/mcdonnnj/terraform-docs.git
 
 jobs:
   diagnostics:
@@ -136,11 +139,23 @@ jobs:
           PACKAGE_URL: honnef.co/go/tools/cmd/staticcheck
           PACKAGE_VERSION: ${{ steps.setup-env.outputs.staticcheck-version }}
         run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
-      - name: Install Terraform-docs
-        env:
-          PACKAGE_URL: github.com/terraform-docs/terraform-docs
-          PACKAGE_VERSION: ${{ steps.setup-env.outputs.terraform-docs-version }}
-        run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
+      # TODO: https://github.com/cisagov/skeleton-generic/issues/165
+      # We are temporarily using @mcdonnnj's forked branch of terraform-docs
+      # until his PR: https://github.com/terraform-docs/terraform-docs/pull/745
+      # is approved. This temporary fix will allow for ATX header support when
+      # terraform-docs is run during linting.
+      - name: Clone ATX headers branch from terraform-docs fork
+        run: |
+          git clone \
+           --branch $TERRAFORM_DOCS_REPO_BRANCH_NAME \
+           --depth $TERRAFORM_DOCS_REPO_DEPTH \
+           --single-branch \
+           $TERRAFORM_DOCS_REPO_URL /tmp/terraform-docs
+      - name: Build and install terraform-docs binary
+        run: |
+          go build \
+          -C /tmp/terraform-docs \
+          -o $(go env GOPATH)/bin/terraform-docs
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel
