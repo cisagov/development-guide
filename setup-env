@@ -217,7 +217,7 @@ if [ $LIST_VERSIONS -ne 0 ]; then
   # Read the user's desired Python version.
   # -r: treat backslashes as literal, -p: display prompt before input.
   read -r -p "Enter the desired Python version: " PYTHON_VERSION
-  # Check the Python versions being passed in.
+  # Check the Python version being passed in.
   check_python_version "$PYTHON_VERSION"
 fi
 
