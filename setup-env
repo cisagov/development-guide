@@ -63,8 +63,8 @@ check_python_version() {
   local regex="^($major)\\.($minor)\\.($patch)$prerelease$build\$"
 
   if ! echo "$version" | perl -ne "exit(!/$regex/)"; then
-    echo "Invalid version of Python: Python follows semantic versioning, " \
-      "so any version string that is not a valid semantic version is an " \
+    echo "Invalid version of Python: Python follows semantic versioning," \
+      "so any version string that is not a valid semantic version is an" \
       "invalid version of Python."
     exit 1
   elif ! python_versions | grep -E "^${version}$" > /dev/null; then
