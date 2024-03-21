@@ -42,31 +42,38 @@ python_versions() {
 check_python_version() {
   local version=$1
 
+  # This is a valid regex for semantically correct Python version strings.
+  # For more information see here: https://regex101.com/r/vkijKf/1/.
   # Break down the regex into readable parts major.minor.patch
-  local major="0|[1-9]\\d*"
-  local minor="0|[1-9]\\d*"
-  local patch="0|[1-9]\\d*"
+  local major="0|[1-9]\d*"
+  local minor="0|[1-9]\d*"
+  local patch="0|[1-9]\d*"
 
   # Splitting the prerelease part for readability
-  # Start of prerelease
+  # Start of the prerelease
   local prerelease="(?:-"
   # Numeric or alphanumeric identifiers
-  local prerelease+="(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)"
+  local prerelease+="(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)"
   # Additional dot-separated identifiers
-  local prerelease+="(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*"
-  # End of prerelease, making it optional
+  local prerelease+="(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*"
+  # End of the prerelease, making it optional
   local prerelease+=")?"
   # Optional build metadata
-  local build="(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?"
+  local build="(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?"
 
   # Final regex composed of parts
-  local regex="^($major)\\.($minor)\\.($patch)$prerelease$build\$"
+  local regex="^($major)\.($minor)\.($patch)$prerelease$build$"
 
+  # This checks if the Python version does not match the regex pattern specified in $regex,
+  # using Perl for regex matching. If the pattern is not found, then prompt the user with
+  # the invalid version message.
   if ! echo "$version" | perl -ne "exit(!/$regex/)"; then
     echo "Invalid version of Python: Python follows semantic versioning," \
       "so any version string that is not a valid semantic version is an" \
       "invalid version of Python."
     exit 1
+  # Else if the Python version isn't installed then notify the user.
+  # grep -E is used for searching through text lines that match the specific verison.
   elif ! python_versions | grep -E "^${version}$" > /dev/null; then
     echo "Error: Python version $version is not installed."
     echo "Installed Python versions are:"
