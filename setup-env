@@ -43,7 +43,8 @@ check_python_version() {
   local version=$1
 
   # This is a valid regex for semantically correct Python version strings.
-  # For more information see here: https://regex101.com/r/vkijKf/1/.
+  # For more information see here:
+  # https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string.
   # Break down the regex into readable parts major.minor.patch
   local major="0|[1-9]\d*"
   local minor="0|[1-9]\d*"
