@@ -24,7 +24,6 @@ repos:
           - --allow-missing-credentials
       - id: detect-private-key
       - id: end-of-file-fixer
-        exclude: files/(issue|motd)
       - id: mixed-line-ending
         args:
           - --fix=lf
