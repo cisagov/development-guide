@@ -148,13 +148,13 @@ uninstall it before proceeding.
 
     You should see the Docker usage menu.
 
-1. Verify `docker-compose` is working:
+1. Verify Docker Compose is working:
 
     ```console
-    docker-compose
+    docker compose
     ```
 
-    The `docker-compose` usage menu should appear.
+    The Docker Compose usage menu should appear.
 
 ### Optional configurations ###
 
