@@ -114,7 +114,7 @@ packages. We recommend installing all the packages specified in the
 For individuals or businesses seeking a container solution without
 the licensing conditions associated with [Docker Desktop](https://www.docker.com/pricing/faq/)
 , [Colima](https://github.com/abiosoft/colima) offers a compelling
-open-source alternative. Compatible with both MacOS and Linux,
+open-source alternative. Compatible with both macOS and Linux,
 Colima facilitates running containers directly using Docker
 commands without the need for Docker Desktop.
 
@@ -218,9 +218,9 @@ To customize the VM's resources, such as CPUs, memory, and disk space:
 
 ### Support applications that are unaware of Docker context ###
 
-In your .zshrc profile add the following configuration.
+In your shell profile (`.bashrc`, `.zshrc`, etc.) add the following configuration.
 
-```console
+```shell
 # Set env variable for Colima compatibility with Docker
 export DOCKER_HOST=unix://$HOME/.colima/default/docker.sock
 ```
