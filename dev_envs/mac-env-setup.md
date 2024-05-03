@@ -52,6 +52,88 @@ Download the latest stable [Docker Desktop on Mac](https://www.docker.com/produc
 Install it by double-clicking the downloaded `dmg` file and dragging the
 Docker application file to the `Applications` folder.
 
+#### Colima: A Docker alternative ####
+
+For individuals or businesses seeking a container solution without
+the licensing conditions associated with [Docker Desktop](https://www.docker.com/pricing/faq/)
+, [Colima](https://github.com/abiosoft/colima) offers a compelling
+open-source alternative. Compatible with both macOS and Linux,
+Colima facilitates running containers directly using Docker
+commands without the need for Docker Desktop.
+
+#### Installing Colima ####
+
+**Prerequisites:** If Docker Desktop is installed on your system,
+uninstall it before proceeding.
+
+**Installation Steps:**
+
+1. Install Colima and Docker command-line tools using Homebrew:
+
+    ```console
+    brew install colima docker docker-compose
+    ```
+
+1. Verify the installation by starting Colima:
+
+    ```console
+    colima start
+    ```
+
+    This initializes the Docker daemon within a lightweight VM.
+    The first startup may take a moment.
+
+1. Confirm Docker is operational:
+
+    ```console
+    docker
+    ```
+
+    You should see the Docker usage menu.
+
+1. Verify Docker Compose is working:
+
+    ```console
+    docker compose
+    ```
+
+    The Docker Compose usage menu should appear.
+
+#### Optional configurations ####
+
+Enhance your Colima setup with the following optional configurations:
+
+#### Customizing VM resources ####
+
+To customize the VM's resources, such as CPUs, memory, and disk space:
+
+1. Stop Colima:
+
+    ```console
+    colima stop
+    ```
+
+1. Restart with desired specifications:
+
+    ```console
+    colima start --cpu 4 --memory 4 --disk 100
+    ```
+
+#### Support applications that are unaware of Docker context ####
+
+In your shell profile (`.bashrc`, `.zshrc`, etc.) add the following configuration.
+
+```shell
+# Set env variable for Colima compatibility with Docker
+export DOCKER_HOST=unix://$HOME/.colima/default/docker.sock
+```
+
+> [!NOTE]
+> This configuration directs Docker client tools to communicate with the
+> Docker daemon managed by Colima, ensuring that Docker commands and
+> applications (e.g. Molecule) function as expected without Docker Desktop.
+> For more information, see [here](https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#cannot-connect-to-the-docker-daemon-at-unixvarrundockersock-is-the-docker-daemon-running).
+
 ### iTerm2 (recommended) ###
 
 To set up iTerm2 - a macOS terminal replacement with some nifty features -
@@ -108,128 +190,6 @@ Open Terminal and install `brew` per the instructions from
 After installing Brew, you'll want to install other useful
 packages. We recommend installing all the packages specified in the
 [CISA `laptop` script repository](https://github.com/cisagov/laptop/blob/master/Brewfile).
-
-### Colima: A Docker alternative ###
-
-For individuals or businesses seeking a container solution without
-the licensing conditions associated with [Docker Desktop](https://www.docker.com/pricing/faq/)
-, [Colima](https://github.com/abiosoft/colima) offers a compelling
-open-source alternative. Compatible with both macOS and Linux,
-Colima facilitates running containers directly using Docker
-commands without the need for Docker Desktop.
-
-#### Installing Colima ####
-
-**Prerequisites:** If Docker Desktop is installed on your system,
-uninstall it before proceeding.
-
-**Installation Steps:**
-
-1. Install Colima and Docker command-line tools using Homebrew:
-
-    ```console
-    brew install colima docker docker-compose
-    ```
-
-1. Verify the installation by starting Colima:
-
-    ```console
-    colima start
-    ```
-
-    This initializes the Docker daemon within a lightweight VM.
-    The first startup may take a moment.
-
-1. Confirm Docker is operational:
-
-    ```console
-    docker
-    ```
-
-    You should see the Docker usage menu.
-
-1. Verify Docker Compose is working:
-
-    ```console
-    docker compose
-    ```
-
-    The Docker Compose usage menu should appear.
-
-### Optional configurations ###
-
-Enhance your Colima setup with the following optional configurations:
-
-#### Docker Compose as a Docker plugin ####
-
-Convert `docker-compose` to a Docker plugin for streamlined commands:
-
-1. Create a directory for Docker CLI plugins:
-
-    ```console
-    mkdir -p ~/.docker/cli-plugins
-    ```
-
-1. Symlink the `docker-compose` command:
-
-    ```console
-    ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
-    ```
-
-1. Verify by running:
-
-    ```console
-    docker compose
-    ```
-
-    Ensure the `docker compose` usage menu is displayed.
-
-#### Installing Buildx ####
-
-Buildx is necessary for building some Docker containers:
-
-1. Install Buildx with Homebrew:
-
-    ```console
-    brew install docker-buildx
-    ```
-
-1. Symlink Buildx to the CLI plugins directory:
-
-    ```console
-    ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
-    ```
-
-#### Customizing VM resources ####
-
-To customize the VM's resources, such as CPUs, memory, and disk space:
-
-1. Stop Colima:
-
-    ```console
-    colima stop
-    ```
-
-1. Restart with desired specifications:
-
-    ```console
-    colima start --cpu 4 --memory 4 --disk 100
-    ```
-
-### Support applications that are unaware of Docker context ###
-
-In your shell profile (`.bashrc`, `.zshrc`, etc.) add the following configuration.
-
-```shell
-# Set env variable for Colima compatibility with Docker
-export DOCKER_HOST=unix://$HOME/.colima/default/docker.sock
-```
-
-> [!NOTE]
-> This configuration directs Docker client tools to communicate with the
-> Docker daemon managed by Colima, ensuring that Docker commands and
-> applications (e.g. Molecule) function as expected without Docker Desktop.
-> For more information, see [here](https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#cannot-connect-to-the-docker-daemon-at-unixvarrundockersock-is-the-docker-daemon-running).
 
 ### Environment configuration ###
 
