@@ -166,7 +166,6 @@ repos:
           # made in requirements.txt in cisagov/skeleton-packer and
           # requirements-test.txt in cisagov/skeleton-ansible-role.
           - ansible-core>=2.16.7
-      # files: molecule/default/playbook.yml
 
   # Terraform hooks
   - repo: https://github.com/antonbabenko/pre-commit-terraform
