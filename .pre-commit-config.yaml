@@ -155,7 +155,25 @@ repos:
     rev: v24.6.0
     hooks:
       - id: ansible-lint
-      # files: molecule/default/playbook.yml
+        additional_dependencies:
+          # On its own ansible-lint does not pull in ansible, only
+          # ansible-core.  Therefore, if an Ansible module lives in
+          # ansible instead of ansible-core, the linter will complain
+          # that the module is unknown.  In these cases it is
+          # necessary to add the ansible package itself as an
+          # additional dependency, with the same pinning as is done in
+          # requirements-test.txt of cisagov/skeleton-ansible-role.
+          # - ansible>=9,<10
+          # ansible-core 2.16.3 through 2.16.6 suffer from the bug
+          # discussed in ansible/ansible#82702, which breaks any
+          # symlinked files in vars, tasks, etc. for any Ansible role
+          # installed via ansible-galaxy.  Hence we never want to
+          # install those versions.
+          #
+          # Note that any changes made to this dependency must also be
+          # made in requirements.txt in cisagov/skeleton-packer and
+          # requirements-test.txt in cisagov/skeleton-ansible-role.
+          - ansible-core>=2.16.7
 
   # Terraform hooks
   - repo: https://github.com/antonbabenko/pre-commit-terraform
