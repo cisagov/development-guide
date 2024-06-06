@@ -5,7 +5,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-case-conflict
       - id: check-executables-have-shebangs
@@ -31,7 +31,7 @@ repos:
 
   # Text file hooks
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.39.0
+    rev: v0.41.0
     hooks:
       - id: markdownlint
         args:
@@ -46,7 +46,7 @@ repos:
         # mirror does not pull tags for old major versions once a new major
         # version tag is published.
         additional_dependencies:
-          - prettier@3.2.5
+          - prettier@3.3.1
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.35.1
     hooks:
@@ -56,14 +56,14 @@ repos:
 
   # GitHub Actions hooks
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.28.0
+    rev: 0.28.4
     hooks:
       - id: check-github-actions
       - id: check-github-workflows
 
   # pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit
-    rev: v3.6.2
+    rev: v3.7.1
     hooks:
       - id: validate_manifest
 
@@ -98,7 +98,7 @@ repos:
 
   # Shell script hooks
   - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.7.0-4
+    rev: v3.8.0-1
     hooks:
       - id: shfmt
         args:
@@ -116,19 +116,19 @@ repos:
           # Redirect operators are followed by a space
           - --space-redirects
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.9.0.6
+    rev: v0.10.0.1
     hooks:
       - id: shellcheck
 
   # Python hooks
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.7.7
+    rev: 1.7.8
     hooks:
       - id: bandit
         args:
           - --config=.bandit.yml
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 24.2.0
+    rev: 24.4.2
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/flake8
@@ -142,24 +142,24 @@ repos:
     hooks:
       - id: isort
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.8.0
+    rev: v1.10.0
     hooks:
       - id: mypy
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.15.1
+    rev: v3.15.2
     hooks:
       - id: pyupgrade
 
   # Ansible hooks
   - repo: https://github.com/ansible/ansible-lint
-    rev: v24.2.0
+    rev: v24.6.0
     hooks:
       - id: ansible-lint
       # files: molecule/default/playbook.yml
 
   # Terraform hooks
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.88.0
+    rev: v1.90.0
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
