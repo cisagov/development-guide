@@ -163,7 +163,7 @@ repos:
           # necessary to add the ansible package itself as an
           # additional dependency, with the same pinning as is done in
           # requirements-test.txt of cisagov/skeleton-ansible-role.
-          # - ansible>=8,<10
+          # - ansible>=9,<10
           # ansible-core 2.16.3 through 2.16.6 suffer from the bug
           # discussed in ansible/ansible#82702, which breaks any
           # symlinked files in vars, tasks, etc. for any Ansible role
