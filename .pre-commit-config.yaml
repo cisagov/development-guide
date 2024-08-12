@@ -46,7 +46,7 @@ repos:
         # mirror does not pull tags for old major versions once a new major
         # version tag is published.
         additional_dependencies:
-          - prettier@3.3.1
+          - prettier@3.3.3
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.35.1
     hooks:
