@@ -24,7 +24,7 @@ jobs:
           egress-policy: audit
       - id: github-status
         name: Check GitHub status
-        uses: crazy-max/ghaction-github-status@v3
+        uses: crazy-max/ghaction-github-status@v4
       - id: dump-context
         name: Dump context
         uses: crazy-max/ghaction-dump-context@v2
