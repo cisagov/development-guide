@@ -4,6 +4,11 @@ default_language_version:
   python: python3
 
 repos:
+  # Check the pre-commit configuration
+  - repo: meta
+    hooks:
+      - id: check-useless-excludes
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -19,7 +24,6 @@ repos:
           - --allow-missing-credentials
       - id: detect-private-key
       - id: end-of-file-fixer
-        exclude: files/(issue|motd)
       - id: mixed-line-ending
         args:
           - --fix=lf
