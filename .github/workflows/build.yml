@@ -76,7 +76,7 @@ jobs:
         name: Lookup Go cache directory
         run: |
           echo "dir=$(go env GOCACHE)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         env:
           BASE_CACHE_KEY: "${{ github.job }}-${{ runner.os }}-\
             py${{ steps.setup-python.outputs.python-version }}-\
