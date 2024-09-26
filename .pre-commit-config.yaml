@@ -4,6 +4,11 @@ default_language_version:
   python: python3
 
 repos:
+  # Check the pre-commit configuration
+  - repo: meta
+    hooks:
+      - id: check-useless-excludes
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -21,7 +26,6 @@ repos:
       - id: detect-private-key
         exclude: config/gitleaks.toml
       - id: end-of-file-fixer
-        exclude: files/(issue|motd)
       - id: mixed-line-ending
         args:
           - --fix=lf
@@ -33,22 +37,15 @@ repos:
 
   # Text file hooks
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.41.0
+    rev: v0.42.0
     hooks:
       - id: markdownlint
         args:
           - --config=.mdl_config.yaml
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    # This is the last version of v3 available from the mirror. We should hold
-    # here until v4, which is currently in alpha, is more stable.
-    rev: v3.1.0
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: v3.3.3
     hooks:
       - id: prettier
-        # This is the latest version of v3 available from NPM. The pre-commit
-        # mirror does not pull tags for old major versions once a new major
-        # version tag is published.
-        additional_dependencies:
-          - prettier@3.3.1
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.35.1
     hooks:
@@ -58,14 +55,14 @@ repos:
 
   # GitHub Actions hooks
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.28.4
+    rev: 0.29.2
     hooks:
       - id: check-github-actions
       - id: check-github-workflows
 
   # pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit
-    rev: v3.7.1
+    rev: v3.8.0
     hooks:
       - id: validate_manifest
 
@@ -100,7 +97,7 @@ repos:
 
   # Shell script hooks
   - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.8.0-1
+    rev: v3.9.0-1
     hooks:
       - id: shfmt
         args:
@@ -124,40 +121,52 @@ repos:
 
   # Python hooks
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.7.8
+    rev: 1.7.10
     hooks:
       - id: bandit
         args:
           - --config=.bandit.yml
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 24.4.2
+    rev: 24.8.0
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/flake8
-    rev: 7.0.0
+    rev: 7.1.1
     hooks:
       - id: flake8
         additional_dependencies:
-          - flake8-docstrings
+          - flake8-docstrings==1.7.0
   - repo: https://github.com/PyCQA/isort
     rev: 5.13.2
     hooks:
       - id: isort
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.10.0
+    rev: v1.11.2
     hooks:
       - id: mypy
         additional_dependencies:
           - types-PyYAML
           - types-requests
+  - repo: https://github.com/pypa/pip-audit
+    rev: v2.7.3
+    hooks:
+      - id: pip-audit
+        args:
+          # Add any pip requirements files to scan
+          - --requirement
+          - requirements-dev.txt
+          - --requirement
+          - requirements-test.txt
+          - --requirement
+          - requirements.txt
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.15.2
+    rev: v3.17.0
     hooks:
       - id: pyupgrade
 
   # Ansible hooks
   - repo: https://github.com/ansible/ansible-lint
-    rev: v24.6.0
+    rev: v24.9.2
     hooks:
       - id: ansible-lint
         additional_dependencies:
@@ -182,7 +191,7 @@ repos:
 
   # Terraform hooks
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.90.0
+    rev: v1.96.1
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
@@ -195,7 +204,7 @@ repos:
 
   # Packer hooks
   - repo: https://github.com/cisagov/pre-commit-packer
-    rev: v0.0.2
+    rev: v0.1.0
     hooks:
       - id: packer_validate
       - id: packer_fmt
