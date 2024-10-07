@@ -4,23 +4,26 @@ We maintain a number of [`cisagov` skeleton projects](https://github.com/search?
 to make starting new repositories quicker and to simplify maintaining
 configurations and dependencies across the organization.
 
-The [`skeleton`](scripts/skeleton) helper tool is included in the [`scripts`](scripts)
-directory of the [development-guide](https://github.com/cisagov/development-guide)
-repository.
+The [`gh-skeleton`][gh-skeleton] project is
+a GitHub CLI (`gh`) extension that provides the ability to easily start new projects
+from an existing library of skeleton repositories.
 
 - To skeletonize an existing repository, please see the guide to
 [skeletonize an existing repository](skeletonize-existing-repository.md).
 - To skeletonize a new repository, please see the guide to
-[start a new repository from a skeleton](new-repository-from-skeleton.md).
+[start a new repository from a skeleton](README.md#using-the-gh-skeleton-gh-extension-to-start-a-new-repository).
 
 ## List available skeletons with the command-line tool ##
 
-After you've run `setup-env` in this repository, the `skeleton` tool will be
-available to you via the command line. To see a list of available skeletons,
-use the following command:
+After you've installed the [`gh` CLI][gh CLI] followed
+by the [`gh-skeleton`][gh-skeleton] extension,
+the tool will be available to you via the command line. To see a list of
+available skeletons, use the following command:
 
-```bash
-skeleton list
+```console
+$ gh skeleton list
+# Expected output:
+# Listing of available skeleton repositories
 ```
 
 ## Available skeletons in cisagov ##
@@ -47,9 +50,12 @@ that role requires an AWS test user.
 [`skeleton-packer`](https://github.com/cisagov/skeleton-packer):
 A skeleton project for quickly getting a new cisagov packer project started.
 
-[`skeleton-aws-lambda`](https://github.com/cisagov/skeleton-aws-lambda):
+[`skeleton-aws-lambda-python`](https://github.com/cisagov/skeleton-aws-lambda-python):
 A skeleton project for quickly getting a new cisagov Python AWS Lambda started.
 
 Note: If you discover a new flavor of skeleton that doesn't yet exist, use
 `skeleton-generic` to create it, or add an issue to this repository to get
 assistance.
+
+[gh-skeleton]: https://github.com/cisagov/gh-skeleton
+[gh CLI]: https://github.com/cli/cli

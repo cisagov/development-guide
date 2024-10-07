@@ -3,10 +3,9 @@
 We recommend you follow the directions below and use a skeleton for
 all new repositories.
 
-The [`skeleton`](scripts/skeleton)
-helper tool included in the [`scripts`](scripts) directory can quickly setup
-a new local repository. Once you've cloned and configured the repository
-to your local machine, it can be published to a repository created on GitHub.
+The [`gh-skeleton`][gh-skeleton] GitHub CLI
+(`gh`) extension provides the ability to easily start new projects
+from the existing library of skeleton repositories.
 
 For repositories created from skeletons, run `setup-env` and
 `pre-commit install` to [set up your environment](#set-up-your-environment-and-pre-commit),
@@ -19,7 +18,7 @@ branch protection - [see our branch protection guide for details](branch-protect
 ## Contents ##
 
 - [Adding a skeleton configuration to an existing repository](#adding-a-skeleton-configuration-to-an-existing-repository)
-- [Using the skeleton tool to start a new repository 💀🛠](#using-the-skeleton-tool-to-start-a-new-repository-)
+- [Using the gh-skeleton `gh` extension to start a new repository](#using-the-gh-skeleton-gh-extension-to-start-a-new-repository)
   - [Selecting a skeleton](#selecting-a-skeleton)
   - [Cloning a selected skeleton](#cloning-a-selected-skeleton)
 - [Create and publish the GitHub repository](#create-and-publish-the-github-repository)
@@ -29,23 +28,22 @@ branch protection - [see our branch protection guide for details](branch-protect
 - [Setting up branch protection](#setting-up-branch-protection)
 - [Setting up type-specific configuration settings](#setting-up-type-specific-configuration-settings)
   - [Setting up Coveralls for Python projects](#setting-up-coveralls-for-python-projects)
-  - [Ansible requirement file generation tool 🧻🛠](#ansible-requirement-file-generation-tool-)
-  - [Terraform IAM credentials to GitHub secrets 🔑‍👉🤫](#terraform-iam-credentials-to-github-secrets-)
-  - [Managing SSM parameters from files 🗂👉☁️](#managing-ssm-parameters-from-files-%EF%B8%8F)
+  - [Ansible requirement file generation tool](#ansible-requirement-file-generation-tool)
+  - [Terraform IAM credentials to GitHub secrets](#terraform-iam-credentials-to-github-secrets)
+  - [Managing SSM parameters from files](#managing-ssm-parameters-from-files)
 
 ## Adding a skeleton configuration to an existing repository ##
 
 To skeletonize an existing repository, please see the guide to
 [skeletonize an existing repository](skeletonize-existing-repository.md).
 
-## Using the skeleton tool to start a new repository 💀🛠 ##
+## Using the gh-skeleton `gh` extension to start a new repository ##
 
 We recommend that you start your project from one of the
 [skeleton projects](https://github.com/search?q=org%3Acisagov+topic%3Askeleton)
-in this organization.  The [`skeleton`](scripts/skeleton)
-helper tool included in the [`scripts`](scripts) directory can quickly setup
-a new local repository.  Once you've cloned and configured the repository
-to your local machine, you then publish it to a repository created on GitHub.
+in this organization.  The [`gh-skeleton`][gh-skeleton]
+`gh` extension provides the ability to easily start new projects from the existing
+library of skeleton repositories.
 
 ### Selecting a skeleton ###
 
@@ -53,53 +51,41 @@ First, identify a suitable skeleton project to use as the starting point
 for your new repository. For a list of available skeletons, see the
 [Skeleton List](skeleton-list.md) or use the following command:
 
-```bash
-./skeleton list
-```
-
 ```console
+$ gh skeleton list
+
 Available skeletons in cisagov:
 
-skeleton-python-library
-    A skeleton project for quickly getting a new cisagov Python library started.
-
-skeleton-docker
-    A skeleton project for quickly getting a new cisagov Docker container started.
-
-skeleton-generic
-    A generic skeleton project for quickly getting a new cisagov project started.
-
-skeleton-tf-module
-    A skeleton project for quickly getting a new cisagov Terraform module started.
-
-skeleton-ansible-role
-    A skeleton project for quickly getting a new cisagov Ansible role started.
-
-skeleton-ansible-role-with-test-user
-    A skeleton project for quickly getting a new cisagov Ansible role started when that role requires an AWS test user.
-
-skeleton-packer
-    A skeleton project for quickly getting a new cisagov packer project started.
-
-skeleton-aws-lambda
-    A skeleton project for quickly getting a new cisagov Python AWS Lambda started.
+skeleton-ansible-role       A skeleton project for quickly getting a new cisagov Ansible role started.
+skeleton-ansible-role-with-test-user    A skeleton project for quickly getting a new cisagov Ansible role started when that role requires an AWS test user.
+skeleton-aws-lambda-python  A skeleton project for quickly getting a new Python-based AWS Lambda project started.
+skeleton-docker             A skeleton project for quickly getting a new cisagov Docker container started.
+skeleton-generic            A generic skeleton project for quickly getting a new cisagov project started.
+skeleton-packer             A skeleton project for quickly getting a new cisagov packer project started.
+skeleton-python-library     A skeleton project for quickly getting a new cisagov Python library started.
+skeleton-tf-module          A skeleton project for quickly getting a new cisagov Terraform module started.
 ```
 
 ### Cloning a selected skeleton ###
 
-Next, use the `skeleton` tool to clone, rename, and prepare the contents of
-your new repository for publication.  The tool will print out each command it
-is issuing and its result.
+Next, use the [`gh-skeleton`][gh-skeleton]
+`gh` extension to clone, rename, and prepare the contents of your new repository
+for publication.  The tool will print out each command it is issuing
+and its result.
 
 ```console
-./skeleton clone [options] <parent-repo-name> <new-repo-name>
+$ gh skeleton clone [options] <parent-repo-name> <new-repo-name>
+# Expected output:
+# Cloning into 'new-repo-name'
 ```
 
 For example, to create a project based on `skeleton-ansible-role` named
 `ansible-role-quantum-rng` in your local `~/projects` directory:
 
-```bash
-./skeleton clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng
+```console
+$ gh skeleton clone --change-dir ~/projects skeleton-ansible-role ansible-role-quantum-rng
+# Expected output:
+# Cloning into 'repo-name'
 ```
 
 This command results in:
@@ -145,7 +131,7 @@ Use the following commands to push the new repository to github:
 
 ## Create and publish the GitHub repository ##
 
-Once the `skeleton` tool has run, the next step is to publish to a GitHub
+Once the `gh-skeleton` `gh` extension has run, the next step is to publish to a GitHub
 remote repository.
 
 To publish your new repository on GitHub, the remote must already exist.
@@ -165,7 +151,7 @@ git push --set-upstream origin develop
 ## Disabling squash merging ##
 
 Click on the settings tab for your new repository and, in the
-"Options" section, make sure that "Allow squash merging" is
+"Pull Request" section, make sure that "Allow squash merging" is
 *unchecked*.
 
 ## Set up your environment and pre-commit ##
@@ -228,7 +214,7 @@ page with `Python set up for Coveralls`. The code block will have an entry for
 1. Add a `New repository secret` and name it `COVERALLS_REPO_TOKEN` with the
 value from Coveralls.
 
-### Ansible requirement file generation tool 🧻🛠 ###
+### Ansible requirement file generation tool ###
 
 We have a [plethora](https://www.youtube.com/watch?v=zWld721Wk-Q) of
 [ansible-roles in our organization](https://github.com/search?q=org%3Acisagov+topic%3Aansible-role+NOT+skeleton+archived%3Afalse).
@@ -245,7 +231,7 @@ usage of the tool is:
 This file will now contain definitions for all the Ansible roles.  Edit
 the file, and remove any role that will not be required for your project.
 
-### Terraform IAM credentials to GitHub secrets 🔑‍👉🤫 ###
+### Terraform IAM credentials to GitHub secrets ###
 
 When GitHub Actions workflows require credentials to run we provide them via
 [secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
@@ -277,7 +263,7 @@ terraform-to-secrets 9f4ae878de917c7cf191b9861d3c1cf9224939f7
 2020-02-22 15:50:41,036 INFO Success!
 ```
 
-### Managing SSM parameters from files 🗂👉☁️ ###
+### Managing SSM parameters from files ###
 
 Use the [`ssm-param`](scripts/ssm-param) tool to copy files into
 [SSM parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-about-examples.html)
@@ -324,3 +310,5 @@ ssm-param rm /demo/dh4096.pem /demo/private.pem /demo/public.pem
 2019-08-27 16:48:02,417 INFO Deleting parameter '/demo/public.pem' in region 'us-west-1'
 2019-08-27 16:48:02,795 INFO Deleting parameter '/demo/public.pem' in region 'us-west-2'
 ```
+
+[gh-skeleton]: https://github.com/cisagov/gh-skeleton
