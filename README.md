@@ -34,8 +34,6 @@ Heavily "inspired" by the
 - [GitHub Actions](https://github.com/features/actions) -
   Continuous integration and delivery
 - [PyPi](https://pypi.org/search/?q=cisagov) - Python package publication
-- [Snyk](https://app.snyk.io/org/cisagov) - Dependency vulnerability management
-  and remediation
 
 ## Installation ##
 
