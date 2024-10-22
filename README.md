@@ -20,6 +20,7 @@ Heavily "inspired" by the
 
 - [FISMA-Ready GitHub account setup](https://github.com/fisma-ready/github)
 - [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules)
+- [How to Review Code Effectively](https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/)
 
 ## Tools and services we use ##
 
