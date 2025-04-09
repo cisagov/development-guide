@@ -34,7 +34,7 @@ jobs:
           # you want to temporarily enable it, simply set
           # monitor_permissions equal to "true".
           #
-          # TODO: Re-anable this functionality when practical.  See
+          # TODO: Re-enable this functionality when practical.  See
           # cisagov/skeleton-generic#207 for more details.
           monitor_permissions: "false"
           output_workflow_context: "true"
