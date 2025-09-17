@@ -12,7 +12,7 @@ updates:
       - dependency-name: actions/cache
       - dependency-name: actions/checkout
       - dependency-name: actions/dependency-review-action
-    #   - dependency-name: actions/labeler
+      - dependency-name: actions/labeler
       - dependency-name: actions/setup-go
       - dependency-name: actions/setup-python
       - dependency-name: cisagov/action-job-preamble
