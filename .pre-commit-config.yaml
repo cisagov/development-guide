@@ -1,4 +1,10 @@
 ---
+ci:
+  # Do not commit changes from running pre-commit for pull requests.
+  autofix_prs: false
+  # Autoupdate hooks weekly (this is the default).
+  autoupdate_schedule: weekly
+
 default_language_version:
   # force all unspecified python hooks to run python3
   python: python3
@@ -10,7 +16,7 @@ repos:
       - id: check-useless-excludes
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-case-conflict
       - id: check-executables-have-shebangs
@@ -41,17 +47,17 @@ repos:
 
   # Text file hooks
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.44.0
+    rev: v0.45.0
     hooks:
       - id: markdownlint
         args:
           - --config=.mdl_config.yaml
   - repo: https://github.com/rbubley/mirrors-prettier
-    rev: v3.5.3
+    rev: v3.6.2
     hooks:
       - id: prettier
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.37.0
+    rev: v1.37.1
     hooks:
       - id: yamllint
         args:
@@ -59,20 +65,20 @@ repos:
 
   # GitHub Actions hooks
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.32.1
+    rev: 0.33.3
     hooks:
       - id: check-github-actions
       - id: check-github-workflows
 
   # pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit
-    rev: v4.2.0
+    rev: v4.3.0
     hooks:
       - id: validate_manifest
 
   # Go hooks
   - repo: https://github.com/TekWizely/pre-commit-golang
-    rev: v1.0.0-rc.1
+    rev: v1.0.0-rc.2
     hooks:
       # Go Build
       - id: go-build-repo-mod
@@ -101,7 +107,7 @@ repos:
 
   # Shell script hooks
   - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.11.0-1
+    rev: v3.12.0-2
     hooks:
       - id: shfmt
         args:
@@ -119,13 +125,13 @@ repos:
           # Redirect operators are followed by a space
           - --space-redirects
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.10.0.1
+    rev: v0.11.0.1
     hooks:
       - id: shellcheck
 
   # Python hooks
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.8.3
+    rev: 1.8.6
     hooks:
       - id: bandit
         args:
@@ -135,7 +141,7 @@ repos:
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/flake8
-    rev: 7.1.2
+    rev: 7.3.0
     hooks:
       - id: flake8
         additional_dependencies:
@@ -145,14 +151,14 @@ repos:
     hooks:
       - id: isort
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.15.0
+    rev: v1.18.1
     hooks:
       - id: mypy
         additional_dependencies:
           - types-PyYAML
           - types-requests
   - repo: https://github.com/pypa/pip-audit
-    rev: v2.8.0
+    rev: v2.9.0
     hooks:
       - id: pip-audit
         args:
@@ -164,13 +170,13 @@ repos:
           - --requirement
           - requirements.txt
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.1
+    rev: v3.20.0
     hooks:
       - id: pyupgrade
 
   # Ansible hooks
   - repo: https://github.com/ansible/ansible-lint
-    rev: v25.4.0
+    rev: v25.9.0
     hooks:
       - id: ansible-lint
         additional_dependencies:
@@ -214,7 +220,7 @@ repos:
 
   # Terraform hooks
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.98.0
+    rev: v1.100.0
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
@@ -227,7 +233,7 @@ repos:
 
   # Packer hooks
   - repo: https://github.com/cisagov/pre-commit-packer
-    rev: v0.3.0
+    rev: v0.3.1
     hooks:
       - id: packer_fmt
       - id: packer_validate

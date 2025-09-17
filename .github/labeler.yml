@@ -1,0 +1,63 @@
+---
+# Each entry in this file is a label that will be applied to pull requests
+# if there is a match based on the matching rules for the entry. Please see
+# the actions/labeler documentation for more information:
+# https://github.com/actions/labeler#match-object
+#
+# Note: Verify that the label you want to use is defined in the
+# crazy-max/ghaction-github-labeler configuration file located at
+# .github/labels.yml.
+
+# Enable if Ansible playbooks are used in the repository.
+# ansible:
+#   - changed-files:
+#       - any-glob-to-any-file:
+#           - "**/ansible/**"
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          # Add any dependency files used.
+          - .pre-commit-config.yaml
+          - requirements*.txt
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.md"
+github-actions:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/**
+# Enable if Packer is used in the repository.
+# packer:
+#   - changed-files:
+#       - any-glob-to-any-file:
+#           - "**/*.pkr.hcl"
+# Enable if Python is used in the repository.
+# python:
+#   - changed-files:
+#       - any-glob-to-any-file:
+#           - "**/*.py"
+# Enable if Terraform is used in the repository.
+# terraform:
+#   - changed-files:
+#       - any-glob-to-any-file:
+#           - "**/*.tf"
+test:
+  - changed-files:
+      - any-glob-to-any-file:
+          # Add any test-related files or paths.
+          - .ansible-lint
+          - .bandit.yml
+          - .flake8
+          - .isort.cfg
+          - .mdl_config.yaml
+          - .yamllint
+upstream update:
+  - head-branch:
+      # Any Lineage pull requests should use this branch.
+      - lineage/skeleton
+version bump:
+  - changed-files:
+      - any-glob-to-any-file:
+          # Ensure this matches your version tracking file(s).
+          - version.txt
