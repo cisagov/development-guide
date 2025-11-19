@@ -65,20 +65,20 @@ repos:
 
   # GitHub Actions hooks
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.33.3
+    rev: 0.35.0
     hooks:
       - id: check-github-actions
       - id: check-github-workflows
 
   # pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit
-    rev: v4.3.0
+    rev: v4.4.0
     hooks:
       - id: validate_manifest
 
   # Go hooks
   - repo: https://github.com/TekWizely/pre-commit-golang
-    rev: v1.0.0-rc.2
+    rev: v1.0.0-rc.4
     hooks:
       # Go Build
       - id: go-build-repo-mod
@@ -131,13 +131,13 @@ repos:
 
   # Python hooks
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.8.6
+    rev: 1.9.1
     hooks:
       - id: bandit
         args:
           - --config=.bandit.yml
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 25.1.0
+    rev: 25.11.0
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/flake8
@@ -147,11 +147,11 @@ repos:
         additional_dependencies:
           - flake8-docstrings==1.7.0
   - repo: https://github.com/PyCQA/isort
-    rev: 6.0.1
+    rev: 7.0.0
     hooks:
       - id: isort
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.18.1
+    rev: v1.18.2
     hooks:
       - id: mypy
         additional_dependencies:
@@ -170,13 +170,13 @@ repos:
           - --requirement
           - requirements.txt
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.20.0
+    rev: v3.21.1
     hooks:
       - id: pyupgrade
 
   # Ansible hooks
   - repo: https://github.com/ansible/ansible-lint
-    rev: v25.9.0
+    rev: v25.11.0
     hooks:
       - id: ansible-lint
         additional_dependencies:
@@ -220,7 +220,7 @@ repos:
 
   # Terraform hooks
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.100.0
+    rev: v1.103.0
     hooks:
       - id: terraform_fmt
       - id: terraform_validate

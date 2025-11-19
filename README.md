@@ -1,6 +1,8 @@
 # development-guide #
 
 [![GitHub Build Status](https://github.com/cisagov/development-guide/workflows/build/badge.svg)](https://github.com/cisagov/development-guide/actions)
+[![License](https://img.shields.io/github/license/cisagov/development-guide)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/development-guide/workflows/CodeQL/badge.svg)](https://github.com/cisagov/development-guide/actions/workflows/codeql-analysis.yml)
 
 A set of guidelines and best practices for an awesome engineering team.
 Heavily "inspired" by the
