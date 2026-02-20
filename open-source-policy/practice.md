@@ -168,8 +168,10 @@ attribution/source information (such as how and when we learned about a
 vulnerability, if the disclosure to us was not public).
 - We may wish to withhold some non-CISA IP addresses. If something looks like
 an IP address, ask CISA Infrastructure before publishing that info.
-- Personally Identifiable Information (PII). Here’s [OMB's definition and GSA's policy](http://www.gsa.gov/portal/content/104256).
-18F also has [guidance for systems involving PII](https://pages.18f.gov/before-you-ship/security/pii/).
+- Personally Identifiable Information (PII). Here’s [OMB's definition
+and GSA's policy](http://www.gsa.gov/portal/content/104256).  18F also
+has [guidance for systems involving
+PII](https://pages.18f.gov/before-you-ship/security/pii/).
 - Some kinds of procurement and acquisition information, which may include
 non-public cost or pricing data, contract information, trade secrets, indirect
 costs, and direct labor rates. If you’re an CISA team member working with this
