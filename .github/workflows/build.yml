@@ -25,7 +25,7 @@ env:
   PIP_CACHE_DIR: ~/.cache/pip
   PRE_COMMIT_CACHE_DIR: ~/.cache/pre-commit
   RUN_TMATE: ${{ secrets.RUN_TMATE }}
-  TERRAFORM_DOCS_REPO_BRANCH_NAME: improvement/support_atx_closed_markdown_headers
+  TERRAFORM_DOCS_REPO_BRANCH_NAME: cisagov
   TERRAFORM_DOCS_REPO_DEPTH: 1
   TERRAFORM_DOCS_REPO_URL: https://github.com/mcdonnnj/terraform-docs.git
 
@@ -173,10 +173,13 @@ jobs:
           PACKAGE_VERSION: ${{ steps.setup-env.outputs.staticcheck-version }}
         run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
       # TODO: https://github.com/cisagov/skeleton-generic/issues/165
-      # We are temporarily using @mcdonnnj's forked branch of terraform-docs
-      # until his PR: https://github.com/terraform-docs/terraform-docs/pull/745
-      # is approved. This temporary fix will allow for ATX header support when
-      # terraform-docs is run during linting.
+      # We are temporarily using a branch of @mcdonnnj's fork of terraform-docs that
+      # groups changes from his PRs until they are approved and merged:
+      # https://github.com/terraform-docs/terraform-docs/pull/745
+      # https://github.com/terraform-docs/terraform-docs/pull/901
+      # This temporary fix will allow for ATX header support when terraform-docs is run
+      # during linting and output delimiter rows with cell spacing that passes
+      # Markdownlint's MD060/table-column-style rule.
       - name: Clone ATX headers branch from terraform-docs fork
         run: |
           git clone \
