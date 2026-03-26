@@ -47,7 +47,7 @@ repos:
 
   # Text file hooks
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.47.0
+    rev: v0.48.0
     hooks:
       - id: markdownlint
         args:
@@ -65,7 +65,7 @@ repos:
 
   # GitHub Actions hooks
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.36.2
+    rev: 0.37.0
     hooks:
       - id: check-github-actions
       - id: check-github-workflows
@@ -107,7 +107,7 @@ repos:
 
   # Shell script hooks
   - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.12.0-2
+    rev: v3.13.0-1
     hooks:
       - id: shfmt
         args:
@@ -131,13 +131,11 @@ repos:
 
   # Python hooks
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.9.3
+    rev: 1.9.4
     hooks:
       - id: bandit
-        args:
-          - --config=.bandit.yml
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 26.1.0
+    rev: 26.3.1
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/flake8
@@ -145,9 +143,14 @@ repos:
     hooks:
       - id: flake8
         additional_dependencies:
+          - dlint==0.16.0
+          - flake8-bugbear==25.11.29
+          - flake8-comprehensions==3.17.0
           - flake8-docstrings==1.7.0
+          - flake8-noqa==1.5.0
+          - pep8-naming==0.15.1
   - repo: https://github.com/PyCQA/isort
-    rev: 8.0.0
+    rev: 8.0.1
     hooks:
       - id: isort
   - repo: https://github.com/pre-commit/mirrors-mypy
@@ -162,6 +165,22 @@ repos:
     hooks:
       - id: pip-audit
         args:
+          # We have to ignore this vulnerability for now since an
+          # update for pygments has not yet been released.
+          #
+          # In any event, this vulnerability is unlikely to cause us
+          # any problems since we don't feed any regexes to pygments
+          # directly.  pygments is pulled in as a dependency of
+          # pytest.
+          #
+          # See also:
+          # - https://nvd.nist.gov/vuln/detail/CVE-2026-4539
+          # - https://github.com/pygments/pygments/issues/3058
+          #
+          # TODO: Remove this when it becomes possible.  See
+          # cisagov/skeleton-generic#257 for more details.
+          - --ignore-vuln
+          - CVE-2026-4539
           # Add any pip requirements files to scan
           - --requirement
           - requirements-dev.txt
@@ -182,6 +201,9 @@ repos:
 
   # Ansible hooks
   - repo: https://github.com/ansible/ansible-lint
+    # We need to stay on this version because we are still using Python 3.13 in
+    # our GitHub Actions configuration. Later versions require Python 3.14 for
+    # the hook to run.
     rev: v26.1.1
     hooks:
       - id: ansible-lint
@@ -212,6 +234,15 @@ repos:
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
+      # This needs to run after the terraform_validate hook so that any Terraform
+      # configurations are initialized.
+      - id: terraform_providers_lock
+        args:
+          - --args=-platform=darwin_amd64
+          - --args=-platform=darwin_arm64
+          - --args=-platform=linux_amd64
+          - --args=-platform=linux_arm64
+          - --hook-config=--mode=always-regenerate-lockfile
 
   # Docker hooks
   - repo: https://github.com/IamTheFij/docker-pre-commit

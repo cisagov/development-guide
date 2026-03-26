@@ -43,7 +43,7 @@ def get_version(version_file):
 setup(
     name="project_setup",
     # Versions should comply with PEP440
-    version="1.0.0",
+    version="1.1.0",
     description="Documentation for Github projects in the cisagov organization.",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -107,9 +107,7 @@ setup(
     },
     scripts=[
         "project_setup/scripts/ansible-roles",
-        "project_setup/scripts/iam-to-travis",
         "project_setup/scripts/terraform-to-secrets",
-        "project_setup/scripts/skeleton",
         "project_setup/scripts/ssm-param",
     ],
     entry_points={},

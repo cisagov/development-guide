@@ -149,12 +149,12 @@ jobs:
       - uses: hashicorp/setup-packer@v3
         with:
           version: ${{ steps.setup-env.outputs.packer-version }}
-      - uses: hashicorp/setup-terraform@v3
+      - uses: hashicorp/setup-terraform@v4
         with:
           terraform_version: ${{ steps.setup-env.outputs.terraform-version }}
       - name: Install go-critic
         env:
-          PACKAGE_URL: github.com/go-critic/go-critic/cmd/gocritic
+          PACKAGE_URL: github.com/go-critic/go-critic/cmd/go-critic
           PACKAGE_VERSION: ${{ steps.setup-env.outputs.go-critic-version }}
         run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
       - name: Install goimports
