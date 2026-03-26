@@ -43,7 +43,7 @@ def get_version(version_file):
 setup(
     name="project_setup",
     # Versions should comply with PEP440
-    version="1.0.0",
+    version="1.1.0",
     description="Documentation for Github projects in the cisagov organization.",
     long_description=readme(),
     long_description_content_type="text/markdown",
