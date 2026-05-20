@@ -21,7 +21,7 @@ on responsible use of these tools, see the
 
 ## Scope ##
 
-Three categories of configuration are in scope:
+Five topics are in scope:
 
 - **Rules.** Persistent, repository-scoped instructions that constrain
   or steer agent behavior across a session. See [Rules](rules.md).
@@ -30,9 +30,19 @@ Three categories of configuration are in scope:
 - **MCP servers.** External tools, resources, and data sources that
   an agent can reach over the Model Context Protocol. See
   [MCP](mcp.md).
+- **Coding agents.** Systems that use a language model to plan and
+  take actions against a software project on a developer's behalf -
+  reading files, running commands, editing source, opening pull
+  requests. See [Coding Agents](agents.md).
+- **Non-coding agents.** Agents whose outputs are not repository
+  artifacts - for example, agents that triage messages, summarize
+  documents, drive a data pipeline, or act against an internal
+  system. See [Non-Coding Agents](non-coding-agents.md).
 
-All three are checked into the repository, reviewed like code, and
-treated as part of the project's engineering surface.
+The first three are configuration artifacts checked into the
+repository and reviewed like code. The last two cover how those
+artifacts are combined into something that *acts*, and the
+additional expectations that come with that.
 
 ## Why this matters ##
 
@@ -92,3 +102,8 @@ auditable.
 - [Skills](skills.md) - reusable, task-scoped agent capabilities.
 - [MCP](mcp.md) - external tools, resources, and data sources reached
   over the Model Context Protocol.
+- [Coding Agents](agents.md) - constructing and operating agents whose
+  outputs are repository artifacts.
+- [Non-Coding Agents](non-coding-agents.md) - engineering and
+  security baseline for agents whose outputs are not repository
+  artifacts.

@@ -22,6 +22,8 @@ Heavily "inspired" by the
     - [Rules](/ai/rules.md)
     - [Skills](/ai/skills.md)
     - [MCP](/ai/mcp.md)
+    - [Coding Agents](/ai/agents.md)
+    - [Non-Coding Agents](/ai/non-coding-agents.md)
 
 ## Git, GitHub, and you ##
 
