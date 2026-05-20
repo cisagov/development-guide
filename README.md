@@ -17,6 +17,7 @@ Heavily "inspired" by the
   - HCL
   - JavaScript
   - [Python](/languages/python)
+- [AI-Assisted Development](ai-assisted-development.md)
 
 ## Git, GitHub, and you ##
 
