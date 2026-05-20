@@ -21,6 +21,7 @@ Heavily "inspired" by the
   - [AI Agent Configuration](/ai)
     - [Rules](/ai/rules.md)
     - [Skills](/ai/skills.md)
+    - [MCP](/ai/mcp.md)
 
 ## Git, GitHub, and you ##
 

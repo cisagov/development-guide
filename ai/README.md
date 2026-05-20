@@ -21,15 +21,18 @@ on responsible use of these tools, see the
 
 ## Scope ##
 
-Two categories of configuration are in scope:
+Three categories of configuration are in scope:
 
 - **Rules.** Persistent, repository-scoped instructions that constrain
   or steer agent behavior across a session. See [Rules](rules.md).
 - **Skills.** Reusable, task-scoped capability packages that an agent
   can load on demand. See [Skills](skills.md).
+- **MCP servers.** External tools, resources, and data sources that
+  an agent can reach over the Model Context Protocol. See
+  [MCP](mcp.md).
 
-Both are checked into the repository, reviewed like code, and treated
-as part of the project's engineering surface.
+All three are checked into the repository, reviewed like code, and
+treated as part of the project's engineering surface.
 
 ## Why this matters ##
 
@@ -42,30 +45,37 @@ auditable.
 
 ## Standards ##
 
-- Rules and Skills are committed to the repository, reviewed in pull
-  requests, and subject to the same expectations as any other code
-  change. See the [AI-Assisted Development guide](../ai-assisted-development.md)
-  and [CONTRIBUTING](../CONTRIBUTING.md).
-- Rules and Skills must not contain secrets, credentials, tokens,
+- Rules, Skills, and MCP server configuration are committed to the
+  repository, reviewed in pull requests, and subject to the same
+  expectations as any other code change. See the
+  [AI-Assisted Development guide](../ai-assisted-development.md) and
+  [CONTRIBUTING](../CONTRIBUTING.md).
+- These artifacts must not contain secrets, credentials, tokens,
   internal hostnames, or non-public data. Assume their contents will
-  be transmitted to the agent's backing model.
+  be transmitted to the agent's backing model or to any configured
+  MCP server.
 - Rules and Skills are advisory to the model and are not a security
-  boundary. They do not replace code review, CI checks, or the
-  project's existing access controls.
-- Every Rule and Skill has a clear purpose, a named owner (via
-  `CODEOWNERS`), and is removed when no longer used.
+  boundary. MCP configuration controls reach, not behavior. None of
+  them replace code review, CI checks, or the project's existing
+  access controls.
+- Every Rule, Skill, and MCP server entry has a clear purpose, a
+  named owner (via `CODEOWNERS`), and is removed when no longer
+  used.
 
 ## Defaults ##
 
 - Keep Rules short and specific. Prefer several small, focused Rules
   over one large general one.
 - Keep Skills narrowly scoped to a single capability or workflow.
-- Document, in the file itself, what the Rule or Skill is for and when
-  it should apply.
-- Store Rules and Skills in the conventional locations expected by the
+- Keep the set of enabled MCP servers small, narrowly scoped, and
+  pinned to a known version.
+- Document, in the file itself or alongside the configuration, what
+  the Rule, Skill, or MCP server is for and when it should apply.
+- Store these artifacts in the conventional locations expected by the
   tool in use (for example, `.cursor/rules/` for Cursor, `AGENTS.md`
-  for tools that read it, `.claude/skills/` for Claude Code). Avoid
-  scattering equivalent guidance across multiple ad-hoc files.
+  for tools that read it, `.claude/skills/` for Claude Code, and the
+  tool's documented MCP configuration path). Avoid scattering
+  equivalent guidance across multiple ad-hoc files.
 
 ## Suggestions ##
 
@@ -80,3 +90,5 @@ auditable.
 
 - [Rules](rules.md) - persistent, repository-scoped agent instructions.
 - [Skills](skills.md) - reusable, task-scoped agent capabilities.
+- [MCP](mcp.md) - external tools, resources, and data sources reached
+  over the Model Context Protocol.
