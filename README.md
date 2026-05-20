@@ -18,6 +18,9 @@ Heavily "inspired" by the
   - JavaScript
   - [Python](/languages/python)
 - [AI-Assisted Development](ai-assisted-development.md)
+  - [AI Agent Configuration](/ai)
+    - [Rules](/ai/rules.md)
+    - [Skills](/ai/skills.md)
 
 ## Git, GitHub, and you ##
 

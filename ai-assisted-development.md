@@ -18,6 +18,10 @@ on a language model. It complements - and does not replace - the existing
 [CONTRIBUTING](CONTRIBUTING.md), [Style Guide](style-guide.md), and
 [Project Setup](project_setup/README.md) guidance.
 
+For guidance on the configuration artifacts that shape agent behavior
+inside a repository - such as `AGENTS.md`, tool-specific Rules, and
+Skills - see the [AI Agent Configuration guide](ai/README.md).
+
 ## Responsible use ##
 
 - Use AI tools to accelerate well-understood work, not to bypass
