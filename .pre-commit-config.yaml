@@ -42,18 +42,20 @@ repos:
       - id: pretty-format-json
         args:
           - --autofix
+        # Exclude all Pipfile.lock files
+        # exclude: .*/Pipfile\.lock$
       - id: requirements-txt-fixer
       - id: trailing-whitespace
 
   # Text file hooks
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.48.0
+    rev: v0.49.1
     hooks:
       - id: markdownlint
         args:
           - --config=.mdl_config.yaml
   - repo: https://github.com/rbubley/mirrors-prettier
-    rev: v3.8.1
+    rev: v3.9.6
     hooks:
       - id: prettier
   - repo: https://github.com/adrienverge/yamllint
@@ -65,14 +67,14 @@ repos:
 
   # GitHub Actions hooks
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.37.0
+    rev: 0.37.4
     hooks:
       - id: check-github-actions
       - id: check-github-workflows
 
   # pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit
-    rev: v4.5.1
+    rev: v4.6.1
     hooks:
       - id: validate_manifest
 
@@ -107,7 +109,7 @@ repos:
 
   # Shell script hooks
   - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.13.0-1
+    rev: v3.13.1-1
     hooks:
       - id: shfmt
         args:
@@ -135,7 +137,7 @@ repos:
     hooks:
       - id: bandit
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 26.3.1
+    rev: 26.5.1
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/flake8
@@ -154,33 +156,17 @@ repos:
     hooks:
       - id: isort
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.19.1
+    rev: v2.3.0
     hooks:
       - id: mypy
         additional_dependencies:
           - types-PyYAML
           - types-requests
   - repo: https://github.com/pypa/pip-audit
-    rev: v2.10.0
+    rev: v2.10.1
     hooks:
       - id: pip-audit
         args:
-          # We have to ignore this vulnerability for now since an
-          # update for pygments has not yet been released.
-          #
-          # In any event, this vulnerability is unlikely to cause us
-          # any problems since we don't feed any regexes to pygments
-          # directly.  pygments is pulled in as a dependency of
-          # pytest.
-          #
-          # See also:
-          # - https://nvd.nist.gov/vuln/detail/CVE-2026-4539
-          # - https://github.com/pygments/pygments/issues/3058
-          #
-          # TODO: Remove this when it becomes possible.  See
-          # cisagov/skeleton-generic#257 for more details.
-          - --ignore-vuln
-          - CVE-2026-4539
           # Add any pip requirements files to scan
           - --requirement
           - requirements-dev.txt
@@ -201,10 +187,7 @@ repos:
 
   # Ansible hooks
   - repo: https://github.com/ansible/ansible-lint
-    # We need to stay on this version because we are still using Python 3.13 in
-    # our GitHub Actions configuration. Later versions require Python 3.14 for
-    # the hook to run.
-    rev: v26.1.1
+    rev: v26.6.0
     hooks:
       - id: ansible-lint
         additional_dependencies:
@@ -227,11 +210,28 @@ repos:
           # made in requirements.txt in cisagov/skeleton-packer and
           # requirements-test.txt in cisagov/skeleton-ansible-role.
           - ansible-core>=2.17.7
+        # We are still using Python 3.13 in our GitHub Actions
+        # configuration, but after version v26.1.1 of this pre-commit
+        # hook language_version is (somewhat unnecessarily but
+        # understandably[1]) hard coded to Python 3.14.  ansible-lint
+        # itself currently supports Python>=3.10[2].
+        #
+        # Note that this version must stay in sync with the Python
+        # version specified in cisagov/setup-env-github-action[3].
+        #
+        # [1]:
+        # https://github.com/ansible/ansible-lint/issues/4812#issuecomment-3382337336
+        # [2]:
+        # https://github.com/ansible/ansible-lint/blob/eefc3626bb341032d5a80288735cca6441c9c873/pyproject.toml#L9
+        # [3]:
+        # https://github.com/cisagov/setup-env-github-action/blob/8567c2291ccdf5b84c297b487f592606f3af214f/src/versions.js#L27
+        language_version: python3.13
 
   # Terraform hooks
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.105.0
+    rev: v1.108.1
     hooks:
+      - id: terraform_docs
       - id: terraform_fmt
       - id: terraform_validate
       # This needs to run after the terraform_validate hook so that any Terraform
@@ -256,3 +256,12 @@ repos:
     hooks:
       - id: packer_fmt
       - id: packer_validate
+  # We're using terraform-docs to generate Packer template documentation
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.108.1
+    hooks:
+      - id: terraform_docs
+        # Override the files to run against Packer templates
+        files: \.pkr\.hcl
+        # Override the name to include mention of Packer
+        name: Terraform docs (Packer templates)

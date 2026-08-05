@@ -25,9 +25,6 @@ env:
   PIP_CACHE_DIR: ~/.cache/pip
   PRE_COMMIT_CACHE_DIR: ~/.cache/pre-commit
   RUN_TMATE: ${{ secrets.RUN_TMATE }}
-  TERRAFORM_DOCS_REPO_BRANCH_NAME: cisagov
-  TERRAFORM_DOCS_REPO_DEPTH: 1
-  TERRAFORM_DOCS_REPO_URL: https://github.com/mcdonnnj/terraform-docs.git
 
 jobs:
   diagnostics:
@@ -101,26 +98,27 @@ jobs:
           # this workflow.
           permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
       - id: setup-env
-        uses: cisagov/setup-env-github-action@v1
-      - uses: actions/checkout@v6
+        uses: cisagov/setup-env-github-action@v2
+      - uses: actions/checkout@v7
       - id: setup-python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ steps.setup-env.outputs.python-version }}
       # We need the Go version and Go cache location for the actions/cache step,
       # so the Go installation must happen before that.
       - id: setup-go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
           # There is no expectation for actual Go code so we disable caching as
           # it relies on the existence of a go.sum file.
           cache: false
           go-version: ${{ steps.setup-env.outputs.go-version }}
-      - id: go-cache
-        name: Lookup Go cache directory
+      - id: go-dirs
+        name: Lookup Go directories to cache
         run: |
-          echo "dir=$(go env GOCACHE)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v5
+          echo "gocache=$(go env GOCACHE)" >> $GITHUB_OUTPUT
+          echo "gomodcache=$(go env GOMODCACHE)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v6
         env:
           BASE_CACHE_KEY: >-
             ${{ github.job }}-${{ runner.os
@@ -130,10 +128,10 @@ jobs:
             }}-tf${{ steps.setup-env.outputs.terraform-version }}-
         with:
           key: >-
-            ${{ env.BASE_CACHE_KEY }}${{
-            hashFiles('**/requirements-test.txt') }}-${{
-            hashFiles('**/requirements.txt') }}-${{
-            hashFiles('**/.pre-commit-config.yaml') }}
+            ${{ env.BASE_CACHE_KEY }}${{ hashFiles(
+            '**/requirements-test.txt',
+            '**/requirements.txt',
+            '**/.pre-commit-config.yaml') }}
           # Note that the .terraform directory IS NOT included in the
           # cache because if we were caching, then we would need to use
           # the `-upgrade=true` option. This option blindly pulls down the
@@ -143,7 +141,8 @@ jobs:
           path: |
             ${{ env.PIP_CACHE_DIR }}
             ${{ env.PRE_COMMIT_CACHE_DIR }}
-            ${{ steps.go-cache.outputs.dir }}
+            ${{ steps.go-dirs.outputs.gocache }}
+            ${{ steps.go-dirs.outputs.gomodcache }}
           restore-keys: |
             ${{ env.BASE_CACHE_KEY }}
       - uses: hashicorp/setup-packer@v3
@@ -172,26 +171,11 @@ jobs:
           PACKAGE_URL: honnef.co/go/tools/cmd/staticcheck
           PACKAGE_VERSION: ${{ steps.setup-env.outputs.staticcheck-version }}
         run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
-      # TODO: https://github.com/cisagov/skeleton-generic/issues/165
-      # We are temporarily using a branch of @mcdonnnj's fork of terraform-docs that
-      # groups changes from his PRs until they are approved and merged:
-      # https://github.com/terraform-docs/terraform-docs/pull/745
-      # https://github.com/terraform-docs/terraform-docs/pull/901
-      # This temporary fix will allow for ATX header support when terraform-docs is run
-      # during linting and output delimiter rows with cell spacing that passes
-      # Markdownlint's MD060/table-column-style rule.
-      - name: Clone ATX headers branch from terraform-docs fork
-        run: |
-          git clone \
-           --branch $TERRAFORM_DOCS_REPO_BRANCH_NAME \
-           --depth $TERRAFORM_DOCS_REPO_DEPTH \
-           --single-branch \
-           $TERRAFORM_DOCS_REPO_URL /tmp/terraform-docs
-      - name: Build and install terraform-docs binary
-        run: |
-          go build \
-          -C /tmp/terraform-docs \
-          -o $(go env GOPATH)/bin/terraform-docs
+      - name: Install terraform-docs
+        env:
+          PACKAGE_URL: github.com/terraform-docs/terraform-docs
+          PACKAGE_VERSION: ${{ steps.setup-env.outputs.terraform-docs-version }}
+        run: go install ${PACKAGE_URL}@${PACKAGE_VERSION}
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools
