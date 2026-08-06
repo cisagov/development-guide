@@ -17,6 +17,13 @@ Heavily "inspired" by the
   - HCL
   - JavaScript
   - [Python](/languages/python)
+- [AI-Assisted Development](ai-assisted-development.md)
+  - [AI Agent Configuration](/ai)
+    - [Rules](/ai/rules.md)
+    - [Skills](/ai/skills.md)
+    - [MCP](/ai/mcp.md)
+    - [Coding Agents](/ai/agents.md)
+    - [Non-Coding Agents](/ai/non-coding-agents.md)
 
 ## Git, GitHub, and you ##
 
