@@ -1,12 +1,14 @@
 # Skeletonize an Existing Repository #
 
-Skeletonizing a repository standardizes our development setup and environment,
-and it enables our [Lineage GitHub Action](https://github.com/cisagov/action-lineage/)
-to keep the repository updated and standardized.
+Skeletonizing a repository standardizes our development setup and environment
+and enables our [Lineage GitHub Action](https://github.com/cisagov/action-lineage/)
+to keep the repository updated and standardized. The purpose of the
+instructions here are to describe how to skeletonize an existing non-skeletonized
+repository.
 
 ## About ##
 
-Skeleton projects contain [licensing information](LICENSE), as
+Skeleton projects contain [licensing information](../LICENSE), as
 well as [pre-commit hooks](https://pre-commit.com) and
 [GitHub Actions](https://github.com/features/actions) configurations
 appropriate for the major languages that we use. This lets us standardize
@@ -15,12 +17,12 @@ appropriate for the major languages that we use. This lets us standardize
 
 ## General overview ##
 
-The general outline of how to add a skeleton to a repository is:
+The general outline of how to add a skeleton to an existing repository is:
 
-1. [Add the skeleton as a remote](#add-a-skeleton-as-remote) to the
-non-skeletonized repository
-1. Pull with `--allow-unrelated-histories`
-1. [Fix all the inevitable conflicts](#fix-merge-conflicts)
+1. [Add the skeleton as a remote](#add-the-skeleton-as-a-remote) to the
+existing non-skeletonized repository
+1. Pull with `git pull--allow-unrelated-histories skeleton parent`
+1. [Fix merge conflicts](#fix-merge-conflicts)
 1. [Review non-conflicting changes](#review-non-conflicting-changes) to
 prevent merging destructive upstream changes
 1. [Update skeleton's `example` references](#update-skeletons-example-references)
@@ -28,11 +30,12 @@ prevent merging destructive upstream changes
 1. Fix additional problems that may arise
 1. [Make a pull request](#make-a-pull-request)
 
-## Add a skeleton as remote ##
+## Add the skeleton as a remote ##
 
-First, decide which of the available skeletons fits your existing repository.
-To see a list of available skeletons, use the `skeleton list` command or see
-the [list of skeletons](skeleton-list.md).
+First, decide which of the available skeletons best fits your
+existing non-skeletonized repository. To see a list of available
+skeletons, use the `gh skeleton list` command or see
+the [list of skeletons][skeleton-list.md].
 
 As an example, we'll be using [`skeleton-python-library`](https://github.com/cisagov/skeleton-python-library)
 in this document.
@@ -65,8 +68,8 @@ pre-commit install
 
 ## Fix merge conflicts ##
 
-This merge process will almost certainly fail, resulting in merge conflicts.
-The next step is to fix those conflicts and add the files once the fixes are
+The merge process will almost certainly fail, resulting in merge conflicts.
+The next step is to fix the conflicts and add the files once the fixes are
 in place.
 
 ```sh
@@ -98,16 +101,16 @@ from merging in destructive upstream changes.
 
 ## Update skeleton's `example` references ##
 
+Some skeletons need additional configuration. For example, with
+`skeleton-python-library` and its module structure inside `src/example`.
+
 This step includes such activities as:
 
 - Update `setup.py` with non-example information
 - Arrange into appropriate folders, such as `src` and `test`
-- Update the `codeowners` to reflect subject matter expertise and
+- Update the `.github/CODEOWNERS` file to reflect subject matter expertise and
 codebase familiarity
   - Aim to have at least two codeowners for every repository
-
-Some skeletons need additional configuration, such as with
-`skeleton-python-library` and its module structure inside `src/example`.
 
 ## Run pre-commit against existing files ##
 
@@ -150,8 +153,10 @@ repository still passes its test suite.
 
 ## Make a pull request ##
 
-Once you've run through the configuration and testing stages, you've probably
+Once you've completed the configuration and testing stages, you've probably
 accumulated a number of commits on your `skeletonize` branch.
 
 The next step is to [make a pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)
 and have the team perform code reviews.
+
+[skeleton-list.md]: https://github.com/cisagov/development-guide/blob/develop/project_setup/skeleton-list.md#available-skeletons-in-cisagov
