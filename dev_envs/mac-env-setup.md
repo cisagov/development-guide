@@ -45,9 +45,94 @@ xcode-select --install
 
 ### Docker ###
 
-Download the latest stable [Docker for Mac](https://www.docker.com/docker-mac).
+> [!NOTE]
+> [Colima](#colima-a-docker-alternative) is our preferred solution on macOS.
+
+Download the latest stable [Docker Desktop on Mac](https://www.docker.com/products/docker-desktop/).
 Install it by double-clicking the downloaded `dmg` file and dragging the
 Docker application file to the `Applications` folder.
+
+#### Colima: A Docker alternative ####
+
+For individuals or businesses seeking a container solution without
+the licensing conditions associated with [Docker Desktop](https://www.docker.com/pricing/faq/)
+, [Colima](https://github.com/abiosoft/colima) offers a compelling
+open-source alternative. Compatible with both macOS and Linux,
+Colima facilitates running containers directly using Docker
+commands without the need for Docker Desktop.
+
+#### Installing Colima ####
+
+**Prerequisites:** If Docker Desktop is installed on your system,
+uninstall it before proceeding.
+
+**Installation Steps:**
+
+1. Install Colima and Docker command-line tools using Homebrew:
+
+    ```console
+    brew install colima docker docker-compose
+    ```
+
+1. Verify the installation by starting Colima:
+
+    ```console
+    colima start
+    ```
+
+    This initializes the Docker daemon within a lightweight VM.
+    The first startup may take a moment.
+
+1. Confirm Docker is operational:
+
+    ```console
+    docker
+    ```
+
+    You should see the Docker usage menu.
+
+1. Verify Docker Compose is working:
+
+    ```console
+    docker compose
+    ```
+
+    The Docker Compose usage menu should appear.
+
+#### Optional configurations ####
+
+Enhance your Colima setup with the following optional configurations:
+
+#### Customizing VM resources ####
+
+To customize the VM's resources, such as CPUs, memory, and disk space:
+
+1. Stop Colima:
+
+    ```console
+    colima stop
+    ```
+
+1. Restart with desired specifications:
+
+    ```console
+    colima start --cpu 4 --memory 4 --disk 100
+    ```
+
+#### Support applications that are unaware of Docker context ####
+
+In your shell profile (`.bashrc`, `.zshrc`, etc.) add the following configuration.
+
+```shell
+# Set env variable for Colima compatibility with Docker
+export DOCKER_HOST=unix://$HOME/.colima/default/docker.sock
+```
+
+> [!NOTE]
+> This configuration directs Docker client tools to communicate with the
+> Docker daemon managed by Colima, ensuring that Docker commands and
+> applications (e.g. Molecule) function as expected without Docker Desktop.
+> For more information, see [here](https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#cannot-connect-to-the-docker-daemon-at-unixvarrundockersock-is-the-docker-daemon-running).
 
 ### iTerm2 (recommended) ###
 
